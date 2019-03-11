@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2ZUIcEQMEemre9CUsFQOOw" name="NewModel">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_7EQ0oEQMEemre9CUsFQOOw" name="John H.">
+    <eAnnotations xmi:id="_7EVtIEQMEemre9CUsFQOOw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details xmi:id="_7EVtIUQMEemre9CUsFQOOw" key="Human"/>
+    </eAnnotations>
+    <ownedComment xmi:id="_-6CzYEQMEemre9CUsFQOOw" annotatedElement="_7EQ0oEQMEemre9CUsFQOOw">
+      <body>Vores bruger&#xD;
+</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_BN6TcEQNEemre9CUsFQOOw" name="Create a Plan"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_G7KxMEQNEemre9CUsFQOOw" memberEnd="_G7YzoEQNEemre9CUsFQOOw _G7aBwEQNEemre9CUsFQOOw">
+    <ownedEnd xmi:id="_G7YzoEQNEemre9CUsFQOOw" type="_7EQ0oEQMEemre9CUsFQOOw" association="_G7KxMEQNEemre9CUsFQOOw"/>
+    <ownedEnd xmi:id="_G7aBwEQNEemre9CUsFQOOw" type="_BN6TcEQNEemre9CUsFQOOw" association="_G7KxMEQNEemre9CUsFQOOw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_KBLf4EQNEemre9CUsFQOOw" name="Edit Plan"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MNwsMEQNEemre9CUsFQOOw" memberEnd="_MNx6UEQNEemre9CUsFQOOw _MNx6UUQNEemre9CUsFQOOw">
+    <ownedEnd xmi:id="_MNx6UEQNEemre9CUsFQOOw" type="_7EQ0oEQMEemre9CUsFQOOw" association="_MNwsMEQNEemre9CUsFQOOw"/>
+    <ownedEnd xmi:id="_MNx6UUQNEemre9CUsFQOOw" type="_KBLf4EQNEemre9CUsFQOOw" association="_MNwsMEQNEemre9CUsFQOOw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_PV4TsEQNEemre9CUsFQOOw" name="Delete Plan"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_TAHJwEQNEemre9CUsFQOOw" memberEnd="_TAHw0EQNEemre9CUsFQOOw _TAHw0UQNEemre9CUsFQOOw">
+    <ownedEnd xmi:id="_TAHw0EQNEemre9CUsFQOOw" type="_PV4TsEQNEemre9CUsFQOOw" association="_TAHJwEQNEemre9CUsFQOOw"/>
+    <ownedEnd xmi:id="_TAHw0UQNEemre9CUsFQOOw" type="_7EQ0oEQMEemre9CUsFQOOw" association="_TAHJwEQNEemre9CUsFQOOw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_UAiE8EQNEemre9CUsFQOOw" name="Check In At Work"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_d5ZngEQNEemre9CUsFQOOw" memberEnd="_d5aOkEQNEemre9CUsFQOOw _d5a1oEQNEemre9CUsFQOOw">
+    <ownedEnd xmi:id="_d5aOkEQNEemre9CUsFQOOw" type="_7EQ0oEQMEemre9CUsFQOOw" association="_d5ZngEQNEemre9CUsFQOOw"/>
+    <ownedEnd xmi:id="_d5a1oEQNEemre9CUsFQOOw" type="_UAiE8EQNEemre9CUsFQOOw" association="_d5ZngEQNEemre9CUsFQOOw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_ejftYEQNEemre9CUsFQOOw" name="Check Out At Work"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_g8askEQNEemre9CUsFQOOw" memberEnd="_g8dI0EQNEemre9CUsFQOOw _g8dI0UQNEemre9CUsFQOOw">
+    <ownedEnd xmi:id="_g8dI0EQNEemre9CUsFQOOw" type="_ejftYEQNEemre9CUsFQOOw" association="_g8askEQNEemre9CUsFQOOw"/>
+    <ownedEnd xmi:id="_g8dI0UQNEemre9CUsFQOOw" type="_7EQ0oEQMEemre9CUsFQOOw" association="_g8askEQNEemre9CUsFQOOw"/>
+  </packagedElement>
+</uml:Model>
