@@ -3,6 +3,12 @@ Feature: Administrator registers user.
 	account details which includes full name, username, password and student email.
 	Actor: User
 
+Background: Administrator is logged in.
+ 	Given I exist in the list of administrators
+ 	And I navigate to the login page
+ 	When I submit username and password
+ 	Then I should be logged in 
+
 Scenario: Registers user successfully.
 	Given Administrator is logged in with username "admin" and password "admin"
 	When Administrator enters the users account details and registers the user
