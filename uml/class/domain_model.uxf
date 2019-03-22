@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>580</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>_Project Application: Class_
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>750</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>_User: Class_
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>750</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>_Plan: Class_
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>400</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>_MainFrame: Class_
+--
+JTabbedPane</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>230</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>_PanelTemplate: Class_
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>140</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>_LoginPanel: Class_
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>170</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+m1=&lt;&lt;extends&gt;&gt;
+</panel_attributes>
+    <additional_attributes>10.0;100.0;110.0;100.0;110.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>160</x>
+      <y>290</y>
+      <w>310</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Has instance of
+lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>290.0;150.0;10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>460</y>
+      <w>130</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Has instance of.
+lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>640</y>
+      <w>140</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;60.0;120.0;60.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>640</y>
+      <w>130</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>110.0;110.0;110.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>230</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>_HomePanel: Class_
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>310</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>_AdminPanel: Class_
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>260</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>260</y>
+      <w>110</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>290</y>
+      <w>280</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=pane in tabbed pane
+m2=can see other panes</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0;260.0;120.0</additional_attributes>
+  </element>
+</diagram>
