@@ -195,4 +195,15 @@ bg=black</panel_attributes>
     <panel_attributes>type=initial</panel_attributes>
     <additional_attributes/>
   </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>0</x>
+      <y>180</y>
+      <w>780</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>User Login</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>
