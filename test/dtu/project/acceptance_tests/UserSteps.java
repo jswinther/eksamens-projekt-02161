@@ -3,12 +3,21 @@ package dtu.project.acceptance_tests;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import dtu.project.app.ProjectApp;
 
 public class UserSteps {
+	
+	ProjectApp PA;
+	
+	public UserSteps(ProjectApp PA) {
+		this.PA = PA;
+	}
+	
+	
+	
 	@Given("Administrator is logged in with username {string} and password {string}")
-	public void administratorIsLoggedInWithUsernameAndPassword(String string, String string2) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
+	public void administratorIsLoggedInWithUsernameAndPassword(String username, String passsword) {
+	    this.PA.login(username, passsword);
 	}
 	
 	@When("Administrator chooses user with username {string} and deletes that user")
