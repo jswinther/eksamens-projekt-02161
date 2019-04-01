@@ -90,7 +90,7 @@ public class Planner extends JFrame implements ActionListener {
 	
 	public static void main(String[] args) 
 	{
-		File f = new File("C:\\Plannerdata");
+		File f = new File("Plannerdata\\");
 		try{
 		    if(f.mkdir()) { 
 		        System.out.println("Directory Created");
@@ -277,7 +277,7 @@ public class Planner extends JFrame implements ActionListener {
 	public boolean checkIfUserExists(String userName)
 	{
 		
-		File tmpDir = new File("C:\\Plannerdata\\"+userName+".txt");
+		File tmpDir = new File("Plannerdata\\"+userName+".txt");
 		boolean exists = tmpDir.isFile();
 		if (exists == true) {
 			return true;
@@ -286,7 +286,7 @@ public class Planner extends JFrame implements ActionListener {
 	
 	}
 	public boolean passwordcorrect(String password) throws IOException {
-		 BufferedReader Buff = new BufferedReader(new FileReader("C:\\Plannerdata\\"+textFieldEmail.getText()+".txt"));
+		 BufferedReader Buff = new BufferedReader(new FileReader("Plannerdata\\"+textFieldEmail.getText()+".txt"));
 	     String text = Buff.readLine();
 	     if (text.equals(passwordField.getText())) {
 	    	 return true;
@@ -354,7 +354,7 @@ public class Planner extends JFrame implements ActionListener {
 		else
 		{
 			
-			File txtfile = new File("C:\\Plannerdata\\"+userNameReg+".txt");
+			File txtfile = new File("Plannerdata\\" + userNameReg+".txt");
 			
 			FileWriter fw = null;
 			try {
