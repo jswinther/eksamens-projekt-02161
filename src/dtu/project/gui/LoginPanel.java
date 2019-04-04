@@ -70,7 +70,7 @@ public class LoginPanel extends PanelWithSetup {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.println("dtu.project.gui.LoginPanel.jButton1ActionPerformed()");
-        this.PA.login(jTextField1.getText(), jPasswordField1.getText());
+        this.MF.login(jTextField1.getText(), jPasswordField1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -13,14 +13,11 @@ import dtu.project.app.ProjectApp;
  */
 public class PanelWithSetup extends javax.swing.JPanel {
     
-    public ProjectApp PA;
     public MainFrame MF;
 
-    public void setup(ProjectApp PA, MainFrame MF) {
-        this.PA = PA;
+    public void setup(MainFrame MF) {
         this.MF = MF;
     }
-    
     
     
     /**
