@@ -16,7 +16,7 @@ public class ProjectApp {
         this.currentUser = currentUser;
     }
 	public ProjectApp() {
-		users.add(new User("Jonathan", "username", "password"));
+		users.add(new Employee("Jonathan", "username", "password"));
 		plans.add(new Plan("plan"));
 	}
 	public List<User> getUsers() {
@@ -31,6 +31,7 @@ public class ProjectApp {
 	public void setPlans(List<Plan> plans) {
 		this.plans = plans;
 	}
+        
 	
 	public <E> boolean add(E element, List<E> list) {
             for (E ele : list) if(ele.toString().equals(element.toString())) return false;

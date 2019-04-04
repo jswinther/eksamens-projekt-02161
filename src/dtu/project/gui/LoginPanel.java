@@ -5,6 +5,7 @@
  */
 package dtu.project.gui;
 
+
 /**
  *
  * @author Jonathan
@@ -71,6 +72,7 @@ public class LoginPanel extends PanelWithSetup {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.println("dtu.project.gui.LoginPanel.jButton1ActionPerformed()");
         this.MF.login(jTextField1.getText(), jPasswordField1.getText());
+        MF.updateAll();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -79,4 +81,8 @@ public class LoginPanel extends PanelWithSetup {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+    }
 }

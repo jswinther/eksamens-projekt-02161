@@ -101,4 +101,11 @@ public class AdminPanel extends PanelWithSetup {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update() {
+ 
+    }
+
+
 }

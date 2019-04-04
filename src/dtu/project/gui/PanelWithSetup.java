@@ -5,13 +5,11 @@
  */
 package dtu.project.gui;
 
-import dtu.project.app.ProjectApp;
-
 /**
  *
  * @author Jonathan
  */
-public class PanelWithSetup extends javax.swing.JPanel {
+public abstract class PanelWithSetup extends javax.swing.JPanel {
     
     public MainFrame MF;
 
@@ -47,6 +45,8 @@ public class PanelWithSetup extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public abstract void update();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

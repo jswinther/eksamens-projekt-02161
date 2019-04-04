@@ -1,6 +1,6 @@
 package dtu.project.app;
 
-public class User {
+public abstract class User {
     
     private String name;
     private String username;
@@ -36,6 +36,8 @@ public class User {
         this.password = password;
     }
 
-    
+    public String getRole() {
+        return getClass().getName();
+    }
 
 }

@@ -65,6 +65,14 @@ public class MainFrame extends javax.swing.JFrame {
         this.loginPanel1.setup(MF);
         this.homePanel1.setup(MF);
         this.adminPanel1.setup(MF);
+        this.jTabbedPane1.setEnabledAt(1, false);
+        this.jTabbedPane1.setEnabledAt(2, false);
+    }
+    
+    public void updateAll() {
+        this.loginPanel1.update();
+        this.homePanel1.update();
+        this.adminPanel1.update();
     }
 
     /**
