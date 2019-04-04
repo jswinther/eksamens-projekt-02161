@@ -6,6 +6,7 @@ import java.util.List;
 public class ProjectApp {
 	private List<User> users = new ArrayList<>();
 	private List<Plan> plans = new ArrayList<>();
+        private User currentUser;
 	public ProjectApp() {
 		users.add(new User("username", "password"));
 		plans.add(new Plan());
@@ -28,7 +29,13 @@ public class ProjectApp {
 		
 	}
 	public void login(String username, String passsword) {
+            System.out.println("dtu.project.app.ProjectApp.login()");
 		for (User user : users) {
+                    if(user.getUsername().equals(username) && user.getPassword().equals(passsword)) {
+                        this.currentUser = user;
+                        System.out.println("Login Success");
+                        break;
+                    }
 			
 		}
 		
