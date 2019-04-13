@@ -1,59 +1,72 @@
 package dtu.project.app;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectApp {
-	private List<User> users = new ArrayList<>();
-	private List<Plan> plans = new ArrayList<>();
-        private User currentUser;
-
-    public User getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-    }
-	public ProjectApp() {
-		users.add(new Employee("Jonathan", "username", "password"));
-		plans.add(new Plan("plan"));
-	}
-	public List<User> getUsers() {
-		return users;
-	}
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-	public List<Plan> getPlans() {
-		return plans;
-	}
-	public void setPlans(List<Plan> plans) {
-		this.plans = plans;
-	}
-        
 	
-	public <E> boolean add(E element, List<E> list) {
-            for (E ele : list) if(ele.toString().equals(element.toString())) return false;
-            list.add(element); return true;
+	private UserRepository userRepository;
+	private ProjectRepository projectRepository;
+
+	public ProjectApp(UserRepository userRepository, ProjectRepository projectRepository) {
+		this.userRepository = userRepository;
+		this.projectRepository = projectRepository;
 	}
-        
-        public <E> List<E> search(E element, List<E> list, String searchText) {
-            List<E> returnList = new ArrayList<>();
-            for (E ele : list) if(ele.toString().equals(element.toString())) returnList.add(ele);
-            return returnList;
-        }
-        
-	public void login(String username, String passsword) {
-            System.out.println("dtu.project.app.ProjectApp.login()");
-		for (User user : users) {
-                    if(user.getUsername().equals(username) && user.getPassword().equals(passsword)) {
-                        this.currentUser = user;
-                        System.out.println("Login Success");
-                        break;
-                    }
-			
-		}
-		
+	
+	/**
+	 * 
+	 * @param project
+	 * @param activity
+	 * @param user
+	 * @param hours
+	 */
+	public void registerHours(Project project, Activity activity, User user, int hours) {
+		// TODO - implement ProjectApp.registerHours
+		throw new UnsupportedOperationException();
 	}
+	
+	/**
+	 * 
+	 * @param findtType
+	 */
+	public List<User> findUser(FindType findtType) {
+		// TODO - implement ProjectApp.findUser
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param project
+	 * @param activity
+	 */
+	public void addActivity(Project project, Activity activity) {
+		// TODO - implement ProjectApp.addActivity
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param project
+	 * @param activity
+	 */
+	public void editActivity(Project project, Activity activity) {
+		// TODO - implement ProjectApp.editActivity
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param project
+	 * @param activity
+	 */
+	public void deleteActivity(Project project, Activity activity) {
+		// TODO - implement ProjectApp.deleteActivity
+		throw new UnsupportedOperationException();
+	}
+
+
+
+	public UserRepository getUserRepository() {return this.userRepository;}
+	public void setUserRepository(UserRepository userRepository) {this.userRepository = userRepository;}
+	public ProjectRepository getProjectRepository() {return this.projectRepository;}
+	public void setProjectRepository(ProjectRepository projectRepository) {this.projectRepository = projectRepository;}
 }

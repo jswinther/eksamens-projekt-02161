@@ -17,7 +17,8 @@ public class UserSteps {
 	
 	@Given("Administrator is logged in with username {string} and password {string}")
 	public void administratorIsLoggedInWithUsernameAndPassword(String username, String passsword) {
-	    this.PA.login(username, passsword);
+		// Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
 	}
 	
 	@When("Administrator chooses user with username {string} and deletes that user")
