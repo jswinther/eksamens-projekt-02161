@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d65786d9-5d51-4fb9-a679-53f7495b0a2a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtu/project/enums/ActivityType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/.ProjectApp.vpp.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/ProjectApp.vpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/ProjectApp.vpp.bak_000f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/ProjectApp.vpp.bak_001d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/app/Activity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/app/Developer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/app/Project.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/app/ProjectApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/app/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VPP/app/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/Developer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/FindType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/enums/FindType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/repo/InMemoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/repo/ProjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/ProjectType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/enums/ProjectType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/repo/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/UserSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/UserSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/Glossary.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/activity/activitydiagram.uxf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/class/domain_model.uxf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/sequence/admin_register_edit_delete_user.uxf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/sequence/user_check_in_out_sequence_diagram.uxf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/sequence/user_create_plan.uxf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/sequence/user_login.uxf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/user/usercasediagram.uxf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/administrator/administrator_delete_user.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/administrator/administrator_edit_user.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/administrator/administrator_register_user.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/user/user_checkin_checkout.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/user/user_create_edit_delete_plan.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/user/user_login_logout.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/administrators.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/employees.txt" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/classes/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dtu/project/gui/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/dtu/project/acceptance_tests/UserSteps.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Project.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="39" column="89" selection-start-line="39" selection-start-column="89" selection-end-line="39" selection-end-column="89" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Activity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dtu/project/enums/ActivityType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="516">
+              <caret line="127" column="81" selection-start-line="127" selection-start-column="81" selection-end-line="127" selection-end-column="81" />
+              <folding>
+                <element signature="e#5007#5008#0" expanded="true" />
+                <element signature="e#5141#5142#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/use_cases/developer.feature">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dtu/project/app/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+              <folding>
+                <element signature="e#286#287#0" expanded="true" />
+                <element signature="e#317#318#0" expanded="true" />
+                <element signature="e#385#386#0" expanded="true" />
+                <element signature="e#425#426#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/dtu/project/enums/FindType.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/app/InMemoryRepository.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/repo/InMemoryRepository.java" />
+        <option value="$PROJECT_DIR$/test/dtu/project/acceptance_tests/UserSteps.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/app/Project.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/app/Event.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/app/Schedule.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/enums/ActivityType.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/gui/Main.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/app/User.java" />
+        <option value="$PROJECT_DIR$/src/dtu/project/app/Activity.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="eksamens-projekt-02161" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eksamens-projekt-02161" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eksamens-projekt-02161" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eksamens-projekt-02161" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eksamens-projekt-02161" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eksamens-projekt-02161" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eksamens-projekt-02161" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eksamens-projekt-02161" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eksamens-projekt-02161" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eksamens-projekt-02161" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="enums" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eksamens-projekt-02161" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eksamens-projekt-02161" type="462c0819:PsiDirectoryNode" />
+              <item name="use_cases" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dtu.project.gui.Main" />
+      <module name="project01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dtu.project.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d65786d9-5d51-4fb9-a679-53f7495b0a2a" name="Default Changelist" comment="" />
+      <created>1555177539044</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555177539044</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4810401" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32936078" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Developer.java" />
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/enums/ProjectType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/enums/FindType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/app/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/repo/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/repo/InMemoryRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/repo/ProjectRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/time/format/DateTimeFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29580">
+          <caret line="1850" column="19" selection-start-line="1850" selection-start-column="19" selection-end-line="1850" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/util/function/Predicate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Schedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="39" column="89" selection-start-line="39" selection-start-column="89" selection-end-line="39" selection-end-column="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/enums/ActivityType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="127" column="81" selection-start-line="127" selection-start-column="81" selection-end-line="127" selection-end-column="81" />
+          <folding>
+            <element signature="e#5007#5008#0" expanded="true" />
+            <element signature="e#5141#5142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/developer.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/dtu/project/acceptance_tests/UserSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/app/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+          <folding>
+            <element signature="e#286#287#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/gui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

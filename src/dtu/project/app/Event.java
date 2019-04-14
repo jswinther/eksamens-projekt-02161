@@ -1,26 +1,34 @@
 package dtu.project.app;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Event {
 
-	private String eventName;
-	private Date startDate;
-	private Date endDate;
+	private LocalDateTime startDate;
+	private LocalDateTime endDate;
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-	public Event(Date startDate, Date endDate) {
-		this.startDate = startDate;
-		this.endDate = endDate;
+	/**
+	 *
+	 * @param startDate
+	 * @param endDate
+	 */
+	public Event(String startDate, String endDate) {
+		this.startDate = LocalDateTime.parse(startDate, formatter);
+		this.endDate = LocalDateTime.parse(endDate, formatter);
 	}
-	
-	public double computeHours() {
-		return (this.endDate.getTime() - this.startDate.getTime())/3600000;
+
+	public LocalDateTime getStartDate() {return this.startDate;}
+	public void setStartDate(LocalDateTime startDate) {this.startDate = startDate;}
+	public LocalDateTime getEndDate() {return this.endDate;}
+	public void setEndDate(LocalDateTime endDate) {this.endDate = endDate;}
+
+	@Override
+	public String toString() {
+		return "Event{" +
+				"startDate=" + startDate.format(formatter) +
+				", endDate=" + endDate.format(formatter) +
+				'}';
 	}
-	
-	public String getEventName() {return this.eventName;}
-	public void setEventName(String eventName) {this.eventName = eventName;}
-	public Date getStartDate() {return this.startDate;}
-	public void setStartDate(Date startDate) {this.startDate = startDate;}
-	public Date getEndDate() {return this.endDate;}
-	public void setEndDate(Date endDate) {this.endDate = endDate;}
 }

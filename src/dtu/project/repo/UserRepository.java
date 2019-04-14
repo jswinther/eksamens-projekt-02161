@@ -1,4 +1,6 @@
-package dtu.project.app;
+package dtu.project.repo;
+
+import dtu.project.app.User;
 
 import java.util.List;
 

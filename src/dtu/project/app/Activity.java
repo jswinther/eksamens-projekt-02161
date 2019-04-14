@@ -1,43 +1,75 @@
 package dtu.project.app;
 
+import dtu.project.enums.ActivityType;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Activity {
 
-	private List<User> assignedUsers;
+	private String activityName;
+	private ActivityType activityType;
+	private List<User> users;
 	private int estimatedHours;
 	private int registeredHours;
-	private Date startDate;
-	private Date endDate;
-	private User activityResponsibleUser;
-	private Project project;
+	private Event timePeriod;
 
-	public Activity(int estimatedHours, Date startDate, Date endDate, User activityResponsibleUser, Project project) {
-		super();
-		this.assignedUsers = new ArrayList<User>();
+	/**
+	 * Work related
+	 * @param activityName
+	 * @param activityType
+	 * @param estimatedHours
+	 * @param timePeriod
+	 * @param user
+	 */
+	public Activity(String activityName, ActivityType activityType, int estimatedHours, Event timePeriod, User user) {
+		this.activityName = activityName;
+		this.activityType = activityType;
+		this.users = new ArrayList<User>();
+		this.users.add(user);
 		this.estimatedHours = estimatedHours;
 		this.registeredHours = 0;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.activityResponsibleUser = activityResponsibleUser;
-		this.project = project;
+		this.timePeriod = timePeriod;
+	}
+
+	/**
+	 * Not work related
+	 * @param activityName
+	 * @param activityType
+	 * @param timePeriod
+	 * @param user
+	 */
+	public Activity(String activityName, ActivityType activityType, Event timePeriod, User user) {
+		this.activityName = activityName;
+		this.activityType = activityType;
+		this.users = new ArrayList<User>();
+		this.users.add(user);
+		this.estimatedHours = 0;
+		this.registeredHours = 0;
+		this.timePeriod = timePeriod;
 	}
 	
-	public List<User> getAssignedUsers() {return this.assignedUsers;}
-	public void setAssignedUsers(List<User> assignedUsers) {this.assignedUsers = assignedUsers;}
+	public List<User> getUsers() {return this.users;}
+	public void addUser(User user) {this.users.add(user);}
+	public void removeUser(User user) {this.users.remove(user);}
+	public void setUsers(List<User> users) {this.users = users;}
 	public int getEstimatedHours() {return this.estimatedHours;}
 	public void setEstimatedHours(int estimatedHours) {this.estimatedHours = estimatedHours;}
 	public int getRegisteredHours() {return this.registeredHours;}
 	public void setRegisteredHours(int registeredHours) {this.registeredHours = registeredHours;}
-	public Date getStartDate() {return this.startDate;}
-	public void setStartDate(Date startDate) {this.startDate = startDate;}
-	public Date getEndDate() {return this.endDate;}
-	public void setEndDate(Date endDate) {this.endDate = endDate;}
-	public User getActivityResponsibleUser() {return this.activityResponsibleUser;}
-	public void setActivityResponsibleUser(User activityResponsibleUser) {this.activityResponsibleUser = activityResponsibleUser;}
-	public Project getProject() {return this.project;}
-	public void setProject(Project project) {this.project = project;}
+	public Event getTimePeriod() {return timePeriod;}
+	public void setTimePeriod(Event timePeriod) {this.timePeriod = timePeriod;}
 
+	@Override
+	public String toString() {
+		return "Activity{" +
+				"activityName='" + activityName + '\'' +
+				", activityType=" + activityType +
+				", users=" + users +
+				", estimatedHours=" + estimatedHours +
+				", registeredHours=" + registeredHours +
+				", timePeriod=" + timePeriod +
+				'}';
+	}
 }
