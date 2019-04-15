@@ -32,5 +32,8 @@ public class Main {
 		System.out.println("Busy Users" + PA.findUser(FindType.UNAVAILABLE, new Event("2019-10-10 08:00", "2019-10-11 17:00")));
 		System.out.println("Busy Users" + PA.findUser(FindType.UNAVAILABLE, new Event("2019-10-11 08:00", "2019-10-11 17:00")));
 		System.out.println(PA.getProjectList().get(0).getActivities().get(0).getRegisteredHours());
+
+		System.out.println(PA.getActivitiesAssignedTo(PA.getUserList().get(0)));
+
 	}
 }
