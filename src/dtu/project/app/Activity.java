@@ -3,7 +3,6 @@ package dtu.project.app;
 import dtu.project.enums.ActivityType;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Activity {
@@ -33,7 +32,7 @@ public class Activity {
 		this.timePeriod = timePeriod;
 	}
 
-	/**
+	/** 
 	 * Not work related
 	 * @param activityName
 	 * @param activityType

@@ -1,8 +1,6 @@
 package dtu.project.gui;
 
 import java.io.FileNotFoundException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import dtu.project.app.*;
 import dtu.project.enums.ActivityType;

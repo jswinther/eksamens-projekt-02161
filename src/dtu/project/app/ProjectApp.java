@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class ProjectApp {
@@ -76,7 +75,7 @@ public class ProjectApp {
 	 * @return
 	 */
 	public User findUser(String name) {
-		Optional r = getUserList().stream().filter(user -> user.toString().contains(name)).findFirst();
+		Optional<?> r = getUserList().stream().filter(user -> user.toString().contains(name)).findFirst();
 		return r.isPresent() ?
 				getUserList().stream().filter(user -> user.toString().contains(name)).findFirst().get() : null;
 	}
@@ -104,18 +103,17 @@ public class ProjectApp {
 	 * @param findType
 	 */
 	public List<User> findUser(FindType findType, Event event) {
-		List<User> users = new ArrayList<>();
+		List<User> users = new ArrayList<User>() {{
+			addAll(getUserList());
+		}};
 		switch (findType) {
 			case FREE:
 				for (User user : getUserList()) {
 					for (Activity key: user.getSchedule().keySet()) {
 						for (Event e: user.getSchedule().get(key)) {
-							if(
-									event.getEndDate().isBefore(e.getStartDate()) ||
-											event.getStartDate().isAfter(e.getEndDate())
-							) {
-								users.add(user);
-							}
+							if(!(event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
+								users.remove(user);
+							}								
 						}
 					}
 				}
@@ -124,10 +122,8 @@ public class ProjectApp {
 				for (User user : getUserList()) {
 					for (Activity key: user.getSchedule().keySet()) {
 						for (Event e: user.getSchedule().get(key)) {
-							if(!(event.getEndDate().isBefore(e.getStartDate()) ||
-									event.getStartDate().isAfter(e.getEndDate()))
-							) {
-								users.add(user);
+							if((event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
+								users.remove(user);
 							}
 						}
 					}
@@ -143,8 +139,7 @@ public class ProjectApp {
 	 * @param activity
 	 */
 	public void addActivity(Project project, Activity activity) {
-		// TODO - implement ProjectApp.addActivity
-		throw new UnsupportedOperationException();
+		project.addActivity(activity);
 	}
 
 	/**
@@ -152,19 +147,8 @@ public class ProjectApp {
 	 * @param project
 	 * @param activity
 	 */
-	public void editActivity(Project project, Activity activity) {
-		// TODO - implement ProjectApp.editActivity
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param project
-	 * @param activity
-	 */
-	public void deleteActivity(Project project, Activity activity) {
-		// TODO - implement ProjectApp.deleteActivity
-		throw new UnsupportedOperationException();
+	public void removeActivity(Project project, Activity activity) {
+		project.removeActivity(activity);
 	}
 
 
