@@ -53,8 +53,8 @@ public class ProjectApp {
 	}
 	
 
-	/**
-	 * Get activiti
+	/** Jonathan
+	 * Get activities assigned to a specific user.
 	 * @param user
 	 * @return
 	 */
@@ -69,7 +69,7 @@ public class ProjectApp {
 		return activities;
 	}
 
-	/**
+	/** Jonathan
 	 * Returns the first user found who contains the search string
 	 * @param name
 	 * @return
@@ -80,34 +80,17 @@ public class ProjectApp {
 				getUserList().stream().filter(user -> user.toString().contains(name)).findFirst().get() : null;
 	}
 
-	
-	/**
-	 * 
-	 * @param project
-	 * @param activity
-	 * @param user
-         * @param startDate
-	 * @param hours
-	 */
-	public void registerHours(Project project, Activity activity, User user, Date startDate, int hours) {
-		// TODO - implement ProjectApp.registerHours
-		throw new UnsupportedOperationException();
-	}
-	
-
-
-
-	
 	/**
 	 * 
 	 * @param findType
 	 */
 	public List<User> findUser(FindType findType, Event event) {
-		List<User> users = new ArrayList<User>() {{
-			addAll(getUserList());
-		}};
+		List<User> users = null;
 		switch (findType) {
 			case FREE:
+				users = new ArrayList<User>() {{
+					addAll(getUserList());
+				}};
 				for (User user : getUserList()) {
 					for (Activity key: user.getSchedule().keySet()) {
 						for (Event e: user.getSchedule().get(key)) {
@@ -119,11 +102,12 @@ public class ProjectApp {
 				}
 				break;
 			case UNAVAILABLE:
+				users = new ArrayList<User>();
 				for (User user : getUserList()) {
 					for (Activity key: user.getSchedule().keySet()) {
 						for (Event e: user.getSchedule().get(key)) {
-							if((event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
-								users.remove(user);
+							if(!(event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
+								users.add(user);
 							}
 						}
 					}
