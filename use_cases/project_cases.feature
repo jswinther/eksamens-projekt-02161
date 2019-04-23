@@ -20,3 +20,6 @@ Scenario: Removes a project
     And time period "2019-05-05 08:00" to "2019-08-05 23:59".
     When the user removes the project.
     Then the project doesn't exist in the list projects.
+    
+Scenario: search for a project
+	Given a user want to find a project with the name "projectname"

@@ -57,5 +57,11 @@ public class ProjectSteps {
 	public void theProjectDoesnTExistInTheListProjects() {
 		assertTrue(PA.getProjectList().isEmpty());
 	}
+	
+	@Given("a user want to find a project with the name {string}")
+	public void aUserWantToFindAProjectWithTheName(String string) {
+		PA.searchProjects(string);
+//	    throw new cucumber.api.PendingException();
+	}
 }
 
