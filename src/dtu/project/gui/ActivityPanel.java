@@ -5,6 +5,11 @@
  */
 package dtu.project.gui;
 
+import dtu.project.app.Activity;
+import dtu.project.app.Event;
+import dtu.project.enums.ActivityType;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Jonathan
@@ -277,15 +282,37 @@ public class ActivityPanel extends PanelTemplate {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if(ActivityType.valueOf(jComboBox2.getItemAt(jComboBox2.getSelectedIndex())) == ActivityType.WORK) {
+            PA.addActivity(PA.getProjectList().get(jComboBox1.getSelectedIndex()), 
+                    new Activity(jTextField1.getText(), 
+                            ActivityType.valueOf(jComboBox2.getItemAt(jComboBox2.getSelectedIndex())), 
+                            Integer.valueOf(jTextField2.getText()), 
+                            new Event(jTextField3.getText(), jTextField4.getText()), 
+                            PA.getUserList().get(jComboBox3.getSelectedIndex())));
+        } else {
+            PA.addActivity(PA.getProjectList().get(jComboBox1.getSelectedIndex()), 
+                    new Activity(jTextField1.getText(), 
+                            ActivityType.valueOf(jComboBox2.getItemAt(jComboBox2.getSelectedIndex())), 
+                            new Event(jTextField3.getText(), jTextField4.getText()), 
+                            PA.getUserList().get(jComboBox3.getSelectedIndex())));
+        }
+        initFields();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Activity a = PA.getProjectList().get(jComboBox1.getSelectedIndex()).getActivities().get(jComboBox3.getSelectedIndex());
+        a.setActivityName(jTextField8.getText());
+        a.setActivityType(ActivityType.valueOf(jComboBox4.getItemAt(jComboBox4.getSelectedIndex())));
+        a.setEstimatedHours(Integer.valueOf(jTextField5.getText()));
+        a.setTimePeriod(new Event(jTextField6.getText(), jTextField7.getText()));
+        a.getUsers().set(0, PA.getUserList().get(jComboBox5.getSelectedIndex()));
+        initFields();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        PA.getProjectList().get(jComboBox1.getSelectedIndex()).removeActivity(PA.getProjectList().
+                get(jComboBox1.getSelectedIndex()).getActivities().get(jComboBox3.getSelectedIndex()));
+        initFields();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
@@ -327,6 +354,24 @@ public class ActivityPanel extends PanelTemplate {
 
     @Override
     public void initFields() {
+        jComboBox2.setModel(new DefaultComboBoxModel<>(new String[]{ActivityType.HOLIDAY.toString(), ActivityType.UNPAID.toString(), ActivityType.WORK.toString()}));
+        jComboBox3.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
+        jComboBox4.setModel(new DefaultComboBoxModel<>(new String[]{ActivityType.HOLIDAY.toString(), ActivityType.UNPAID.toString(), ActivityType.WORK.toString()}));
+        jComboBox5.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
+        if(PA.getProjectList().isEmpty()) {
+            jComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+            jComboBox6.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+            jComboBox7.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+        } else if(PA.getProjectList().get(jComboBox1.getSelectedIndex()).getActivities().isEmpty()) {
+            jComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
+            jComboBox6.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+            jComboBox7.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+        } else {
+            jComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
+            jComboBox6.setModel(new DefaultComboBoxModel(PA.getProjectList().get(jComboBox1.getSelectedIndex()).getActivities().toArray()));
+            jComboBox7.setModel(new DefaultComboBoxModel(PA.getProjectList().get(jComboBox1.getSelectedIndex()).getActivities().toArray()));
+        }
+            
         
     }
 }

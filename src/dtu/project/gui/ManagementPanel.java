@@ -57,5 +57,6 @@ public class ManagementPanel extends PanelTemplate {
     @Override
     public void initFields() {
         projectPanel1.setup(PA, MF);
+        activityPanel1.setup(PA, MF);
     }
 }
