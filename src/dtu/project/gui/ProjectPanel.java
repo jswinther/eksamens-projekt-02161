@@ -238,7 +238,7 @@ public class ProjectPanel extends PanelTemplate {
             PA.addProject(new Project(jTextField1.getText(), ProjectType.valueOf(jComboBox1.getItemAt(jComboBox1.getSelectedIndex()))));
         else
             PA.addProject(new Project(jTextField1.getText(), ProjectType.valueOf(jComboBox1.getItemAt(jComboBox1.getSelectedIndex())), new Event(jTextField2.getText(), jTextField3.getText())));
-        initFields();
+        MF.updateAll();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -250,12 +250,12 @@ public class ProjectPanel extends PanelTemplate {
             PA.getProjectList().get(jComboBox2.getSelectedIndex()).setProjectType(ProjectType.valueOf(jComboBox3.getItemAt(jComboBox3.getSelectedIndex())));
             PA.getProjectList().get(jComboBox2.getSelectedIndex()).setTimePeriod(new Event(jTextField5.getText(), jTextField6.getText()));
         }
-        initFields();
+        MF.updateAll();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         PA.removeProject(PA.getProjectList().get(jComboBox4.getSelectedIndex()));
-        initFields();
+        MF.updateAll();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

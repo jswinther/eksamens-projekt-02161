@@ -32,6 +32,11 @@ public class MainFrame extends javax.swing.JFrame {
         userPanel2.setup(PA, MF);
         managementPanel1.setup(PA, MF);
     }
+    
+    public void updateAll() {
+        userPanel2.initFields();
+        managementPanel1.initFields();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -34,6 +34,7 @@ public class ProjectApp {
      */
     private <E> List<E> search(String searchText, List<E> searchList) {
         return searchList.stream().filter(e -> e.toString().contains(searchText)).collect(Collectors.toList());
+        
     }
 
     /**

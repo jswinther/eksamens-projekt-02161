@@ -192,7 +192,9 @@ public class UserPanel extends PanelTemplate {
     }//GEN-LAST:event_jTextField2KeyReleased
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        jList2.setModel(PA.getUserActivitiesDefaultListModelContaining(jList1.getSelectedValue(), jTextField2.getText())); 
+        if(jList1.getSelectedIndex() != -1)
+            if(!PA.getActivitiesAssignedTo(PA.getUserList().get(jList1.getSelectedIndex())).isEmpty())
+                jList2.setModel(PA.getUserActivitiesDefaultListModelContaining(jList1.getSelectedValue(), jTextField2.getText())); 
     }//GEN-LAST:event_jList1ValueChanged
 
 

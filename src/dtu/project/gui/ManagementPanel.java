@@ -5,6 +5,8 @@
  */
 package dtu.project.gui;
 
+import dtu.project.app.ProjectApp;
+
 /**
  *
  * @author Jonathan
@@ -17,6 +19,12 @@ public class ManagementPanel extends PanelTemplate {
     public ManagementPanel() {
         initComponents();
         
+    }
+    
+    @Override
+    public void setup(ProjectApp PA, MainFrame MF) {
+        projectPanel1.setup(PA, MF);
+        activityPanel1.setup(PA, MF);
     }
 
     /**
@@ -56,7 +64,7 @@ public class ManagementPanel extends PanelTemplate {
 
     @Override
     public void initFields() {
-        projectPanel1.setup(PA, MF);
-        activityPanel1.setup(PA, MF);
+        projectPanel1.initFields();
+        activityPanel1.initFields();
     }
 }

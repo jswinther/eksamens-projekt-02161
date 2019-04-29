@@ -296,7 +296,7 @@ public class ActivityPanel extends PanelTemplate {
                             new Event(jTextField3.getText(), jTextField4.getText()), 
                             PA.getUserList().get(jComboBox3.getSelectedIndex())));
         }
-        initFields();
+        MF.updateAll();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -306,13 +306,13 @@ public class ActivityPanel extends PanelTemplate {
         a.setEstimatedHours(Integer.valueOf(jTextField5.getText()));
         a.setTimePeriod(new Event(jTextField6.getText(), jTextField7.getText()));
         a.getUsers().set(0, PA.getUserList().get(jComboBox5.getSelectedIndex()));
-        initFields();
+        MF.updateAll();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         PA.getProjectList().get(jComboBox1.getSelectedIndex()).removeActivity(PA.getProjectList().
                 get(jComboBox1.getSelectedIndex()).getActivities().get(jComboBox3.getSelectedIndex()));
-        initFields();
+        MF.updateAll();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
