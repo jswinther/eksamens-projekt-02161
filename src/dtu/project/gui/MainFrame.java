@@ -53,8 +53,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.addTab("tab1", userPanel2);
-        jTabbedPane1.addTab("tab2", managementPanel1);
+        jTabbedPane1.addTab("User Tab", userPanel2);
+        jTabbedPane1.addTab("Management Tab", managementPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
