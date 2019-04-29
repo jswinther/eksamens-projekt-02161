@@ -222,7 +222,7 @@ public class ProjectApp {
      * @param project
      */
     public void addProject(Project project) throws DateTimeParseException {
-    	if(project.getTimePeriod() != null && !project.getProjectName().matches("(?s).+")) {
+    	if(project.getTimePeriod() != null && !project.getProjectName().matches("[a-z,A-Z,1-9]+[ ,a-z,A-Z,1-9]*")) {
     		if(project.getTimePeriod().getStartDate() != null)
     			getProjectList().add(project);
     		else
