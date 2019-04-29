@@ -2,6 +2,7 @@ package dtu.project.app;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Event {
 
@@ -14,9 +15,16 @@ public class Event {
 	 * @param startDate
 	 * @param endDate
 	 */
-	public Event(String startDate, String endDate) {
-		this.startDate = LocalDateTime.parse(startDate, formatter);
-		this.endDate = LocalDateTime.parse(endDate, formatter);
+	public Event(String startDate, String endDate) throws DateTimeParseException { 
+		try {
+			this.startDate = LocalDateTime.parse(startDate, formatter);
+			this.endDate = LocalDateTime.parse(endDate, formatter);
+		} catch (DateTimeParseException e) {
+			System.err.println("wrong input format");
+			this.startDate = null;
+			this.endDate = null;
+		}
+		
 	}
 
 	public LocalDateTime getStartDate() {return this.startDate;}
@@ -27,8 +35,8 @@ public class Event {
 	@Override
 	public String toString() {
 		return "Event{" +
-				"startDate=" + startDate.format(formatter) +
-				", endDate=" + endDate.format(formatter) +
+				"startDate=" + (startDate == null? "undefined": startDate.format(formatter))+
+				", endDate=" + (endDate == null? "undefined": endDate.format(formatter)) +
 				'}';
 	}
 }

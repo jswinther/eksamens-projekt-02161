@@ -4,6 +4,7 @@ import dtu.project.enums.FindType;
 import dtu.project.repo.ProjectRepository;
 import dtu.project.repo.UserRepository;
 
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -220,8 +221,10 @@ public class ProjectApp {
      *
      * @param project
      */
-    public void addProject(Project project) {
-        getProjectList().add(project);
+    public void addProject(Project project) throws DateTimeParseException {
+    	if(project.getTimePeriod().getStartDate() != null) {
+    		getProjectList().add(project);
+    	}
     }
 
     /**

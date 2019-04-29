@@ -2,6 +2,7 @@ package dtu.project.app;
 
 import dtu.project.enums.ProjectType;
 
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class Project {
 	private Event timePeriod;
 	private List<Activity> activities;
 
-	public Project(String projectName, ProjectType projectType) {
+	public Project(String projectName, ProjectType projectType) throws DateTimeParseException {
 		this.projectName = projectName;
 		this.projectType = projectType;
 		this.timePeriod = null;
@@ -22,7 +23,12 @@ public class Project {
 	public Project(String projectName, ProjectType projectType, Event timePeriod) {
 		this.projectName = projectName;
 		this.projectType = projectType;
+		try {
 		this.timePeriod = timePeriod;
+		}
+		catch (DateTimeParseException e) {
+			// do nothing
+		}
 		this.activities =  new ArrayList<>();
 	}
 
@@ -47,7 +53,7 @@ public class Project {
 	public String toString() {
 		return "projectName='" + projectName + '\'' +
 				", projectType=" + projectType +
-				", timePeriod=" + timePeriod +
+				", timePeriod=" + (timePeriod == null? "undefined": timePeriod) +
 				", activities=" + activities;
 	}
 }
