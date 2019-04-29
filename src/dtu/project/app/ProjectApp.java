@@ -222,9 +222,13 @@ public class ProjectApp {
      * @param project
      */
     public void addProject(Project project) throws DateTimeParseException {
-    	if((project.getTimePeriod().getStartDate() != null || project.getTimePeriod()==null) && project.getProjectName().length()>0) {
-    		getProjectList().add(project);
-    	}
+    	if(project.getTimePeriod() != null && !project.getProjectName().matches("(?s).+")) {
+    		if(project.getTimePeriod().getStartDate() != null)
+    			getProjectList().add(project);
+    		else
+    			System.err.println("Input format for date is not valid");
+    	} else
+    		System.err.println("Name or date input format is not valid");
     }
 
     /**
