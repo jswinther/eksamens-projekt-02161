@@ -222,7 +222,7 @@ public class ProjectApp {
      * @param project
      */
     public void addProject(Project project) throws DateTimeParseException {
-    	if(project.getTimePeriod().getStartDate() != null) {
+    	if((project.getTimePeriod().getStartDate() != null || project.getTimePeriod()==null) && project.getProjectName().length()>0) {
     		getProjectList().add(project);
     	}
     }
