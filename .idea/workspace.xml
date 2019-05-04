@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d65786d9-5d51-4fb9-a679-53f7495b0a2a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/UserSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/ActivityPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/gui/ActivityPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/ActivityPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/gui/ActivityPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/MainFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/gui/MainFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/gui/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/ProjectPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/gui/ProjectPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/ProjectPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/gui/ProjectPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/UserPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/gui/UserPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/gui/UserPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/gui/UserPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/project/repo/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/project/repo/InMemoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/AcceptanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/AcceptanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/ActivitySteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/ActivitySteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/project/acceptance_tests/ProjectSteps.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/classes/" />
@@ -20,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/dtu/project/acceptance_tests/ActivitySteps.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="272">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -29,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Event.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="425">
+              <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Activity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+            <state relative-caret-position="1989">
+              <caret line="120" selection-start-line="120" selection-end-line="120" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="391">
+              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,13 +102,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="72" column="7" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
+            <state relative-caret-position="142">
+              <caret line="67" column="7" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
               <folding>
-                <element signature="e#4971#4972#0" expanded="true" />
-                <element signature="e#5007#5008#0" expanded="true" />
-                <element signature="e#5102#5103#0" expanded="true" />
-                <element signature="e#5141#5142#0" expanded="true" />
+                <element signature="e#2210#2211#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,6 +179,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,8 +234,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -255,7 +270,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in project01">
+  <component name="RunManager" selected="JUnit.dtu.project.acceptance_tests in project01">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dtu.project.gui.Main" />
       <module name="project01" />
@@ -290,6 +305,20 @@
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dtu.project.acceptance_tests in project01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dtu.project.acceptance_tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dtu.project.acceptance_tests" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -332,6 +361,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.dtu.project.acceptance_tests in project01" />
         <item itemvalue="JUnit.All in project01" />
         <item itemvalue="Application.Main" />
       </list>
@@ -352,9 +382,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_project01 - 2019.04.15 at 11h 14m 38s.xml">
-      <configuration name="All in project01" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_project01 - 2019.04.15 at 11h 18m 07s.xml">
       <configuration name="All in project01" configurationId="JUnit" />
     </history-entry>
@@ -382,23 +409,23 @@
     <history-entry file="All_in_project01 - 2019.04.15 at 11h 38m 43s.xml">
       <configuration name="All in project01" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="dtu_project_acceptance_tests_in_project01 - 2019.05.04 at 18h 44m 07s.xml">
+      <configuration name="dtu.project.acceptance_tests in project01" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26865673" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27132195" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.4810401" />
@@ -410,7 +437,8 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32936078" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -420,6 +448,7 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" visible="true" weight="0.32995737" />
+      <window_info anchor="right" id="Database" order="9" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,66 +546,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/dtu/project/acceptance_tests/AcceptanceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/use_cases/project_cases.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/dtu.project.app.Activity">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>dtu.project.app.Activity</OriginalElement>
-          <nodes>
-            <node x="" y="">dtu.project.app.Event</node>
-            <node x="" y="">dtu.project.repo.UserRepository</node>
-            <node x="" y="">dtu.project.enums.FindType</node>
-            <node x="" y="">dtu.project.app.ProjectApp</node>
-            <node x="" y="">dtu.project.app.Activity</node>
-            <node x="" y="">java.io.Serializable</node>
-            <node x="" y="">dtu.project.enums.ProjectType</node>
-            <node x="" y="">dtu.project.app.User</node>
-            <node x="" y="">dtu.project.app.Project</node>
-            <node x="" y="">java.lang.Enum</node>
-            <node x="" y="">dtu.project.repo.ProjectRepository</node>
-            <node x="" y="">dtu.project.enums.ActivityType</node>
-            <node x="" y="">java.lang.Comparable</node>
-            <node x="" y="">dtu.project.repo.InMemoryRepository</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="505.0" y="237.5" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
+    <entry file="uml://JAVA/dtu.project.app.Activity" />
     <entry file="file://$PROJECT_DIR$/test/dtu/project/acceptance_tests/ActivitySteps.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="272">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="425">
+          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -585,8 +566,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+        <state relative-caret-position="1989">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -595,8 +576,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dtu/project/app/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        <state relative-caret-position="391">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -616,15 +597,26 @@
     <entry file="file://$PROJECT_DIR$/use_cases/user_cases.feature">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/dtu/project/acceptance_tests/AcceptanceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/project_cases.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dtu/project/app/ProjectApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="72" column="7" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
+        <state relative-caret-position="142">
+          <caret line="67" column="7" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
           <folding>
-            <element signature="e#4971#4972#0" expanded="true" />
-            <element signature="e#5007#5008#0" expanded="true" />
-            <element signature="e#5102#5103#0" expanded="true" />
-            <element signature="e#5141#5142#0" expanded="true" />
+            <element signature="e#2210#2211#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -19,22 +19,7 @@ public class User {
 		this.schedule = schedule;
 	}
 
-	public void addHours(Activity activity, Event event) {
-		if(!schedule.containsKey(activity)) {
-			schedule.put(activity, new ArrayList<Event>() {/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-
-			{
-				add(event);
-			}});
-			activity.setRegisteredHours(activity.getRegisteredHours() + (event.getEndDate().getHour() - event.getStartDate().getHour()));
-		} else {
-			schedule.get(activity).add(event);
-			activity.setRegisteredHours(activity.getRegisteredHours() + (event.getEndDate().getHour() - event.getStartDate().getHour()));
-		}
-	}
+	
 
 	public User(String name) {
 		super();

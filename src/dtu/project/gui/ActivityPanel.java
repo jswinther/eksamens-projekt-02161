@@ -8,6 +8,8 @@ package dtu.project.gui;
 import dtu.project.app.Activity;
 import dtu.project.app.Event;
 import dtu.project.enums.ActivityType;
+import java.time.format.DateTimeParseException;
+import java.util.regex.PatternSyntaxException;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -32,118 +34,118 @@ public class ActivityPanel extends PanelTemplate {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        selectProjectLabel1 = new javax.swing.JLabel();
+        projectListComboBox1 = new javax.swing.JComboBox<>();
+        activityNameLabel1 = new javax.swing.JLabel();
+        activityNameTextField1 = new javax.swing.JTextField();
+        activityTypeLabel1 = new javax.swing.JLabel();
+        activityUserLabel1 = new javax.swing.JLabel();
+        estimatedHoursLabel1 = new javax.swing.JLabel();
+        activityStartDateLabel1 = new javax.swing.JLabel();
+        activityEndDateLabel1 = new javax.swing.JLabel();
+        activityTypeComboBox1 = new javax.swing.JComboBox<>();
+        activityUserComboBox1 = new javax.swing.JComboBox<>();
+        estimatedHoursTextField1 = new javax.swing.JTextField();
+        activityStartDateTextField1 = new javax.swing.JTextField();
+        activityEndDateTextField1 = new javax.swing.JTextField();
+        addActivityButton = new javax.swing.JButton();
+        activityStartDateLabel2 = new javax.swing.JLabel();
+        activityEndDateLabel2 = new javax.swing.JLabel();
+        activityTypeComboBox2 = new javax.swing.JComboBox<>();
+        activityUserComboBox2 = new javax.swing.JComboBox<>();
+        estimatedHoursTextField2 = new javax.swing.JTextField();
+        activityStartDateTextField2 = new javax.swing.JTextField();
+        activityNameLabel2 = new javax.swing.JLabel();
+        activityEndDateTextField2 = new javax.swing.JTextField();
+        activityNameTextField2 = new javax.swing.JTextField();
+        editActivityButton = new javax.swing.JButton();
+        activityTypeLabel2 = new javax.swing.JLabel();
+        activityUserLabel2 = new javax.swing.JLabel();
+        estimatedHoursLabel2 = new javax.swing.JLabel();
+        activitySelectLabel1 = new javax.swing.JLabel();
+        activitySelectComboBox1 = new javax.swing.JComboBox<>();
+        activitySelectLabel2 = new javax.swing.JLabel();
+        activitySelectComboBox2 = new javax.swing.JComboBox<>();
+        removeActivityButton = new javax.swing.JButton();
 
-        jLabel1.setText("Select Project");
+        selectProjectLabel1.setText("Select Project");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        projectListComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel2.setText("Activity Name");
+        activityNameLabel1.setText("Activity Name");
 
-        jTextField1.setText("Activity Name");
+        activityNameTextField1.setText("Activity Name");
 
-        jLabel3.setText("Activity Type");
+        activityTypeLabel1.setText("Activity Type");
 
-        jLabel4.setText("Primary User");
+        activityUserLabel1.setText("Primary User");
 
-        jLabel5.setText("Estimated Hours");
+        estimatedHoursLabel1.setText("Estimated Hours");
 
-        jLabel6.setText("Start Date");
+        activityStartDateLabel1.setText("Start Date");
 
-        jLabel7.setText("End Date");
+        activityEndDateLabel1.setText("End Date");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        activityTypeComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        activityUserComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextField2.setText("45");
+        estimatedHoursTextField1.setText("45");
 
-        jTextField3.setText("2019-05-05 13:13");
+        activityStartDateTextField1.setText("2019-05-05 13:13");
 
-        jTextField4.setText("2019-05-05 13:13");
+        activityEndDateTextField1.setText("2019-05-05 13:13");
 
-        jButton1.setText("Add Activity");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addActivityButton.setText("Add Activity");
+        addActivityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addActivityButtonActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Start Date");
+        activityStartDateLabel2.setText("Start Date");
 
-        jLabel9.setText("End Date");
+        activityEndDateLabel2.setText("End Date");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        activityTypeComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        activityUserComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextField5.setText("45");
+        estimatedHoursTextField2.setText("45");
 
-        jTextField6.setText("2019-05-05 13:13");
+        activityStartDateTextField2.setText("2019-05-05 13:13");
 
-        jLabel10.setText("Activity Name");
+        activityNameLabel2.setText("Activity Name");
 
-        jTextField7.setText("2019-05-05 13:13");
+        activityEndDateTextField2.setText("2019-05-05 13:13");
 
-        jTextField8.setText("Activity Name");
+        activityNameTextField2.setText("Activity Name");
 
-        jButton2.setText("Edit Activity");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editActivityButton.setText("Edit Activity");
+        editActivityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editActivityButtonActionPerformed(evt);
             }
         });
 
-        jLabel11.setText("Activity Type");
+        activityTypeLabel2.setText("Activity Type");
 
-        jLabel12.setText("Primary User");
+        activityUserLabel2.setText("Primary User");
 
-        jLabel13.setText("Estimated Hours");
+        estimatedHoursLabel2.setText("Estimated Hours");
 
-        jLabel14.setText("Activity");
+        activitySelectLabel1.setText("Activity");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        activitySelectComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel15.setText("Activity");
+        activitySelectLabel2.setText("Activity");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        activitySelectComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton3.setText("Remove Activity");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        removeActivityButton.setText("Remove Activity");
+        removeActivityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                removeActivityButtonActionPerformed(evt);
             }
         });
 
@@ -153,225 +155,232 @@ public class ActivityPanel extends PanelTemplate {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(activitySelectComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(activitySelectComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(106, 106, 106)
+                                            .addComponent(activityTypeLabel2)
+                                            .addGap(63, 63, 63)
+                                            .addComponent(activityUserLabel2)
+                                            .addGap(51, 51, 51)
+                                            .addComponent(estimatedHoursLabel2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(activityStartDateLabel2)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(activityEndDateLabel2))
+                                        .addComponent(activitySelectLabel1))
+                                    .addGap(61, 61, 61)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(activityNameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(activityNameLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))))
-                    .addComponent(jLabel14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(activityTypeComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(activityTypeLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(activityUserComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(estimatedHoursTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(activityUserLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(estimatedHoursLabel1)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(activityStartDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(activityStartDateLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(activityEndDateLabel1)
+                                    .addComponent(activityEndDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(22, 131, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel11)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel12)))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel13)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel9))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton2)))))
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selectProjectLabel1)
+                            .addComponent(projectListComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addActivityButton)
+                            .addComponent(activityNameLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(activityNameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(activityTypeComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(activityUserComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(estimatedHoursTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(activityStartDateTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(activityEndDateTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editActivityButton)
+                            .addComponent(activitySelectLabel2)
+                            .addComponent(removeActivityButton))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(47, 47, 47)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectProjectLabel1)
+                .addGap(1, 1, 1)
+                .addComponent(projectListComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(activityNameLabel1)
+                    .addComponent(activityTypeLabel1)
+                    .addComponent(activityUserLabel1)
+                    .addComponent(estimatedHoursLabel1)
+                    .addComponent(activityEndDateLabel1)
+                    .addComponent(activityStartDateLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jButton3))
+                    .addComponent(activityNameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(activityTypeComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(activityUserComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estimatedHoursTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(activityStartDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(activityEndDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addComponent(addActivityButton)
+                .addGap(18, 18, 18)
+                .addComponent(activitySelectLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(activitySelectComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(activityNameLabel2)
+                    .addComponent(activityTypeLabel2)
+                    .addComponent(activityUserLabel2)
+                    .addComponent(estimatedHoursLabel2)
+                    .addComponent(activityStartDateLabel2)
+                    .addComponent(activityEndDateLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(activityNameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(activityTypeComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(activityUserComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estimatedHoursTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(activityStartDateTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(activityEndDateTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editActivityButton)
+                .addGap(18, 18, 18)
+                .addComponent(activitySelectLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(activitySelectComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(removeActivityButton)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(ActivityType.valueOf(jComboBox2.getItemAt(jComboBox2.getSelectedIndex())) == ActivityType.WORK) {
-            PA.addActivity(PA.getProjectList().get(jComboBox1.getSelectedIndex()), 
-                    new Activity(jTextField1.getText(), 
-                            ActivityType.valueOf(jComboBox2.getItemAt(jComboBox2.getSelectedIndex())), 
-                            Integer.valueOf(jTextField2.getText()), 
-                            new Event(jTextField3.getText(), jTextField4.getText()), 
-                            PA.getUserList().get(jComboBox3.getSelectedIndex())));
+    private void addActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActivityButtonActionPerformed
+        try {
+           if (ActivityType.valueOf(activityTypeComboBox1.getItemAt(activityTypeComboBox1.getSelectedIndex())) == ActivityType.WORK) {
+            PA.addActivity(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()),
+                    new Activity.Builder()
+                            .setActivityName(activityNameTextField1.getText())
+                            .setActivityType(ActivityType.valueOf(activityTypeComboBox1.getItemAt(activityTypeComboBox1.getSelectedIndex())))
+                            .setEstimatedHours(Integer.valueOf(estimatedHoursTextField1.getText()))
+                            .setTimePeriod(activityStartDateTextField1.getText(), activityEndDateTextField1.getText())
+                            .build());
         } else {
-            PA.addActivity(PA.getProjectList().get(jComboBox1.getSelectedIndex()), 
-                    new Activity(jTextField1.getText(), 
-                            ActivityType.valueOf(jComboBox2.getItemAt(jComboBox2.getSelectedIndex())), 
-                            new Event(jTextField3.getText(), jTextField4.getText()), 
-                            PA.getUserList().get(jComboBox3.getSelectedIndex())));
+            PA.addActivity(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()),
+                    new Activity.Builder()
+                            .setActivityName(activityNameTextField1.getText())
+                            .setActivityType(ActivityType.valueOf(activityTypeComboBox1.getItemAt(activityTypeComboBox1.getSelectedIndex())))
+                            .setTimePeriod(activityStartDateTextField1.getText(), activityEndDateTextField1.getText())
+                            .build());
+        } 
+        } catch (NumberFormatException | DateTimeParseException | PatternSyntaxException e) {
+            System.err.println(e);
         }
+        
+        
         MF.updateAll();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addActivityButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Activity a = PA.getProjectList().get(jComboBox1.getSelectedIndex()).getActivities().get(jComboBox3.getSelectedIndex());
-        a.setActivityName(jTextField8.getText());
-        a.setActivityType(ActivityType.valueOf(jComboBox4.getItemAt(jComboBox4.getSelectedIndex())));
-        a.setEstimatedHours(Integer.valueOf(jTextField5.getText()));
-        a.setTimePeriod(new Event(jTextField6.getText(), jTextField7.getText()));
-        a.getUsers().set(0, PA.getUserList().get(jComboBox5.getSelectedIndex()));
+    private void editActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActivityButtonActionPerformed
+        Activity a = PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().get(activityUserComboBox1.getSelectedIndex());
+        a.setActivityName(activityNameTextField2.getText());
+        a.setActivityType(ActivityType.valueOf(activityTypeComboBox2.getItemAt(activityTypeComboBox2.getSelectedIndex())));
+        a.setEstimatedHours(Integer.valueOf(estimatedHoursTextField2.getText()));
+        a.setTimePeriod(new Event(activityStartDateTextField2.getText(), activityEndDateTextField2.getText()));
+        a.getUsers().set(0, PA.getUserList().get(activityUserComboBox2.getSelectedIndex()));
         MF.updateAll();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_editActivityButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        PA.getProjectList().get(jComboBox1.getSelectedIndex()).removeActivity(PA.getProjectList().
-                get(jComboBox1.getSelectedIndex()).getActivities().get(jComboBox3.getSelectedIndex()));
+    private void removeActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActivityButtonActionPerformed
+        PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).removeActivity(PA.getProjectList().
+                get(projectListComboBox1.getSelectedIndex()).getActivities().get(activityUserComboBox1.getSelectedIndex()));
         MF.updateAll();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_removeActivityButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel activityEndDateLabel1;
+    private javax.swing.JLabel activityEndDateLabel2;
+    private javax.swing.JTextField activityEndDateTextField1;
+    private javax.swing.JTextField activityEndDateTextField2;
+    private javax.swing.JLabel activityNameLabel1;
+    private javax.swing.JLabel activityNameLabel2;
+    private javax.swing.JTextField activityNameTextField1;
+    private javax.swing.JTextField activityNameTextField2;
+    private javax.swing.JComboBox<String> activitySelectComboBox1;
+    private javax.swing.JComboBox<String> activitySelectComboBox2;
+    private javax.swing.JLabel activitySelectLabel1;
+    private javax.swing.JLabel activitySelectLabel2;
+    private javax.swing.JLabel activityStartDateLabel1;
+    private javax.swing.JLabel activityStartDateLabel2;
+    private javax.swing.JTextField activityStartDateTextField1;
+    private javax.swing.JTextField activityStartDateTextField2;
+    private javax.swing.JComboBox<String> activityTypeComboBox1;
+    private javax.swing.JComboBox<String> activityTypeComboBox2;
+    private javax.swing.JLabel activityTypeLabel1;
+    private javax.swing.JLabel activityTypeLabel2;
+    private javax.swing.JComboBox<String> activityUserComboBox1;
+    private javax.swing.JComboBox<String> activityUserComboBox2;
+    private javax.swing.JLabel activityUserLabel1;
+    private javax.swing.JLabel activityUserLabel2;
+    private javax.swing.JButton addActivityButton;
+    private javax.swing.JButton editActivityButton;
+    private javax.swing.JLabel estimatedHoursLabel1;
+    private javax.swing.JLabel estimatedHoursLabel2;
+    private javax.swing.JTextField estimatedHoursTextField1;
+    private javax.swing.JTextField estimatedHoursTextField2;
+    private javax.swing.JComboBox<String> projectListComboBox1;
+    private javax.swing.JButton removeActivityButton;
+    private javax.swing.JLabel selectProjectLabel1;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void initFields() {
-        jComboBox2.setModel(new DefaultComboBoxModel<>(new String[]{ActivityType.HOLIDAY.toString(), ActivityType.UNPAID.toString(), ActivityType.WORK.toString()}));
-        jComboBox3.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
-        jComboBox4.setModel(new DefaultComboBoxModel<>(new String[]{ActivityType.HOLIDAY.toString(), ActivityType.UNPAID.toString(), ActivityType.WORK.toString()}));
-        jComboBox5.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
-        if(PA.getProjectList().isEmpty()) {
-            jComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
-            jComboBox6.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
-            jComboBox7.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
-        } else if(PA.getProjectList().get(jComboBox1.getSelectedIndex()).getActivities().isEmpty()) {
-            jComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
-            jComboBox6.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
-            jComboBox7.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+        activityTypeComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{ActivityType.HOLIDAY.toString(), ActivityType.UNPAID.toString(), ActivityType.WORK.toString()}));
+        activityUserComboBox1.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
+        activityTypeComboBox2.setModel(new DefaultComboBoxModel<>(new String[]{ActivityType.HOLIDAY.toString(), ActivityType.UNPAID.toString(), ActivityType.WORK.toString()}));
+        activityUserComboBox2.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
+        if (PA.getProjectList().isEmpty()) {
+            projectListComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+            activitySelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+            activitySelectComboBox2.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+        } else if (PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().isEmpty()) {
+            projectListComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
+            activitySelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+            activitySelectComboBox2.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
         } else {
-            jComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
-            jComboBox6.setModel(new DefaultComboBoxModel(PA.getProjectList().get(jComboBox1.getSelectedIndex()).getActivities().toArray()));
-            jComboBox7.setModel(new DefaultComboBoxModel(PA.getProjectList().get(jComboBox1.getSelectedIndex()).getActivities().toArray()));
+            projectListComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
+            activitySelectComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().toArray()));
+            activitySelectComboBox2.setModel(new DefaultComboBoxModel(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().toArray()));
         }
-            
-        
+
     }
 }

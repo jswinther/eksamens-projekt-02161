@@ -13,7 +13,7 @@ public class InMemoryRepository implements UserRepository, ProjectRepository {
 
 	private List<User> userList;
 	private List<Project> projectList;
-	private Scanner reader;
+	private final Scanner reader;
 			
 	
 	public InMemoryRepository() throws FileNotFoundException {

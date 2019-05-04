@@ -7,7 +7,6 @@ package dtu.project.gui;
 
 import dtu.project.app.ProjectApp;
 import dtu.project.repo.InMemoryRepository;
-import java.awt.Component;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

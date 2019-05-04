@@ -3,12 +3,16 @@ package dtu.project.app;
 import dtu.project.enums.FindType;
 import dtu.project.repo.ProjectRepository;
 import dtu.project.repo.UserRepository;
+import java.io.Console;
+import static java.lang.System.console;
 
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import javax.swing.DefaultListModel;
 
@@ -34,17 +38,21 @@ public class ProjectApp {
      * @return
      */
     private <E> List<E> search(String searchText, List<E> searchList) {
+        if (searchText == null || searchList == null) {
+            throw new NullPointerException();
+        }
         return searchList.stream().filter(e -> e.toString().contains(searchText)).collect(Collectors.toList());
-        
+
     }
 
     /**
-     * Jonathan
-     * Converts a list of elements in to a default list model which is used for the GUI.
-     * otherwise this code will be repeated and we want to follow the DRY principle.
+     * Jonathan Converts a list of elements in to a default list model which is
+     * used for the GUI. otherwise this code will be repeated and we want to
+     * follow the DRY principle.
+     *
      * @param <E>
      * @param list
-     * @return 
+     * @return
      */
     private <E> DefaultListModel<String> listToDefaultListModel(List<E> list) {
         return new DefaultListModel<String>() {
@@ -55,23 +63,23 @@ public class ProjectApp {
             }
         };
     }
-    
+
     public DefaultListModel<String> getUserDefaultListModel() {
         return listToDefaultListModel(getUserList());
     }
-    
+
     public DefaultListModel<String> getProjectDefaultListModel() {
         return listToDefaultListModel(getProjectList());
     }
-    
+
     public DefaultListModel<String> getUserDefaultListModelContaining(String searchText) {
         return listToDefaultListModel(searchUser(searchText));
     }
-    
+
     public DefaultListModel<String> getProjectDefaultListModelContaining(String searchText) {
         return listToDefaultListModel(searchProjects(searchText));
     }
-    
+
     public DefaultListModel<String> getUserActivitiesDefaultListModelContaining(String userName, String searchText) {
         return listToDefaultListModel(search(searchText, getActivitiesAssignedTo(searchUser(userName).get(0))));
     }
@@ -104,13 +112,11 @@ public class ProjectApp {
      */
     public List<Activity> getActivitiesAssignedTo(User user) {
         List<Activity> activities = new ArrayList<>();
-        for (Project project : getProjectList()) {
-            for (Activity a : project.getActivities()) {
-                if (a.getUsers().contains(user)) {
-                    activities.add(a);
-                }
-            }
-        }
+        getProjectList().forEach((Project project) -> {
+            project.getActivities().stream().filter((a) -> (a.getUsers().contains(user))).forEachOrdered((a) -> {
+                activities.add(a);
+            });
+        });
         return activities;
     }
 
@@ -130,6 +136,8 @@ public class ProjectApp {
      * Jonathan
      *
      * @param findType
+     * @param event
+     * @return
      */
     public List<User> findUser(FindType findType, Event event) {
         List<User> users = null;
@@ -151,7 +159,7 @@ public class ProjectApp {
                 }
                 break;
             case UNAVAILABLE:
-                users = new ArrayList<User>();
+                users = new ArrayList<>();
                 for (User user : getUserList()) {
                     for (Activity key : user.getSchedule().keySet()) {
                         for (Event e : user.getSchedule().get(key)) {
@@ -172,7 +180,11 @@ public class ProjectApp {
      * @param activity
      */
     public void addActivity(Project project, Activity activity) {
-        project.addActivity(activity);
+        try {
+            project.addActivity(activity);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     /**
@@ -221,14 +233,12 @@ public class ProjectApp {
      *
      * @param project
      */
-    public void addProject(Project project) throws DateTimeParseException {
-    	if(project.getTimePeriod() != null && !project.getProjectName().matches("[a-z,A-Z,1-9]+[ ,a-z,A-Z,1-9]*")) {
-    		if(project.getTimePeriod().getStartDate() != null)
-    			getProjectList().add(project);
-    		else
-    			System.err.println("Input format for date is not valid");
-    	} else
-    		System.err.println("Name or date input format is not valid");
+    public void addProject(Project project) throws ArrayIndexOutOfBoundsException, PatternSyntaxException{
+        try {
+            getProjectList().add(project);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     /**
@@ -238,6 +248,81 @@ public class ProjectApp {
      */
     public void removeProject(Project project) {
         getProjectList().remove(project);
+    }
+    
+    private void scheduleWork(User user, Activity activity, String startDate, String endDate) {
+    	Event event = new Event(startDate, endDate);
+		if(!user.getSchedule().containsKey(activity)) {
+			user.getSchedule().put(activity, new ArrayList<Event>() {/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+			{
+				add(event);
+			}});
+			activity.setRegisteredHours(activity.getRegisteredHours() + (event.getEndDate().getHour() - event.getStartDate().getHour()));
+		} else {
+			user.getSchedule().get(activity).add(event);
+			activity.setRegisteredHours(activity.getRegisteredHours() + (event.getEndDate().getHour() - event.getStartDate().getHour()));
+		}
+	}
+    
+    private void scheduleHoliday(User user, Activity activity, String startDate, String endDate) {
+    	Event event = new Event(startDate, endDate);
+		if(!user.getSchedule().containsKey(activity)) {
+			user.getSchedule().put(activity, new ArrayList<Event>() {/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+			{
+				add(event);
+			}});
+		} else {
+			user.getSchedule().get(activity).add(event);
+		}
+	}
+    
+    private void scheduleSick(User user, Activity activity, String startDate, String endDate) {
+    	Event event = new Event(startDate, endDate);
+		if(!user.getSchedule().containsKey(activity)) {
+			user.getSchedule().put(activity, new ArrayList<Event>() {/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+			{
+				add(event);
+			}});
+		} else {
+			user.getSchedule().get(activity).add(event);
+		}
+	}
+    
+    public void scheduleHours(User user, Activity activity, String startDate, String endDate) {
+    	switch(activity.getActivityType()) {
+		case HOLIDAY:
+			scheduleHoliday(user, activity, startDate, endDate);
+			break;
+		case UNPAID:
+			scheduleSick(user, activity, startDate, endDate);
+			break;
+		case WORK:
+			scheduleWork(user, activity, startDate, endDate);
+			break;
+		default:
+			break;
+    	
+    	}
+    }
+    
+    public User getProjectManager(Project project) {
+    	for (Activity activity : project.getActivities()) {
+			if(activity.toString().toLowerCase().contains("project manager") || activity.toString().toLowerCase().contains("projectmanager"))
+				return activity.getUsers().get(0);
+		}
+		return null;
     }
 
 }

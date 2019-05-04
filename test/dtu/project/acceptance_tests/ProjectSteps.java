@@ -11,57 +11,61 @@ import dtu.project.repo.InMemoryRepository;
 import static org.junit.Assert.assertTrue;
 
 public class ProjectSteps {
-	
-	ProjectApp PA;
-	
-	public ProjectSteps(InMemoryRepository MP) {
-		this.PA = new ProjectApp(MP, MP);
-	}
 
-	@When("the user adds a project with name {string} and project type INTERNAL.")
-	public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) {
-		PA.addProject(new Project(string, ProjectType.INTERNAL));
-	}
+    ProjectApp PA;
 
-	@Then("the project exists in the list of projects.")
-	public void theProjectExistsInTheListOfProjects() {
-		assertTrue(!PA.getProjectList().isEmpty());
-	}
+    public ProjectSteps(InMemoryRepository MP) {
+        this.PA = new ProjectApp(MP, MP);
+    }
 
-	@When("time period {string} to {string}.")
-	public void timePeriodTo(String string, String string2) {
-		PA.getProjectList().get(0).setTimePeriod(new Event(string, string2));
-	}
+    @When("the user adds a project with name {string} and project type INTERNAL.")
+    public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) {
+        PA.addProject(new Project.Builder()
+                .setProjectName(string)
+                .setProjectType(ProjectType.INTERNAL)
+                .build());
+    }
 
-	@Given("a project with name {string}, project type INTERNAL.")
-	public void aProjectWithNameProjectTypeINTERNAL(String string) {
-		PA.addProject(new Project(string, ProjectType.INTERNAL));
-	}
+    @Then("the project exists in the list of projects.")
+    public void theProjectExistsInTheListOfProjects() {
+        assertTrue(!PA.getProjectList().isEmpty());
+    }
 
-	@When("the user changes the name to {string}.")
-	public void theUserChangesTheNameTo(String string) {
-		PA.searchProjects("TestProject").get(0).setProjectName(string);
-	}
+    @When("time period {string} to {string}.")
+    public void timePeriodTo(String string, String string2) {
+        PA.getProjectList().get(0).setTimePeriod(new Event(string, string2));
+    }
 
-	@Then("the name of the project is test.")
-	public void theNameOfTheProjectIsTest() {
-		assertTrue(PA.searchProjects("TestProject").isEmpty());
-	}
+    @Given("a project with name {string}, project type INTERNAL.")
+    public void aProjectWithNameProjectTypeINTERNAL(String string) {
+        PA.addProject(new Project.Builder()
+                .setProjectName(string)
+                .setProjectType(ProjectType.INTERNAL)
+                .build());
+    }
 
-	@When("the user removes the project.")
-	public void theUserRemovesTheProject() {
-		PA.removeProject(PA.getProjectList().get(0));
-	}
+    @When("the user changes the name to {string}.")
+    public void theUserChangesTheNameTo(String string) {
+        PA.searchProjects("TestProject").get(0).setProjectName(string);
+    }
 
-	@Then("the project doesn't exist in the list projects.")
-	public void theProjectDoesnTExistInTheListProjects() {
-		assertTrue(PA.getProjectList().isEmpty());
-	}
-	
-	@Given("a user want to find a project with the name {string}")
-	public void aUserWantToFindAProjectWithTheName(String string) {
-		PA.searchProjects(string);
-//	    throw new cucumber.api.PendingException();
-	}
+    @Then("the name of the project is test.")
+    public void theNameOfTheProjectIsTest() {
+        assertTrue(PA.searchProjects("TestProject").isEmpty());
+    }
+
+    @When("the user removes the project.")
+    public void theUserRemovesTheProject() {
+        PA.removeProject(PA.getProjectList().get(0));
+    }
+
+    @Then("the project doesn't exist in the list projects.")
+    public void theProjectDoesnTExistInTheListProjects() {
+        assertTrue(PA.getProjectList().isEmpty());
+    }
+
+    @Given("a user want to find a project with the name {string}")
+    public void aUserWantToFindAProjectWithTheName(String string) {
+        PA.searchProjects(string);
+    }
 }
-

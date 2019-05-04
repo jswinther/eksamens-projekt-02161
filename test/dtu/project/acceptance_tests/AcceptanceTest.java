@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "use_cases", 
-	plugin = { "html:target/cucumber/wikipedia.html"}, 
+	plugin = {"html:target/cucumber/wikipedia.html"}, 
 	monochrome=true, 
 	snippets = SnippetType.CAMELCASE, 
 	glue = { "dtu.project.acceptance_tests"})

@@ -8,6 +8,8 @@ package dtu.project.gui;
 import dtu.project.app.Event;
 import dtu.project.app.Project;
 import dtu.project.enums.ProjectType;
+import java.time.format.DateTimeParseException;
+import java.util.regex.PatternSyntaxException;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -32,94 +34,94 @@ public class ProjectPanel extends PanelTemplate {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        projectNameLabel1 = new javax.swing.JLabel();
+        projectNameTextField1 = new javax.swing.JTextField();
+        projectTypeLabel1 = new javax.swing.JLabel();
+        projectTypeComboBox1 = new javax.swing.JComboBox<>();
+        projectTimePeriodUndefinedCheckBox1 = new javax.swing.JCheckBox();
+        projectStartDateLabel1 = new javax.swing.JLabel();
+        projectEndDateLabel1 = new javax.swing.JLabel();
+        projectStartDateTextField1 = new javax.swing.JTextField();
+        projectEndDateTextField1 = new javax.swing.JTextField();
+        addProjectButton = new javax.swing.JButton();
+        projectSelectComboBox1 = new javax.swing.JComboBox<>();
+        projectSelectLabel1 = new javax.swing.JLabel();
+        projectNameLabel2 = new javax.swing.JLabel();
+        projectNameTextField2 = new javax.swing.JTextField();
+        projectTypeLabel2 = new javax.swing.JLabel();
+        projectTypeComboBox2 = new javax.swing.JComboBox<>();
+        projectTimePeriodUndefinedCheckBox2 = new javax.swing.JCheckBox();
+        projectStartDateLabel2 = new javax.swing.JLabel();
+        projectStartDateTextField2 = new javax.swing.JTextField();
+        projectEndDateLabel2 = new javax.swing.JLabel();
+        projectEndDateTextField2 = new javax.swing.JTextField();
+        editProjectButton = new javax.swing.JButton();
+        projectSelectLabel2 = new javax.swing.JLabel();
+        projectSelectComboBox2 = new javax.swing.JComboBox<>();
+        removeProjectButton = new javax.swing.JButton();
 
-        jLabel1.setText("Project Name");
+        projectNameLabel1.setText("Project Name");
 
-        jTextField1.setText("Project Name");
+        projectNameTextField1.setText("BankingSystem3");
 
-        jLabel2.setText("Project Type");
+        projectTypeLabel1.setText("Project Type");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        projectTypeComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jCheckBox1.setText("Timeperiod Undefined");
+        projectTimePeriodUndefinedCheckBox1.setText("Timeperiod Undefined");
 
-        jLabel3.setText("Project Start Date");
+        projectStartDateLabel1.setText("Project Start Date");
 
-        jLabel4.setText("Project End Date");
+        projectEndDateLabel1.setText("Project End Date");
 
-        jTextField2.setText("2019-05-05 13:13");
+        projectStartDateTextField1.setText("2019-05-05 13:13");
 
-        jTextField3.setText("2019-05-05 13:13");
+        projectEndDateTextField1.setText("2019-05-05 13:13");
 
-        jButton1.setText("Add Project");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addProjectButton.setText("Add Project");
+        addProjectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addProjectButtonActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        projectSelectComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel5.setText("Project");
+        projectSelectLabel1.setText("Project");
 
-        jLabel6.setText("Project Name");
+        projectNameLabel2.setText("Project Name");
 
-        jTextField4.setText("Project Name");
+        projectNameTextField2.setText("BankingSystem3");
 
-        jLabel7.setText("Project Type");
+        projectTypeLabel2.setText("Project Type");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        projectTypeComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jCheckBox2.setText("Timeperiod Undefined");
+        projectTimePeriodUndefinedCheckBox2.setText("Timeperiod Undefined");
 
-        jLabel8.setText("Project Start Date");
+        projectStartDateLabel2.setText("Project Start Date");
 
-        jTextField5.setText("2019-05-05 13:13");
+        projectStartDateTextField2.setText("2019-05-05 13:13");
 
-        jLabel9.setText("Project End Date");
+        projectEndDateLabel2.setText("Project End Date");
 
-        jTextField6.setText("2019-05-05 13:13");
+        projectEndDateTextField2.setText("2019-05-05 13:13");
 
-        jButton2.setText("Edit Project");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editProjectButton.setText("Edit Project");
+        editProjectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editProjectButtonActionPerformed(evt);
             }
         });
 
-        jLabel10.setText("Project");
+        projectSelectLabel2.setText("Project");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        projectSelectComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton3.setText("Remove Project");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        removeProjectButton.setText("Remove Project");
+        removeProjectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                removeProjectButtonActionPerformed(evt);
             }
         });
 
@@ -129,174 +131,193 @@ public class ProjectPanel extends PanelTemplate {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(projectSelectComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(2, 2, 2)
-                        .addComponent(jCheckBox1)
-                        .addGap(18, 18, 18)
+                            .addComponent(projectNameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(projectNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(projectTypeComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(projectTypeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addComponent(projectStartDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(projectStartDateLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(projectEndDateLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(projectEndDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jComboBox4, 0, 700, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel10)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton3))
-                        .addComponent(jLabel5)
-                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(projectTimePeriodUndefinedCheckBox1))))
+                    .addComponent(projectSelectLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(135, 135, 135)
-                                .addComponent(jLabel8))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
+                            .addComponent(projectNameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(projectNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
+                            .addComponent(projectTypeComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(projectTypeLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(projectStartDateTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(projectStartDateLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(projectEndDateLabel2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(projectEndDateTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                                .addComponent(projectTimePeriodUndefinedCheckBox2))))
+                    .addComponent(addProjectButton)
+                    .addComponent(projectSelectLabel2)
+                    .addComponent(removeProjectButton)
+                    .addComponent(editProjectButton)
+                    .addComponent(projectSelectComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(projectNameLabel1)
+                    .addComponent(projectTypeLabel1)
+                    .addComponent(projectStartDateLabel1)
+                    .addComponent(projectEndDateLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(41, 41, 41)
-                .addComponent(jLabel5)
-                .addGap(0, 0, 0)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectNameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectTypeComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectStartDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectEndDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectTimePeriodUndefinedCheckBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addProjectButton)
+                .addGap(27, 27, 27)
+                .addComponent(projectSelectLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(projectSelectComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(projectEndDateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(projectNameLabel2)
+                        .addComponent(projectTypeLabel2)
+                        .addComponent(projectStartDateLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(projectNameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectTypeComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectStartDateTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectEndDateTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(projectTimePeriodUndefinedCheckBox2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jButton3))
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addComponent(editProjectButton)
+                .addGap(18, 18, 18)
+                .addComponent(projectSelectLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(projectSelectComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(removeProjectButton)
+                .addContainerGap(222, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jCheckBox1.isSelected())
-            PA.addProject(new Project(jTextField1.getText(), ProjectType.valueOf(jComboBox1.getItemAt(jComboBox1.getSelectedIndex()))));
-        else
-            PA.addProject(new Project(jTextField1.getText(), ProjectType.valueOf(jComboBox1.getItemAt(jComboBox1.getSelectedIndex())), new Event(jTextField2.getText(), jTextField3.getText())));
-        MF.updateAll();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(jCheckBox2.isSelected()) {
-            PA.getProjectList().get(jComboBox2.getSelectedIndex()).setProjectName(jTextField4.getText());
-            PA.getProjectList().get(jComboBox2.getSelectedIndex()).setProjectType(ProjectType.valueOf(jComboBox3.getItemAt(jComboBox3.getSelectedIndex())));
+    private void addProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProjectButtonActionPerformed
+        try {
+            if (projectTimePeriodUndefinedCheckBox1.isSelected()) {
+            PA.addProject(new Project.Builder()
+                    .setProjectName(projectNameTextField1.getText())
+                    .setProjectType(ProjectType.valueOf(projectTypeComboBox1.getItemAt(projectTypeComboBox1.getSelectedIndex())))
+                    .build());
         } else {
-            PA.getProjectList().get(jComboBox2.getSelectedIndex()).setProjectName(jTextField4.getText());
-            PA.getProjectList().get(jComboBox2.getSelectedIndex()).setProjectType(ProjectType.valueOf(jComboBox3.getItemAt(jComboBox3.getSelectedIndex())));
-            PA.getProjectList().get(jComboBox2.getSelectedIndex()).setTimePeriod(new Event(jTextField5.getText(), jTextField6.getText()));
+            PA.addProject(new Project.Builder()
+                    .setProjectName(projectNameTextField1.getText())
+                    .setProjectType(ProjectType.valueOf(projectTypeComboBox1.getItemAt(projectTypeComboBox1.getSelectedIndex())))
+                    .setTimePeriod(projectStartDateTextField1.getText(), projectEndDateTextField1.getText())
+                    .build());
         }
+        } catch (DateTimeParseException | PatternSyntaxException | ArrayIndexOutOfBoundsException e) {
+            System.err.println(e);
+        }
+        
+        
         MF.updateAll();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_addProjectButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        PA.removeProject(PA.getProjectList().get(jComboBox4.getSelectedIndex()));
+    private void editProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectButtonActionPerformed
+        try {
+            if (projectTimePeriodUndefinedCheckBox2.isSelected()) {
+                PA.getProjectList().set(projectSelectComboBox1.getSelectedIndex(), new Project.Builder()
+                    .setProjectName(projectNameTextField2.getText())
+                    .setProjectType(ProjectType.valueOf(projectTypeComboBox2.getItemAt(projectTypeComboBox2.getSelectedIndex())))
+                    .build());
+        } else {
+            PA.getProjectList().set(projectSelectComboBox1.getSelectedIndex(), new Project.Builder()
+                    .setProjectName(projectNameTextField2.getText())
+                    .setProjectType(ProjectType.valueOf(projectTypeComboBox2.getItemAt(projectTypeComboBox2.getSelectedIndex())))
+                    .setTimePeriod(projectStartDateTextField2.getText(), projectEndDateTextField2.getText())
+                    .build());
+        }
+        } catch (ArrayIndexOutOfBoundsException | DateTimeParseException | PatternSyntaxException e) {
+            System.err.println(e);
+        }
+        
         MF.updateAll();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_editProjectButtonActionPerformed
+
+    private void removeProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProjectButtonActionPerformed
+        PA.removeProject(PA.getProjectList().get(projectSelectComboBox2.getSelectedIndex()));
+        MF.updateAll();
+    }//GEN-LAST:event_removeProjectButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JButton addProjectButton;
+    private javax.swing.JButton editProjectButton;
+    private javax.swing.JLabel projectEndDateLabel1;
+    private javax.swing.JLabel projectEndDateLabel2;
+    private javax.swing.JTextField projectEndDateTextField1;
+    private javax.swing.JTextField projectEndDateTextField2;
+    private javax.swing.JLabel projectNameLabel1;
+    private javax.swing.JLabel projectNameLabel2;
+    private javax.swing.JTextField projectNameTextField1;
+    private javax.swing.JTextField projectNameTextField2;
+    private javax.swing.JComboBox<String> projectSelectComboBox1;
+    private javax.swing.JComboBox<String> projectSelectComboBox2;
+    private javax.swing.JLabel projectSelectLabel1;
+    private javax.swing.JLabel projectSelectLabel2;
+    private javax.swing.JLabel projectStartDateLabel1;
+    private javax.swing.JLabel projectStartDateLabel2;
+    private javax.swing.JTextField projectStartDateTextField1;
+    private javax.swing.JTextField projectStartDateTextField2;
+    private javax.swing.JCheckBox projectTimePeriodUndefinedCheckBox1;
+    private javax.swing.JCheckBox projectTimePeriodUndefinedCheckBox2;
+    private javax.swing.JComboBox<String> projectTypeComboBox1;
+    private javax.swing.JComboBox<String> projectTypeComboBox2;
+    private javax.swing.JLabel projectTypeLabel1;
+    private javax.swing.JLabel projectTypeLabel2;
+    private javax.swing.JButton removeProjectButton;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void initFields() {
-        this.jComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{ProjectType.INTERNAL.toString(), ProjectType.EXTERNAL.toString()}));
-        this.jComboBox3.setModel(new DefaultComboBoxModel<>(new String[]{ProjectType.INTERNAL.toString(), ProjectType.EXTERNAL.toString()}));
-        if(PA.getProjectList().isEmpty()) {
-            this.jComboBox2.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
-            this.jComboBox4.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+        this.projectTypeComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{ProjectType.INTERNAL.toString(), ProjectType.EXTERNAL.toString()}));
+        this.projectTypeComboBox2.setModel(new DefaultComboBoxModel<>(new String[]{ProjectType.INTERNAL.toString(), ProjectType.EXTERNAL.toString()}));
+        if (PA.getProjectList().isEmpty()) {
+            this.projectSelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+            this.projectSelectComboBox2.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
+            this.editProjectButton.setEnabled(false);
+            this.removeProjectButton.setEnabled(false);
         } else {
-            this.jComboBox2.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
-            this.jComboBox4.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
+            this.projectSelectComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
+            this.projectSelectComboBox2.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
+            this.editProjectButton.setEnabled(true);
+            this.removeProjectButton.setEnabled(true);
         }
     }
 }

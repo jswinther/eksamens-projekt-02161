@@ -5,11 +5,6 @@
  */
 package dtu.project.gui;
 
-import dtu.project.app.Activity;
-import dtu.project.app.ProjectApp;
-import dtu.project.app.User;
-import javax.swing.DefaultListModel;
-
 /**
  *
  * @author Jonathan
