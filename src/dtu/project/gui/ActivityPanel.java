@@ -263,7 +263,7 @@ public class ActivityPanel extends PanelTemplate {
                             .setActivityName(activityNameTextField1.getText())
                             .setEstimatedHours(Integer.valueOf(estimatedHoursTextField1.getText()))
                             .setTimePeriod(activityStartDateTextField1.getText(), activityEndDateTextField1.getText())
-                            .setUser(PA.getUserList().get(activityUserComboBox2.getSelectedIndex()))
+                            .setUser(PA.getUserList().get(activityUserComboBox1.getSelectedIndex()))
                             .build());
 
         } catch (NumberFormatException | DateTimeParseException | PatternSyntaxException e) {
