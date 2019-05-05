@@ -25,6 +25,7 @@ public class ManagementPanel extends PanelTemplate {
     public void setup(ProjectApp PA, MainFrame MF) {
         projectPanel1.setup(PA, MF);
         activityPanel1.setup(PA, MF);
+        schedulePanel1.setup(PA, MF);
     }
 
     /**
@@ -39,15 +40,17 @@ public class ManagementPanel extends PanelTemplate {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         projectPanel1 = new dtu.project.gui.ProjectPanel();
         activityPanel1 = new dtu.project.gui.ActivityPanel();
+        schedulePanel1 = new dtu.project.gui.SchedulePanel();
 
         jTabbedPane1.addTab("Project Panel", projectPanel1);
         jTabbedPane1.addTab("Activity Panel", activityPanel1);
+        jTabbedPane1.addTab("Schedule Panel", schedulePanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 887, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,11 +63,13 @@ public class ManagementPanel extends PanelTemplate {
     private dtu.project.gui.ActivityPanel activityPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private dtu.project.gui.ProjectPanel projectPanel1;
+    private dtu.project.gui.SchedulePanel schedulePanel1;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void initFields() {
         projectPanel1.initFields();
         activityPanel1.initFields();
+        schedulePanel1.initFields();
     }
 }

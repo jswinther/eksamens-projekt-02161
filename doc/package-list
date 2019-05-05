@@ -1,1 +1,5 @@
-dtu.library.acceptance_tests
+dtu.project.acceptance_tests
+dtu.project.app
+dtu.project.enums
+dtu.project.repo
+dtu.project.gui

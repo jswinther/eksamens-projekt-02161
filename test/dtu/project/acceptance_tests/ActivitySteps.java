@@ -22,12 +22,12 @@ public class ActivitySteps {
 
     @Given("projectmanager wants to find free user in time period {string} to {string}")
     public void projectmanagerWantsToFindFreeUserInTimePeriodTo(String string, String string2) {
-        PA.findUser(FindType.FREE, new Event(string, string2));
+        PA.usersWhoAreFreeAt(string2, string2);
     }
 
     @Given("projectmanager wants to find unavailable user in time period {string} to {string}")
     public void projectmanagerWantsToFindUnavailableUserInTimePeriodTo(String string, String string2) {
-        PA.findUser(FindType.UNAVAILABLE, new Event(string, string2));
+        
     }
 
     @Given("user wants to find free user {string}")

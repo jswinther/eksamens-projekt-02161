@@ -1,10 +1,13 @@
 package dtu.project.repo;
 
+import dtu.project.app.Event;
+import dtu.project.app.Period;
 import dtu.project.app.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserRepository {
-	List<User> getUserList();
-	void setUserList(List<User> userList);
+	Map<User, List<Period>> getUserMap();
+	void setUserMap(Map<User, List<Period>> userList);
 }

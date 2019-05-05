@@ -1,33 +1,53 @@
 package dtu.project.repo;
 
+import dtu.project.app.Event;
+import dtu.project.app.Period;
 import dtu.project.app.Project;
 import dtu.project.app.User;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class InMemoryRepository implements UserRepository, ProjectRepository {
 
-	private List<User> userList;
-	private List<Project> projectList;
-	private final Scanner reader;
-			
-	
-	public InMemoryRepository() throws FileNotFoundException {
-		super();
-		userList = new ArrayList<User>();
-		projectList = new ArrayList<Project>();
-		reader = new Scanner(new File("csvfiles/developers.csv"));
-		while(reader.hasNextLine()) {
-			this.userList.add(new User(reader.nextLine()));
-		}
-	}
-	
-	public List<Project> getProjectList() {return this.projectList;}
-	public void setProjectList(List<Project> projectList) {this.projectList = projectList;}
-	public List<User> getUserList() {return this.userList;}
-	public void setUserList(List<User> userList) {this.userList = userList;}
+    private Map<User, List<Period>> userMap;
+    private List<Project> projectList;
+    private final Scanner reader;
+
+    public InMemoryRepository() throws FileNotFoundException {
+        super();
+        userMap = new LinkedHashMap<>();
+        projectList = new ArrayList<>();
+        reader = new Scanner(new File("csvfiles/developers.csv"));
+        while (reader.hasNextLine()) {
+            this.userMap.put(new User(reader.nextLine()), new ArrayList<>());
+        }
+    }
+
+    @Override
+    public List<Project> getProjectList() {
+        return this.projectList;
+    }
+
+    @Override
+    public void setProjectList(List<Project> projectList) {
+        this.projectList = projectList;
+    }
+
+    @Override
+    public Map<User, List<Period>> getUserMap() {
+        return this.userMap;
+    }
+
+    @Override
+    public void setUserMap(Map<User, List<Period>> userMap) {
+        this.userMap = userMap;
+    }
 }

@@ -20,7 +20,7 @@ public class Project {
         this.projectType = projectType;
         this.timePeriod = timePeriod;
         this.activities = activities;
-        this.setProjectManager(projectManager);
+        this.projectManager = projectManager;
     }
 
     /**

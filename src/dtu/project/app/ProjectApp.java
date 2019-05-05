@@ -1,21 +1,23 @@
 package dtu.project.app;
 
+import dtu.project.enums.ActivityType;
 import dtu.project.enums.FindType;
 import dtu.project.repo.ProjectRepository;
 import dtu.project.repo.UserRepository;
-import java.io.Console;
-import static java.lang.System.console;
-
-import java.time.format.DateTimeParseException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import javax.swing.DefaultListModel;
 
+/**
+ * This class functions as a connector for the GUI to use all the other classes.
+ *
+ * @author Jonathan
+ */
 public class ProjectApp {
 
     private UserRepository userRepository;
@@ -24,6 +26,26 @@ public class ProjectApp {
     public ProjectApp(UserRepository userRepository, ProjectRepository projectRepository) {
         this.userRepository = userRepository;
         this.projectRepository = projectRepository;
+    }
+
+    public void registerHours(User user, String startDate, String endDate, Optional<Activity> activity, Optional<String> message) {
+        getUserMap().get(user).add(new Period(startDate, endDate, activity.isPresent() ? activity : Optional.empty(), message.isPresent() ? message : Optional.empty()));
+    }
+
+    public List<User> usersWhoAreFreeAt(String startDate, String endDate) {
+        Event event = new Event(startDate, endDate);
+        List<User> users = getUserList();
+
+        for (Map.Entry<User, List<Period>> entry : getUserMap().entrySet()) {
+            User key = entry.getKey();
+            List<Period> value = entry.getValue();
+            for (Period period : value) {
+                if (!(event.getEndDate().isBefore(period.getTimePeriod().getStartDate()) || event.getStartDate().isAfter(period.getTimePeriod().getEndDate()))) {
+                    users.remove(key);
+                }
+            }
+        }
+        return users;
     }
 
     /**
@@ -84,6 +106,10 @@ public class ProjectApp {
         return listToDefaultListModel(search(searchText, getActivitiesAssignedTo(searchUser(userName).get(0))));
     }
 
+    public DefaultListModel<String> getUserScheduleDefaultListModelContaining(String userName, String searchText) {
+        return listToDefaultListModel(search(searchText, new ArrayList<>(getUserMap().get(searchUser(userName).get(0)))));
+    }
+
     /**
      * Jonathan Returns all projects that contain the search text.
      *
@@ -139,16 +165,13 @@ public class ProjectApp {
      * @param event
      * @return
      */
+    /*
     public List<User> findUser(FindType findType, Event event) {
         List<User> users = null;
         switch (findType) {
             case FREE:
-                users = new ArrayList<User>() {
-                    {
-                        addAll(getUserList());
-                    }
-                };
-                for (User user : getUserList()) {
+                users = getUserList();
+                for (User user : users) {
                     for (Activity key : user.getSchedule().keySet()) {
                         for (Event e : user.getSchedule().get(key)) {
                             if (!(event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
@@ -159,8 +182,8 @@ public class ProjectApp {
                 }
                 break;
             case UNAVAILABLE:
-                users = new ArrayList<>();
-                for (User user : getUserList()) {
+                users = getUserList();
+                for (User user : users) {
                     for (Activity key : user.getSchedule().keySet()) {
                         for (Event e : user.getSchedule().get(key)) {
                             if (!(event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
@@ -172,6 +195,32 @@ public class ProjectApp {
                 break;
         }
         return users;
+    }*/
+    public void generateReport(Project project) {
+        int counter = 0;
+        System.out.println(""
+                + "\nProject Name:\t\t" + project.getProjectName()
+                + "\nProject Type:\t\t" + project.getProjectType()
+                + "\nManager:\t\t" + (project.getProjectManager() == null ? "not decided" : project.getProjectManager())
+                + "\nTime Period:\t\t" + project.getTimePeriod().getStartDate() + " to " + project.getTimePeriod().getEndDate()
+                + "\n\nActivity Status\n___________________________\n");
+        for (Activity activity : project.getActivities()) {
+            System.out.println("Activity Number:\t" + counter
+                    + "\nActivity Name:\t\t" + activity.getActivityName()
+                    + "\nResponsible:\t\t" + activity.getUsers().get(0)
+                    + "\nTime Period:\t\t" + activity.getTimePeriod().getStartDate() + " to " + activity.getTimePeriod().getEndDate()
+                    + "\nEstimated Hours:\t" + activity.getEstimatedHours());
+            counter++;
+            for (Map.Entry<User, List<Event>> entry : activity.getRegisteredHours().entrySet()) {
+                User key = entry.getKey();
+                System.out.println(key + " registered these activites");
+                List<Event> value = entry.getValue();
+                for (Event event : value) {
+                    System.out.println(event);
+                }
+            }
+            System.out.println("\n");
+        }
     }
 
     /**
@@ -213,11 +262,11 @@ public class ProjectApp {
     }
 
     public List<User> getUserList() {
-        return userRepository.getUserList();
+        return new ArrayList<>(userRepository.getUserMap().keySet());
     }
 
-    public void setUserList(List<User> userList) {
-        userRepository.setUserList(userList);
+    public Map<User, List<Period>> getUserMap() {
+        return userRepository.getUserMap();
     }
 
     public List<Project> getProjectList() {
@@ -233,7 +282,7 @@ public class ProjectApp {
      *
      * @param project
      */
-    public void addProject(Project project) throws ArrayIndexOutOfBoundsException, PatternSyntaxException{
+    public void addProject(Project project) throws ArrayIndexOutOfBoundsException, PatternSyntaxException {
         try {
             getProjectList().add(project);
         } catch (Exception e) {
@@ -249,80 +298,4 @@ public class ProjectApp {
     public void removeProject(Project project) {
         getProjectList().remove(project);
     }
-    
-    private void scheduleWork(User user, Activity activity, String startDate, String endDate) {
-    	Event event = new Event(startDate, endDate);
-		if(!user.getSchedule().containsKey(activity)) {
-			user.getSchedule().put(activity, new ArrayList<Event>() {/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-
-			{
-				add(event);
-			}});
-			activity.setRegisteredHours(activity.getRegisteredHours() + (event.getEndDate().getHour() - event.getStartDate().getHour()));
-		} else {
-			user.getSchedule().get(activity).add(event);
-			activity.setRegisteredHours(activity.getRegisteredHours() + (event.getEndDate().getHour() - event.getStartDate().getHour()));
-		}
-	}
-    
-    private void scheduleHoliday(User user, Activity activity, String startDate, String endDate) {
-    	Event event = new Event(startDate, endDate);
-		if(!user.getSchedule().containsKey(activity)) {
-			user.getSchedule().put(activity, new ArrayList<Event>() {/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-
-			{
-				add(event);
-			}});
-		} else {
-			user.getSchedule().get(activity).add(event);
-		}
-	}
-    
-    private void scheduleSick(User user, Activity activity, String startDate, String endDate) {
-    	Event event = new Event(startDate, endDate);
-		if(!user.getSchedule().containsKey(activity)) {
-			user.getSchedule().put(activity, new ArrayList<Event>() {/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-
-			{
-				add(event);
-			}});
-		} else {
-			user.getSchedule().get(activity).add(event);
-		}
-	}
-    
-    public void scheduleHours(User user, Activity activity, String startDate, String endDate) {
-    	switch(activity.getActivityType()) {
-		case HOLIDAY:
-			scheduleHoliday(user, activity, startDate, endDate);
-			break;
-		case UNPAID:
-			scheduleSick(user, activity, startDate, endDate);
-			break;
-		case WORK:
-			scheduleWork(user, activity, startDate, endDate);
-			break;
-		default:
-			break;
-    	
-    	}
-    }
-    
-    public User getProjectManager(Project project) {
-    	for (Activity activity : project.getActivities()) {
-			if(activity.toString().toLowerCase().contains("project manager") || activity.toString().toLowerCase().contains("projectmanager"))
-				return activity.getUsers().get(0);
-		}
-		return null;
-    }
-
 }
