@@ -74,7 +74,7 @@ public class ProjectPanel extends PanelTemplate {
 
         projectEndDateLabel1.setText("Project End Date");
 
-        projectStartDateTextField1.setText("2019-05-05 13:13");
+        projectStartDateTextField1.setText("2019-05-05 13:12");
 
         projectEndDateTextField1.setText("2019-05-05 13:13");
 

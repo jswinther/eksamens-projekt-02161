@@ -52,6 +52,7 @@ public class Project {
 
 		public Builder setProjectName(String projectName) throws PatternSyntaxException, ArrayIndexOutOfBoundsException {
 			if(projectName.matches("[a-zA-Z1-9]+[ a-zA-Z1-9]*"))
+				//check for duplicates too
 				this.projectName = projectName;
 			else
 				throw new PatternSyntaxException(projectName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", projectName, 0);
