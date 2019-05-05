@@ -263,7 +263,7 @@ public class ActivityPanel extends PanelTemplate {
                             .setActivityName(activityNameTextField1.getText())
                             .setEstimatedHours(Integer.valueOf(estimatedHoursTextField1.getText()))
                             .setTimePeriod(activityStartDateTextField1.getText(), activityEndDateTextField1.getText())
-                            .setUser(PA.getUserList().get(activityUserComboBox2.getSelectedIndex()))
+                            .setUser(PA.getUserList().get(activityUserComboBox1.getSelectedIndex()))
                             .build());
 
         } catch (NumberFormatException | DateTimeParseException | PatternSyntaxException e) {
@@ -292,8 +292,8 @@ public class ActivityPanel extends PanelTemplate {
     }//GEN-LAST:event_editActivityButtonActionPerformed
 
     private void removeActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActivityButtonActionPerformed
-        PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).removeActivity(PA.getProjectList().
-                get(projectListComboBox1.getSelectedIndex()).getActivities().get(activityUserComboBox1.getSelectedIndex()));
+        PA.removeActivity(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()), 
+                PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().get(activitySelectComboBox2.getSelectedIndex()));
         MF.updateAll();
     }//GEN-LAST:event_removeActivityButtonActionPerformed
 
