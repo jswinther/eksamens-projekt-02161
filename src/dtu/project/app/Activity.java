@@ -95,7 +95,13 @@ public class Activity {
          * @throws ArrayIndexOutOfBoundsException if the name is empty.
          */
         public Builder setActivityName(String activityName) throws PatternSyntaxException, ArrayIndexOutOfBoundsException {
-            if (!activityName.matches("^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$")) {
+        	if(activityName.matches("[a-zA-Z1-9]+[ a-zA-Z1-9]*"))
+				//check for duplicates too
+				this.activityName = activityName;
+			else
+				throw new PatternSyntaxException(activityName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", activityName, 0);
+/*
+        	if (!activityName.matches("^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$")) {
                 if (activityName.length() == 0) {
                     throw new ArrayIndexOutOfBoundsException("Project names can't be empty");
                 }
@@ -119,6 +125,7 @@ public class Activity {
             } else {
                 this.activityName = activityName;
             }
+*/
             return this;
         }
 
@@ -144,7 +151,10 @@ public class Activity {
         }
 
         public Builder setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
-            this.timePeriod = new Event(startDate, endDate);
+        	Event event = new Event(startDate, endDate);
+			if(event.getEndDate().isAfter(event.getStartDate()))
+				this.timePeriod = event; //new Event(startDate, endDate);
+			else throw new DateTimeParseException("End date: " + endDate + " must be after start date: " + startDate, endDate, 0);
             return this;
         }
 

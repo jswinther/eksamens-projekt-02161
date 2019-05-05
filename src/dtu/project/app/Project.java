@@ -91,7 +91,7 @@ public class Project {
 		public Builder setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
 			Event event = new Event(startDate, endDate);
 			if(event.getEndDate().isAfter(event.getStartDate()))
-				this.timePeriod = new Event(startDate, endDate);
+				this.timePeriod = event; //new Event(startDate, endDate);
 			else throw new DateTimeParseException("End date: " + endDate + " must be after start date: " + startDate, endDate, 0);
 			return this;
 		}

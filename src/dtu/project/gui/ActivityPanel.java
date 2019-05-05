@@ -92,7 +92,7 @@ public class ActivityPanel extends PanelTemplate {
 
         estimatedHoursTextField1.setText("45");
 
-        activityStartDateTextField1.setText("2019-05-05 13:13");
+        activityStartDateTextField1.setText("2019-05-05 13:12");
 
         activityEndDateTextField1.setText("2019-05-05 13:13");
 
@@ -113,7 +113,7 @@ public class ActivityPanel extends PanelTemplate {
 
         estimatedHoursTextField2.setText("45");
 
-        activityStartDateTextField2.setText("2019-05-05 13:13");
+        activityStartDateTextField2.setText("2019-05-05 13:12");
 
         activityNameLabel2.setText("Activity Name");
 
