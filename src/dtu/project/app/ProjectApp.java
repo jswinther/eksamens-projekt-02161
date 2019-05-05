@@ -28,8 +28,8 @@ public class ProjectApp {
         this.projectRepository = projectRepository;
     }
 
-    public void registerHours(User user, String startDate, String endDate, Optional<Activity> activity, Optional<String> message) {
-        getUserMap().get(user).add(new Period(startDate, endDate, activity.isPresent() ? activity : Optional.empty(), message.isPresent() ? message : Optional.empty()));
+    public void registerHours(User user, String startDate, String endDate, Activity activity, String message) {
+        getUserMap().get(user).add(new Period(startDate, endDate, activity, message));
     }
 
     public List<User> usersWhoAreFreeAt(String startDate, String endDate) {

@@ -5,6 +5,9 @@
  */
 package dtu.project.gui;
 
+import dtu.project.app.Activity;
+import dtu.project.app.User;
+import java.util.Optional;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -70,10 +73,25 @@ public class SchedulePanel extends PanelTemplate {
         endDateTextField.setText("2019-05-05 14:14");
 
         addPeriodButton.setText("add Period");
+        addPeriodButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPeriodButtonActionPerformed(evt);
+            }
+        });
 
         editPeriodButton.setText("edit Period");
+        editPeriodButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editPeriodButtonActionPerformed(evt);
+            }
+        });
 
         removePeriodButton.setText("remove Period");
+        removePeriodButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removePeriodButtonActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setViewportView(scheduleList);
 
@@ -142,9 +160,35 @@ public class SchedulePanel extends PanelTemplate {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addPeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPeriodButtonActionPerformed
+        User u = PA.getUserList().get(selectUserComboBox.getSelectedIndex());
+        PA.registerHours(u, 
+                startDateTextField.getText(), 
+                endDateTextField.getText(), 
+                activityList.isSelectionEmpty() ? null : PA.getActivitiesAssignedTo(u).get(activityList.getSelectedIndex()), 
+                messageTextArea.getText());
+        MF.updateAll();
+    }//GEN-LAST:event_addPeriodButtonActionPerformed
+
+    private void editPeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPeriodButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editPeriodButtonActionPerformed
+
+    private void removePeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePeriodButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removePeriodButtonActionPerformed
+
     @Override
     public void initFields() {
+        User u = PA.getUserList().get(selectUserComboBox.getSelectedIndex());
         selectUserComboBox.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
+        if(!PA.getActivitiesAssignedTo(u).isEmpty()) {
+            activityList.setModel(PA.getUserActivitiesDefaultListModelContaining(u.toString(), ""));
+        }
+        
+        if(!PA.getUserMap().get(u).isEmpty()) {
+            scheduleList.setModel(PA.getUserScheduleDefaultListModelContaining(u.toString(), ""));
+        }
         
     }
 

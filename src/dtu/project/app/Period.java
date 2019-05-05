@@ -13,15 +13,15 @@ import java.util.Optional;
  */
 public class Period {
     private Event timePeriod;
-    private Optional<Activity> activity;
-    private Optional<String> message;
+    private Activity activity;
+    private String message;
 
     
     
-    public Period(String startDate, String endDate, Optional<Activity> activity, Optional<String> message) {
-        if(activity.isPresent())
+    public Period(String startDate, String endDate, Activity activity, String message) {
+        if(activity != null)
             this.activity = activity;
-        if(message.isPresent())
+        if(message != null)
             this.message = message;
         this.timePeriod = new Event(startDate, endDate);
     }
@@ -34,20 +34,27 @@ public class Period {
         this.timePeriod = timePeriod;
     }
 
-    public Optional<Activity> getActivity() {
+    public Activity getActivity() {
         return activity;
     }
 
-    public void setActivity(Optional<Activity> activity) {
+    public void setActivity(Activity activity) {
         this.activity = activity;
     }
     
-    public Optional<String> getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(Optional<String> message) {
+    public void setMessage(String message) {
         this.message = message;
     }
+
+    @Override
+    public String toString() {
+        return message + (activity != null ? activity.getActivityName() : "") + " " + timePeriod;
+    }
+    
+    
     
 }
