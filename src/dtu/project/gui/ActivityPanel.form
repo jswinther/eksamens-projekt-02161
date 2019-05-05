@@ -26,9 +26,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="activityTypeLabel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                                       <Component id="activityUserLabel2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                                       <Component id="estimatedHoursLabel2" min="-2" max="-2" attributes="0"/>
@@ -43,12 +41,7 @@
                                           <Component id="activityNameTextField1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                           <Component id="activityNameLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="activityTypeComboBox1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <Component id="activityTypeLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="activityUserComboBox1" min="-2" pref="120" max="-2" attributes="0"/>
@@ -76,7 +69,7 @@
                               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="22" pref="131" max="32767" attributes="0"/>
+                      <EmptySpace min="22" pref="133" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -86,9 +79,7 @@
                           <Component id="activityNameLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="activityNameTextField2" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="activityTypeComboBox2" min="-2" pref="121" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                               <Component id="activityUserComboBox2" min="-2" pref="120" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="estimatedHoursTextField2" min="-2" pref="63" max="-2" attributes="0"/>
@@ -117,7 +108,6 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="activityNameLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="activityTypeLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="activityUserLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="estimatedHoursLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="activityEndDateLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -126,7 +116,6 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="activityNameTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="activityTypeComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="activityUserComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="estimatedHoursTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="activityStartDateTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -141,7 +130,6 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="activityNameLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="activityTypeLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="activityUserLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="estimatedHoursLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="activityStartDateLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -150,7 +138,6 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="activityNameTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="activityTypeComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="activityUserComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="estimatedHoursTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="activityStartDateTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -200,11 +187,6 @@
         <Property name="text" type="java.lang.String" value="Activity Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="activityTypeLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Activity Type"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="activityUserLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Primary User"/>
@@ -224,21 +206,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="End Date"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="activityTypeComboBox1">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="activityUserComboBox1">
       <Properties>
@@ -262,7 +229,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="activityStartDateTextField1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="2019-05-05 13:13"/>
+        <Property name="text" type="java.lang.String" value="2019-05-05 13:12"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="activityEndDateTextField1">
@@ -288,21 +255,6 @@
         <Property name="text" type="java.lang.String" value="End Date"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="activityTypeComboBox2">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JComboBox" name="activityUserComboBox2">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -325,7 +277,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="activityStartDateTextField2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="2019-05-05 13:13"/>
+        <Property name="text" type="java.lang.String" value="2019-05-05 13:12"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="activityNameLabel2">
@@ -350,11 +302,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editActivityButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="activityTypeLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Activity Type"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="activityUserLabel2">
       <Properties>

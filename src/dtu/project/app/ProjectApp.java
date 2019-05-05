@@ -1,10 +1,7 @@
 package dtu.project.app;
 
-import dtu.project.enums.ActivityType;
-import dtu.project.enums.FindType;
 import dtu.project.repo.ProjectRepository;
 import dtu.project.repo.UserRepository;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

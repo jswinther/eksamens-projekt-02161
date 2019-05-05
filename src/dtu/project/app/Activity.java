@@ -1,6 +1,5 @@
 package dtu.project.app;
 
-import dtu.project.enums.ActivityType;
 import java.time.format.DateTimeParseException;
 
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import java.util.regex.PatternSyntaxException;
 public class Activity {
 
     private String activityName;
-    private ActivityType activityType;
     private List<User> users;
     private int estimatedHours;
     private Map<User, List<Event>> registeredHours;
@@ -43,9 +41,8 @@ public class Activity {
      * on the given activity.
      * @param timePeriod the period that this activity is running.
      */
-    private Activity(String activityName, ActivityType activityType, List<User> users, int estimatedHours, Map<User, List<Event>> registeredHours, Event timePeriod) {
+    private Activity(String activityName, List<User> users, int estimatedHours, Map<User, List<Event>> registeredHours, Event timePeriod) {
         this.activityName = activityName;
-        this.activityType = activityType;
         this.users = users;
         this.estimatedHours = estimatedHours;
         this.registeredHours = registeredHours;
@@ -60,7 +57,6 @@ public class Activity {
     public static class Builder {
 
         private String activityName;
-        private ActivityType activityType;
         private List<User> users = new ArrayList<>();
         private int estimatedHours;
         private Map<User, List<Event>> registeredHours = new HashMap<>();
@@ -80,7 +76,6 @@ public class Activity {
          */
         public Builder(Activity activity) {
             this.activityName = activity.activityName;
-            this.activityType = activity.activityType;
             this.users = activity.users;
             this.estimatedHours = activity.estimatedHours;
             this.registeredHours = activity.registeredHours;
@@ -129,10 +124,6 @@ public class Activity {
             return this;
         }
 
-        public Builder setActivityType(ActivityType activityType) {
-            this.activityType = activityType;
-            return this;
-        }
 
         public Builder setUser(User user) {
             this.users.clear();
@@ -159,7 +150,7 @@ public class Activity {
         }
 
         public Activity build() {
-            return new Activity(activityName, activityType, users, estimatedHours, registeredHours, timePeriod);
+            return new Activity(activityName, users, estimatedHours, registeredHours, timePeriod);
         }
 
     }
@@ -212,19 +203,10 @@ public class Activity {
         this.activityName = activityName;
     }
 
-    public ActivityType getActivityType() {
-        return activityType;
-    }
-
-    public void setActivityType(ActivityType activityType) {
-        this.activityType = activityType;
-    }
-
     @Override
     public String toString() {
         return "Activity{"
                 + "activityName='" + activityName + '\''
-                + ", activityType=" + activityType
                 + ", users=" + users
                 + ", estimatedHours=" + estimatedHours
                 + ", registeredHours=" + registeredHours

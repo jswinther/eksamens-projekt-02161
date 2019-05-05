@@ -6,7 +6,6 @@ import cucumber.api.java.en.When;
 import dtu.project.app.Event;
 import dtu.project.app.Project;
 import dtu.project.app.ProjectApp;
-import dtu.project.enums.FindType;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
 

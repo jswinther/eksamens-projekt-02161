@@ -64,7 +64,7 @@ public class ProjectPanel extends PanelTemplate {
 
         projectNameTextField1.setText("BankingSystem3");
 
-        projectTypeLabel1.setText("Project Type");
+        projectTypeLabel1.setText("Responsible User");
 
         projectTypeComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -93,7 +93,7 @@ public class ProjectPanel extends PanelTemplate {
 
         projectNameTextField2.setText("BankingSystem3");
 
-        projectTypeLabel2.setText("Project Type");
+        projectTypeLabel2.setText("Responsible User");
 
         projectTypeComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -101,7 +101,7 @@ public class ProjectPanel extends PanelTemplate {
 
         projectStartDateLabel2.setText("Project Start Date");
 
-        projectStartDateTextField2.setText("2019-05-05 13:13");
+        projectStartDateTextField2.setText("2019-05-05 13:12");
 
         projectEndDateLabel2.setText("Project End Date");
 
