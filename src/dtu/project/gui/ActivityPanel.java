@@ -275,9 +275,9 @@ public class ActivityPanel extends PanelTemplate {
 
     private void editActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActivityButtonActionPerformed
         try {
-            PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().set(activityUserComboBox1.getSelectedIndex(),
+            PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().set(activitySelectComboBox1.getSelectedIndex(),
                     new Activity.Builder(
-                            PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().get(activityUserComboBox1.getSelectedIndex())
+                            PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().get(activitySelectComboBox1.getSelectedIndex())
                     )
                             .setActivityName(activityNameTextField2.getText())
                             .setEstimatedHours(Integer.valueOf(estimatedHoursTextField2.getText()))
