@@ -55,29 +55,30 @@ public class Project {
 				this.projectName = projectName;
 			else
 				throw new PatternSyntaxException(projectName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", projectName, 0);
-			
-//			if (!projectName.matches("^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$")) {
-//				if(projectName.length() == 0) throw new ArrayIndexOutOfBoundsException("Project names can't be empty");
-//				
-//				char[] pn = projectName.toCharArray();
-//				
-//				
-//				if (pn[0] == ' ') {
-//					throw new PatternSyntaxException(projectName
-//							+ "illegal project name for regex, no spaces at beginning: ^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'"
-//							+ pn[0] + "\'", projectName, 0);
-//				} else {
-//					for (int i = 0; i < pn.length; i++) {
-//						if (!(Character.isAlphabetic(pn[i]) || Character.isDigit(pn[i]) || pn[i] == ' ')) {
-//							throw new PatternSyntaxException(projectName
-//									+ "illegal project name for regex: ^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'" + pn[i]
-//											+ "\'", projectName, i);
-//						}
-//					}
-//				}
-//			} else {
-//				this.projectName = projectName;
-//			}
+/*			
+			if (!projectName.matches("^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$")) {
+				if(projectName.length() == 0) throw new ArrayIndexOutOfBoundsException("Project names can't be empty");
+				
+				char[] pn = projectName.toCharArray();
+				
+				
+				if (pn[0] == ' ') {
+					throw new PatternSyntaxException(projectName
+							+ "illegal project name for regex, no spaces at beginning: ^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'"
+							+ pn[0] + "\'", projectName, 0);
+				} else {
+					for (int i = 0; i < pn.length; i++) {
+						if (!(Character.isAlphabetic(pn[i]) || Character.isDigit(pn[i]) || pn[i] == ' ')) {
+							throw new PatternSyntaxException(projectName
+									+ "illegal project name for regex: ^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'" + pn[i]
+											+ "\'", projectName, i);
+						}
+					}
+				}
+			} else {
+				this.projectName = projectName;
+			}
+*/
 			return this;
 		}
 
@@ -87,7 +88,10 @@ public class Project {
 		}
 
 		public Builder setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
-			this.timePeriod = new Event(startDate, endDate);
+			Event event = new Event(startDate, endDate);
+			if(event.getEndDate().isAfter(event.getStartDate()))
+				this.timePeriod = new Event(startDate, endDate);
+			else throw new DateTimeParseException("End date: " + endDate + " must be after start date: " + startDate, endDate, 0);
 			return this;
 		}
 
