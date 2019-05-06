@@ -52,7 +52,6 @@ public class Project {
 
 		public Builder setProjectName(String projectName) throws PatternSyntaxException, ArrayIndexOutOfBoundsException {
 			if(projectName.matches("[a-zA-Z1-9]+[ a-zA-Z1-9]*"))
-				//check for duplicates too
 				this.projectName = projectName;
 			else
 				throw new PatternSyntaxException(projectName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", projectName, 0);
@@ -144,8 +143,17 @@ public class Project {
 		this.timePeriod = timePeriod;
 	}
 
-	public void addActivity(Activity activity) {
-		this.activities.add(activity);
+	public void addActivity(Activity activity) throws Exception {
+		try {
+        	for (Activity a : getActivities()) {
+				if(a.getActivityName().equals(activity.getActivityName()))
+					throw new Exception();
+			}
+        	this.activities.add(activity);
+            
+        } catch (Exception e) {
+            throw e;
+        }
 	}
 
 	public void removeActivity(Activity activity) {

@@ -28,6 +28,8 @@ public class ActivitySteps {
     public void projectmanagerWantsToFindUnavailableUserInTimePeriodTo(String string, String string2) {
         
     }
+    
+    
 
     @Given("user wants to find free user {string}")
     public void userWantsToFindUser(String string) {

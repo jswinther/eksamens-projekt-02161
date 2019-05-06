@@ -11,23 +11,27 @@ import dtu.project.app.ProjectApp;
 import dtu.project.app.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.PatternSyntaxException;
 
 public class ProjectSteps {
 
     ProjectApp PA;
+    
 
     public ProjectSteps(InMemoryRepository MP) {
         this.PA = new ProjectApp(MP, MP);
     }
 
     @When("the user adds a project with name {string} and project type INTERNAL.")
-    public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) {
+    public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
         PA.addProject(new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
@@ -45,7 +49,7 @@ public class ProjectSteps {
     }
 
     @Given("a project with name {string}, project type INTERNAL.")
-    public void aProjectWithNameProjectTypeINTERNAL(String string) {
+    public void aProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
         PA.addProject(new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
@@ -76,20 +80,24 @@ public class ProjectSteps {
     public void aUserWantToFindAProjectWithTheName(String string) {
         PA.searchProjects(string);
     }
+    
+    @When("time period {string} to {string} then exception thrown")
+    public void timePeriodToThenExceptionThrown(String string, String string2) {
+    	try {
+    		PA.getProjectList().get(0).setTimePeriod(new Event(string, string2));
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+    }
 
-    // Fail test
-
+    @Then("the user is now assigned to project as project manager.")
+    public void theUserIsNowAssignedToProjectAsProjectManager() {
+        assertEquals(PA.getUserList().get(0), PA.getProjectList().get(0).getProjectManager());
+    }
+    
     @When("user adds a project with name {string}, project type INTERNAL.")
-    public void user_creates_illogical_time_plan(String string) {
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    	LocalDateTime startDate = null;
-    	LocalDateTime endDate = null;
-//    	startDate = LocalDateTime.parse(startDate, formatter);
-//    	endDate = LocalDateTime.parse(endDate, formatter);
-//    	startDate = "2021-05-05 13:12"
-//    	endDate = "2019-05-05 13:12";
-    	
-    	
+    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
+        PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
     }
 
 

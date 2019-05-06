@@ -224,8 +224,9 @@ public class ProjectApp {
      *
      * @param project
      * @param activity
+     * @throws Exception 
      */
-    public void addActivity(Project project, Activity activity) {
+    public void addActivity(Project project, Activity activity) throws Exception {
         try {
             project.addActivity(activity);
         } catch (Exception e) {
@@ -278,10 +279,16 @@ public class ProjectApp {
      * add project
      *
      * @param project
+     * @throws Exception 
      */
-    public void addProject(Project project) throws ArrayIndexOutOfBoundsException, PatternSyntaxException {
+    public void addProject(Project project) throws Exception {
         try {
+        	for (Project p : getProjectList()) {
+				if(p.getProjectName().equals(project.getProjectName()))
+					throw new Exception();
+			}
             getProjectList().add(project);
+            
         } catch (Exception e) {
             throw e;
         }

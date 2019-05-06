@@ -2,6 +2,9 @@ package dtu.project.acceptance_tests;
 
 import static org.junit.Assert.assertTrue;
 
+import java.time.format.DateTimeParseException;
+import java.util.regex.PatternSyntaxException;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -19,7 +22,7 @@ public class UserSteps {
 	}
 	
 	@Given("a project named {string} with {int} active activities.")
-	public void aProjectNamedWithActiveActivities(String string, Integer int1) {
+	public void aProjectNamedWithActiveActivities(String string, Integer int1) throws DateTimeParseException, PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
 	    PA.addProject(new Project.Builder()
 	    		.setProjectName(string)
 	    		.setProjectType(ProjectType.EXTERNAL)
@@ -36,6 +39,7 @@ public class UserSteps {
 	public void theUserIsNowAssignedToProjectAsProjectManager() {
 	    assertTrue(PA.getUserList().get(0).equals(PA.getProjectList().get(0).getProjectManager()));
 	}
+	
 
 }
 
