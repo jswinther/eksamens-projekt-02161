@@ -100,12 +100,6 @@ public class ProjectSteps {
     public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
         try {
 			PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
-		} catch (PatternSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ArrayIndexOutOfBoundsException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -133,12 +127,26 @@ public class ProjectSteps {
 //        throw new cucumber.api.PendingException();
 //    }
     
-    
+
+	@Then("user hours is registered")
+	public void userHoursIsRegistered() {
+		PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:30", "2019-03-03 13:40", null, null);
+	   // throw new cucumber.api.PendingException();
+	}
+
 
     @Then("remove from list of free users")
     public void removeFromListOfFreeUsers() {
-    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:30", "2019-03-03 13:40", null, null);
-    	assertTrue(!PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0)));
+//    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:33", "2019-03-03 13:39", null, null);
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:25", "2019-03-03 13:35", null, null);
+    	PA.registerHours(PA.getUserList().get(1), "2019-03-03 13:25", "2019-03-03 13:29", null, null);
+    	PA.registerHours(PA.getUserList().get(2), "2019-03-03 13:35", "2019-03-03 13:45", null, null);
+    	if(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))) {
+    		assertTrue(false);
+    	}
+    	else assertTrue(true);
+    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(1));
+    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(2));
     }
 
     @Given("searchtext is null")
