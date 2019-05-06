@@ -1,5 +1,6 @@
 package dtu.project.acceptance_tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.time.format.DateTimeParseException;
@@ -10,36 +11,36 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.app.Project;
 import dtu.project.app.ProjectApp;
+import dtu.project.app.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
 
 public class UserSteps {
 
 	ProjectApp PA;
+	User user;
 
 	public UserSteps(InMemoryRepository MP) {
 		this.PA = new ProjectApp(MP, MP);
 	}
 	
-	@Given("a project named {string} with {int} active activities.")
-	public void aProjectNamedWithActiveActivities(String string, Integer int1) throws DateTimeParseException, PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-	    PA.addProject(new Project.Builder()
-	    		.setProjectName(string)
-	    		.setProjectType(ProjectType.EXTERNAL)
-	    		.setTimePeriod("2019-05-05 13:00", "2020-05-05 13:00")
-	    		.build());
+	@Given("a user.")
+	public void aUser() {
+	    user = PA.getUserList().get(0);
+	    assertTrue(user.equals(PA.getUserList().get(0)));
 	}
 
-	@When("user is assigned to project as project manager")
-	public void userIsAssignedToProjectAsProjectManager() {
-	    PA.getProjectList().set(0, new Project.Builder(PA.getProjectList().get(0)).setProjectManager(PA.getUserList().get(0)).build());
+	@When("user changes name to {string}")
+	public void userChangesNameTo(String string) {
+	    user.setName(string);
+	    assertEquals(user.getName(), string);
+	    assertEquals(user.getIdName(), new User(string).getIdName());
 	}
 
-	@Then("the user is now assigned to project as project manager")
-	public void theUserIsNowAssignedToProjectAsProjectManager() {
-	    assertTrue(PA.getUserList().get(0).equals(PA.getProjectList().get(0).getProjectManager()));
+	@Then("name is changed to {string}")
+	public void nameIsChangedTo(String string) {
+	    assertTrue(user.getName().equals(string));
 	}
-	
 
 }
 
