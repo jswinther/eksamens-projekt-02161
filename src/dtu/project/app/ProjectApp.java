@@ -60,12 +60,11 @@ public class ProjectApp {
      * @param <E>
      * @return
      */
-    private <E> List<E> search(String searchText, List<E> searchList) {
+    public <E> List<E> search(String searchText, List<E> searchList) {
         if (searchText == null || searchList == null) {
             throw new NullPointerException();
         }
         return searchList.stream().filter(e -> e.toString().contains(searchText)).collect(Collectors.toList());
-
     }
 
     /**

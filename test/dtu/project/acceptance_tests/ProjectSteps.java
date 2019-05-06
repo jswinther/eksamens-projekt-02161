@@ -23,7 +23,9 @@ import java.util.regex.PatternSyntaxException;
 
 public class ProjectSteps {
 
-    ProjectApp PA;
+    private static final int User = 0;
+	private static final int List = 0;
+	ProjectApp PA;
     
 
     public ProjectSteps(InMemoryRepository MP) {
@@ -147,23 +149,35 @@ public class ProjectSteps {
     	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(1));
     	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(2));
     }
+    
+    @Given("both searchtext and searchlist is null")
+    public void bothSearchtextAndSearchlistIsNull() {
+    	assertTrue(PA.search(null, null).isEmpty());
+    }
 
     @Given("searchtext is null")
     public void searchtextIsNull() {
-        // Write code here that turns the phrase above into concrete actions
-
+		assertTrue(PA.search(null, PA.getUserList()).isEmpty());
     }
 
-    @Then("throw null pointer exception")
-    public void throwNullPointerException() {
-        // Write code here that turns the phrase above into concrete actions
-
+    @Then("list is empty")
+    public void listIsEmpty() {
+        assertTrue(PA.search(null, null).isEmpty());
     }
-
+    
     @Given("searchlist is null")
     public void searchlistIsNull() {
-        // Write code here that turns the phrase above into concrete actions
-
+		assertTrue(PA.search("Shiloh Richmond", null).isEmpty());
+    }
+    
+    @Given("non of searchtext and searchlist is null")
+    public void nonOfSearchtextAndSearchlistIsNull() {
+    	assertTrue((PA.search("Shiloh Richmond", PA.getUserList()).size()>0));
+    }
+    
+    @Then("return searchlist")
+    public void returnSearchlist() {
+    	PA.search("Shiloh Richmond", PA.getUserList());
     }
 }
 
