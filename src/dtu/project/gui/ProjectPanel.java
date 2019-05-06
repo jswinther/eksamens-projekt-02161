@@ -84,8 +84,7 @@ public class ProjectPanel extends PanelTemplate {
                 try {
 					addProjectButtonActionPerformed(evt);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.err.println(e);
 				}
             }
         });
