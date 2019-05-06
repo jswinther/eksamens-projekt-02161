@@ -8,6 +8,8 @@ import dtu.project.app.Project;
 import dtu.project.app.ProjectApp;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class ProjectSteps {
 
     ProjectApp PA;
+    
 
     public ProjectSteps(InMemoryRepository MP) {
         this.PA = new ProjectApp(MP, MP);
@@ -71,43 +74,38 @@ public class ProjectSteps {
     public void aUserWantToFindAProjectWithTheName(String string) {
         PA.searchProjects(string);
     }
+    
+    @When("time period {string} to {string} then exception thrown")
+    public void timePeriodToThenExceptionThrown(String string, String string2) {
+    	try {
+    		PA.getProjectList().get(0).setTimePeriod(new Event(string, string2));
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+    }
 
-    // Fail test
-
+    @Then("the user is now assigned to project as project manager.")
+    public void theUserIsNowAssignedToProjectAsProjectManager() {
+        assertEquals(PA.getUserList().get(0), PA.getProjectList().get(0).getProjectManager());
+    }
+    
     @When("user adds a project with name {string}, project type INTERNAL.")
-    public void user_creates_illogical_time_plan(String string) {
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    	LocalDateTime startDate = null;
-    	LocalDateTime endDate = null;
-//    	startDate = LocalDateTime.parse(startDate, formatter);
-//    	endDate = LocalDateTime.parse(endDate, formatter);
-//    	startDate = "2021-05-05 13:12"
-//    	endDate = "2019-05-05 13:12";
-    	
-    	
+    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
+        PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
+    }
+    
+    @When("the user adds a project with name {string} and project type INTERNAL and time period {string} to {string} then exception thrown")
+    public void theUserAddsAProjectWithNameAndProjectTypeINTERNALAndTimePeriodToThenExceptionThrown(String string, String string2, String string3) {
+        try {
+        	PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).setTimePeriod(string2, string3).build());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
     }
 
-    @Then("exception is thrown")
-    public void exception_is_thrown(String startDate, String endDate) {
-    	throw new cucumber.api.PendingException();
-    }
-    /*
-     * Test der skal sikre sig mod duplicate
-    @Then("exception is thrown.")
-    public void exceptionIsThrown() {
+    @When("user adds a project with name {string}, project type INTERNAL then exception is thrown")
+    public void userAddsAProjectWithNameProjectTypeINTERNALThenExceptionIsThrown(String string) {
         // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }
-	*/
-//    @When("user adds a project with name {string}, project type INTERNAL.")
-//    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new cucumber.api.PendingException();
-//    }
-//
-//    @Then("the user is now assigned to project as project manager.")
-//    public void theUserIsNowAssignedToProjectAsProjectManager() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new cucumber.api.PendingException();
-//    }
 }

@@ -36,6 +36,7 @@ public class UserSteps {
 	public void theUserIsNowAssignedToProjectAsProjectManager() {
 	    assertTrue(PA.getUserList().get(0).equals(PA.getProjectList().get(0).getProjectManager()));
 	}
+	
 
 }
 
