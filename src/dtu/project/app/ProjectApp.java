@@ -271,10 +271,6 @@ public class ProjectApp {
         return projectRepository.getProjectList();
     }
 
-    public void setProjectList(List<Project> projectList) {
-        projectRepository.setProjectList(projectList);
-    }
-
     /**
      * add project
      *

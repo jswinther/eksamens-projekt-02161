@@ -6,6 +6,7 @@ Scenario: User adds a project with name and project type.
 
 Scenario: User adds a project with name, project type and time period.
     When the user adds a project with name "TestProject" and project type INTERNAL.
+    And the project has time period "2019-05-05 13:30" to "2019-05-06 13:30".
     Then the project exists in the list of projects.
 		
 Scenario: User edits a project

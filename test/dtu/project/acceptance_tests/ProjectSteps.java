@@ -24,7 +24,7 @@ import java.util.regex.PatternSyntaxException;
 public class ProjectSteps {
 
     ProjectApp PA;
-    
+    Project project;
 
     public ProjectSteps(InMemoryRepository MP) {
         this.PA = new ProjectApp(MP, MP);
@@ -32,10 +32,11 @@ public class ProjectSteps {
 
     @When("the user adds a project with name {string} and project type INTERNAL.")
     public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-        PA.addProject(new Project.Builder()
+        project = new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
-                .build());
+                .build();
+    	PA.addProject(project);
     }
 
     @Then("the project exists in the list of projects.")
@@ -97,7 +98,18 @@ public class ProjectSteps {
     
     @When("user adds a project with name {string}, project type INTERNAL.")
     public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
-        PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
+        try {
+			PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
+		} catch (PatternSyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 

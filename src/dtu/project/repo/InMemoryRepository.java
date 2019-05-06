@@ -37,17 +37,7 @@ public class InMemoryRepository implements UserRepository, ProjectRepository {
     }
 
     @Override
-    public void setProjectList(List<Project> projectList) {
-        this.projectList = projectList;
-    }
-
-    @Override
     public Map<User, List<Period>> getUserMap() {
         return this.userMap;
-    }
-
-    @Override
-    public void setUserMap(Map<User, List<Period>> userMap) {
-        this.userMap = userMap;
     }
 }
