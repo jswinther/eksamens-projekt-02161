@@ -24,7 +24,7 @@ import java.util.regex.PatternSyntaxException;
 public class ProjectSteps {
 
     ProjectApp PA;
-    
+    Project project;
 
     public ProjectSteps(InMemoryRepository MP) {
         this.PA = new ProjectApp(MP, MP);
@@ -32,10 +32,11 @@ public class ProjectSteps {
 
     @When("the user adds a project with name {string} and project type INTERNAL.")
     public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-        PA.addProject(new Project.Builder()
+        project = new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
-                .build());
+                .build();
+    	PA.addProject(project);
     }
 
     @Then("the project exists in the list of projects.")
@@ -121,12 +122,26 @@ public class ProjectSteps {
 //        throw new cucumber.api.PendingException();
 //    }
     
-    
+
+	@Then("user hours is registered")
+	public void userHoursIsRegistered() {
+		PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:30", "2019-03-03 13:40", null, null);
+	   // throw new cucumber.api.PendingException();
+	}
+
 
     @Then("remove from list of free users")
     public void removeFromListOfFreeUsers() {
-    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:30", "2019-03-03 13:40", null, null);
-    	assertTrue(!PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0)));
+//    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:33", "2019-03-03 13:39", null, null);
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:25", "2019-03-03 13:35", null, null);
+    	PA.registerHours(PA.getUserList().get(1), "2019-03-03 13:25", "2019-03-03 13:29", null, null);
+    	PA.registerHours(PA.getUserList().get(2), "2019-03-03 13:35", "2019-03-03 13:45", null, null);
+    	if(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))) {
+    		assertTrue(false);
+    	}
+    	else assertTrue(true);
+    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(1));
+    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(2));
     }
 
     @Given("searchtext is null")

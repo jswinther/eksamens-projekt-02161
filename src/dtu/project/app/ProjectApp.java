@@ -38,13 +38,17 @@ public class ProjectApp {
             User key = entry.getKey();
             List<Period> value = entry.getValue();
             for (Period period : value) {
-                if (!(event.getEndDate().isBefore(period.getTimePeriod().getStartDate()) || event.getStartDate().isAfter(period.getTimePeriod().getEndDate()))) {
+                if (overlaps(event, period)) {
                     users.remove(key);
                 }
             }
         }
         return users;
     }
+
+	private boolean overlaps(Event event, Period period) {
+		return !(event.getEndDate().isBefore(period.getTimePeriod().getStartDate()) || event.getStartDate().isAfter(period.getTimePeriod().getEndDate()));
+	}
 
     /**
      * Jonathan Generic method which converts a list of elements of type E into
@@ -270,10 +274,6 @@ public class ProjectApp {
 
     public List<Project> getProjectList() {
         return projectRepository.getProjectList();
-    }
-
-    public void setProjectList(List<Project> projectList) {
-        projectRepository.setProjectList(projectList);
     }
 
     /**
