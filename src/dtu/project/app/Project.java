@@ -1,6 +1,7 @@
 package dtu.project.app;
 
 import dtu.project.enums.ProjectType;
+import dtu.project.exceptions.DuplicateActivityName;
 
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -55,13 +56,13 @@ public class Project {
 				this.projectName = projectName;
 			else
 				throw new PatternSyntaxException(projectName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", projectName, 0);
-/*			
+			/*			
 			if (!projectName.matches("^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$")) {
 				if(projectName.length() == 0) throw new ArrayIndexOutOfBoundsException("Project names can't be empty");
-				
+
 				char[] pn = projectName.toCharArray();
-				
-				
+
+
 				if (pn[0] == ' ') {
 					throw new PatternSyntaxException(projectName
 							+ "illegal project name for regex, no spaces at beginning: ^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'"
@@ -78,7 +79,7 @@ public class Project {
 			} else {
 				this.projectName = projectName;
 			}
-*/
+			 */
 			return this;
 		}
 
@@ -143,17 +144,14 @@ public class Project {
 		this.timePeriod = timePeriod;
 	}
 
+	// Skal måske rettes. Lige nu kan man ikke have nogle duplicate activity navne, men det skal vel være inden for projekter
 	public void addActivity(Activity activity) throws Exception {
-		try {
-        	for (Activity a : getActivities()) {
+			for (Activity a : getActivities()) {
 				if(a.getActivityName().equals(activity.getActivityName()))
-					throw new Exception();
+					throw new DuplicateActivityName();
 			}
-        	this.activities.add(activity);
-            
-        } catch (Exception e) {
-            throw e;
-        }
+			
+			this.activities.add(activity);
 	}
 
 	public void removeActivity(Activity activity) {

@@ -1,5 +1,6 @@
 package dtu.project.app;
 
+import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.ProjectRepository;
 import dtu.project.repo.UserRepository;
 import java.util.ArrayList;
@@ -274,10 +275,6 @@ public class ProjectApp {
         return projectRepository.getProjectList();
     }
 
-    public void setProjectList(List<Project> projectList) {
-        projectRepository.setProjectList(projectList);
-    }
-
     /**
      * add project
      *
@@ -288,7 +285,7 @@ public class ProjectApp {
         try {
         	for (Project p : getProjectList()) {
 				if(p.getProjectName().equals(project.getProjectName()))
-					throw new Exception();
+					throw new DuplicateProjectName();
 			}
             getProjectList().add(project);
             

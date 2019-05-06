@@ -34,10 +34,11 @@ public class ProjectSteps {
 
     @When("the user adds a project with name {string} and project type INTERNAL.")
     public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-        PA.addProject(new Project.Builder()
+        project = new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
-                .build());
+                .build();
+    	PA.addProject(project);
     }
 
     @Then("the project exists in the list of projects.")
@@ -98,13 +99,8 @@ public class ProjectSteps {
     }
     
     @When("user adds a project with name {string}, project type INTERNAL.")
-    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
-        try {
-			PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
+        PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
     }
 
 

@@ -9,5 +9,4 @@ import java.util.Map;
 
 public interface UserRepository {
 	Map<User, List<Period>> getUserMap();
-	void setUserMap(Map<User, List<Period>> userList);
 }
