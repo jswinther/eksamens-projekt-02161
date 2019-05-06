@@ -23,15 +23,19 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+    	this.name = name;
+        if (name.length() > 4) {
+            this.idName = name.substring(0, 4).toLowerCase();
+        } else {
+            this.idName = name.toLowerCase();
+            while (idName.length() < 4) {
+                idName += "x";
+            }
+        }
     }
 
     public String getIdName() {
         return this.idName;
-    }
-
-    public void setIdName(String idName) {
-        this.idName = idName;
     }
 
     @Override

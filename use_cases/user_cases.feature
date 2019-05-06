@@ -1,10 +1,16 @@
 Feature: User manipulation
 
-Background: A Project with acitvities exists.
-	Given a project named "Airplane Navigation Software" with 25 active activities.
+Scenario: Update user details for a given user with a name longer than four characters.
+	Given a user.
+	When user changes name to "Firstname Lastname"
+	Then name is changed to "Firstname Lastname"
 
-Scenario: Add a project manager to project
-	When user is assigned to project as project manager
-	Then the user is now assigned to project as project manager.
-
+Scenario: Update user details for a given user with a name equal to four characters.
+	Given a user.
+	When user changes name to "Mark"
+	Then name is changed to "Mark"
 	
+Scenario: Update user details for a given user with a name less than four characters.
+	Given a user.
+	When user changes name to "Bo"
+	Then name is changed to "Bo"
