@@ -96,7 +96,7 @@ public class ProjectSteps {
     }
     
     @When("user adds a project with name {string}, project type INTERNAL.")
-    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
+    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
         PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
     }
 
