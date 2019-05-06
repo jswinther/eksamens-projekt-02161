@@ -81,7 +81,12 @@ public class ProjectPanel extends PanelTemplate {
         addProjectButton.setText("Add Project");
         addProjectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addProjectButtonActionPerformed(evt);
+                try {
+					addProjectButtonActionPerformed(evt);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -227,7 +232,7 @@ public class ProjectPanel extends PanelTemplate {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProjectButtonActionPerformed
+    private void addProjectButtonActionPerformed(java.awt.event.ActionEvent evt) throws Exception {//GEN-FIRST:event_addProjectButtonActionPerformed
         try {
             if (projectTimePeriodUndefinedCheckBox1.isSelected()) {
             PA.addProject(new Project.Builder()

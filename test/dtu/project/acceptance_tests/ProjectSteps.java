@@ -12,6 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.PatternSyntaxException;
 
 public class ProjectSteps {
 
@@ -22,7 +23,7 @@ public class ProjectSteps {
     }
 
     @When("the user adds a project with name {string} and project type INTERNAL.")
-    public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) {
+    public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
         PA.addProject(new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
@@ -40,7 +41,7 @@ public class ProjectSteps {
     }
 
     @Given("a project with name {string}, project type INTERNAL.")
-    public void aProjectWithNameProjectTypeINTERNAL(String string) {
+    public void aProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
         PA.addProject(new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)

@@ -89,7 +89,11 @@ public class ActivityPanel extends PanelTemplate {
         addActivityButton.setText("Add Activity");
         addActivityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActivityButtonActionPerformed(evt);
+                try {
+					addActivityButtonActionPerformed(evt);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -256,7 +260,7 @@ public class ActivityPanel extends PanelTemplate {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActivityButtonActionPerformed
+    private void addActivityButtonActionPerformed(java.awt.event.ActionEvent evt) throws ArrayIndexOutOfBoundsException, Exception {//GEN-FIRST:event_addActivityButtonActionPerformed
         try {
             PA.addActivity(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()),
                     new Activity.Builder()
