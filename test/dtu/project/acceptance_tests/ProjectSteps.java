@@ -3,15 +3,20 @@ package dtu.project.acceptance_tests;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import dtu.project.app.Activity;
 import dtu.project.app.Event;
+import dtu.project.app.Period;
 import dtu.project.app.Project;
 import dtu.project.app.ProjectApp;
+import dtu.project.app.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Map;
 
 public class ProjectSteps {
 
@@ -87,10 +92,7 @@ public class ProjectSteps {
     	
     }
 
-    @Then("exception is thrown")
-    public void exception_is_thrown(String startDate, String endDate) {
-    	throw new cucumber.api.PendingException();
-    }
+
     /*
      * Test der skal sikre sig mod duplicate
     @Then("exception is thrown.")
@@ -110,4 +112,32 @@ public class ProjectSteps {
 //        // Write code here that turns the phrase above into concrete actions
 //        throw new cucumber.api.PendingException();
 //    }
+    
+    
+
+    @Then("remove from list of free users")
+    public void removeFromListOfFreeUsers() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:30", "2019-03-03 13:40", null, null);
+    	assertTrue(!PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0)));
+    }
+
+    @Given("searchtext is null")
+    public void searchtextIsNull() {
+        // Write code here that turns the phrase above into concrete actions
+
+    }
+
+    @Then("throw null pointer exception")
+    public void throwNullPointerException() {
+        // Write code here that turns the phrase above into concrete actions
+
+    }
+
+    @Given("searchlist is null")
+    public void searchlistIsNull() {
+        // Write code here that turns the phrase above into concrete actions
+
+    }
 }
+
+

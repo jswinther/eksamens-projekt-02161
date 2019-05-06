@@ -36,3 +36,16 @@ Scenario: User creates duplicate project
 		When user adds a project with name "TestProject", project type INTERNAL.
 		And time period "2019-05-05 08:00" to "2019-08-05 08:00".
 		Then exception is thrown
+		
+Scenario: registers hours
+		Then user hours is registered
+
+Scenario: create list of available users
+		Given a user is not free
+		Then remove from list of free users
+		
+Scenario: searchtext or searchlist is null
+		Given searchtext is null
+		Then throw null pointer exception
+		Given searchlist is null
+		Then throw null pointer exception
