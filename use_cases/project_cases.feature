@@ -53,3 +53,29 @@ Scenario: searchtext or searchlist is null
 		Then list is empty
 		Given searchlist is null
 		Then list is empty
+		
+Scenario: searchuser
+		Given name is not null return user
+		When name is null, return empty list
+		
+Scenario: find user activitylist
+		Given user exists
+		Then find users activitylist
+		
+Scenario: adds activity
+		Then adds activity
+
+Scenario: remove activity
+		Then remove activity
+		
+Scenario: get user repository
+		Then get user repository
+
+Scenario: set user repository
+		Then set user repository
+
+Scenario: get project repository
+		Then get project repository
+
+Scenario: set project repository
+		Then set project repository

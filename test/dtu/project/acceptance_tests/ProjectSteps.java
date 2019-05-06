@@ -26,6 +26,8 @@ public class ProjectSteps {
     private static final int User = 0;
 	private static final int List = 0;
 	ProjectApp PA;
+	Project project;
+	Activity activity;
     
 
     public ProjectSteps(InMemoryRepository MP) {
@@ -34,7 +36,7 @@ public class ProjectSteps {
 
     @When("the user adds a project with name {string} and project type INTERNAL.")
     public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-        project = new Project.Builder()
+        Project project = new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
                 .build();
@@ -132,39 +134,39 @@ public class ProjectSteps {
 	}
 
 
-    @Then("remove from list of free users")
-    public void removeFromListOfFreeUsers() {
-//    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:33", "2019-03-03 13:39", null, null);
-    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:25", "2019-03-03 13:35", null, null);
-    	PA.registerHours(PA.getUserList().get(1), "2019-03-03 13:25", "2019-03-03 13:29", null, null);
-    	PA.registerHours(PA.getUserList().get(2), "2019-03-03 13:35", "2019-03-03 13:45", null, null);
-    	if(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))) {
-    		assertTrue(false);
-    	}
-    	else assertTrue(true);
-    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(1));
-    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(2));
-    }
+//    @Then("remove from list of free users")
+//    public void removeFromListOfFreeUsers() {
+////    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:33", "2019-03-03 13:39", null, null);
+//    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:25", "2019-03-03 13:35", null, null);
+//    	PA.registerHours(PA.getUserList().get(1), "2019-03-03 13:25", "2019-03-03 13:29", null, null);
+//    	PA.registerHours(PA.getUserList().get(2), "2019-03-03 13:35", "2019-03-03 13:45", null, null);
+//    	if(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))) {
+//    		assertTrue(false);
+//    	}
+//    	else assertTrue(true);
+//    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(1));
+//    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(2));
+//    }
     
-    @Given("both searchtext and searchlist is null")
-    public void bothSearchtextAndSearchlistIsNull() {
-    	assertTrue(PA.search(null, null).isEmpty());
-    }
-
-    @Given("searchtext is null")
-    public void searchtextIsNull() {
-		assertTrue(PA.search(null, PA.getUserList()).isEmpty());
-    }
-
-    @Then("list is empty")
-    public void listIsEmpty() {
-        assertTrue(PA.search(null, null).isEmpty());
-    }
-    
-    @Given("searchlist is null")
-    public void searchlistIsNull() {
-		assertTrue(PA.search("Shiloh Richmond", null).isEmpty());
-    }
+//    @Given("both searchtext and searchlist is null")
+//    public void bothSearchtextAndSearchlistIsNull() {
+//    	assertTrue(PA.search(null, null).isEmpty());
+//    }
+//
+//    @Given("searchtext is null")
+//    public void searchtextIsNull() {
+//		assertTrue(PA.search(null, PA.getUserList()).isEmpty());
+//    }
+//
+//    @Then("list is empty")
+//    public void listIsEmpty() {
+//        assertTrue(PA.search(null, null).isEmpty());
+//    }
+//    
+//    @Given("searchlist is null")
+//    public void searchlistIsNull() {
+//		assertTrue(PA.search("Shiloh Richmond", null).isEmpty());
+//    }
     
     @Given("non of searchtext and searchlist is null")
     public void nonOfSearchtextAndSearchlistIsNull() {
@@ -174,6 +176,55 @@ public class ProjectSteps {
     @Then("return searchlist")
     public void returnSearchlist() {
     	PA.search("Shiloh Richmond", PA.getUserList());
+    }
+    
+    @Given("name is not null return user")
+    public void nameIsNotNullReturnUser() {
+    		assertTrue(PA.searchUser("Shiloh Richmond").size()>0);
+    }
+
+    @When("name is null, return empty list")
+    public void nameIsNullReturnEmptyList() {
+    		assertTrue(PA.searchUser("").size()<=0);
+    }
+    
+    @Given("user exists")
+    public void userExists() {
+        PA.findUser("Shiloh Richmond");
+    }
+
+    @Then("find users activitylist")
+    public void findUsersActivitylist() {
+    	project = new Project.Builder().build();
+    	try {
+			project.addActivity(new Activity.Builder().setUser(PA.findUser("Shiloh Richmond")).build());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        PA.getActivitiesAssignedTo(PA.findUser("Shiloh Richmond"));
+    }
+    
+    @Then("adds activity")
+    public void addsActivity() {
+    	Activity a = new Activity.Builder().build();
+    	Project p = new Project.Builder().build();
+    	try {
+			PA.addActivity(p, a);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+    
+    @Then("remove activity")
+    public void removeActivity() {
+    	Activity a = new Activity.Builder().build();
+    	Project p = new Project.Builder().build();
+    	PA.removeActivity(p, a);
+    }
+    
+    @Then("get user repository")
+    public void getUserRepository() {
+        PA.getUserRepository();
     }
 }
 
