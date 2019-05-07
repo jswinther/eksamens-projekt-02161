@@ -1,5 +1,6 @@
 package dtu.project.app;
 
+import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.ProjectRepository;
 import dtu.project.repo.UserRepository;
@@ -46,9 +47,9 @@ public class ProjectApp {
         return users;
     }
 
-	private boolean overlaps(Event event, Period period) {
-		return !(event.getEndDate().isBefore(period.getTimePeriod().getStartDate()) || event.getStartDate().isAfter(period.getTimePeriod().getEndDate()));
-	}
+    private boolean overlaps(Event event, Period period) {
+        return !(event.getEndDate().isBefore(period.getTimePeriod().getStartDate()) || event.getStartDate().isAfter(period.getTimePeriod().getEndDate()));
+    }
 
     /**
      * Jonathan Generic method which converts a list of elements of type E into
@@ -228,14 +229,15 @@ public class ProjectApp {
      *
      * @param project
      * @param activity
-     * @throws Exception 
+     * @throws dtu.project.exceptions.DuplicateActivityName
      */
-    public void addActivity(Project project, Activity activity) throws Exception {
-        try {
-            project.addActivity(activity);
-        } catch (Exception e) {
-            throw e;
+    public void addActivity(Project project, Activity activity) throws DuplicateActivityName {
+        for (Activity a : project.getActivities()) {
+            if (a.getActivityName().equals(activity.getActivityName())) {
+                throw new DuplicateActivityName();
+            }
         }
+        project.addActivity(activity);
     }
 
     /**
@@ -279,19 +281,16 @@ public class ProjectApp {
      * add project
      *
      * @param project
-     * @throws Exception 
+     * @throws dtu.project.exceptions.DuplicateProjectName
      */
-    public void addProject(Project project) throws Exception {
-        try {
-        	for (Project p : getProjectList()) {
-				if(p.getProjectName().equals(project.getProjectName()))
-					throw new DuplicateProjectName();
-			}
-            getProjectList().add(project);
-            
-        } catch (Exception e) {
-            throw e;
+    public void addProject(Project project) throws DuplicateProjectName {
+        for (Project p : getProjectList()) {
+            if (p.getProjectName().equals(project.getProjectName())) {
+                throw new DuplicateProjectName();
+            }
         }
+        getProjectList().add(project);
+
     }
 
     /**

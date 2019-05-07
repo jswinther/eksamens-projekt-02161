@@ -16,68 +16,62 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="projectSelectComboBox2" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="projectNameTextField1" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="projectNameLabel1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="projectSelectLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="projectSelectComboBox1" alignment="0" min="-2" pref="698" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="projectTypeComboBox1" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
-                          <Component id="projectTypeLabel1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="projectNameTextField1" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="projectNameLabel1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="projectTypeComboBox1" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                  <Component id="projectTypeLabel1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="addProjectButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="editProjectButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="removeProjectButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="projectStartDateTextField1" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="projectStartDateLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="projectManagerLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="projectStartDateTextField1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="projectStartDateLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="projectEndDateLabel1" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="projectEndDateTextField1" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="projectTimePeriodUndefinedCheckBox1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="projectSelectLabel1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="projectNameTextField2" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="projectNameLabel2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="projectTypeComboBox2" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                          <Component id="projectTypeLabel2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="projectStartDateTextField2" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="projectStartDateLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="projectEndDateLabel2" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="projectEndDateTextField2" min="-2" pref="110" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="projectTimePeriodUndefinedCheckBox2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Component id="addProjectButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectSelectLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="removeProjectButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="editProjectButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectSelectComboBox1" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="193" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,52 +79,37 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="projectSelectLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="projectSelectComboBox1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="projectNameLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="projectTypeLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="projectStartDateLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="projectEndDateLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="projectManagerLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="projectNameTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectTypeComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectStartDateTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectEndDateTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectTimePeriodUndefinedCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="addProjectButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="projectSelectLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="projectSelectComboBox1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="projectEndDateLabel2" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="projectNameLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="projectTypeLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="projectStartDateLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="projectNameTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="projectTypeComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="projectStartDateTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="projectEndDateTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="projectTimePeriodUndefinedCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addProjectButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editProjectButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="removeProjectButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="226" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="projectNameTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectTypeComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectStartDateTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectEndDateTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="projectTimePeriodUndefinedCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="editProjectButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="projectSelectLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="projectSelectComboBox2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="removeProjectButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="222" max="32767" attributes="0"/>
+              <EmptySpace pref="228" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -148,7 +127,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="projectTypeLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Responsible User"/>
+        <Property name="text" type="java.lang.String" value="Project Type"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="projectTypeComboBox1">
@@ -216,62 +195,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="projectSelectLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Project"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="projectNameLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Project Name"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="projectNameTextField2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="BankingSystem3"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="projectTypeLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Responsible User"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="projectTypeComboBox2">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="projectTimePeriodUndefinedCheckBox2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Timeperiod Undefined"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="projectStartDateLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Project Start Date"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="projectStartDateTextField2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="2019-05-05 13:12"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="projectEndDateLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Project End Date"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="projectEndDateTextField2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="2019-05-05 13:13"/>
+        <Property name="text" type="java.lang.String" value="Select Project"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="editProjectButton">
@@ -282,26 +206,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editProjectButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="projectSelectLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Project"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="projectSelectComboBox2">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JButton" name="removeProjectButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Remove Project"/>
@@ -310,5 +214,32 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeProjectButtonActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JLabel" name="projectManagerLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Project Manager"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="projectManagerList">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+                <StringItem index="4" value="Item 5"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
