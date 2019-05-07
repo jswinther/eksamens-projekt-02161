@@ -118,22 +118,34 @@ public class ProjectSteps {
 
 	@When("name is null and list is not null, cast error")
 	public void nameIsNullAndListIsNotNullCastError() {
-		assertTrue(PA.search(null, PA.getUserList()).isEmpty());
+		try {
+			PA.search(null, PA.getUserList()).isEmpty();
+		} catch (Exception e) {
+			assertTrue(true);
+		}	
 	}
 
 	@When("name is not null and list is null, cast error")
 	public void nameIsNotNullAndListIsNullCastError() {
-		assertTrue(PA.search("Shiloh", null).isEmpty());
+		try {
+			assertTrue(PA.search("Shiloh", null).isEmpty());
+		} catch (Exception e) {
+			assertTrue(true);
+		}
 	}
 
 	@When("name and list is null, cast error")
 	public void nameAndListIsNullCastError() {
-		assertTrue(PA.search(null, null).isEmpty());
+		try {
+			assertTrue(PA.search(null, null).isEmpty());
+		} catch (Exception e) {
+			assertTrue(true);
+		}
 	}
     
     @Given("user exists")
     public void userExists() {
-        PA.findUser("Shiloh Richmond");
+        PA.searchUser("Shiloh Richmond");
     }
 
     @Then("find users activitylist")
@@ -168,7 +180,8 @@ public class ProjectSteps {
     @When("user is free, keep them on the list")
     public void userIsFreeKeepThemOnTheList() {
     	PA.registerHours(PA.getUserList().get(0), "2019-03-03 12:00", "2019-03-03 12:59", null, null);
-    	assertTrue(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0)));
+    	PA.registerHours(PA.getUserList().get(1), "2019-03-03 14:00", "2019-03-03 14:59", null, null);
+    	assertTrue(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0)) && PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(1)));
     }
 
     @When("user is not free, remove them from the list")
@@ -192,5 +205,16 @@ public class ProjectSteps {
     @When("searching for user, returns user")
     public void searchingForUserReturnsUser() {
     	assertTrue(PA.searchUser("Shiloh").contains(PA.getUserList().get(0)));
+    }
+    
+    @When("searching for user, but user dont exist")
+    public void searchingForUserButUserDontExist() {
+    	assertTrue(PA.findUser("###") == null);
+    }
+    
+    @When("looking for user, and user exists")
+    public void lookingForUserAndUserExists() {
+//     	assertTrue(PA.findUser("Shiloh Richmond") == PA.getUserList().get(0));
+     	assertTrue(PA.findUser("Shiloh Richmond") != null);
     }
 }
