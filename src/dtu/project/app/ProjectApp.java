@@ -176,7 +176,7 @@ public class ProjectApp {
         getProjectList().remove(project);
     }
 
-    void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
+    public void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
         for (Activity a : project.getActivities()) {
             if(a.getActivityName().equals(newActivity.getActivityName()))
                 throw new DuplicateActivityName();

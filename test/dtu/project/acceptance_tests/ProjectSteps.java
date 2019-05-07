@@ -10,6 +10,7 @@ import dtu.project.app.Project;
 import dtu.project.app.ProjectApp;
 import dtu.project.app.User;
 import dtu.project.enums.ProjectType;
+import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.repo.InMemoryRepository;
 import dtu.project.repo.UserRepository;
 
@@ -24,12 +25,9 @@ import java.util.regex.PatternSyntaxException;
 
 public class ProjectSteps {
 
-    private static final int User = 0;
-	private static final int List = 0;
 	ProjectApp PA;
 	Project project;
 	Activity activity;
-    
 
     public ProjectSteps(InMemoryRepository MP) {
         this.PA = new ProjectApp(MP, MP);
@@ -44,14 +42,26 @@ public class ProjectSteps {
     	PA.addProject(project);
     }
 
-    @Then("the project exists in the list of projects.")
-    public void theProjectExistsInTheListOfProjects() {
-        assertTrue(!PA.getProjectList().isEmpty());
-    }
-
     @When("time period {string} to {string}.")
     public void timePeriodTo(String string, String string2) {
-        PA.getProjectList().get(0).setTimePeriod(new Event(string, string2));
+        try {
+        	PA.getProjectList().get(0).setTimePeriod(string, string2);
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+        
+        
+    }
+    
+    
+    @Then("the project exists in the list of projects.")
+    public void theProjectExistsInTheListOfProjects() {
+        assertTrue(PA.getProjectList().isEmpty());
+    }
+
+    @When("the user changes the name to {string} .")
+    public void theUserChangesTheNameTo(String string) {
+        PA.getProjectList().get(0).setProjectName(string);
     }
 
     @Given("a project with name {string}, project type INTERNAL.")
@@ -60,11 +70,6 @@ public class ProjectSteps {
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
                 .build());
-    }
-
-    @When("the user changes the name to {string}.")
-    public void theUserChangesTheNameTo(String string) {
-        PA.searchProjects("TestProject").get(0).setProjectName(string);
     }
 
     @Then("the name of the project is test.")
@@ -152,7 +157,8 @@ public class ProjectSteps {
     public void findUsersActivitylist() {
     	project = new Project.Builder().build();
     	try {
-			project.addActivity(new Activity.Builder().setUser(PA.findUser("Shiloh Richmond")).build());
+    		PA.addProject(project);
+    		PA.addActivity(project, new Activity.Builder().setUser(PA.findUser("Shiloh Richmond")).build());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -161,12 +167,20 @@ public class ProjectSteps {
     
     @Then("adds activity")
     public void addsActivity() {
-    	Activity a = new Activity.Builder().build();
+    	Activity a1 = new Activity.Builder().setActivityName("Brian").build();
+    	Activity a2 = new Activity.Builder().setActivityName("Brian").build();
+    	Activity a3 = new Activity.Builder().setActivityName("Ikke Brian").build();
     	Project p = new Project.Builder().build();
     	try {
-			PA.addActivity(p, a);
+    		PA.addProject(p);
+			PA.addActivity(p, a1);
+			assertTrue(PA.getProjectList().get(0).getActivities().contains(a1));
+			PA.addActivity(p, a3);
+			assertTrue(PA.getProjectList().get(0).getActivities().contains(a3));
+			PA.addActivity(p, a2);
 		} catch (Exception e) {
-			e.printStackTrace();
+			assertTrue(!PA.getProjectList().get(0).getActivities().contains(a2));
+			assertEquals(e.getClass(), DuplicateActivityName.class);
 		}
     }
     
@@ -216,5 +230,44 @@ public class ProjectSteps {
     public void lookingForUserAndUserExists() {
 //     	assertTrue(PA.findUser("Shiloh Richmond") == PA.getUserList().get(0));
      	assertTrue(PA.findUser("Shiloh Richmond") != null);
+    }
+    
+    @When("the user adds a project with name {string} and project type INTERNAL, project manager named {string} and time period {string} to {string}.")
+    public void theUserAddsAProjectWithNameAndProjectTypeINTERNALProjectManagerNamedAndTimePeriodTo(String string, String string2, String string3, String string4) {
+        project = new Project.Builder()
+        		.setProjectName(string)
+        		.setProjectType(ProjectType.INTERNAL)
+        		.setProjectManager(PA.findUser(string2))
+        		.setTimePeriod(string3, string4).build();
+    }
+
+    @Given("a project with name {string}")
+    public void aProjectWithName(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("the user adds a project with name {string}")
+    public void theUserAddsAProjectWithName(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @Then("it was unsuccessful")
+    public void itWasUnsuccessful() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("the user adds a project with a end date before start date")
+    public void theUserAddsAProjectWithAEndDateBeforeStartDate() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("the users adds a project with an non-alphanumeric name")
+    public void theUsersAddsAProjectWithAnNonAlphanumericName() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
     }
 }

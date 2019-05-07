@@ -6,7 +6,6 @@
 package dtu.project.gui;
 
 import dtu.project.app.ProjectApp;
-import dtu.project.app.ProjectGUI;
 
 /**
  *

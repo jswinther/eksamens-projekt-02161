@@ -3,8 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dtu.project.app;
+package dtu.project.gui;
 
+import dtu.project.app.Activity;
+import dtu.project.app.Event;
+import dtu.project.app.Period;
+import dtu.project.app.Project;
+import dtu.project.app.ProjectApp;
+import dtu.project.app.User;
+import dtu.project.app.Activity.Builder;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.ProjectRepository;
@@ -207,7 +214,7 @@ public class ProjectGUI {
         PA.removeProject(project);
     }
 
-    void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
+    public void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
         PA.editActivity(project, currentActivity, newActivity);
     }
     

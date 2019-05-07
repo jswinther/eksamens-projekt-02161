@@ -77,7 +77,6 @@ public class ActivitySteps {
 		} catch (Exception e) {
 			assertTrue(e.getClass().equals(DuplicateActivityName.class));
 		}
-    	throw new DuplicateActivityName();
     }
     
     // Test for estimated hours working
@@ -94,23 +93,38 @@ public class ActivitySteps {
     // Test for invalid activity name
     @When("user creates activity named {string} then exception is thrown")
     public void userCreatesActivityNamedThenExceptionIsThrown(String string) {
+    	boolean flag;
     	try {
 			PA.addActivity(project, new Activity.Builder().setActivityName(string).build());
+			flag = false;
 		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
-			assertTrue(e.toString().equals("java.util.regex.PatternSyntaxException:  Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*' near index 0"));
+			flag = true;
 		}
+    	assertTrue(flag);
     }
     
     // Test for invalid activity time period
     @When("user creates activity with time period {string} to {string}, then exception is thrown")
     public void userCreatesActivityWithTimePeriodToThenExceptionIsThrown(String string, String string2) throws DateTimeParseException, DuplicateActivityName {
-        try {
+        boolean flag;
+    	try {
         	PA.addActivity(project, new Activity.Builder().setTimePeriod(string, string2).build());
+        	flag = false;
 		} catch (Exception e) {
-			assertTrue(e.toString().equals("java.time.format.DateTimeParseException: End date: " + string + " must be after start date: " + string2));
+			flag = true;
 		}
+    	assertTrue(flag);
     	
         
+    }
+    // string is a, test for invalid estimated hours.
+    @When("user sets estimated hours to {string} then throw exception")
+    public void userSetsEstimatedHoursToThenThrowException(String string) {
+    	try {
+    		activity = new Activity.Builder(activity).setEstimatedHours(new Integer(string).intValue()).build();
+		} catch (Exception e) {
+			assertTrue(true);
+		}
     }
     
     
