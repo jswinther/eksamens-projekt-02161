@@ -170,11 +170,11 @@ public class SchedulePanel extends PanelTemplate {
 
     private void addPeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPeriodButtonActionPerformed
         try {
-            User u = PA.getUserList().get(selectUserComboBox.getSelectedIndex());
-            PA.registerHours(u,
+            User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
+            PG.registerHours(u,
                     startDateTextField.getText(),
                     endDateTextField.getText(),
-                    activityList.isSelectionEmpty() ? null : PA.getActivitiesAssignedTo(u).get(activityList.getSelectedIndex()),
+                    activityList.isSelectionEmpty() ? null : PG.getActivitiesAssignedTo(u).get(activityList.getSelectedIndex()),
                     messageTextArea.getText());
         } catch (Exception e) {
             System.err.println(e);
@@ -187,9 +187,9 @@ public class SchedulePanel extends PanelTemplate {
     private void editPeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPeriodButtonActionPerformed
         try {
             if (!scheduleList.isSelectionEmpty()) {
-                User u = PA.getUserList().get(selectUserComboBox.getSelectedIndex());
-                Period p = PA.getUserMap().get(u).get(scheduleList.getSelectedIndex());
-                p.setActivity(activityList.isSelectionEmpty() ? null : PA.getActivitiesAssignedTo(u).get(activityList.getSelectedIndex()));
+                User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
+                Period p = PG.getUserMap().get(u).get(scheduleList.getSelectedIndex());
+                p.setActivity(activityList.isSelectionEmpty() ? null : PG.getActivitiesAssignedTo(u).get(activityList.getSelectedIndex()));
                 p.setMessage(messageTextArea.getText());
                 p.setTimePeriod(new Event(startDateTextField.getText(), startDateTextField.getText()));
             }
@@ -203,8 +203,8 @@ public class SchedulePanel extends PanelTemplate {
     private void removePeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePeriodButtonActionPerformed
         try {
             if (!scheduleList.isSelectionEmpty()) {
-                User u = PA.getUserList().get(selectUserComboBox.getSelectedIndex());
-                PA.getUserMap().get(u).remove(scheduleList.getSelectedIndex());
+                User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
+                PG.getUserMap().get(u).remove(scheduleList.getSelectedIndex());
             }
         } catch (Exception e) {
             System.err.println(e);
@@ -219,21 +219,21 @@ public class SchedulePanel extends PanelTemplate {
 
     @Override
     public void initFields() {
-        User u = PA.getUserList().get(selectUserComboBox.getSelectedIndex());
-        selectUserComboBox.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
-        if (PA.getActivitiesAssignedTo(u).isEmpty()) {
+        User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
+        selectUserComboBox.setModel(new DefaultComboBoxModel(PG.getUserList().toArray()));
+        if (PG.getActivitiesAssignedTo(u).isEmpty()) {
             activityList.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             activityList.setEnabled(false);
         } else {
-            activityList.setModel(PA.getUserActivitiesDefaultListModelContaining(u.toString(), ""));
+            activityList.setModel(PG.getUserActivitiesDefaultListModelContaining(u.toString(), ""));
             activityList.setEnabled(true);
         }
 
-        if (PA.getUserMap().get(u).isEmpty()) {
+        if (PG.getUserMap().get(u).isEmpty()) {
             scheduleList.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             scheduleList.setEnabled(false);
         } else {
-            scheduleList.setModel(PA.getUserScheduleDefaultListModelContaining(u.toString(), ""));
+            scheduleList.setModel(PG.getUserScheduleDefaultListModelContaining(u.toString(), ""));
             scheduleList.setEnabled(true);
         }
     }

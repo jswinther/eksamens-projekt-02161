@@ -6,6 +6,7 @@
 package dtu.project.gui;
 
 import dtu.project.app.ProjectApp;
+import dtu.project.app.ProjectGUI;
 import dtu.project.repo.InMemoryRepository;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    public ProjectApp PA;
+    public ProjectGUI PG;
     public MainFrame MF;
     /**
      * Creates new form MainFrame
@@ -25,11 +26,11 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() throws FileNotFoundException {
         InMemoryRepository MR = new InMemoryRepository();
-        this.PA = new ProjectApp(MR, MR);
+        this.PG = new ProjectGUI(MR, MR);
         this.MF = this;
         initComponents();
-        userPanel2.setup(PA, MF);
-        managementPanel1.setup(PA, MF);
+        userPanel2.setup(PG, MF);
+        managementPanel1.setup(PG, MF);
     }
     
     public void updateAll() {

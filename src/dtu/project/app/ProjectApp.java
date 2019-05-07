@@ -70,49 +70,6 @@ public class ProjectApp {
     }
 
     /**
-     * Jonathan Converts a list of elements in to a default list model which is
-     * used for the GUI. otherwise this code will be repeated and we want to
-     * follow the DRY principle.
-     *
-     * @param <E>
-     * @param list
-     * @return
-     */
-    private <E> DefaultListModel<String> listToDefaultListModel(List<E> list) {
-        return new DefaultListModel<String>() {
-            {
-                list.forEach((e) -> {
-                    addElement(e.toString());
-                });
-            }
-        };
-    }
-
-    public DefaultListModel<String> getUserDefaultListModel() {
-        return listToDefaultListModel(getUserList());
-    }
-
-    public DefaultListModel<String> getProjectDefaultListModel() {
-        return listToDefaultListModel(getProjectList());
-    }
-
-    public DefaultListModel<String> getUserDefaultListModelContaining(String searchText) {
-        return listToDefaultListModel(searchUser(searchText));
-    }
-
-    public DefaultListModel<String> getProjectDefaultListModelContaining(String searchText) {
-        return listToDefaultListModel(searchProjects(searchText));
-    }
-
-    public DefaultListModel<String> getUserActivitiesDefaultListModelContaining(String userName, String searchText) {
-        return listToDefaultListModel(search(searchText, getActivitiesAssignedTo(searchUser(userName).get(0))));
-    }
-
-    public DefaultListModel<String> getUserScheduleDefaultListModelContaining(String userName, String searchText) {
-        return listToDefaultListModel(search(searchText, new ArrayList<>(getUserMap().get(searchUser(userName).get(0)))));
-    }
-
-    /**
      * Jonathan Returns all projects that contain the search text.
      *
      * @param searchText
@@ -219,5 +176,13 @@ public class ProjectApp {
      */
     public void removeProject(Project project) {
         getProjectList().remove(project);
+    }
+
+    void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
+        for (Activity a : project.getActivities()) {
+            if(a.getActivityName().equals(newActivity.getActivityName()))
+                throw new DuplicateActivityName();
+        }
+        currentActivity = newActivity;
     }
 }

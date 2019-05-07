@@ -129,7 +129,7 @@ public class UserPanel extends PanelTemplate {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        jList1.setModel(PA.getUserDefaultListModelContaining(jTextField1.getText()));
+        jList1.setModel(PG.getUserDefaultListModelContaining(jTextField1.getText()));
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
@@ -139,12 +139,12 @@ public class UserPanel extends PanelTemplate {
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
         if (jList1.getSelectedIndex() != -1) {
             if (jList1.getSelectedIndex() != -1) {
-                if (!PA.getActivitiesAssignedTo(PA.getUserList().get(jList1.getSelectedIndex())).isEmpty()) {
-                    jList2.setModel(PA.getUserActivitiesDefaultListModelContaining(jList1.getSelectedValue(), jTextField2.getText()));
+                if (!PG.getActivitiesAssignedTo(PG.getUserList().get(jList1.getSelectedIndex())).isEmpty()) {
+                    jList2.setModel(PG.getUserActivitiesDefaultListModelContaining(jList1.getSelectedValue(), jTextField2.getText()));
                 }
                 
-                if (!PA.getUserMap().get(PA.findUser(jList1.getSelectedValue())).isEmpty()) {
-                    jList3.setModel(PA.getUserScheduleDefaultListModelContaining(jList1.getSelectedValue(), jTextField3.getText()));
+                if (!PG.getUserMap().get(PG.findUser(jList1.getSelectedValue())).isEmpty()) {
+                    jList3.setModel(PG.getUserScheduleDefaultListModelContaining(jList1.getSelectedValue(), jTextField3.getText()));
                 }
                 
             }
@@ -172,7 +172,7 @@ public class UserPanel extends PanelTemplate {
 
     @Override
     public void initFields() {
-        jList1.setModel(PA.getUserDefaultListModel());
+        jList1.setModel(PG.getUserDefaultListModel());
 
     }
 }
