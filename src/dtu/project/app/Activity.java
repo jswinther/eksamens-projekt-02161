@@ -18,8 +18,8 @@ public class Activity {
     private String activityName;
     private List<User> users;
     private int estimatedHours;
-    private Map<User, List<Event>> registeredHours;
-    private Event timePeriod;
+    private Map<User, List<TimePeriod>> registeredHours;
+    private TimePeriod timePeriod;
 
     /**
      * Creates an object of type Activity with Builder Pattern.
@@ -41,7 +41,7 @@ public class Activity {
      * on the given activity.
      * @param timePeriod the period that this activity is running.
      */
-    private Activity(String activityName, List<User> users, int estimatedHours, Map<User, List<Event>> registeredHours, Event timePeriod) {
+    private Activity(String activityName, List<User> users, int estimatedHours, Map<User, List<TimePeriod>> registeredHours, TimePeriod timePeriod) {
         this.activityName = activityName;
         this.users = users;
         this.estimatedHours = estimatedHours;
@@ -59,8 +59,8 @@ public class Activity {
         private String activityName;
         private List<User> users = new ArrayList<>();
         private int estimatedHours;
-        private Map<User, List<Event>> registeredHours = new HashMap<>();
-        private Event timePeriod;
+        private Map<User, List<TimePeriod>> registeredHours = new HashMap<>();
+        private TimePeriod timePeriod;
 
         /**
          * Empty constructor, creates a clean Activity from scratch.
@@ -135,13 +135,13 @@ public class Activity {
             return this;
         }
 
-        public Builder setRegisteredHours(Map<User, List<Event>> registeredHours) throws NullPointerException {
+        public Builder setRegisteredHours(Map<User, List<TimePeriod>> registeredHours) throws NullPointerException {
             this.registeredHours = registeredHours;
             return this;
         }
 
         public Builder setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
-        	Event event = new Event(startDate, endDate);
+        	TimePeriod event = new TimePeriod(startDate, endDate);
 			if(event.getEndDate().isAfter(event.getStartDate()))
 				this.timePeriod = event; //new Event(startDate, endDate);
 			else throw new DateTimeParseException("End date: " + endDate + " must be after start date: " + startDate, endDate, 0);
@@ -174,13 +174,13 @@ public class Activity {
 
 
 
-	public Map<User, List<Event>> getRegisteredHours() {
+	public Map<User, List<TimePeriod>> getRegisteredHours() {
 		return registeredHours;
 	}
 
 
 
-	public Event getTimePeriod() {
+	public TimePeriod getTimePeriod() {
 		return timePeriod;
 	}
 

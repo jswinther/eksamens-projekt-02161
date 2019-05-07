@@ -1,7 +1,7 @@
 package dtu.project.repo;
 
+import dtu.project.app.TimePeriod;
 import dtu.project.app.Event;
-import dtu.project.app.Period;
 import dtu.project.app.Project;
 import dtu.project.app.User;
 
@@ -17,7 +17,7 @@ import java.util.TreeMap;
 
 public class InMemoryRepository implements UserRepository, ProjectRepository {
 
-    private Map<User, List<Period>> userMap;
+    private Map<User, List<Event>> userMap;
     private List<Project> projectList;
     private final Scanner reader;
 
@@ -37,7 +37,7 @@ public class InMemoryRepository implements UserRepository, ProjectRepository {
     }
 
     @Override
-    public Map<User, List<Period>> getUserMap() {
+    public Map<User, List<Event>> getUserMap() {
         return this.userMap;
     }
 }

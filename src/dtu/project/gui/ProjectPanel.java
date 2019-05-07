@@ -5,7 +5,7 @@
  */
 package dtu.project.gui;
 
-import dtu.project.app.Event;
+import dtu.project.app.TimePeriod;
 import dtu.project.app.Project;
 import dtu.project.enums.ProjectType;
 import dtu.project.exceptions.DuplicateProjectName;
@@ -192,7 +192,7 @@ public class ProjectPanel extends PanelTemplate {
                     .setProjectType(ProjectType.valueOf(projectTypeComboBox1.getItemAt(projectTypeComboBox1.getSelectedIndex())))
                     .build();
             if (projectTimePeriodUndefinedCheckBox1.isSelected()) {
-                p.setTimePeriod(new Event(projectStartDateTextField1.getText(), projectEndDateTextField1.getText()));
+                p.setTimePeriod(new TimePeriod(projectStartDateTextField1.getText(), projectEndDateTextField1.getText()));
             }
             if (!projectManagerList.isSelectionEmpty()) {
                 p.setProjectManager(PG.getUserList().get(projectManagerList.getSelectedIndex()));
@@ -213,7 +213,7 @@ public class ProjectPanel extends PanelTemplate {
                     .setProjectType(ProjectType.valueOf(projectTypeComboBox1.getItemAt(projectTypeComboBox1.getSelectedIndex())))
                     .build());
             if (projectTimePeriodUndefinedCheckBox1.isSelected()) {
-                PG.getProjectList().get(projectSelectComboBox1.getSelectedIndex()).setTimePeriod(new Event(projectStartDateTextField1.getText(), projectEndDateTextField1.getText()));
+                PG.getProjectList().get(projectSelectComboBox1.getSelectedIndex()).setTimePeriod(new TimePeriod(projectStartDateTextField1.getText(), projectEndDateTextField1.getText()));
             }
             if (!projectManagerList.isSelectionEmpty()) {
                 PG.getProjectList().get(projectSelectComboBox1.getSelectedIndex()).setProjectManager(PG.getUserList().get(projectManagerList.getSelectedIndex()));

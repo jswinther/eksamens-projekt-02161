@@ -6,8 +6,8 @@
 package dtu.project.gui;
 
 import dtu.project.app.Activity;
+import dtu.project.app.TimePeriod;
 import dtu.project.app.Event;
-import dtu.project.app.Period;
 import dtu.project.app.User;
 import java.time.format.DateTimeParseException;
 import java.util.Optional;
@@ -188,10 +188,10 @@ public class SchedulePanel extends PanelTemplate {
         try {
             if (!scheduleList.isSelectionEmpty()) {
                 User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
-                Period p = PG.getUserMap().get(u).get(scheduleList.getSelectedIndex());
+                Event p = PG.getUserMap().get(u).get(scheduleList.getSelectedIndex());
                 p.setActivity(activityList.isSelectionEmpty() ? null : PG.getActivitiesAssignedTo(u).get(activityList.getSelectedIndex()));
                 p.setMessage(messageTextArea.getText());
-                p.setTimePeriod(new Event(startDateTextField.getText(), startDateTextField.getText()));
+                p.setTimePeriod(new TimePeriod(startDateTextField.getText(), startDateTextField.getText()));
             }
         } catch (DateTimeParseException e) {
             System.err.println(e);

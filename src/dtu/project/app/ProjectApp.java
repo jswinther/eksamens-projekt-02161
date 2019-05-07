@@ -26,17 +26,17 @@ public class ProjectApp {
     }
 
     public void registerHours(User user, String startDate, String endDate, Activity activity, String message) {
-        getUserMap().get(user).add(new Period(startDate, endDate, activity, message));
+        getUserMap().get(user).add(new Event(startDate, endDate, activity, message));
     }
 
     public List<User> usersWhoAreFreeAt(String startDate, String endDate) {
-        Event event = new Event(startDate, endDate);
+        TimePeriod event = new TimePeriod(startDate, endDate);
         List<User> users = getUserList();
 
-        for (Map.Entry<User, List<Period>> entry : getUserMap().entrySet()) {
+        for (Map.Entry<User, List<Event>> entry : getUserMap().entrySet()) {
             User key = entry.getKey();
-            List<Period> value = entry.getValue();
-            for (Period period : value) {
+            List<Event> value = entry.getValue();
+            for (Event period : value) {
                 if (overlaps(event, period)) {
                     users.remove(key);
                 }
@@ -45,7 +45,7 @@ public class ProjectApp {
         return users;
     }
 
-    private boolean overlaps(Event event, Period period) {
+    private boolean overlaps(TimePeriod event, Event period) {
         return !(event.getEndDate().isBefore(period.getTimePeriod().getStartDate()) || event.getStartDate().isAfter(period.getTimePeriod().getEndDate()));
     }
 
@@ -143,7 +143,7 @@ public class ProjectApp {
         return new ArrayList<>(userRepository.getUserMap().keySet());
     }
 
-    public Map<User, List<Period>> getUserMap() {
+    public Map<User, List<Event>> getUserMap() {
         return userRepository.getUserMap();
     }
 

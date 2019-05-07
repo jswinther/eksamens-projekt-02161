@@ -12,11 +12,11 @@ public class Project {
     private String projectName;
     private ProjectType projectType;
     private User projectManager;
-    private Event timePeriod;
+    private TimePeriod timePeriod;
     private List<Activity> activities = new ArrayList<>();;
     
 
-    private Project(String projectName, ProjectType projectType, User projectManager, Event timePeriod) {
+    private Project(String projectName, ProjectType projectType, User projectManager, TimePeriod timePeriod) {
         this.projectName = projectName;
         this.projectType = projectType;
         this.projectManager = projectManager;
@@ -33,7 +33,7 @@ public class Project {
 
         private String projectName;
         private ProjectType projectType;
-        private Event timePeriod;
+        private TimePeriod timePeriod;
         private User projectManager;
 
         public Builder() {
@@ -55,7 +55,7 @@ public class Project {
         }
 
         public Builder setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
-            Event event = new Event(startDate, endDate);
+            TimePeriod event = new TimePeriod(startDate, endDate);
             if (event.getEndDate().isAfter(event.getStartDate())) {
                 this.timePeriod = event; //new Event(startDate, endDate);
             } else {
@@ -103,12 +103,12 @@ public class Project {
 		this.projectManager = projectManager;
 	}
 
-	public Event getTimePeriod() {
+	public TimePeriod getTimePeriod() {
 		return timePeriod;
 	}
 
 	public void setTimePeriod(String startDate, String endDate) {
-		Event event = new Event(startDate, endDate);
+		TimePeriod event = new TimePeriod(startDate, endDate);
         if (event.getEndDate().isAfter(event.getStartDate())) {
             this.timePeriod = event; //new Event(startDate, endDate);
         } else {
@@ -116,7 +116,7 @@ public class Project {
         }
 	}
 	
-	public void setTimePeriod(Event event) {
+	public void setTimePeriod(TimePeriod event) {
         if (event.getEndDate().isAfter(event.getStartDate())) {
             this.timePeriod = event; //new Event(startDate, endDate);
         } else {

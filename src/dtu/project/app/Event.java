@@ -1,46 +1,60 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dtu.project.app;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
+/**
+ *
+ * @author Jonathan
+ */
 public class Event {
+    private TimePeriod timePeriod;
+    private Activity activity;
+    private String message;
 
-    private LocalDateTime startDate = null;
-    private LocalDateTime endDate = null;
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    
+    
 
-    /**
-     *
-     * @param startDate
-     * @param endDate
-     */
-    public Event(String startDate, String endDate) throws DateTimeParseException {
-        this.startDate = LocalDateTime.parse(startDate, formatter);
-        this.endDate = LocalDateTime.parse(endDate, formatter);
+
+	public Event(String startDate, String endDate, Activity activity, String message) {
+        if(activity != null)
+            this.activity = activity;
+        if(message != null)
+            this.message = message;
+        this.timePeriod = new TimePeriod(startDate, endDate);
     }
 
-    public LocalDateTime getStartDate() {
-        return this.startDate;
+    public TimePeriod getTimePeriod() {
+        return timePeriod;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-    	this.startDate = startDate;
+    public void setTimePeriod(TimePeriod timePeriod) {
+        this.timePeriod = timePeriod;
     }
 
-    public LocalDateTime getEndDate() {
-        return this.endDate;
+    public Activity getActivity() {
+        return activity;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+    
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
     public String toString() {
-        return "Event{"
-                + "startDate=" + (startDate == null ? "undefined" : startDate.format(formatter))
-                + ", endDate=" + (endDate == null ? "undefined" : endDate.format(formatter))
-                + '}';
+        return message + (activity != null ? activity.getActivityName() : "") + " " + timePeriod;
     }
+    
+    
+    
 }

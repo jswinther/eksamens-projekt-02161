@@ -4,23 +4,15 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.app.Activity;
-import dtu.project.app.Event;
-import dtu.project.app.Period;
+import dtu.project.app.TimePeriod;
 import dtu.project.app.Project;
 import dtu.project.app.ProjectApp;
-import dtu.project.app.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.exceptions.DuplicateActivityName;
+import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.InMemoryRepository;
-import dtu.project.repo.UserRepository;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Map;
 import java.util.regex.PatternSyntaxException;
 
 public class ProjectSteps {
@@ -95,7 +87,7 @@ public class ProjectSteps {
     @When("time period {string} to {string} then exception thrown")
     public void timePeriodToThenExceptionThrown(String string, String string2) {
     	try {
-    		PA.getProjectList().get(0).setTimePeriod(new Event(string, string2));
+    		PA.getProjectList().get(0).setTimePeriod(new TimePeriod(string, string2));
 		} catch (Exception e) {
 			assertTrue(true);
 		}
@@ -240,34 +232,51 @@ public class ProjectSteps {
         		.setProjectManager(PA.findUser(string2))
         		.setTimePeriod(string3, string4).build();
     }
-
-    @Given("a project with name {string}")
-    public void aProjectWithName(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    
+    @Given("a project that has at least one activity which has at least one user")
+    public void aProjectThatHasAtLeastOneActivityWhichHasAtLeastOneUser() {
+        project = new Project.Builder()
+        		.setProjectName("Screen Recorder Software")
+        		.build();
+    	try {
+			PA.addProject(project);
+		} catch (DuplicateProjectName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	assertTrue(PA.getProjectList().contains(project));
+    	activity = new Activity.Builder().setActivityName("Design").setUser(PA.findUser("Shiloh Richmond")).build();
+    	try {
+			PA.addActivity(project, activity);
+		} catch (DuplicateActivityName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	assertTrue(project.getActivities().contains(activity));
     }
 
-    @When("the user adds a project with name {string}")
-    public void theUserAddsAProjectWithName(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    @When("user registers hours")
+    public void userRegistersHours() {
+        PA.registerHours(PA.getUserList().get(0), "2019-05-05 13:13", "2019-06-06 13:13", PA.getActivitiesAssignedTo(PA.getUserList().get(0)).get(0), "troll");
     }
 
-    @Then("it was unsuccessful")
-    public void itWasUnsuccessful() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    @Then("an event is added to user schedule")
+    public void anEventIsAddedToUserSchedule() {
+        assertTrue(!PA.getUserMap().get(PA.findUser("Shiloh Richmond")).isEmpty());
+    }
+    
+    @When("user edits hours")
+    public void userEditsHours() {
+        PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).setActivity(activity);
+        PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).setMessage("cake");
+        PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).setTimePeriod(new TimePeriod("2023-05-05 13:13", "2024-05-05 13:13"));
     }
 
-    @When("the user adds a project with a end date before start date")
-    public void theUserAddsAProjectWithAEndDateBeforeStartDate() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }
-
-    @When("the users adds a project with an non-alphanumeric name")
-    public void theUsersAddsAProjectWithAnNonAlphanumericName() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    @Then("the event is changed")
+    public void theEventIsChanged() {
+    	assertTrue(PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).getActivity().equals(activity));
+    	assertTrue(PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).getMessage().equals("cake"));
+    	assertTrue(PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).getTimePeriod().toString().equals(new TimePeriod("2023-05-05 13:13", "2024-05-05 13:13").toString()));
+        
     }
 }

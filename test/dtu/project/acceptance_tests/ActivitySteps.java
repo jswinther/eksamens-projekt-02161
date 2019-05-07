@@ -4,7 +4,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.app.Activity;
-import dtu.project.app.Event;
+import dtu.project.app.TimePeriod;
 import dtu.project.app.Project;
 import dtu.project.app.ProjectApp;
 import dtu.project.app.User;

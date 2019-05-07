@@ -6,8 +6,8 @@
 package dtu.project.gui;
 
 import dtu.project.app.Activity;
+import dtu.project.app.TimePeriod;
 import dtu.project.app.Event;
-import dtu.project.app.Period;
 import dtu.project.app.Project;
 import dtu.project.app.ProjectApp;
 import dtu.project.app.User;
@@ -102,11 +102,11 @@ public class ProjectGUI {
                     + "\nTime Period:\t\t" + activity.getTimePeriod().getStartDate() + " to " + activity.getTimePeriod().getEndDate()
                     + "\nEstimated Hours:\t" + activity.getEstimatedHours());
             counter++;
-            for (Map.Entry<User, List<Event>> entry : activity.getRegisteredHours().entrySet()) {
+            for (Map.Entry<User, List<TimePeriod>> entry : activity.getRegisteredHours().entrySet()) {
                 User key = entry.getKey();
                 System.out.println(key + " registered these activites");
-                List<Event> value = entry.getValue();
-                for (Event event : value) {
+                List<TimePeriod> value = entry.getValue();
+                for (TimePeriod event : value) {
                     System.out.println(event);
                 }
             }
@@ -198,7 +198,7 @@ public class ProjectGUI {
         return PA.getUserList();
     }
 
-    public Map<User, List<Period>> getUserMap() {
+    public Map<User, List<Event>> getUserMap() {
         return PA.getUserMap();
     }
 
