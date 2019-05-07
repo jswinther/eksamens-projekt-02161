@@ -104,70 +104,12 @@ public class ProjectSteps {
     @When("user adds a project with name {string}, project type INTERNAL.")
     public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
         PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
-    }
+    }    
 
-
-    /*
-     * Test der skal sikre sig mod duplicate
-    @Then("exception is thrown.")
-    public void exceptionIsThrown() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }
-	*/
-//    @When("user adds a project with name {string}, project type INTERNAL.")
-//    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new cucumber.api.PendingException();
-//    }
-//
-//    @Then("the user is now assigned to project as project manager.")
-//    public void theUserIsNowAssignedToProjectAsProjectManager() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new cucumber.api.PendingException();
-//    }
-    
-
-	@Then("user hours is registered")
-	public void userHoursIsRegistered() {
-		PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:30", "2019-03-03 13:40", null, null);
-	   // throw new cucumber.api.PendingException();
+	@Then("user hours is registered {string} to {string}")
+	public void userHoursIsRegisteredTo(String string, String string2) {
+		PA.registerHours(PA.getUserList().get(0), string, string2, null, null);
 	}
-
-
-//    @Then("remove from list of free users")
-//    public void removeFromListOfFreeUsers() {
-////    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:33", "2019-03-03 13:39", null, null);
-//    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:25", "2019-03-03 13:35", null, null);
-//    	PA.registerHours(PA.getUserList().get(1), "2019-03-03 13:25", "2019-03-03 13:29", null, null);
-//    	PA.registerHours(PA.getUserList().get(2), "2019-03-03 13:35", "2019-03-03 13:45", null, null);
-//    	if(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))) {
-//    		assertTrue(false);
-//    	}
-//    	else assertTrue(true);
-//    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(1));
-//    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(2));
-//    }
-    
-//    @Given("both searchtext and searchlist is null")
-//    public void bothSearchtextAndSearchlistIsNull() {
-//    	assertTrue(PA.search(null, null).isEmpty());
-//    }
-//
-//    @Given("searchtext is null")
-//    public void searchtextIsNull() {
-//		assertTrue(PA.search(null, PA.getUserList()).isEmpty());
-//    }
-//
-//    @Then("list is empty")
-//    public void listIsEmpty() {
-//        assertTrue(PA.search(null, null).isEmpty());
-//    }
-//    
-//    @Given("searchlist is null")
-//    public void searchlistIsNull() {
-//		assertTrue(PA.search("Shiloh Richmond", null).isEmpty());
-//    }
 	
 	@When("name is not null, and list is not null, return search")
 	public void nameIsNotNullAndListIsNotNullReturnSearch() {
@@ -251,8 +193,4 @@ public class ProjectSteps {
     public void searchingForUserReturnsUser() {
     	assertTrue(PA.searchUser("Shiloh").contains(PA.getUserList().get(0)));
     }
-    
-    
 }
-
-

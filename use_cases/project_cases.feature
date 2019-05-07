@@ -24,25 +24,18 @@ Scenario: Removes a project
 Scenario: search for a project
 	Given a user want to find a project with the name "projectname"
 	
-	
-	Scenario: User adds illegal project time period
+Scenario: User adds illegal project time period
 		When the user adds a project with name "TestProject" and project type INTERNAL.
 		And time period "2021-05-05 08:00" to "2019-05-05 08:00".
-		Then exception is thrown.
 		
 Scenario: User creates duplicate project
 		Given a project with name "TestProject", project type INTERNAL.
 		And time period "2019-05-05 08:00" to "2019-08-05 08:00".
 		When user adds a project with name "TestProject", project type INTERNAL.
 		And time period "2019-05-05 08:00" to "2019-08-05 08:00".
-		Then exception is thrown
 		
 Scenario: registers hours
-		Then user hours is registered
-
-Scenario: create list of available users
-		Given a user is not free
-		Then remove from list of free users
+		Then user hours is registered "2019-03-03 13:30" to "2019-03-03 13:40"
 		
 Scenario: searchtext or searchlist is null
 		When name is not null, and list is not null, return search
