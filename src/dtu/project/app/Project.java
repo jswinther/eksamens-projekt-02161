@@ -44,6 +44,7 @@ public class Project {
             if (projectName.matches("[a-zA-Z1-9]+[ a-zA-Z1-9]*")) {
                 this.projectName = projectName;
             } else {
+            	// mangler
                 throw new PatternSyntaxException(projectName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", projectName, 0);
             }
             return this;
@@ -83,10 +84,11 @@ public class Project {
 		if (projectName.matches("[a-zA-Z1-9]+[ a-zA-Z1-9]*")) {
             this.projectName = projectName;
         } else {
+        	// mangler
             throw new PatternSyntaxException(projectName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", projectName, 0);
         }
 	}
-
+	// mangler start
 	public ProjectType getProjectType() {
 		return projectType;
 	}
@@ -106,7 +108,7 @@ public class Project {
 	public TimePeriod getTimePeriod() {
 		return timePeriod;
 	}
-
+	// mangler slut
 	public void setTimePeriod(String startDate, String endDate) {
 		TimePeriod event = new TimePeriod(startDate, endDate);
         if (event.getEndDate().isAfter(event.getStartDate())) {
@@ -115,7 +117,7 @@ public class Project {
             throw new DateTimeParseException("End date: " + endDate + " must be after start date: " + startDate, endDate, 0);
         }
 	}
-	
+	// mangler
 	public void setTimePeriod(TimePeriod event) {
         if (event.getEndDate().isAfter(event.getStartDate())) {
             this.timePeriod = event; //new Event(startDate, endDate);

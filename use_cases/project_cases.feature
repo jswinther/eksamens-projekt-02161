@@ -1,10 +1,26 @@
 Feature: Project Manipulation
 
-Scenario: User adds a project with name and project type.
+Scenario: User adds a project with name, project type, project manager and timeperiod.
     When the user adds a project with name "TestProject" and project type INTERNAL, project manager named "Shiloh Richmond" and time period "2019-01-01 11:11" to "2019-02-02 11:11".
     Then the project exists in the list of projects.
     
+Scenario: User adds project with name
+		When the user adds a project with name "TestProject"
+		Then a project named "TestProject" exists
 		
+Scenario: User adds project with project type
+		When the user adds a project with type INTERNAL
+		Then a project of that type exists
+		
+Scenario: User adds project with project manager
+		When the user adds a project with a project manager named "Shiloh Richmond" 
+		Then a project with a project manager named "Shiloh Richmond" exists
+		
+Scenario: User adds a project with a time period
+		When the user adds a project with a time period "2019-05-05 08:00" to "2019-08-05 23:59".
+		Then a project exists with a startDate "2019-05-05 08:00" 
+		And an end date "2019-08-05 23:59".
+
 Scenario: User edits a project
     Given a project with name "TestProject", project type INTERNAL.
     And time period "2019-05-05 08:00" to "2019-08-05 23:59".
