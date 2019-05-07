@@ -189,14 +189,12 @@ public class ActivityPanel extends PanelTemplate {
 
     private void addActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActivityButtonActionPerformed
         try {
-            PA.addActivity(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()),
-                    new Activity.Builder()
-                            .setActivityName(activityNameTextField1.getText())
-                            .setEstimatedHours(Integer.valueOf(estimatedHoursTextField1.getText()))
-                            .setTimePeriod(activityStartDateTextField1.getText(), activityEndDateTextField1.getText())
-                            .setUser(PA.getUserList().get(activityUserComboBox1.getSelectedIndex()))
-                            .build());
-
+            PG.addActivityButton(projectListComboBox1, 
+                    activityNameTextField1, 
+                    estimatedHoursTextField1, 
+                    activityStartDateTextField1, 
+                    activityEndDateTextField1, 
+                    activityUserComboBox1);
         } catch (DuplicateActivityName | NumberFormatException | DateTimeParseException | PatternSyntaxException e) {
             System.err.println(e);
         }
@@ -206,25 +204,15 @@ public class ActivityPanel extends PanelTemplate {
 
     private void editActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActivityButtonActionPerformed
         try {
-            PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().set(activitySelectComboBox1.getSelectedIndex(),
-                    new Activity.Builder(
-                            PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().get(activitySelectComboBox1.getSelectedIndex())
-                    )
-                            .setActivityName(activityNameTextField1.getText())
-                            .setEstimatedHours(Integer.valueOf(estimatedHoursTextField1.getText()))
-                            .setTimePeriod(activityStartDateTextField1.getText(), activityEndDateTextField1.getText())
-                            .setUser(PA.getUserList().get(activityUserComboBox1.getSelectedIndex()))
-                            .build());
-        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | DateTimeParseException | PatternSyntaxException e) {
+            PG.editActivity(projectListComboBox1, activitySelectComboBox1, activityNameTextField1, estimatedHoursTextField1, activityStartDateTextField1, activityEndDateTextField1, activityUserComboBox1);
+        } catch (DuplicateActivityName e) {
             System.err.println(e);
         }
-        PA.generateReport(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()));
         MF.updateAll();
     }//GEN-LAST:event_editActivityButtonActionPerformed
 
     private void removeActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActivityButtonActionPerformed
-        PA.removeActivity(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()),
-                PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().get(activitySelectComboBox1.getSelectedIndex()));
+        PG.removeActivity(projectListComboBox1, activitySelectComboBox1);
         MF.updateAll();
     }//GEN-LAST:event_removeActivityButtonActionPerformed
 
@@ -251,25 +239,25 @@ public class ActivityPanel extends PanelTemplate {
 
     @Override
     public void initFields() {
-        activityUserComboBox1.setModel(new DefaultComboBoxModel(PA.getUserList().toArray()));
-        if (PA.getProjectList().isEmpty()) {
+        activityUserComboBox1.setModel(new DefaultComboBoxModel(PG.getUserList().toArray()));
+        if (PG.getProjectList().isEmpty()) {
             projectListComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             activitySelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             addActivityButton.setEnabled(false);
             editActivityButton.setEnabled(false);
             removeActivityButton.setEnabled(false);
-        } else if (PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().isEmpty()) {
+        } else if (PG.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().isEmpty()) {
             addActivityButton.setEnabled(true);
             editActivityButton.setEnabled(false);
             removeActivityButton.setEnabled(false);
-            projectListComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
+            projectListComboBox1.setModel(new DefaultComboBoxModel(PG.getProjectList().toArray()));
             activitySelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
         } else {
             addActivityButton.setEnabled(true);
             editActivityButton.setEnabled(true);
             removeActivityButton.setEnabled(true);
-            projectListComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().toArray()));
-            activitySelectComboBox1.setModel(new DefaultComboBoxModel(PA.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().toArray()));
+            projectListComboBox1.setModel(new DefaultComboBoxModel(PG.getProjectList().toArray()));
+            activitySelectComboBox1.setModel(new DefaultComboBoxModel(PG.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().toArray()));
 
         }
 

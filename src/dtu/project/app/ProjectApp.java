@@ -70,49 +70,6 @@ public class ProjectApp {
     }
 
     /**
-     * Jonathan Converts a list of elements in to a default list model which is
-     * used for the GUI. otherwise this code will be repeated and we want to
-     * follow the DRY principle.
-     *
-     * @param <E>
-     * @param list
-     * @return
-     */
-    private <E> DefaultListModel<String> listToDefaultListModel(List<E> list) {
-        return new DefaultListModel<String>() {
-            {
-                list.forEach((e) -> {
-                    addElement(e.toString());
-                });
-            }
-        };
-    }
-
-    public DefaultListModel<String> getUserDefaultListModel() {
-        return listToDefaultListModel(getUserList());
-    }
-
-    public DefaultListModel<String> getProjectDefaultListModel() {
-        return listToDefaultListModel(getProjectList());
-    }
-
-    public DefaultListModel<String> getUserDefaultListModelContaining(String searchText) {
-        return listToDefaultListModel(searchUser(searchText));
-    }
-
-    public DefaultListModel<String> getProjectDefaultListModelContaining(String searchText) {
-        return listToDefaultListModel(searchProjects(searchText));
-    }
-
-    public DefaultListModel<String> getUserActivitiesDefaultListModelContaining(String userName, String searchText) {
-        return listToDefaultListModel(search(searchText, getActivitiesAssignedTo(searchUser(userName).get(0))));
-    }
-
-    public DefaultListModel<String> getUserScheduleDefaultListModelContaining(String userName, String searchText) {
-        return listToDefaultListModel(search(searchText, new ArrayList<>(getUserMap().get(searchUser(userName).get(0)))));
-    }
-
-    /**
      * Jonathan Returns all projects that contain the search text.
      *
      * @param searchText
@@ -161,71 +118,6 @@ public class ProjectApp {
     }
 
     /**
-     * Jonathan
-     *
-     * @param findType
-     * @param event
-     * @return
-     */
-    /*
-    public List<User> findUser(FindType findType, Event event) {
-        List<User> users = null;
-        switch (findType) {
-            case FREE:
-                users = getUserList();
-                for (User user : users) {
-                    for (Activity key : user.getSchedule().keySet()) {
-                        for (Event e : user.getSchedule().get(key)) {
-                            if (!(event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
-                                users.remove(user);
-                            }
-                        }
-                    }
-                }
-                break;
-            case UNAVAILABLE:
-                users = getUserList();
-                for (User user : users) {
-                    for (Activity key : user.getSchedule().keySet()) {
-                        for (Event e : user.getSchedule().get(key)) {
-                            if (!(event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
-                                users.add(user);
-                            }
-                        }
-                    }
-                }
-                break;
-        }
-        return users;
-    }*/
-    public void generateReport(Project project) {
-        int counter = 0;
-        System.out.println(""
-                + "\nProject Name:\t\t" + project.getProjectName()
-                + "\nProject Type:\t\t" + project.getProjectType()
-                + "\nManager:\t\t" + (project.getProjectManager() == null ? "not decided" : project.getProjectManager())
-                + "\nTime Period:\t\t" + project.getTimePeriod().getStartDate() + " to " + project.getTimePeriod().getEndDate()
-                + "\n\nActivity Status\n___________________________\n");
-        for (Activity activity : project.getActivities()) {
-            System.out.println("Activity Number:\t" + counter
-                    + "\nActivity Name:\t\t" + activity.getActivityName()
-                    + "\nResponsible:\t\t" + activity.getUsers().get(0)
-                    + "\nTime Period:\t\t" + activity.getTimePeriod().getStartDate() + " to " + activity.getTimePeriod().getEndDate()
-                    + "\nEstimated Hours:\t" + activity.getEstimatedHours());
-            counter++;
-            for (Map.Entry<User, List<Event>> entry : activity.getRegisteredHours().entrySet()) {
-                User key = entry.getKey();
-                System.out.println(key + " registered these activites");
-                List<Event> value = entry.getValue();
-                for (Event event : value) {
-                    System.out.println(event);
-                }
-            }
-            System.out.println("\n");
-        }
-    }
-
-    /**
      *
      * @param project
      * @param activity
@@ -247,22 +139,6 @@ public class ProjectApp {
      */
     public void removeActivity(Project project, Activity activity) {
         project.removeActivity(activity);
-    }
-
-    public UserRepository getUserRepository() {
-        return this.userRepository;
-    }
-
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public ProjectRepository getProjectRepository() {
-        return this.projectRepository;
-    }
-
-    public void setProjectRepository(ProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
     }
 
     public List<User> getUserList() {
@@ -300,5 +176,13 @@ public class ProjectApp {
      */
     public void removeProject(Project project) {
         getProjectList().remove(project);
+    }
+
+    void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
+        for (Activity a : project.getActivities()) {
+            if(a.getActivityName().equals(newActivity.getActivityName()))
+                throw new DuplicateActivityName();
+        }
+        currentActivity = newActivity;
     }
 }

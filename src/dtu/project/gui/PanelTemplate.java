@@ -6,6 +6,7 @@
 package dtu.project.gui;
 
 import dtu.project.app.ProjectApp;
+import dtu.project.app.ProjectGUI;
 
 /**
  *
@@ -13,7 +14,7 @@ import dtu.project.app.ProjectApp;
  */
 public abstract class PanelTemplate extends javax.swing.JPanel {
 
-    public ProjectApp PA;
+    public ProjectGUI PG;
     public MainFrame MF;
 
     /**
@@ -23,8 +24,8 @@ public abstract class PanelTemplate extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void setup(ProjectApp PA, MainFrame MF) {
-        this.PA = PA;
+    public void setup(ProjectGUI PG, MainFrame MF) {
+        this.PG = PG;
         this.MF = MF;
         initFields();
     }

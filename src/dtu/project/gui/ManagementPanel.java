@@ -6,6 +6,7 @@
 package dtu.project.gui;
 
 import dtu.project.app.ProjectApp;
+import dtu.project.app.ProjectGUI;
 
 /**
  *
@@ -22,10 +23,10 @@ public class ManagementPanel extends PanelTemplate {
     }
     
     @Override
-    public void setup(ProjectApp PA, MainFrame MF) {
-        projectPanel1.setup(PA, MF);
-        activityPanel1.setup(PA, MF);
-        schedulePanel1.setup(PA, MF);
+    public void setup(ProjectGUI PG, MainFrame MF) {
+        projectPanel1.setup(PG, MF);
+        activityPanel1.setup(PG, MF);
+        schedulePanel1.setup(PG, MF);
     }
 
     /**

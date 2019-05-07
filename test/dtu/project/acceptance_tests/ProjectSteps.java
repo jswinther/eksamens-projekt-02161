@@ -11,6 +11,7 @@ import dtu.project.app.ProjectApp;
 import dtu.project.app.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
+import dtu.project.repo.UserRepository;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -103,90 +104,32 @@ public class ProjectSteps {
     @When("user adds a project with name {string}, project type INTERNAL.")
     public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
         PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
-    }
+    }    
 
-
-    /*
-     * Test der skal sikre sig mod duplicate
-    @Then("exception is thrown.")
-    public void exceptionIsThrown() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }
-	*/
-//    @When("user adds a project with name {string}, project type INTERNAL.")
-//    public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new cucumber.api.PendingException();
-//    }
-//
-//    @Then("the user is now assigned to project as project manager.")
-//    public void theUserIsNowAssignedToProjectAsProjectManager() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new cucumber.api.PendingException();
-//    }
-    
-
-	@Then("user hours is registered")
-	public void userHoursIsRegistered() {
-		PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:30", "2019-03-03 13:40", null, null);
-	   // throw new cucumber.api.PendingException();
+	@Then("user hours is registered {string} to {string}")
+	public void userHoursIsRegisteredTo(String string, String string2) {
+		PA.registerHours(PA.getUserList().get(0), string, string2, null, null);
+	}
+	
+	@When("name is not null, and list is not null, return search")
+	public void nameIsNotNullAndListIsNotNullReturnSearch() {
+		assertTrue(PA.search("Shiloh", PA.getUserList()).contains(PA.getUserList().get(0)));
 	}
 
+	@When("name is null and list is not null, cast error")
+	public void nameIsNullAndListIsNotNullCastError() {
+		assertTrue(PA.search(null, PA.getUserList()).isEmpty());
+	}
 
-//    @Then("remove from list of free users")
-//    public void removeFromListOfFreeUsers() {
-////    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:33", "2019-03-03 13:39", null, null);
-//    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:25", "2019-03-03 13:35", null, null);
-//    	PA.registerHours(PA.getUserList().get(1), "2019-03-03 13:25", "2019-03-03 13:29", null, null);
-//    	PA.registerHours(PA.getUserList().get(2), "2019-03-03 13:35", "2019-03-03 13:45", null, null);
-//    	if(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))) {
-//    		assertTrue(false);
-//    	}
-//    	else assertTrue(true);
-//    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(1));
-//    	PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(2));
-//    }
-    
-//    @Given("both searchtext and searchlist is null")
-//    public void bothSearchtextAndSearchlistIsNull() {
-//    	assertTrue(PA.search(null, null).isEmpty());
-//    }
-//
-//    @Given("searchtext is null")
-//    public void searchtextIsNull() {
-//		assertTrue(PA.search(null, PA.getUserList()).isEmpty());
-//    }
-//
-//    @Then("list is empty")
-//    public void listIsEmpty() {
-//        assertTrue(PA.search(null, null).isEmpty());
-//    }
-//    
-//    @Given("searchlist is null")
-//    public void searchlistIsNull() {
-//		assertTrue(PA.search("Shiloh Richmond", null).isEmpty());
-//    }
-    
-    @Given("non of searchtext and searchlist is null")
-    public void nonOfSearchtextAndSearchlistIsNull() {
-    	assertTrue((PA.search("Shiloh Richmond", PA.getUserList()).size()>0));
-    }
-    
-    @Then("return searchlist")
-    public void returnSearchlist() {
-    	PA.search("Shiloh Richmond", PA.getUserList());
-    }
-    
-    @Given("name is not null return user")
-    public void nameIsNotNullReturnUser() {
-    		assertTrue(PA.searchUser("Shiloh Richmond").size()>0);
-    }
+	@When("name is not null and list is null, cast error")
+	public void nameIsNotNullAndListIsNullCastError() {
+		assertTrue(PA.search("Shiloh", null).isEmpty());
+	}
 
-    @When("name is null, return empty list")
-    public void nameIsNullReturnEmptyList() {
-    		assertTrue(PA.searchUser("").size()<=0);
-    }
+	@When("name and list is null, cast error")
+	public void nameAndListIsNullCastError() {
+		assertTrue(PA.search(null, null).isEmpty());
+	}
     
     @Given("user exists")
     public void userExists() {
@@ -222,10 +165,32 @@ public class ProjectSteps {
     	PA.removeActivity(p, a);
     }
     
-    @Then("get user repository")
-    public void getUserRepository() {
-        PA.getUserRepository();
+    @When("user is free, keep them on the list")
+    public void userIsFreeKeepThemOnTheList() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 12:00", "2019-03-03 12:59", null, null);
+    	assertTrue(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0)));
+    }
+
+    @When("user is not free, remove them from the list")
+    public void userIsNotFreeRemoveThemFromTheList() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:00", "2019-03-03 13:59", null, null);
+    	assertTrue(!(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))));
+    }
+    
+    @When("user overlaps into the beginning, remove them from list")
+    public void userOverlapsIntoTheBeginning() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:00", "2019-03-03 13:35", null, null);
+    	assertTrue(!(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))));
+    }
+    
+    @When("user overlaps over the end, remove them from list")
+    public void userOverlapsOverTheEndRemoveThemFromList() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:35", "2019-03-03 14:35", null, null);
+    	assertTrue(!(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))));
+    }
+    
+    @When("searching for user, returns user")
+    public void searchingForUserReturnsUser() {
+    	assertTrue(PA.searchUser("Shiloh").contains(PA.getUserList().get(0)));
     }
 }
-
-

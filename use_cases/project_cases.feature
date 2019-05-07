@@ -24,39 +24,24 @@ Scenario: Removes a project
 Scenario: search for a project
 	Given a user want to find a project with the name "projectname"
 	
-	
-	Scenario: User adds illegal project time period
+Scenario: User adds illegal project time period
 		When the user adds a project with name "TestProject" and project type INTERNAL.
 		And time period "2021-05-05 08:00" to "2019-05-05 08:00".
-		Then exception is thrown.
 		
 Scenario: User creates duplicate project
 		Given a project with name "TestProject", project type INTERNAL.
 		And time period "2019-05-05 08:00" to "2019-08-05 08:00".
 		When user adds a project with name "TestProject", project type INTERNAL.
 		And time period "2019-05-05 08:00" to "2019-08-05 08:00".
-		Then exception is thrown
 		
 Scenario: registers hours
-		Then user hours is registered
-
-Scenario: create list of available users
-		Given a user is not free
-		Then remove from list of free users
+		Then user hours is registered "2019-03-03 13:30" to "2019-03-03 13:40"
 		
 Scenario: searchtext or searchlist is null
-		Given non of searchtext and searchlist is null
-		Then return searchlist
-		Given both searchtext and searchlist is null
-		Then list is empty
-		Given searchtext is null
-		Then list is empty
-		Given searchlist is null
-		Then list is empty
-		
-Scenario: searchuser
-		Given name is not null return user
-		When name is null, return empty list
+		When name is not null, and list is not null, return search
+		When name is null and list is not null, cast error
+		When name is not null and list is null, cast error
+		When name and list is null, cast error
 		
 Scenario: find user activitylist
 		Given user exists
@@ -68,14 +53,13 @@ Scenario: adds activity
 Scenario: remove activity
 		Then remove activity
 		
-Scenario: get user repository
-		Then get user repository
+Scenario: find free user
+		When user is free, keep them on the list
+		When user is not free, remove them from the list
+		When user overlaps into the beginning, remove them from list
+		When user overlaps over the end, remove them from list
+		
+Scenario: search user
+		When searching for user, returns user
 
-Scenario: set user repository
-		Then set user repository
-
-Scenario: get project repository
-		Then get project repository
-
-Scenario: set project repository
-		Then set project repository
+		
