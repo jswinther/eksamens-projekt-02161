@@ -29,7 +29,7 @@ Scenario: User adds illegal project time period
 		And time period "2021-05-05 08:00" to "2019-05-05 08:00".
 		
 Scenario: User creates duplicate project
-		Given a project with name "TestProject", project type INTERNAL.
+		Given a project with name "TestProject1", project type INTERNAL.
 		And time period "2019-05-05 08:00" to "2019-08-05 08:00".
 		When user adds a project with name "TestProject", project type INTERNAL.
 		And time period "2019-05-05 08:00" to "2019-08-05 08:00".
@@ -61,5 +61,7 @@ Scenario: find free user
 		
 Scenario: search user
 		When searching for user, returns user
+		When searching for user, but user dont exist
+		When looking for user, and user exists
 
 		
