@@ -160,33 +160,6 @@ public class ProjectApp {
                 ? getUserList().stream().filter(user -> user.toString().contains(name)).findFirst().get() : null;
     }
 
-    public void generateReport(Project project) {
-        int counter = 0;
-        System.out.println(""
-                + "\nProject Name:\t\t" + project.getProjectName()
-                + "\nProject Type:\t\t" + project.getProjectType()
-                + "\nManager:\t\t" + project.getProjectManager()
-                + "\nTime Period:\t\t" + project.getTimePeriod().getStartDate() + " to " + project.getTimePeriod().getEndDate()
-                + "\n\nActivity Status\n___________________________\n");
-        for (Activity activity : project.getActivities()) {
-            System.out.println("Activity Number:\t" + counter
-                    + "\nActivity Name:\t\t" + activity.getActivityName()
-                    + "\nResponsible:\t\t" + activity.getUsers().get(0)
-                    + "\nTime Period:\t\t" + activity.getTimePeriod().getStartDate() + " to " + activity.getTimePeriod().getEndDate()
-                    + "\nEstimated Hours:\t" + activity.getEstimatedHours());
-            counter++;
-            for (Map.Entry<User, List<Event>> entry : activity.getRegisteredHours().entrySet()) {
-                User key = entry.getKey();
-                System.out.println(key + " registered these activites");
-                List<Event> value = entry.getValue();
-                for (Event event : value) {
-                    System.out.println(event);
-                }
-            }
-            System.out.println("\n");
-        }
-    }
-
     /**
      *
      * @param project
