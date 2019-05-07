@@ -50,7 +50,7 @@ public class ActivitySteps {
     @When("user named {string} is added to activity")
     public void userNamedIsAddedToActivity(String string) {
     	user = PA.findUser(string);
-     	activity.addUser(PA.findUser(string));
+    	activity.getUsers().add(user);
     }
 
     @Then("user named {string} exists in list")
@@ -61,7 +61,7 @@ public class ActivitySteps {
     // User is removed from activity
     @When("user named {string} is removed from activity")
     public void userNamedIsRemovedFromActivity(String string) {
-    	activity.removeUser(user);
+    	activity.getUsers().remove(user);
     }
 
     @Then("user named {string} no longer exists in list")
@@ -84,7 +84,7 @@ public class ActivitySteps {
     @When("user sets estimated hours {int} to an activity then the activity estimated hours should be {int}")
     public void userSetsEstimatedHoursToAnActivityThenTheActivityEstimatedHoursShouldBe(Integer int1, Integer int2) {
         try {
-        	activity.setEstimatedHours(int1);			
+        	activity = new Activity.Builder(activity).setEstimatedHours(int1).build();
 		} catch (NumberFormatException e) {
 			assertTrue(e.toString().equals("java.lang.NumberFormatException: For input string: " + int1));
 		}
