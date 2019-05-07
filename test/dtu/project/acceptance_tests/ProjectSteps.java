@@ -34,7 +34,7 @@ public class ProjectSteps {
 
     @When("the user adds a project with name {string} and project type INTERNAL.")
     public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-        project = new Project.Builder()
+        Project project = new Project.Builder()
                 .setProjectName(string)
                 .setProjectType(ProjectType.INTERNAL)
                 .build();
