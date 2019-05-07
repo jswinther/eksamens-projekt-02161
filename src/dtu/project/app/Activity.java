@@ -153,56 +153,40 @@ public class Activity {
         }
 
     }
-
-    public List<User> getUsers() {
-        return this.users;
-    }
-
-    public void addUser(User user) {
-        this.users.add(user);
-    }
-
-    public void removeUser(User user) {
-        this.users.remove(user);
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public int getEstimatedHours() {
-        return this.estimatedHours;
-    }
-
-    public void setEstimatedHours(int estimatedHours) {
-        this.estimatedHours = estimatedHours;
-    }
-
-    public Map<User, List<Event>> getRegisteredHours() {
-        return this.registeredHours;
-    }
-
-    public void setRegisteredHours(Map<User, List<Event>> registeredHours) {
-        this.registeredHours = registeredHours;
-    }
-
-    public Event getTimePeriod() {
-        return timePeriod;
-    }
-
-    public void setTimePeriod(Event timePeriod) {
-        this.timePeriod = timePeriod;
-    }
+    
+    
 
     public String getActivityName() {
-        return activityName;
-    }
+		return activityName;
+	}
 
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
-    }
 
-    @Override
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+
+
+	public int getEstimatedHours() {
+		return estimatedHours;
+	}
+
+
+
+	public Map<User, List<Event>> getRegisteredHours() {
+		return registeredHours;
+	}
+
+
+
+	public Event getTimePeriod() {
+		return timePeriod;
+	}
+
+
+
+	@Override
     public String toString() {
         return "Activity{"
                 + "activityName='" + activityName + '\''

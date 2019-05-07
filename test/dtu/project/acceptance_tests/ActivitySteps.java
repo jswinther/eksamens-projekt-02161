@@ -73,7 +73,7 @@ public class ActivitySteps {
     @When("user creates activity named {string} then throw exception")
     public void userCreatesActivityNamedThenThrowException(String string) throws DuplicateActivityName {
     	try {
-    		PA.addActivity(project, new Activity.Builder().setActivityName(string).build());
+    		PA.addActivity(project, new Activity.Builder().setActivityName(string).setEstimatedHours(34).build());
 		} catch (Exception e) {
 			assertTrue(e.getClass().equals(DuplicateActivityName.class));
 		}

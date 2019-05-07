@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
-import javax.swing.DefaultListModel;
 
 /**
  * This class functions as a connector for the GUI to use all the other classes.
@@ -19,8 +17,8 @@ import javax.swing.DefaultListModel;
  */
 public class ProjectApp {
 
-    private UserRepository userRepository;
-    private ProjectRepository projectRepository;
+    private final UserRepository userRepository;
+    private final ProjectRepository projectRepository;
 
     public ProjectApp(UserRepository userRepository, ProjectRepository projectRepository) {
         this.userRepository = userRepository;
