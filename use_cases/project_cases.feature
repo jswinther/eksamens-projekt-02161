@@ -45,18 +45,10 @@ Scenario: create list of available users
 		Then remove from list of free users
 		
 Scenario: searchtext or searchlist is null
-		Given non of searchtext and searchlist is null
-		Then return searchlist
-		Given both searchtext and searchlist is null
-		Then list is empty
-		Given searchtext is null
-		Then list is empty
-		Given searchlist is null
-		Then list is empty
-		
-Scenario: searchuser
-		Given name is not null return user
-		When name is null, return empty list
+		When name is not null, and list is not null, return search
+		When name is null and list is not null, cast error
+		When name is not null and list is null, cast error
+		When name and list is null, cast error
 		
 Scenario: find user activitylist
 		Given user exists
@@ -68,14 +60,13 @@ Scenario: adds activity
 Scenario: remove activity
 		Then remove activity
 		
-Scenario: get user repository
-		Then get user repository
+Scenario: find free user
+		When user is free, keep them on the list
+		When user is not free, remove them from the list
+		When user overlaps into the beginning, remove them from list
+		When user overlaps over the end, remove them from list
+		
+Scenario: search user
+		When searching for user, returns user
 
-Scenario: set user repository
-		Then set user repository
-
-Scenario: get project repository
-		Then get project repository
-
-Scenario: set project repository
-		Then set project repository
+		

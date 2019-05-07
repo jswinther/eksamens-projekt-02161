@@ -160,50 +160,12 @@ public class ProjectApp {
                 ? getUserList().stream().filter(user -> user.toString().contains(name)).findFirst().get() : null;
     }
 
-    /**
-     * Jonathan
-     *
-     * @param findType
-     * @param event
-     * @return
-     */
-    /*
-    public List<User> findUser(FindType findType, Event event) {
-        List<User> users = null;
-        switch (findType) {
-            case FREE:
-                users = getUserList();
-                for (User user : users) {
-                    for (Activity key : user.getSchedule().keySet()) {
-                        for (Event e : user.getSchedule().get(key)) {
-                            if (!(event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
-                                users.remove(user);
-                            }
-                        }
-                    }
-                }
-                break;
-            case UNAVAILABLE:
-                users = getUserList();
-                for (User user : users) {
-                    for (Activity key : user.getSchedule().keySet()) {
-                        for (Event e : user.getSchedule().get(key)) {
-                            if (!(event.getEndDate().isBefore(e.getStartDate()) || event.getStartDate().isAfter(e.getEndDate()))) {
-                                users.add(user);
-                            }
-                        }
-                    }
-                }
-                break;
-        }
-        return users;
-    }*/
     public void generateReport(Project project) {
         int counter = 0;
         System.out.println(""
                 + "\nProject Name:\t\t" + project.getProjectName()
                 + "\nProject Type:\t\t" + project.getProjectType()
-                + "\nManager:\t\t" + (project.getProjectManager() == null ? "not decided" : project.getProjectManager())
+                + "\nManager:\t\t" + project.getProjectManager()
                 + "\nTime Period:\t\t" + project.getTimePeriod().getStartDate() + " to " + project.getTimePeriod().getEndDate()
                 + "\n\nActivity Status\n___________________________\n");
         for (Activity activity : project.getActivities()) {
@@ -247,22 +209,6 @@ public class ProjectApp {
      */
     public void removeActivity(Project project, Activity activity) {
         project.removeActivity(activity);
-    }
-
-    public UserRepository getUserRepository() {
-        return this.userRepository;
-    }
-
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public ProjectRepository getProjectRepository() {
-        return this.projectRepository;
-    }
-
-    public void setProjectRepository(ProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
     }
 
     public List<User> getUserList() {

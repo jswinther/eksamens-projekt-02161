@@ -11,6 +11,7 @@ import dtu.project.app.ProjectApp;
 import dtu.project.app.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
+import dtu.project.repo.UserRepository;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -167,26 +168,26 @@ public class ProjectSteps {
 //    public void searchlistIsNull() {
 //		assertTrue(PA.search("Shiloh Richmond", null).isEmpty());
 //    }
-    
-    @Given("non of searchtext and searchlist is null")
-    public void nonOfSearchtextAndSearchlistIsNull() {
-    	assertTrue((PA.search("Shiloh Richmond", PA.getUserList()).size()>0));
-    }
-    
-    @Then("return searchlist")
-    public void returnSearchlist() {
-    	PA.search("Shiloh Richmond", PA.getUserList());
-    }
-    
-    @Given("name is not null return user")
-    public void nameIsNotNullReturnUser() {
-    		assertTrue(PA.searchUser("Shiloh Richmond").size()>0);
-    }
+	
+	@When("name is not null, and list is not null, return search")
+	public void nameIsNotNullAndListIsNotNullReturnSearch() {
+		assertTrue(PA.search("Shiloh", PA.getUserList()).contains(PA.getUserList().get(0)));
+	}
 
-    @When("name is null, return empty list")
-    public void nameIsNullReturnEmptyList() {
-    		assertTrue(PA.searchUser("").size()<=0);
-    }
+	@When("name is null and list is not null, cast error")
+	public void nameIsNullAndListIsNotNullCastError() {
+		assertTrue(PA.search(null, PA.getUserList()).isEmpty());
+	}
+
+	@When("name is not null and list is null, cast error")
+	public void nameIsNotNullAndListIsNullCastError() {
+		assertTrue(PA.search("Shiloh", null).isEmpty());
+	}
+
+	@When("name and list is null, cast error")
+	public void nameAndListIsNullCastError() {
+		assertTrue(PA.search(null, null).isEmpty());
+	}
     
     @Given("user exists")
     public void userExists() {
@@ -222,10 +223,36 @@ public class ProjectSteps {
     	PA.removeActivity(p, a);
     }
     
-    @Then("get user repository")
-    public void getUserRepository() {
-        PA.getUserRepository();
+    @When("user is free, keep them on the list")
+    public void userIsFreeKeepThemOnTheList() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 12:00", "2019-03-03 12:59", null, null);
+    	assertTrue(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0)));
     }
+
+    @When("user is not free, remove them from the list")
+    public void userIsNotFreeRemoveThemFromTheList() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:00", "2019-03-03 13:59", null, null);
+    	assertTrue(!(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))));
+    }
+    
+    @When("user overlaps into the beginning, remove them from list")
+    public void userOverlapsIntoTheBeginning() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:00", "2019-03-03 13:35", null, null);
+    	assertTrue(!(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))));
+    }
+    
+    @When("user overlaps over the end, remove them from list")
+    public void userOverlapsOverTheEndRemoveThemFromList() {
+    	PA.registerHours(PA.getUserList().get(0), "2019-03-03 13:35", "2019-03-03 14:35", null, null);
+    	assertTrue(!(PA.usersWhoAreFreeAt("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUserList().get(0))));
+    }
+    
+    @When("searching for user, returns user")
+    public void searchingForUserReturnsUser() {
+    	assertTrue(PA.searchUser("Shiloh").contains(PA.getUserList().get(0)));
+    }
+    
+    
 }
 
 
