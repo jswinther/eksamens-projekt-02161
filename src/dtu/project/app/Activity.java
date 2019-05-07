@@ -91,7 +91,6 @@ public class Activity {
          */
         public Builder setActivityName(String activityName) throws PatternSyntaxException, ArrayIndexOutOfBoundsException {
         	if(activityName.matches("[a-zA-Z1-9]+[ a-zA-Z1-9]*"))
-				//check for duplicates too
 				this.activityName = activityName;
 			else
 				throw new PatternSyntaxException(activityName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", activityName, 0);
@@ -104,7 +103,7 @@ public class Activity {
 
                 if (pn[0] == ' ') {
                     throw new PatternSyntaxException(activityName
-                            + "illegal project name for regex, no spaces at beginning: ^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'"
+                            + "illegal project name for regex, no spaces at beginning: +^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'"
                             + pn[0] + "\'", activityName, 0);
                 } else {
                     for (int i = 0; i < pn.length; i++) {
