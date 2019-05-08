@@ -1,4 +1,4 @@
-package dtu.project.app;
+package dtu.project.entities;
 
 import java.time.format.DateTimeParseException;
 
@@ -94,35 +94,8 @@ public class Activity {
 				this.activityName = activityName;
 			else
 				throw new PatternSyntaxException(activityName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", activityName, 0);
-/*
-        	if (!activityName.matches("^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$")) {
-                if (activityName.length() == 0) {
-                    throw new ArrayIndexOutOfBoundsException("Project names can't be empty");
-                }
-                char[] pn = activityName.toCharArray();
-
-                if (pn[0] == ' ') {
-                    throw new PatternSyntaxException(activityName
-                            + "illegal project name for regex, no spaces at beginning: +^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'"
-                            + pn[0] + "\'", activityName, 0);
-                } else {
-                    for (int i = 0; i < pn.length; i++) {
-                        if (!(Character.isAlphabetic(pn[i]) || Character.isDigit(pn[i]) || pn[i] == ' ')) {
-                            throw new PatternSyntaxException(activityName
-                                    + "illegal project name for regex: ^[a-zA-Z0-9_.-][ a-zA-Z0-9_.-]*$\nillegal character is \'" + pn[i]
-                                    + "\'", activityName, i);
-
-                        }
-                    }
-                }
-
-            } else {
-                this.activityName = activityName;
-            }
-*/
             return this;
         }
-
 
         public Builder setUser(User user) {
             this.users.clear();
@@ -153,38 +126,26 @@ public class Activity {
         }
 
     }
-    
-    
 
     public String getActivityName() {
 		return activityName;
 	}
 
-
-
 	public List<User> getUsers() {
 		return users;
 	}
-
-
 
 	public int getEstimatedHours() {
 		return estimatedHours;
 	}
 
-
-
 	public Map<User, List<TimePeriod>> getRegisteredHours() {
 		return registeredHours;
 	}
 
-
-
 	public TimePeriod getTimePeriod() {
 		return timePeriod;
 	}
-
-
 
 	@Override
     public String toString() {

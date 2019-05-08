@@ -139,11 +139,11 @@ public class UserPanel extends PanelTemplate {
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
         if (jList1.getSelectedIndex() != -1) {
             if (jList1.getSelectedIndex() != -1) {
-                if (!PG.getActivitiesAssignedTo(PG.getUserList().get(jList1.getSelectedIndex())).isEmpty()) {
+                if (!PG.getActivitiesAssignedTo(PG.getUser(jList1.getSelectedIndex())).isEmpty()) {
                     jList2.setModel(PG.getUserActivitiesDefaultListModelContaining(jList1.getSelectedValue(), jTextField2.getText()));
                 }
                 
-                if (!PG.getUserMap().get(PG.findUser(jList1.getSelectedValue())).isEmpty()) {
+                if (!PG.getUserSchedule(jList1.getSelectedValue()).isEmpty()) {
                     jList3.setModel(PG.getUserScheduleDefaultListModelContaining(jList1.getSelectedValue(), jTextField3.getText()));
                 }
                 

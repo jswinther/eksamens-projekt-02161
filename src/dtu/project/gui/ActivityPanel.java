@@ -5,7 +5,7 @@
  */
 package dtu.project.gui;
 
-import dtu.project.app.Activity;
+import dtu.project.entities.Activity;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
 import java.time.format.DateTimeParseException;
@@ -239,25 +239,25 @@ public class ActivityPanel extends PanelTemplate {
 
     @Override
     public void initFields() {
-        activityUserComboBox1.setModel(new DefaultComboBoxModel(PG.getUserList().toArray()));
-        if (PG.getProjectList().isEmpty()) {
+        activityUserComboBox1.setModel(PG.getUserDefaultComboBoxModel());
+        if (PG.isProjectListEmpty()) {
             projectListComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             activitySelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             addActivityButton.setEnabled(false);
             editActivityButton.setEnabled(false);
             removeActivityButton.setEnabled(false);
-        } else if (PG.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().isEmpty()) {
+        } else if (PG.isActivityListEmpty(PG.getProject(projectListComboBox1.getSelectedIndex()))) {
             addActivityButton.setEnabled(true);
             editActivityButton.setEnabled(false);
             removeActivityButton.setEnabled(false);
-            projectListComboBox1.setModel(new DefaultComboBoxModel(PG.getProjectList().toArray()));
+            projectListComboBox1.setModel(PG.getProjectDefaultComboBoxModel());
             activitySelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
         } else {
             addActivityButton.setEnabled(true);
             editActivityButton.setEnabled(true);
             removeActivityButton.setEnabled(true);
-            projectListComboBox1.setModel(new DefaultComboBoxModel(PG.getProjectList().toArray()));
-            activitySelectComboBox1.setModel(new DefaultComboBoxModel(PG.getProjectList().get(projectListComboBox1.getSelectedIndex()).getActivities().toArray()));
+            projectListComboBox1.setModel(PG.getProjectDefaultComboBoxModel());
+            activitySelectComboBox1.setModel(PG.getActivitytDefaultComboBoxModel(PG.getProject(projectListComboBox1.getSelectedIndex())));
 
         }
 

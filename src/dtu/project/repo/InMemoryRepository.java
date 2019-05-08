@@ -1,10 +1,5 @@
 package dtu.project.repo;
 
-import dtu.project.app.TimePeriod;
-import dtu.project.app.Event;
-import dtu.project.app.Project;
-import dtu.project.app.User;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -14,6 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+
+import dtu.project.entities.Event;
+import dtu.project.entities.Project;
+import dtu.project.entities.TimePeriod;
+import dtu.project.entities.User;
 
 public class InMemoryRepository implements UserRepository, ProjectRepository {
 

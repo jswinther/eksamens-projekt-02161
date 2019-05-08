@@ -1,4 +1,4 @@
-package dtu.project.app;
+package dtu.project.entities;
 
 public class User {
 

@@ -1,8 +1,8 @@
 package dtu.project.repo;
 
-import dtu.project.app.Project;
-
 import java.util.List;
+
+import dtu.project.entities.Project;
 
 public interface ProjectRepository {
 	List<Project> getProjectList();

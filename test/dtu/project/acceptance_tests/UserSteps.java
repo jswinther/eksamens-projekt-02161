@@ -9,9 +9,9 @@ import java.util.regex.PatternSyntaxException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import dtu.project.app.Project;
-import dtu.project.app.ProjectApp;
-import dtu.project.app.User;
+import dtu.project.controllers.ProjectApp;
+import dtu.project.entities.Project;
+import dtu.project.entities.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
 
@@ -26,8 +26,8 @@ public class UserSteps {
 	
 	@Given("a user.")
 	public void aUser() {
-	    user = PA.getUserList().get(0);
-	    assertTrue(user.equals(PA.getUserList().get(0)));
+	    user = PA.getUser(0);
+	    assertTrue(user.equals(PA.getUser(0)));
 	}
 
 	@When("user changes name to {string}")

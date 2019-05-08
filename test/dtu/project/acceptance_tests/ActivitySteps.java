@@ -3,11 +3,11 @@ package dtu.project.acceptance_tests;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import dtu.project.app.Activity;
-import dtu.project.app.TimePeriod;
-import dtu.project.app.Project;
-import dtu.project.app.ProjectApp;
-import dtu.project.app.User;
+import dtu.project.controllers.ProjectApp;
+import dtu.project.entities.Activity;
+import dtu.project.entities.Project;
+import dtu.project.entities.TimePeriod;
+import dtu.project.entities.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
@@ -49,7 +49,7 @@ public class ActivitySteps {
     // User is added to activity
     @When("user named {string} is added to activity")
     public void userNamedIsAddedToActivity(String string) {
-    	user = PA.findUser(string);
+    	user = PA.getUser(string);
     	activity.getUsers().add(user);
     }
 
@@ -67,16 +67,6 @@ public class ActivitySteps {
     @Then("user named {string} no longer exists in list")
     public void userNamedNoLongerExistsInList(String string) {
     	assertTrue((!activity.getUsers().contains(user)));
-    }
-    
-    // Test for duplicate name
-    @When("user creates activity named {string} then throw exception")
-    public void userCreatesActivityNamedThenThrowException(String string) throws DuplicateActivityName {
-    	try {
-    		PA.addActivity(project, new Activity.Builder().setActivityName(string).setEstimatedHours(34).build());
-		} catch (Exception e) {
-			assertTrue(e.getClass().equals(DuplicateActivityName.class));
-		}
     }
     
     // Test for estimated hours working
@@ -124,6 +114,19 @@ public class ActivitySteps {
     		activity = new Activity.Builder(activity).setEstimatedHours(new Integer(string).intValue()).build();
 		} catch (Exception e) {
 			assertTrue(true);
+		}
+    }
+    
+    // Test for duplicate project name
+    @When("user creates activity named {string} then throw exception")
+    public void userCreatesActivityNamedThenThrowException(String string) throws DuplicateActivityName {
+    	Activity a1 = new Activity.Builder().setActivityName(string).build();
+    	try {
+    		
+    		PA.addActivity(PA.getProject(0), a1);
+    		PA.addActivity(PA.getProject(0), a1);
+		} catch (Exception e) {
+			assertTrue(e.getClass().equals(DuplicateActivityName.class));
 		}
     }
     

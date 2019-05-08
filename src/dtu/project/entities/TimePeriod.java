@@ -1,4 +1,4 @@
-package dtu.project.app;
+package dtu.project.entities;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

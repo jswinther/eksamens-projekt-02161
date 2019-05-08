@@ -1,4 +1,4 @@
-package dtu.project.app;
+package dtu.project.entities;
 
 import dtu.project.enums.ProjectType;
 
@@ -109,7 +109,7 @@ public class Project {
 		return timePeriod;
 	}
 	// mangler slut
-	public void setTimePeriod(String startDate, String endDate) {
+	public void setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
 		TimePeriod event = new TimePeriod(startDate, endDate);
         if (event.getEndDate().isAfter(event.getStartDate())) {
             this.timePeriod = event; //new Event(startDate, endDate);
@@ -118,7 +118,7 @@ public class Project {
         }
 	}
 	// mangler
-	public void setTimePeriod(TimePeriod event) {
+	public void setTimePeriod(TimePeriod event) throws DateTimeParseException {
         if (event.getEndDate().isAfter(event.getStartDate())) {
             this.timePeriod = event; //new Event(startDate, endDate);
         } else {

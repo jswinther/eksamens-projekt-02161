@@ -5,13 +5,15 @@
  */
 package dtu.project.gui;
 
-import dtu.project.app.Activity;
-import dtu.project.app.TimePeriod;
-import dtu.project.app.Event;
-import dtu.project.app.Project;
-import dtu.project.app.ProjectApp;
-import dtu.project.app.User;
-import dtu.project.app.Activity.Builder;
+import dtu.project.controllers.ProjectApp;
+import dtu.project.controllers.ProjectController;
+import dtu.project.controllers.UserController;
+import dtu.project.entities.Activity;
+import dtu.project.entities.Event;
+import dtu.project.entities.Project;
+import dtu.project.entities.TimePeriod;
+import dtu.project.entities.User;
+import dtu.project.entities.Activity.Builder;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.ProjectRepository;
@@ -28,13 +30,16 @@ import javax.swing.*;
  *
  * @author Jonat
  */
-public class ProjectGUI {
+public class ProjectGUI extends ProjectApp {
 
-    private final ProjectApp PA;
+	public ProjectGUI(UserRepository userRepository, ProjectRepository projectRepository) {
+		super(userRepository, projectRepository);
+	}
 
-    public ProjectGUI(UserRepository userRepository, ProjectRepository projectRepository) {
-        this.PA = new ProjectApp(userRepository, projectRepository);
-    }
+	
+    
+    
+
 
     public void addActivityButton(
             JComboBox<String> projectComboBox, 
@@ -44,7 +49,7 @@ public class ProjectGUI {
             JTextField activityEndDateTextField,
             JComboBox<String> activityUserComboBox) 
             throws DuplicateActivityName {
-        PA.addActivity(PA.getProjectList().get(projectComboBox.getSelectedIndex()), 
+        addActivity(getProjectList().get(projectComboBox.getSelectedIndex()), 
                new Activity.Builder()
                         .setActivityName(activityNameTextField.getText())
                         .setEstimatedHours(Integer.valueOf(estimatedHoursTextField.getText()))
@@ -63,9 +68,9 @@ public class ProjectGUI {
             JComboBox<String> activityUserComboBox) 
             throws DuplicateActivityName {
         
-        PA.editActivity(
-                PA.getProjectList().get(projectListComboBox.getSelectedIndex()),
-                PA.getProjectList().get(projectListComboBox.getSelectedIndex())
+        editActivity(
+                getProjectList().get(projectListComboBox.getSelectedIndex()),
+                getProjectList().get(projectListComboBox.getSelectedIndex())
                 .getActivities().get(activityListComboBox.getSelectedIndex()),
                 new Activity.Builder()
                         .setActivityName(activityNameTextField.getText())
@@ -82,8 +87,8 @@ public class ProjectGUI {
     public void removeActivity(
             JComboBox<String> projectListComboBox,
             JComboBox<String> activitySelectComboBox) {
-        PA.removeActivity(PA.getProjectList().get(projectListComboBox.getSelectedIndex()), 
-                PA.getProjectList().get(projectListComboBox.getSelectedIndex())
+        removeActivity(getProjectList().get(projectListComboBox.getSelectedIndex()), 
+                getProjectList().get(projectListComboBox.getSelectedIndex())
                 .getActivities().get(activitySelectComboBox.getSelectedIndex()));
     }
     
@@ -126,7 +131,36 @@ public class ProjectGUI {
      */
     private <E> DefaultListModel<String> listToDefaultListModel(List<E> list) {
         return new DefaultListModel<String>() {
-            {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			{
+                list.forEach((e) -> {
+                    addElement(e.toString());
+                });
+            }
+        };
+    }
+    
+    /**
+     * Jonathan Converts a list of elements in to a default list model which is
+     * used for the GUI. otherwise this code will be repeated and we want to
+     * follow the DRY principle.
+     *
+     * @param <E>
+     * @param list
+     * @return
+     */
+    private <E> DefaultComboBoxModel<String> listToDefaultComboBoxModel(List<E> list) {
+        return new DefaultComboBoxModel<String>() {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			{
                 list.forEach((e) -> {
                     addElement(e.toString());
                 });
@@ -135,89 +169,42 @@ public class ProjectGUI {
     }
 
     public DefaultListModel<String> getUserDefaultListModel() {
-        return listToDefaultListModel(PA.getUserList());
+        return listToDefaultListModel(getUserList());
     }
 
     public DefaultListModel<String> getProjectDefaultListModel() {
-        return listToDefaultListModel(PA.getProjectList());
+        return listToDefaultListModel(getProjectList());
     }
-
+    
+    
     public DefaultListModel<String> getUserDefaultListModelContaining(String searchText) {
-        return listToDefaultListModel(PA.searchUser(searchText));
+        return listToDefaultListModel(searchUser(searchText));
     }
 
     public DefaultListModel<String> getProjectDefaultListModelContaining(String searchText) {
-        return listToDefaultListModel(PA.searchProjects(searchText));
+        return listToDefaultListModel(searchProjects(searchText));
     }
 
     public DefaultListModel<String> getUserActivitiesDefaultListModelContaining(String userName, String searchText) {
-        return listToDefaultListModel(PA.search(searchText, PA.getActivitiesAssignedTo(PA.searchUser(userName).get(0))));
+        return listToDefaultListModel(search(searchText, getActivitiesAssignedTo(searchUser(userName).get(0))));
     }
 
     public DefaultListModel<String> getUserScheduleDefaultListModelContaining(String userName, String searchText) {
-        return listToDefaultListModel(PA.search(searchText, new ArrayList<>(PA.getUserMap().get(PA.searchUser(userName).get(0)))));
-    }
-
-    public void registerHours(User user, String startDate, String endDate, Activity activity, String message) {
-        PA.registerHours(user, startDate, endDate, activity, message);
-    }
-
-    public List<User> usersWhoAreFreeAt(String startDate, String endDate) {
-        return PA.usersWhoAreFreeAt(startDate, endDate);
-    }
-
-    public <E> List<E> search(String searchText, List<E> searchList) {
-        return PA.search(searchText, searchList);
-    }
-
-    public List<Project> searchProjects(String searchText) {
-        return PA.searchProjects(searchText);
-    }
-
-    public List<User> searchUser(String searchText) {
-        return PA.searchUser(searchText);
-    }
-
-    public List<Activity> getActivitiesAssignedTo(User user) {
-        return PA.getActivitiesAssignedTo(user);
-    }
-
-    public User findUser(String name) {
-        return PA.findUser(name);
-    }
-
-    public void addActivity(Project project, Activity activity) throws DuplicateActivityName {
-        PA.addActivity(project, activity);
-    }
-
-    public void removeActivity(Project project, Activity activity) {
-        PA.removeActivity(project, activity);
-    }
-
-    public List<User> getUserList() {
-        return PA.getUserList();
-    }
-
-    public Map<User, List<Event>> getUserMap() {
-        return PA.getUserMap();
-    }
-
-    public List<Project> getProjectList() {
-        return PA.getProjectList();
-    }
-
-    public void addProject(Project project) throws DuplicateProjectName {
-        PA.addProject(project);
-    }
-
-    public void removeProject(Project project) {
-        PA.removeProject(project);
-    }
-
-    public void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
-        PA.editActivity(project, currentActivity, newActivity);
+        return listToDefaultListModel(search(searchText, new ArrayList<>(getUserMap().get(searchUser(userName).get(0)))));
     }
     
+    public DefaultComboBoxModel<String> getProjectDefaultComboBoxModel() {
+    	return listToDefaultComboBoxModel(getProjectList());
+    }
     
+    public DefaultComboBoxModel<String> getUserDefaultComboBoxModel() {
+    	return listToDefaultComboBoxModel(getUserList());
+    }
 
+    public DefaultComboBoxModel<String> getActivitytDefaultComboBoxModel(Project project) {
+    	return listToDefaultComboBoxModel(project.getActivities());
+    }
+   
+    
+    
 }

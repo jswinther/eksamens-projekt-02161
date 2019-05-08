@@ -5,8 +5,8 @@
  */
 package dtu.project.gui;
 
-import dtu.project.app.TimePeriod;
-import dtu.project.app.Project;
+import dtu.project.entities.Project;
+import dtu.project.entities.TimePeriod;
 import dtu.project.enums.ProjectType;
 import dtu.project.exceptions.DuplicateProjectName;
 import java.time.format.DateTimeParseException;
@@ -195,7 +195,7 @@ public class ProjectPanel extends PanelTemplate {
                 p.setTimePeriod(new TimePeriod(projectStartDateTextField1.getText(), projectEndDateTextField1.getText()));
             }
             if (!projectManagerList.isSelectionEmpty()) {
-                p.setProjectManager(PG.getUserList().get(projectManagerList.getSelectedIndex()));
+                p.setProjectManager(PG.getUser(projectManagerList.getSelectedIndex()));
             }
             PG.addProject(p);
 
@@ -208,15 +208,15 @@ public class ProjectPanel extends PanelTemplate {
 
     private void editProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectButtonActionPerformed
         try {
-            PG.getProjectList().set(projectSelectComboBox1.getSelectedIndex(), new Project.Builder()
+            PG.setProject(projectSelectComboBox1.getSelectedIndex(), new Project.Builder()
                     .setProjectName(projectNameTextField1.getText())
                     .setProjectType(ProjectType.valueOf(projectTypeComboBox1.getItemAt(projectTypeComboBox1.getSelectedIndex())))
                     .build());
             if (projectTimePeriodUndefinedCheckBox1.isSelected()) {
-                PG.getProjectList().get(projectSelectComboBox1.getSelectedIndex()).setTimePeriod(new TimePeriod(projectStartDateTextField1.getText(), projectEndDateTextField1.getText()));
+                PG.getProject(projectSelectComboBox1.getSelectedIndex()).setTimePeriod(new TimePeriod(projectStartDateTextField1.getText(), projectEndDateTextField1.getText()));
             }
             if (!projectManagerList.isSelectionEmpty()) {
-                PG.getProjectList().get(projectSelectComboBox1.getSelectedIndex()).setProjectManager(PG.getUserList().get(projectManagerList.getSelectedIndex()));
+                PG.getProject(projectSelectComboBox1.getSelectedIndex()).setProjectManager(PG.getUser(projectManagerList.getSelectedIndex()));
             }
 
         } catch (ArrayIndexOutOfBoundsException | DateTimeParseException | PatternSyntaxException e) {
@@ -226,7 +226,7 @@ public class ProjectPanel extends PanelTemplate {
     }//GEN-LAST:event_editProjectButtonActionPerformed
 
     private void removeProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProjectButtonActionPerformed
-        PG.removeProject(PG.getProjectList().get(projectSelectComboBox1.getSelectedIndex()));
+        PG.removeProject(PG.getProject(projectSelectComboBox1.getSelectedIndex()));
         MF.updateAll();
     }//GEN-LAST:event_removeProjectButtonActionPerformed
 
@@ -255,12 +255,12 @@ public class ProjectPanel extends PanelTemplate {
     public void initFields() {
         projectManagerList.setModel(PG.getUserDefaultListModel());
         this.projectTypeComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{ProjectType.INTERNAL.toString(), ProjectType.EXTERNAL.toString()}));
-        if (PG.getProjectList().isEmpty()) {
+        if (PG.isProjectListEmpty()) {
             this.projectSelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             this.editProjectButton.setEnabled(false);
             this.removeProjectButton.setEnabled(false);
         } else {
-            this.projectSelectComboBox1.setModel(new DefaultComboBoxModel(PG.getProjectList().toArray()));
+            this.projectSelectComboBox1.setModel(PG.getProjectDefaultComboBoxModel());
             this.editProjectButton.setEnabled(true);
             this.removeProjectButton.setEnabled(true);
         }

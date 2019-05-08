@@ -5,13 +5,14 @@
  */
 package dtu.project.gui;
 
-import dtu.project.app.Activity;
-import dtu.project.app.TimePeriod;
-import dtu.project.app.Event;
-import dtu.project.app.User;
 import java.time.format.DateTimeParseException;
 import java.util.Optional;
 import javax.swing.DefaultComboBoxModel;
+
+import dtu.project.entities.Activity;
+import dtu.project.entities.Event;
+import dtu.project.entities.TimePeriod;
+import dtu.project.entities.User;
 
 /**
  *
@@ -170,8 +171,8 @@ public class SchedulePanel extends PanelTemplate {
 
     private void addPeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPeriodButtonActionPerformed
         try {
-            User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
-            PG.registerHours(u,
+            User u = PG.getUser(selectUserComboBox.getSelectedIndex());
+            PG.addHours(u,
                     startDateTextField.getText(),
                     endDateTextField.getText(),
                     activityList.isSelectionEmpty() ? null : PG.getActivitiesAssignedTo(u).get(activityList.getSelectedIndex()),
@@ -187,8 +188,8 @@ public class SchedulePanel extends PanelTemplate {
     private void editPeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPeriodButtonActionPerformed
         try {
             if (!scheduleList.isSelectionEmpty()) {
-                User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
-                Event p = PG.getUserMap().get(u).get(scheduleList.getSelectedIndex());
+                User u = PG.getUser(selectUserComboBox.getSelectedIndex());
+                Event p = PG.getUserSchedule(selectUserComboBox.getSelectedIndex()).get(scheduleList.getSelectedIndex());
                 p.setActivity(activityList.isSelectionEmpty() ? null : PG.getActivitiesAssignedTo(u).get(activityList.getSelectedIndex()));
                 p.setMessage(messageTextArea.getText());
                 p.setTimePeriod(new TimePeriod(startDateTextField.getText(), startDateTextField.getText()));
@@ -203,8 +204,7 @@ public class SchedulePanel extends PanelTemplate {
     private void removePeriodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePeriodButtonActionPerformed
         try {
             if (!scheduleList.isSelectionEmpty()) {
-                User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
-                PG.getUserMap().get(u).remove(scheduleList.getSelectedIndex());
+            	PG.getUserSchedule(selectUserComboBox.getSelectedIndex()).remove(scheduleList.getSelectedIndex());
             }
         } catch (Exception e) {
             System.err.println(e);
@@ -219,8 +219,8 @@ public class SchedulePanel extends PanelTemplate {
 
     @Override
     public void initFields() {
-        User u = PG.getUserList().get(selectUserComboBox.getSelectedIndex());
-        selectUserComboBox.setModel(new DefaultComboBoxModel(PG.getUserList().toArray()));
+        User u = PG.getUser(selectUserComboBox.getSelectedIndex());
+        selectUserComboBox.setModel(PG.getUserDefaultComboBoxModel());
         if (PG.getActivitiesAssignedTo(u).isEmpty()) {
             activityList.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             activityList.setEnabled(false);
@@ -229,7 +229,7 @@ public class SchedulePanel extends PanelTemplate {
             activityList.setEnabled(true);
         }
 
-        if (PG.getUserMap().get(u).isEmpty()) {
+        if (PG.getUserSchedule(selectUserComboBox.getSelectedIndex()).isEmpty()) {
             scheduleList.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             scheduleList.setEnabled(false);
         } else {
