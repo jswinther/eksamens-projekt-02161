@@ -3,6 +3,7 @@ package dtu.project.acceptance_tests;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.lt.Duota;
 import dtu.project.controllers.ProjectApp;
 import dtu.project.entities.Activity;
 import dtu.project.entities.Project;
@@ -126,7 +127,7 @@ public class ActivitySteps {
     		PA.addActivity(PA.getProject(0), a1);
     		PA.addActivity(PA.getProject(0), a1);
 		} catch (Exception e) {
-			assertTrue(e.getClass().equals(DuplicateActivityName.class));
+			assertTrue(e.toString().equals("Activity name already taken"));
 		}
     }
     

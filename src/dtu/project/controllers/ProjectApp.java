@@ -262,27 +262,6 @@ public class ProjectApp {
 	}
 
 	/**
-	 * @param user
-	 * @param startDate
-	 * @param endDate
-	 * @param activity
-	 * @param message
-	 * @see dtu.project.controllers.UserController#editHours(dtu.project.entities.User, java.lang.String, java.lang.String, dtu.project.entities.Activity, java.lang.String)
-	 */
-	public void editHours(User user, String startDate, String endDate, Activity activity, String message) {
-		UC.editHours(user, startDate, endDate, activity, message);
-	}
-
-	/**
-	 * @param user
-	 * @param event
-	 * @see dtu.project.controllers.UserController#removeHours(dtu.project.entities.User, dtu.project.entities.Event)
-	 */
-	public void removeHours(User user, Event event) {
-		UC.removeHours(user, event);
-	}
-
-	/**
 	 * @param startDate
 	 * @param endDate
 	 * @return

@@ -345,7 +345,7 @@ public class ProjectSteps {
     		PA.addProject(project);
     		PA.addProject(project1);
 		} catch (Exception e) {
-			assertTrue(e.getClass().equals(DuplicateProjectName.class));
+			assertTrue(e.toString().equals("Project name already taken"));
 		}
     }
 }

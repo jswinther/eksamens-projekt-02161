@@ -31,27 +31,6 @@ public class UserController {
     }
     
     
-    /**
-     * 
-     * @param user
-     * @param startDate
-     * @param endDate
-     * @param activity
-     * @param message
-     */
-    public void editHours(User user, String startDate, String endDate, Activity activity, String message) {
-        getUserMap().get(user).add(new Event(startDate, endDate, activity, message));
-    }
-    
-    /**
-     * Removes event from user
-     * @param user
-     * @param event
-     */
-    public void removeHours(User user, Event event) {
-    	getUserMap().get(user).remove(event);
-    }
-    
     
     public List<User> getFreeUsers(String startDate, String endDate) {
         TimePeriod event = new TimePeriod(startDate, endDate);
