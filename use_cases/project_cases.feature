@@ -90,5 +90,6 @@ Scenario: A User wants to edit hours
 	When user edits hours
 	Then the event is changed
 	
-	
+Scenario: Duplicate project name
+	When user creates project named "testProject" then throw exception
 	

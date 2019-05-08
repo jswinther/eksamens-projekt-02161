@@ -330,6 +330,16 @@ public class ProjectSteps {
 		assertTrue(PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).getActivity().equals(activity));
 		assertTrue(PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).getMessage().equals("cake"));
 		assertTrue(PA.getUserMap().get(PA.findUser("Shiloh Richmond")).get(0).getTimePeriod().toString().equals(new TimePeriod("2023-05-05 13:13", "2024-05-05 13:13").toString()));
-
 	}
+	
+    // Test for duplicate project name
+    @When("user creates activity named {string} then throw exception")
+    public void userCreatesActivityNamedThenThrowException(String string) throws DuplicateActivityName {
+    	try {
+    		PA.addProject(project);
+    		project.setProjectName(string);
+		} catch (Exception e) {
+			assertTrue(e.getClass().equals(DuplicateProjectName.class));
+		}
+    }
 }
