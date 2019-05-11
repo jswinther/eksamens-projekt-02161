@@ -286,25 +286,5 @@ public class ProjectApp {
 	 */
 	public boolean isActivityListEmpty(Project project) {
 		return PC.isActivityListEmpty(project);
-	}
-    
-    
-    
-
-    
-    
-
-    
-
-    
-
-
-
-    
-
-    
-
-
-
-    
+	} 
 }
