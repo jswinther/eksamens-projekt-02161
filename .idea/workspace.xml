@@ -134,7 +134,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -236,7 +236,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.dtu.project.acceptance_tests in project01">
+  <component name="RunManager" selected="JUnit.dtu.project in project01">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dtu.project.gui.Main" />
       <module name="project01" />
