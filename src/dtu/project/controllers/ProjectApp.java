@@ -135,6 +135,14 @@ public class ProjectApp {
         return search(searchText, getProjectList());
     }
     
+    public void setActivity(Project project, String activityName, Activity activity) {
+    	set(activityName, activity, project.getActivities());
+    }
+    
+    public void setActivity(Project project, int index, Activity activity) {
+    	set(index, activity, project.getActivities());
+    }
+    
     public Activity getActivity(Project project, String activityName) {
     	return get(activityName, project.getActivities());
     }
@@ -143,13 +151,7 @@ public class ProjectApp {
     	return get(index, project.getActivities());
     }
     
-    public void setActivity(Project project, String activityName, Activity activity) {
-    	set(activityName, activity, project.getActivities());
-    }
-    
-    public void setActivity(Project project, int index, Activity activity) {
-    	set(index, activity, project.getActivities());
-    }
+
     
     public User getUser(String userName) {
     	return get(userName, getUserList());

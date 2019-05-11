@@ -185,7 +185,7 @@ public class ProjectSteps {
 		PA.getProject(string);
 		assertTrue(true);
 	}
-	
+	//test get/set project
 	@When("user set project with index {int} and project")
 	public void userSetProjectWithIndexAndProject(Integer int1) throws DuplicateProjectName {
 		Project p = new Project.Builder().setProjectName("testProject").setProjectType(ProjectType.INTERNAL).build();
@@ -213,6 +213,39 @@ public class ProjectSteps {
 		PA.getProject(string);
 			assertTrue(true);
 	}
+	//end test get/set project
+	
+	// test get/set of activity
+	@When("user want to set an activity with name {string} to a project {string}")
+	public void userWantToSetAnActivityWithNameToAProject(String string, String string2) throws DuplicateProjectName, DuplicateActivityName {
+		Project p = new Project.Builder().setProjectName(string2).setProjectType(ProjectType.INTERNAL).build();
+		PA.addProject(p);
+		PA.setProject(0, p);
+		Activity a = new Activity.Builder().build();
+		PA.addActivity(p, a);
+	    PA.setActivity(p, string, a);
+	}
+
+	@Then("the activity is set with the name {string} to project {string}")
+	public void theActivityIsSetWithTheNameToProject(String string, String string2) {
+	    PA.getActivity(PA.getProject(0), string);
+	}
+
+	@When("user wants to set an activity with index {int} to project of name {string}")
+	public void userWantsToSetAnActivityWithIndexToProjectOfName(Integer int1, String string) throws DuplicateProjectName, DuplicateActivityName {
+		Project p = new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build();
+		PA.addProject(p);
+		PA.setProject(0, p);
+		Activity a = new Activity.Builder().build();
+		PA.addActivity(p, a);
+	    PA.setActivity(p, int1, a);
+	}
+
+	@Then("activity is set to index {int} to project of name {string}")
+	public void activityIsSetToIndexToProjectOfName(Integer int1, String string) {
+	    PA.getActivity(PA.getProject(0), int1);
+	}
+//done testing get/set og activity
 
 	@When("name is null and list is not null, cast error")
 	public void nameIsNullAndListIsNotNullCastError() {
