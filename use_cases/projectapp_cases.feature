@@ -11,4 +11,11 @@ Scenario: user wants to set or get an activity
 		Then the activity is set with the name "testactivity1" to project "projectTest1"
 		When user wants to set an activity with index 0 to project of name "test2"
 		Then activity is set to index 0 to project of name "test2"
+		
+Scenario: User wants to add user to activity
+		When user wants to add user "Shiloh Richmond" to activity
+
+Scenario: User wants to see if activity list is empty for project
+		When user wants to see if activitylist is empty for project with name "testProject2"
+		
 

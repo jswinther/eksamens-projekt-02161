@@ -11,6 +11,7 @@ import dtu.project.controllers.ProjectApp;
 import dtu.project.enums.ProjectType;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
+import dtu.project.exceptions.DuplicateUser;
 import dtu.project.repo.InMemoryRepository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -421,5 +422,23 @@ public class ProjectSteps {
 		} catch (Exception e) {
 			assertTrue(e.toString().equals("Project name already taken"));
 		}
+    }
+    // user add to activity
+    @When("user wants to add user {string} to activity")
+    public void userWantsToAddUserToActivity(String string) throws DuplicateProjectName, DuplicateActivityName, DuplicateUser {
+		Project p = new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build();
+		PA.addProject(p);
+		PA.setProject(0, p);
+		Activity a = new Activity.Builder().build();
+		PA.addActivity(p, a);
+	    PA.setActivity(p, 0, a);
+	    PA.addUserToActivity(a, PA.getUser(string));
+    }
+    
+    // test of isActivityListEmpty
+    @When("user wants to see if activitylist is empty for project with name {string}")
+    public void userWantsToSeeIfActivitylistIsEmptyForProjectWithName(String string) {
+    	Project p = new Project.Builder().setProjectName(string).build();
+        assertTrue(PA.isActivityListEmpty(p));
     }
 }
