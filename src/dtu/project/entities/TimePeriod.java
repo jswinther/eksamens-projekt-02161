@@ -16,8 +16,17 @@ public class TimePeriod {
      * @param endDate
      */
     public TimePeriod(String startDate, String endDate) throws DateTimeParseException {
-    	setStartDate(LocalDateTime.parse(startDate, formatter));
-    	setEndDate(LocalDateTime.parse(endDate, formatter));
+    	LocalDateTime LDT1 = LocalDateTime.parse(startDate, formatter);
+    	LocalDateTime LDT2 = LocalDateTime.parse(endDate, formatter);
+    	if(LDT1.isAfter(LDT2)) {
+    		throw new DateTimeParseException("End date: " + LDT1 + " must be after start date: " + LDT2, LDT1.toString(), 0);
+    	} else {
+    		setStartDate(LDT1);
+    		setEndDate(LDT2);
+    	}
+    	
+    	
+    	
     }
 
     public LocalDateTime getStartDate() {

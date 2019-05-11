@@ -41,6 +41,16 @@ public class ProjectApp {
     }
 
     /**
+	 * @param project1
+	 * @param project2
+	 * @throws DuplicateProjectName
+	 * @see dtu.project.controllers.ProjectController#editProject(dtu.project.entities.Project, dtu.project.entities.Project)
+	 */
+	public void editProject(Project project1, Project project2) throws DuplicateProjectName {
+		PC.editProject(project1, project2);
+	}
+
+	/**
      * ***********************************************************
      * Generic methods used to make controlling information easier
      * ***********************************************************
@@ -223,7 +233,9 @@ public class ProjectApp {
     }
     
     // function to sort hashmap by values 
-    // https://www.geeksforgeeks.org/sorting-a-hashmap-according-to-values/
+    // https://www.geeksforgeeks.org/sorting-a-hashmap-according-to-values/¨
+    // sortByValue function is not written by us, it is taken from the website above
+    // it is used to sort a hashmap.
     public HashMap<User, Integer> sortByValue(HashMap<User, Integer> hm) 
     { 
         // Create a list from elements of HashMap 

@@ -109,10 +109,7 @@ public class Activity {
         }
 
         public Builder setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
-        	TimePeriod event = new TimePeriod(startDate, endDate);
-			if(event.getEndDate().isAfter(event.getStartDate()))
-				this.timePeriod = event; //new Event(startDate, endDate);
-			else throw new DateTimeParseException("End date: " + endDate + " must be after start date: " + startDate, endDate, 0);
+        	this.timePeriod = new TimePeriod(startDate, endDate);
             return this;
         }
 

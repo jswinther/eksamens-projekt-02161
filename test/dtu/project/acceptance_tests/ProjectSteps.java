@@ -413,7 +413,7 @@ public class ProjectSteps {
 		assertTrue(PA.getUserSchedule("Shiloh Richmond").get(0).getTimePeriod().toString().equals(new TimePeriod("2023-05-05 13:13", "2024-05-05 13:13").toString()));
 	}
 	
-    // Test for duplicate project name
+    // Test for duplicate project name and invalid names
     @When("user creates project named {string} then throw exception")
     public void userCreatesActivityNamedThenThrowException(String string) {
     	project = new Project.Builder().setProjectName(string).build();
@@ -424,6 +424,40 @@ public class ProjectSteps {
 		} catch (Exception e) {
 			assertTrue(e.toString().equals("Project name already taken"));
 		}
+    	project1 = new Project.Builder().setProjectName("Andet navn").build();
+    	try {
+			PA.addProject(project1);
+		} catch (DuplicateProjectName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	try {
+    		PA.editProject(project1, new Project.Builder().setProjectName(string).build());
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+    	
+    	try {
+			PA.addProject(new Project.Builder().setProjectName("#").build());
+		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateProjectName e) {
+			// TODO Auto-generated catch block
+			System.err.println(e);
+		}
+    	
+    	try {
+    		PA.getProject(0).setProjectName("#");
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+    	
+    	try {
+			PA.editProject(project1, new Project.Builder().setProjectName("Hej").build());
+		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateProjectName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     }
     // user add to activity
     @When("user wants to add user {string} to activity")
