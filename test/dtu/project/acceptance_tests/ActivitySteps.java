@@ -132,4 +132,53 @@ public class ActivitySteps {
     }
     
     
+    
+    // Test for om brugeren er tilføjet til aktiviteten
+    @When("user is added to an activity")
+    public void userIsAddedToAnActivity() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @Then("user exists in list")
+    public void userExistsInList() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+    
+    // Test for at liste af aktiviteter er tom
+    @When("no activities has been added")
+    public void noActivitiesHasBeenAdded() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @Then("list of activities is empty")
+    public void listOfActivitiesIsEmpty() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    // Test for edit activity
+    @Given("an activity exists named {string}")
+    public void anActivityExistsNamed(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("a user changes activity name to {string}")
+    public void aUserChangesActivityNameTo(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @Then("activity is named {string}")
+    public void activityIsNamed(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    
+    
+    
 }
