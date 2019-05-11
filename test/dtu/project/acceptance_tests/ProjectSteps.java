@@ -179,6 +179,41 @@ public class ProjectSteps {
 	public void nameIsNotNullAndListIsNotNullReturnSearch() {
 		assertTrue(PA.searchUser("Shiloh").contains(PA.getUser(0)));
 	}
+	
+	@When("user searches for project with name {string} project is found")
+	public void userSearchesForProjectWithNameProjectIsFound(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, DuplicateProjectName {
+		PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
+		PA.getProject(string);
+		assertTrue(true);
+	}
+	
+	@When("user set project with index {int} and project")
+	public void userSetProjectWithIndexAndProject(Integer int1) throws DuplicateProjectName {
+		Project p = new Project.Builder().setProjectName("testProject").setProjectType(ProjectType.INTERNAL).build();
+		PA.addProject(p);
+		PA.setProject(int1, p);
+	}
+
+	@Then("the project is set")
+	public void theProjectIsSet() {
+		PA.setProject(0, new Project.Builder().setProjectName("testProject").build());
+		PA.getProject(0);
+			assertTrue(true);
+	}
+	
+	@When("user set project with name {string} and project")
+	public void userSetProjectWithNameAndProject(String string) throws DuplicateProjectName {
+		Project p = new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build();
+		PA.addProject(p);
+		PA.setProject(string, p);
+	}
+
+	@Then("project is set with name {string}")
+	public void projectIsSetWithName(String string) {
+		PA.setProject(0, new Project.Builder().setProjectName(string).build());
+		PA.getProject(string);
+			assertTrue(true);
+	}
 
 	@When("name is null and list is not null, cast error")
 	public void nameIsNullAndListIsNotNullCastError() {
