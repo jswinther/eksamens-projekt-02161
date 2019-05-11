@@ -7,6 +7,10 @@ Scenario: User is added to an activity
 	When user named "Shiloh Richmond" is added to activity
 	Then user named "Shiloh RIchmond" exists in list
 	
+Scenario: duplicate user is added to activity
+	When another user named "Shiloh Richmond" is added to activity
+	Then throw exception
+	
 Scenario: User is removed from an activity
 	When user named "Shiloh Richmond" is removed from activity
 	Then user named "Shiloh RIchmond" no longer exists in list
@@ -26,16 +30,6 @@ Scenario: user creates activity with invalid time period
 Scenario: set invalid estimated hours for activity
 	When user sets estimated hours to "a" then throw exception
 	
-	
-Scenario: user is added to an activity
-	When user is added to an activity
-	Then user exists in list
-	
-Scenario: no activities exist
-	When no activities has been added
-	Then list of activities is empty
-	
 Scenario: user edits an activity
-	Given an activity exists named "testActivity"
-	When a user changes activity name to "activityTest"
+	When an activity exists named "testAcitivty", and user changes activity name to "activityTest"
 	Then activity is named "activityTest"
