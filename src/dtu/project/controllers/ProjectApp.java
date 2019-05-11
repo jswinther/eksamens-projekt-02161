@@ -7,6 +7,7 @@ import dtu.project.entities.TimePeriod;
 import dtu.project.entities.User;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
+import dtu.project.exceptions.DuplicateUser;
 import dtu.project.repo.ProjectRepository;
 import dtu.project.repo.UserRepository;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+ 
 /**
  * This class functions as a connector for the GUI to use all the other classes.
  *
@@ -247,6 +248,17 @@ public class ProjectApp {
 	 */
 	public void removeActivity(Project project, Activity activity) {
 		PC.removeActivity(project, activity);
+	}
+	
+	
+
+	/**
+	 * @param activity
+	 * @param user
+	 * @see dtu.project.controllers.ProjectController#addUserToActivity(dtu.project.entities.Activity, dtu.project.entities.User)
+	 */
+	public void addUserToActivity(Activity activity, User user) throws DuplicateUser {
+		PC.addUserToActivity(activity, user);
 	}
 
 	/**

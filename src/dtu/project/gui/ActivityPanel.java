@@ -8,6 +8,7 @@ package dtu.project.gui;
 import dtu.project.entities.Activity;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
+import dtu.project.exceptions.DuplicateUser;
 import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,6 +54,8 @@ public class ActivityPanel extends PanelTemplate {
         activitySelectLabel1 = new javax.swing.JLabel();
         activitySelectComboBox1 = new javax.swing.JComboBox<>();
         removeActivityButton = new javax.swing.JButton();
+        addUserComboBox = new javax.swing.JComboBox<>();
+        addUserButton = new javax.swing.JButton();
 
         selectProjectLabel1.setText("Select Project");
 
@@ -81,13 +84,7 @@ public class ActivityPanel extends PanelTemplate {
         addActivityButton.setText("Add Activity");
         addActivityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-					addActivityButtonActionPerformed(evt);
-				} catch (ArrayIndexOutOfBoundsException e) {
-					System.err.println(e);
-				} catch (Exception e) {
-					System.err.println(e);
-				}
+                addActivityButtonActionPerformed(evt);
             }
         });
 
@@ -109,6 +106,15 @@ public class ActivityPanel extends PanelTemplate {
             }
         });
 
+        addUserComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        addUserButton.setText("Add User To Selected Activity");
+        addUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,9 +122,6 @@ public class ActivityPanel extends PanelTemplate {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(selectProjectLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -151,7 +154,15 @@ public class ActivityPanel extends PanelTemplate {
                                 .addComponent(editActivityButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(removeActivityButton)))
-                        .addContainerGap(71, Short.MAX_VALUE))))
+                        .addContainerGap(71, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selectProjectLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addUserComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addUserButton)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +194,11 @@ public class ActivityPanel extends PanelTemplate {
                     .addComponent(addActivityButton)
                     .addComponent(editActivityButton)
                     .addComponent(removeActivityButton))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addUserComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addUserButton))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -216,6 +231,15 @@ public class ActivityPanel extends PanelTemplate {
         MF.updateAll();
     }//GEN-LAST:event_removeActivityButtonActionPerformed
 
+    private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserButtonActionPerformed
+        try {
+            PG.addUserToActivity(PG.getActivity(PG.getProject(projectListComboBox1.getSelectedIndex()), activitySelectComboBox1.getSelectedIndex()), PG.getUser(addUserComboBox.getSelectedIndex()));
+            MF.updateAll();
+        } catch (DuplicateUser e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_addUserButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel activityEndDateLabel1;
@@ -229,6 +253,8 @@ public class ActivityPanel extends PanelTemplate {
     private javax.swing.JComboBox<String> activityUserComboBox1;
     private javax.swing.JLabel activityUserLabel1;
     private javax.swing.JButton addActivityButton;
+    private javax.swing.JButton addUserButton;
+    private javax.swing.JComboBox<String> addUserComboBox;
     private javax.swing.JButton editActivityButton;
     private javax.swing.JLabel estimatedHoursLabel1;
     private javax.swing.JTextField estimatedHoursTextField1;
@@ -240,6 +266,7 @@ public class ActivityPanel extends PanelTemplate {
     @Override
     public void initFields() {
         activityUserComboBox1.setModel(PG.getUserDefaultComboBoxModel());
+        addUserComboBox.setModel(PG.getUserDefaultComboBoxModel());
         if (PG.isProjectListEmpty()) {
             projectListComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
             activitySelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));

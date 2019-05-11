@@ -55,6 +55,7 @@ public class ProjectGUI extends ProjectApp {
                         .setEstimatedHours(Integer.valueOf(estimatedHoursTextField.getText()))
                         .setTimePeriod(activityStartDateTextField.getText(), 
                                 activityEndDateTextField.getText())
+                       .setUser(getUser(activityUserComboBox.getSelectedIndex()))
                 .build());
     }
 
