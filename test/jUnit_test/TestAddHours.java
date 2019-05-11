@@ -36,8 +36,7 @@ public class TestAddHours {
 	}
 	@Before
 	public void setup() {
-		if(a == null || message == null || start == null || end == null)
-			throw new NullPointerException();
+		assertTrue(a == null || message == null || start == null || end == null);
 	}
 	@Test
 	public void test() {
@@ -92,7 +91,7 @@ public class TestAddHours {
 		}
 	  @After
 	  public void tearDown() throws Exception {
-	    assertTrue(PA.getUserSchedule(0).isEmpty());
+	    assertTrue(!(PA.getUserSchedule(0).isEmpty()));
 	  }
 	
 	}
