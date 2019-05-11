@@ -34,4 +34,50 @@ public class TestAddHours {
 		PA.addHours(PA.getUser(0), "1993-03-03 15:30" , "1993-08-08 13:30", new Activity.Builder().build(), "test");
 		assertTrue(!PA.getUserSchedule(0).isEmpty());
 	}
-}
+	
+	@Test
+	public void test1() {
+		try {
+			PA.addHours(null, "1993-03-03 15:30" , "1993-08-08 13:30", new Activity.Builder().build(), "test");
+		} catch (Exception e) {
+			assertTrue(PA.getUserSchedule(0).isEmpty());
+		}
+		
+		}
+	@Test
+	public void test2() {
+		try {
+			PA.addHours(PA.getUser(0), null , "1993-08-08 13:30", new Activity.Builder().build(), "test");
+		} catch (Exception e) {
+			assertTrue(PA.getUserSchedule(0).isEmpty());
+		}
+		
+		}
+	@Test
+	public void test3() {
+		try {
+			PA.addHours(PA.getUser(0), "1993-03-03 15:30" , null, new Activity.Builder().build(), "test");
+		} catch (Exception e) {
+			assertTrue(PA.getUserSchedule(0).isEmpty());
+		}
+		
+		}
+	@Test
+	public void test4() {
+		try {
+			PA.addHours(PA.getUser(0), "1993-03-03 15:30" , "1993-08-08 13:30", null, "test");
+		} catch (Exception e) {
+			assertTrue(PA.getUserSchedule(0).isEmpty());
+		}
+		
+		}
+	@Test
+	public void test5() {
+		try {
+			PA.addHours(PA.getUser(0), "1993-03-03 15:30" , "1993-08-08 13:30", new Activity.Builder().build(), null);
+		} catch (Exception e) {
+			assertTrue(PA.getUserSchedule(0).isEmpty());
+		}
+		
+		}
+	}
