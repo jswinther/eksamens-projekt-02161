@@ -206,14 +206,11 @@ public class ActivitySteps {
         System.out.println(PA.getActivity(PA.getProject(0), 0).getActivityName());
     }
 
-    @Then("activity is named {string}")
-    public void activityIsNamed(String string) {
-    }
 
     
     
     
-	}
+	
 
 
 
