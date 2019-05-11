@@ -43,6 +43,15 @@ public class ProjectController {
     		
 
     }
+    
+    public void editProject(Project project1, Project project2) throws DuplicateProjectName {
+    	for (Project p : getProjectList()) {
+			if(p.getProjectName().equals(project2.getProjectName()))
+				throw new DuplicateProjectName();
+		}
+    	project1 = project2;
+    }
+    
 
     /**
      * delete project

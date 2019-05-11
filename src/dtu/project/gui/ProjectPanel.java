@@ -191,7 +191,7 @@ public class ProjectPanel extends PanelTemplate {
                     .setProjectName(projectNameTextField1.getText())
                     .setProjectType(ProjectType.valueOf(projectTypeComboBox1.getItemAt(projectTypeComboBox1.getSelectedIndex())))
                     .build();
-            if (projectTimePeriodUndefinedCheckBox1.isSelected()) {
+            if (!projectTimePeriodUndefinedCheckBox1.isSelected()) {
                 p.setTimePeriod(new TimePeriod(projectStartDateTextField1.getText(), projectEndDateTextField1.getText()));
             }
             if (!projectManagerList.isSelectionEmpty()) {

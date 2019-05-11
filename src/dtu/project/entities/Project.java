@@ -56,12 +56,7 @@ public class Project {
         }
 
         public Builder setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
-            TimePeriod event = new TimePeriod(startDate, endDate);
-            if (event.getEndDate().isAfter(event.getStartDate())) {
-                this.timePeriod = event; //new Event(startDate, endDate);
-            } else {
-                throw new DateTimeParseException("End date: " + endDate + " must be after start date: " + startDate, endDate, 0);
-            }
+        	this.timePeriod = new TimePeriod(startDate, endDate);
             return this;
         }
 
@@ -110,20 +105,11 @@ public class Project {
 	}
 	// mangler slut
 	public void setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
-		TimePeriod event = new TimePeriod(startDate, endDate);
-        if (event.getEndDate().isAfter(event.getStartDate())) {
-            this.timePeriod = event; //new Event(startDate, endDate);
-        } else {
-            throw new DateTimeParseException("End date: " + endDate + " must be after start date: " + startDate, endDate, 0);
-        }
+		this.timePeriod = new TimePeriod(startDate, endDate);
 	}
 	// mangler
 	public void setTimePeriod(TimePeriod event) throws DateTimeParseException {
-        if (event.getEndDate().isAfter(event.getStartDate())) {
-            this.timePeriod = event; //new Event(startDate, endDate);
-        } else {
-            throw new DateTimeParseException("End date: " + event.getEndDate() + " must be after start date: " + event.getStartDate(), event.getEndDate().toString(), 0);
-        }
+		this.timePeriod = event;
 	}
 
 	public List<Activity> getActivities() {
