@@ -179,6 +179,7 @@ public class SchedulePanel extends PanelTemplate {
                     messageTextArea.getText());
         } catch (Exception e) {
             System.err.println(e);
+            e.printStackTrace();
         }
 
         MF.updateAll();

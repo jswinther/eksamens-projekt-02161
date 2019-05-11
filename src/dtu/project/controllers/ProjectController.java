@@ -49,7 +49,10 @@ public class ProjectController {
 			if(p.getProjectName().equals(project2.getProjectName()))
 				throw new DuplicateProjectName();
 		}
-    	project1 = project2;
+    	project1.setProjectManager(project2.getProjectManager());
+    	project1.setProjectName(project2.getProjectName());
+    	project1.setProjectType(project2.getProjectType());
+    	project1.setTimePeriod(project2.getTimePeriod());
     }
     
 
@@ -83,8 +86,11 @@ public class ProjectController {
                 throw new DuplicateActivityName();
             }
         }
-        currentActivity = newActivity;
-        		
+        currentActivity.setUser(newActivity.getUsers());		
+        currentActivity.setActivityName(newActivity.getActivityName());
+        currentActivity.setEstimatedHours(newActivity.getEstimatedHours());
+        currentActivity.setTimePeriod(newActivity.getTimePeriod());
+        
     }
 
     /**

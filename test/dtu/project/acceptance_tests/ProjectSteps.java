@@ -336,10 +336,11 @@ public class ProjectSteps {
 			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian2").setUser(user).build());
 			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian3").setUser(user).build());
 			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian4").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian5").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian6").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-02-02 13:40").setActivityName("Brian5").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-01-01 13:30", "2019-02-02 13:40").setActivityName("Brian6").setUser(user).build());
 			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian7").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian8").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2018-02-02 13:30", "2018-04-04 13:40").setActivityName("Brian8").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2025-02-02 13:30", "2025-04-04 13:40").setActivityName("Brian9").setUser(user).build());
 		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
 			System.err.println(e);
 		}

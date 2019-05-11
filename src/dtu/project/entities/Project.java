@@ -123,8 +123,12 @@ public class Project {
     public void removeActivity(Activity activity) {
         this.activities.remove(activity);
     }
+
+	@Override
+	public String toString() {
+		return "Project [projectName=" + projectName + ", projectType=" + projectType + ", projectManager="
+				+ projectManager + ", timePeriod=" + timePeriod + ", activities=" + activities + "]";
+	}
     
-    public String toString() {
-    	return projectName + " Project Manager: " + projectManager + " Time Period: " + timePeriod;
-    }
+    
 }

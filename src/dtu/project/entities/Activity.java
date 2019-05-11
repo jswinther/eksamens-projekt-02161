@@ -138,6 +138,36 @@ public class Activity {
 	public TimePeriod getTimePeriod() {
 		return timePeriod;
 	}
+	
+	
+
+	/**
+	 * @param activityName the activityName to set
+	 */
+	public void setActivityName(String activityName) {
+		this.activityName = activityName;
+	}
+
+	/**
+	 * @param users the users to set
+	 */
+	public void setUser(List<User> users) {
+		this.users = users;
+	}
+
+	/**
+	 * @param estimatedHours the estimatedHours to set
+	 */
+	public void setEstimatedHours(int estimatedHours) {
+		this.estimatedHours = estimatedHours;
+	}
+
+	/**
+	 * @param timePeriod the timePeriod to set
+	 */
+	public void setTimePeriod(TimePeriod timePeriod) {
+		this.timePeriod = timePeriod;
+	}
 
 	@Override
     public String toString() {

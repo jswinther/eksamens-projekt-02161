@@ -70,7 +70,7 @@ public class ActivitySteps {
 		try {
 			PA.addUserToActivity(a2, user);
 		} catch (Exception e) {
-			assertEquals(e.getClass(), DuplicateUser.class);
+			assertEquals(e.toString(), "User already exists in the selected activity");
 		}
 	}
 
@@ -108,11 +108,19 @@ public class ActivitySteps {
 		boolean flag;
 		try {
 			PA.addActivity(project, new Activity.Builder().setActivityName(string).build());
+			
 			flag = false;
 		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
 			flag = true;
 		}
 		assertTrue(flag);
+		try {
+			PA.setActivity(project, string, new Activity.Builder().setActivityName("#").build());			
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		
 	}
 
 	// Test for invalid activity time period
@@ -157,13 +165,15 @@ public class ActivitySteps {
     @When("user is added to an activity")
     public void userIsAddedToAnActivity() {
         try {
-			PA.addActivity(new Project.Builder().build(), new Activity.Builder().setUser(user).build());
-		} catch (DuplicateActivityName e) {
+        	PA.addProject(new Project.Builder().setProjectName("11").build());
+			PA.addActivity(PA.getProject("11"), new Activity.Builder().setUser(user).build());
+		} catch (DuplicateActivityName | PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateProjectName e) {
 			System.err.println(e);
 		}
         try {
 			PA.addUserToActivity(PA.getActivity(PA.getProject(0), 0), PA.getUser(2));
 		} catch (DuplicateUser e) {
+			assertTrue(e.toString().equals("User already exists in the selected activity"));
 			System.err.println(e);
 		}
         assertTrue(PA.getActivity(PA.getProject(0), 0).getUsers().contains(PA.getUser(2)));
@@ -226,15 +236,10 @@ public class ActivitySteps {
 		try {
 			PA.editActivity(project, a3, a4);
 		} catch (Exception e) {
-			assertEquals(e.getClass(), DuplicateActivityName.class);
+			assertEquals(e.toString(), "Activity name already taken");
 		}
 	}
 
-	@Then("send error message")
-	public void send_error_message() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
-	}
 
 
 

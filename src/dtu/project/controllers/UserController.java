@@ -29,6 +29,12 @@ public class UserController {
      */
     public void addHours(User user, String startDate, String endDate, Activity activity, String message) {
         getUserMap().get(user).add(new Event(startDate, endDate, activity, message));
+        if(activity != null) {
+        	if(activity.getRegisteredHours().isEmpty())
+        		activity.getRegisteredHours().put(user, new ArrayList<>());
+        	activity.getRegisteredHours().get(user).add(new TimePeriod(startDate, endDate));
+        }
+        	
     }
     
     

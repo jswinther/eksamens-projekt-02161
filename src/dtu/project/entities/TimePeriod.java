@@ -24,9 +24,6 @@ public class TimePeriod {
     		setStartDate(LDT1);
     		setEndDate(LDT2);
     	}
-    	
-    	
-    	
     }
 
     public LocalDateTime getStartDate() {
@@ -48,8 +45,8 @@ public class TimePeriod {
     @Override
     public String toString() {
         return "Event{"
-                + "startDate=" + (startDate == null ? "undefined" : startDate.format(formatter))
-                + ", endDate=" + (endDate == null ? "undefined" : endDate.format(formatter))
+                + "startDate=" + startDate
+                + ", endDate=" + endDate
                 + '}';
     }
 }

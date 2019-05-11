@@ -39,6 +39,13 @@ public class ProjectApp {
         this.UC = new UserController(userRepository);
         this.PC = new ProjectController(projectRepository);
     }
+    
+    
+    
+    
+    
+    
+    
 
     /**
 	 * @param project1
@@ -82,7 +89,7 @@ public class ProjectApp {
      * @return if it exists then E otherwise null
      */
     public <E> E get(int index, List<E> list) {
-        return list.get(index) == null ? null : list.get(index);
+        return list.get(index);
     }
 
     /**
@@ -96,8 +103,8 @@ public class ProjectApp {
      */
     public <E> void set(String string, E element, List<E> list) {
         for (E e : list) {
-            if (string.contains(e.toString())) {
-                e = element;
+            if (e.toString().contains(string)) {
+                list.set(list.indexOf(e), element);
                 break;
             }
         }
@@ -311,8 +318,7 @@ public class ProjectApp {
      * dtu.project.controllers.ProjectController#editActivity(dtu.project.entities.Project,
      * dtu.project.entities.Activity, dtu.project.entities.Activity)
      */
-    public void editActivity(Project project, Activity currentActivity, Activity newActivity)
-            throws DuplicateActivityName {
+    public void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
         PC.editActivity(project, currentActivity, newActivity);
     }
 
@@ -371,5 +377,6 @@ public class ProjectApp {
     public boolean isActivityListEmpty(Project project) {
         return PC.isActivityListEmpty(project);
     }
+    
 
 }
