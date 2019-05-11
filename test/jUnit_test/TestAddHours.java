@@ -18,6 +18,7 @@ public class TestAddHours {
 	@Test
 	public void test() {
 		PA.addHours(PA.getUser(0), "1993-03-03 13:30 15:30" , "1993-08-03 13:30 15:30", new Activity.Builder().build(), "test");
-		assertTrue(!PA.getUserListWithAcitivites("1993-03-03 13:30 15:30" , "1993-08-03 13:30 15:30").isEmpty());
+		assertTrue(!(PA.getUserSchedule(PA.getUser(0).getName()).isEmpty()));
+		
 	}
 }
