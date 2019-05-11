@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 
 import org.junit.Test;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import dtu.project.controllers.ProjectApp;
 import dtu.project.entities.Activity;
 import dtu.project.entities.Project;
@@ -18,6 +20,10 @@ public class TestAddHours {
 	Project P;
 	User U;
 	InMemoryRepository M;
+	Activity a = new Activity.Builder().build();
+	String message = "test";
+	String start = "1993-03-03 15:30";
+	String end = "1993-08-03 15:30";
 	public TestAddHours() {
 		
 		try {
@@ -28,7 +34,11 @@ public class TestAddHours {
 		}
 		this.PA = new ProjectApp(M, M);
 	}
-	
+	@Before
+	public void setup() {
+		if(a == null || message == null || start == null || end == null)
+			throw new NullPointerException();
+	}
 	@Test
 	public void test() {
 		PA.addHours(PA.getUser(0), "1993-03-03 15:30" , "1993-08-08 13:30", new Activity.Builder().build(), "test");
@@ -80,4 +90,9 @@ public class TestAddHours {
 		}
 		
 		}
+	  @After
+	  public void tearDown() throws Exception {
+	    assertTrue(PA.getUserSchedule(0).isEmpty());
+	  }
+	
 	}
