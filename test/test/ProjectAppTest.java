@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ProjectAppTest {
+	projectApp PA;
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -182,6 +183,7 @@ public class ProjectAppTest {
 
 	@Test
 	public void testAddHours() {
+		PA.add
 		fail("Not yet implemented");
 	}
 
