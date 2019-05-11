@@ -11,11 +11,20 @@ import dtu.project.exceptions.DuplicateUser;
 import dtu.project.repo.ProjectRepository;
 import dtu.project.repo.UserRepository;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
- 
+import javafx.util.Pair;
+
 /**
  * This class functions as a connector for the GUI to use all the other classes.
  *
@@ -23,76 +32,79 @@ import java.util.stream.Collectors;
  */
 public class ProjectApp {
 
-	private final ProjectController PC;
-	private final UserController UC;
+    private final ProjectController PC;
+    private final UserController UC;
 
     public ProjectApp(UserRepository userRepository, ProjectRepository projectRepository) {
         this.UC = new UserController(userRepository);
         this.PC = new ProjectController(projectRepository);
     }
-    
+
     /**
      * ***********************************************************
      * Generic methods used to make controlling information easier
      * ***********************************************************
      */
-    
     /**
-     * Returns the first element of type E which matches string, which appears in the list of elements.
+     * Returns the first element of type E which matches string, which appears
+     * in the list of elements.
+     *
      * @param <E>
      * @param string
      * @param list
      * @return if it exists then E otherwise null
      */
     public <E> E get(String string, List<E> list) {
-    	for (E e : list) {
-			if(string.contains(e.toString())) {
-				return e;
-			}
-		}
-    	return null;
+        for (E e : list) {
+            if (string.contains(e.toString())) {
+                return e;
+            }
+        }
+        return null;
     }
-    
+
     /**
      * Returns the element at the specified index in the list, if it exists.
+     *
      * @param <E>
      * @param index
      * @param list
      * @return if it exists then E otherwise null
      */
     public <E> E get(int index, List<E> list) {
-    	return list.get(index) == null ? null : list.get(index);
+        return list.get(index) == null ? null : list.get(index);
     }
-    
+
     /**
-     * Sets the first element of type E which matches string, which appears in the list of elements.
+     * Sets the first element of type E which matches string, which appears in
+     * the list of elements.
+     *
      * @param <E>
      * @param string
      * @param element
      * @param list
      */
     public <E> void set(String string, E element, List<E> list) {
-    	for (E e : list) {
-			if(string.contains(e.toString())) {
-				e = element;
-				break;
-			}
-		}
+        for (E e : list) {
+            if (string.contains(e.toString())) {
+                e = element;
+                break;
+            }
+        }
     }
-    
+
     /**
      * Sets the element at the specified index to new element
+     *
      * @param <E>
      * @param index
      * @param element
      * @param list
      */
     public <E> void set(int index, E element, List<E> list) {
-    	list.set(index, element);
+        list.set(index, element);
     }
-    
-    
-    
+
     /**
      * Jonathan Generic method which converts a list of elements of type E into
      * a stream, which collects all elements that contain the searchText in
@@ -110,27 +122,23 @@ public class ProjectApp {
         }
         return searchList.stream().filter(e -> e.toString().contains(searchText)).collect(Collectors.toList());
     }
-    
-    
-    
-    
-    
+
     public Project getProject(String projectName) {
-    	return get(projectName, getProjectList());
+        return get(projectName, getProjectList());
     }
-    
+
     public Project getProject(int index) {
-    	return get(index, getProjectList());
+        return get(index, getProjectList());
     }
-    
+
     public void setProject(int index, Project project) {
-    	set(index, project, getProjectList());
+        set(index, project, getProjectList());
     }
-    
+
     public void setProject(String projectName, Project project) {
-    	set(projectName, project, getProjectList());
+        set(projectName, project, getProjectList());
     }
-    
+
     public List<Project> searchProjects(String searchText) {
         return search(searchText, getProjectList());
     }
@@ -144,35 +152,35 @@ public class ProjectApp {
     }
     
     public Activity getActivity(Project project, String activityName) {
-    	return get(activityName, project.getActivities());
+        return get(activityName, project.getActivities());
     }
-    
+
     public Activity getActivity(Project project, int index) {
-    	return get(index, project.getActivities());
+        return get(index, project.getActivities());
     }
     
 
     
     public User getUser(String userName) {
-    	return get(userName, getUserList());
+        return get(userName, getUserList());
     }
-    
+
     public User getUser(int index) {
-    	return get(index, getUserList());
+        return get(index, getUserList());
     }
-    
+
     public List<Event> getUserSchedule(String userName) {
-    	return getUserMap().get(get(userName, getUserList()));
+        return getUserMap().get(get(userName, getUserList()));
     }
-    
-    public List<Event>  getUserSchedule(int index) {
-    	return getUserMap().get(get(index, getUserList()));
+
+    public List<Event> getUserSchedule(int index) {
+        return getUserMap().get(get(index, getUserList()));
     }
-    
+
     public List<User> searchUser(String searchText) {
         return search(searchText, getUserList());
     }
-    
+
     /**
      * Jonathan Get activities assigned to a specific user.
      *
@@ -189,8 +197,58 @@ public class ProjectApp {
         return activities;
     }
 
+    /**
+     * https://www.javacodegeeks.com/2017/09/java-8-sorting-hashmap-values-ascending-descending-order.html
+     * Sort Map by Values.
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    public HashMap<User, Integer> getUserListWithAcitivites(String startDate, String endDate) {
+        TimePeriod event = new TimePeriod(startDate, endDate);
+        HashMap<User, Integer> userList = new HashMap<>();
+        int numOfActivites = 0;
+        for (User user : getUserList()) {
+            for (Activity activity : getActivitiesAssignedTo(user)) {
+                if (UC.overlaps(event, activity.getTimePeriod())) {
+                    numOfActivites++;
+                }
+            }
+            userList.put(user, numOfActivites);
+        }
+        
+     
+        
+        return sortByValue(userList);
+    }
+    
+    // function to sort hashmap by values 
+    // https://www.geeksforgeeks.org/sorting-a-hashmap-according-to-values/
+    public HashMap<User, Integer> sortByValue(HashMap<User, Integer> hm) 
+    { 
+        // Create a list from elements of HashMap 
+        List<Map.Entry<User, Integer> > list = 
+               new LinkedList<Map.Entry<User, Integer> >(hm.entrySet()); 
+  
+        // Sort the list 
+        Collections.sort(list, new Comparator<Map.Entry<User, Integer> >() { 
+            public int compare(Map.Entry<User, Integer> o1,  
+                               Map.Entry<User, Integer> o2) 
+            { 
+                return (o1.getValue()).compareTo(o2.getValue()); 
+            } 
+        }); 
+          
+        // put data from sorted list to hashmap  
+        HashMap<User, Integer> temp = new LinkedHashMap<User, Integer>(); 
+        for (Map.Entry<User, Integer> aa : list) { 
+            temp.put(aa.getKey(), aa.getValue()); 
+        } 
+        return temp; 
+    } 
+
     public List<User> getUserList() {
-    	return UC.getUserList();
+        return UC.getUserList();
     }
 
     public Map<User, List<Event>> getUserMap() {
@@ -200,105 +258,106 @@ public class ProjectApp {
     public List<Project> getProjectList() {
         return PC.getProjectList();
     }
-    
-    
-    
-    
+
     /**
-	 * @param project
-	 * @throws DuplicateProjectName
-	 * @see dtu.project.controllers.ProjectController#addProject(dtu.project.entities.Project)
-	 */
-	public void addProject(Project project) throws DuplicateProjectName {
-		PC.addProject(project);
-	}
+     * @param project
+     * @throws DuplicateProjectName
+     * @see
+     * dtu.project.controllers.ProjectController#addProject(dtu.project.entities.Project)
+     */
+    public void addProject(Project project) throws DuplicateProjectName {
+        PC.addProject(project);
+    }
 
-	/**
-	 * @param project
-	 * @see dtu.project.controllers.ProjectController#removeProject(dtu.project.entities.Project)
-	 */
-	public void removeProject(Project project) {
-		PC.removeProject(project);
-	}
+    /**
+     * @param project
+     * @see
+     * dtu.project.controllers.ProjectController#removeProject(dtu.project.entities.Project)
+     */
+    public void removeProject(Project project) {
+        PC.removeProject(project);
+    }
 
-	/**
-	 * @param project
-	 * @param activity
-	 * @throws DuplicateActivityName
-	 * @see dtu.project.controllers.ProjectController#addActivity(dtu.project.entities.Project, dtu.project.entities.Activity)
-	 */
-	public void addActivity(Project project, Activity activity) throws DuplicateActivityName {
-		PC.addActivity(project, activity);
-	}
+    /**
+     * @param project
+     * @param activity
+     * @throws DuplicateActivityName
+     * @see
+     * dtu.project.controllers.ProjectController#addActivity(dtu.project.entities.Project,
+     * dtu.project.entities.Activity)
+     */
+    public void addActivity(Project project, Activity activity) throws DuplicateActivityName {
+        PC.addActivity(project, activity);
+    }
 
-	/**
-	 * @param project
-	 * @param currentActivity
-	 * @param newActivity
-	 * @throws DuplicateActivityName
-	 * @see dtu.project.controllers.ProjectController#editActivity(dtu.project.entities.Project, dtu.project.entities.Activity, dtu.project.entities.Activity)
-	 */
-	public void editActivity(Project project, Activity currentActivity, Activity newActivity)
-			throws DuplicateActivityName {
-		PC.editActivity(project, currentActivity, newActivity);
-	}
+    /**
+     * @param project
+     * @param currentActivity
+     * @param newActivity
+     * @throws DuplicateActivityName
+     * @see
+     * dtu.project.controllers.ProjectController#editActivity(dtu.project.entities.Project,
+     * dtu.project.entities.Activity, dtu.project.entities.Activity)
+     */
+    public void editActivity(Project project, Activity currentActivity, Activity newActivity)
+            throws DuplicateActivityName {
+        PC.editActivity(project, currentActivity, newActivity);
+    }
 
-	/**
-	 * @param project
-	 * @param activity
-	 * @see dtu.project.controllers.ProjectController#removeActivity(dtu.project.entities.Project, dtu.project.entities.Activity)
-	 */
-	public void removeActivity(Project project, Activity activity) {
-		PC.removeActivity(project, activity);
-	}
-	
-	
+    /**
+     * @param project
+     * @param activity
+     * @see
+     * dtu.project.controllers.ProjectController#removeActivity(dtu.project.entities.Project,
+     * dtu.project.entities.Activity)
+     */
+    public void removeActivity(Project project, Activity activity) {
+        PC.removeActivity(project, activity);
+    }
 
-	/**
-	 * @param activity
-	 * @param user
-	 * @see dtu.project.controllers.ProjectController#addUserToActivity(dtu.project.entities.Activity, dtu.project.entities.User)
-	 */
-	public void addUserToActivity(Activity activity, User user) throws DuplicateUser {
-		PC.addUserToActivity(activity, user);
-	}
+    /**
+     * @param activity
+     * @param user
+     * @throws dtu.project.exceptions.DuplicateUser
+     * @see
+     * dtu.project.controllers.ProjectController#addUserToActivity(dtu.project.entities.Activity,
+     * dtu.project.entities.User)
+     */
+    public void addUserToActivity(Activity activity, User user) throws DuplicateUser {
+        PC.addUserToActivity(activity, user);
+    }
 
-	/**
-	 * @param user
-	 * @param startDate
-	 * @param endDate
-	 * @param activity
-	 * @param message
-	 * @see dtu.project.controllers.UserController#addHours(dtu.project.entities.User, java.lang.String, java.lang.String, dtu.project.entities.Activity, java.lang.String)
-	 */
-	public void addHours(User user, String startDate, String endDate, Activity activity, String message) {
-		UC.addHours(user, startDate, endDate, activity, message);
-	}
+    /**
+     * @param user
+     * @param startDate
+     * @param endDate
+     * @param activity
+     * @param message
+     * @see
+     * dtu.project.controllers.UserController#addHours(dtu.project.entities.User,
+     * java.lang.String, java.lang.String, dtu.project.entities.Activity,
+     * java.lang.String)
+     */
+    public void addHours(User user, String startDate, String endDate, Activity activity, String message) {
+        UC.addHours(user, startDate, endDate, activity, message);
+    }
 
-	/**
-	 * @param startDate
-	 * @param endDate
-	 * @return
-	 * @see dtu.project.controllers.UserController#getFreeUsers(java.lang.String, java.lang.String)
-	 */
-	public List<User> getFreeUsers(String startDate, String endDate) {
-		return UC.getFreeUsers(startDate, endDate);
-	}
+    /**
+     * @return @see
+     * dtu.project.controllers.ProjectController#isProjectListEmpty()
+     */
+    public boolean isProjectListEmpty() {
+        return PC.isProjectListEmpty();
+    }
 
-	/**
-	 * @return
-	 * @see dtu.project.controllers.ProjectController#isProjectListEmpty()
-	 */
-	public boolean isProjectListEmpty() {
-		return PC.isProjectListEmpty();
-	}
+    /**
+     * @param project
+     * @return
+     * @see
+     * dtu.project.controllers.ProjectController#isActivityListEmpty(dtu.project.entities.Project)
+     */
+    public boolean isActivityListEmpty(Project project) {
+        return PC.isActivityListEmpty(project);
+    }
 
-	/**
-	 * @param project
-	 * @return
-	 * @see dtu.project.controllers.ProjectController#isActivityListEmpty(dtu.project.entities.Project)
-	 */
-	public boolean isActivityListEmpty(Project project) {
-		return PC.isActivityListEmpty(project);
-	} 
 }

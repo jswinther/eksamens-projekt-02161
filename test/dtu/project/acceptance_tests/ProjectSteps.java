@@ -5,6 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.entities.Activity;
 import dtu.project.entities.TimePeriod;
+import dtu.project.entities.User;
 import dtu.project.entities.Project;
 import dtu.project.controllers.ProjectApp;
 import dtu.project.enums.ProjectType;
@@ -319,27 +320,32 @@ public class ProjectSteps {
 
 	@When("user is free, keep them on the list")
 	public void userIsFreeKeepThemOnTheList() {
-		PA.addHours(PA.getUser(0), "2019-03-03 12:00", "2019-03-03 12:59", null, null);
-		PA.addHours(PA.getUser(1), "2019-03-03 14:00", "2019-03-03 14:59", null, null);
-		assertTrue(PA.getFreeUsers("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUser(0)) && PA.getFreeUsers("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUser(1)));
-	}
-
-	@When("user is not free, remove them from the list")
-	public void userIsNotFreeRemoveThemFromTheList() {
-		PA.addHours(PA.getUser(0), "2019-03-03 13:00", "2019-03-03 13:59", null, null);
-		assertTrue(!(PA.getFreeUsers("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUser(0))));
-	}
-
-	@When("user overlaps into the beginning, remove them from list")
-	public void userOverlapsIntoTheBeginning() {
-		PA.addHours(PA.getUser(0), "2019-03-03 13:00", "2019-03-03 13:35", null, null);
-		assertTrue(!(PA.getFreeUsers("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUser(0))));
-	}
-
-	@When("user overlaps over the end, remove them from list")
-	public void userOverlapsOverTheEndRemoveThemFromList() {
-		PA.addHours(PA.getUser(0), "2019-03-03 13:35", "2019-03-03 14:35", null, null);
-		assertTrue(!(PA.getFreeUsers("2019-03-03 13:30", "2019-03-03 13:40").contains(PA.getUser(0))));
+		project = new Project.Builder().setProjectName("a1o").setProjectType(ProjectType.INTERNAL).build();
+		try {
+			PA.addProject(project);
+		} catch (DuplicateProjectName e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		User user = PA.getUser(0);
+		try {
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian1").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian2").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian3").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian4").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian5").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian6").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian7").setUser(user).build());
+			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian8").setUser(user).build());
+		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
+			System.err.println(e);
+		}
+		boolean flag;
+		if(PA.getUserListWithAcitivites("2019-01-01 13:30", "2019-03-03 13:40").get(user).intValue() > 0)
+			flag = true;
+		else 
+			flag = false;
+		assertTrue(flag);
 	}
 
 	@When("searching for user, returns user")

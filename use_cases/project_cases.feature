@@ -67,9 +67,6 @@ Scenario: remove activity
 		
 Scenario: find free user
 	When user is free, keep them on the list
-	When user is not free, remove them from the list
-	When user overlaps into the beginning, remove them from list
-	When user overlaps over the end, remove them from list
 		
 Scenario: search user
 	When searching for user, returns user
