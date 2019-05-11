@@ -26,7 +26,7 @@ public class TestAddActivity {
 		this.PA = new ProjectApp(M, M);
 	}
 
-	@Test
+	@Test // A
 	public void noInputTest() throws PatternSyntaxException{
 		try {
 			Activity a1 = new Activity.Builder().setActivityName("").build();
@@ -35,7 +35,7 @@ public class TestAddActivity {
 		}
 	}
 
-	@Test
+	@Test // B
 	public void spaceInputTest() throws PatternSyntaxException{
 		try {
 			Activity a1 = new Activity.Builder().setActivityName(" ").build();
@@ -44,7 +44,7 @@ public class TestAddActivity {
 		}
 	}
 
-	@Test
+	@Test // C
 	public void stringInputTest() {
 		Activity a1 = new Activity.Builder().setActivityName("Activity1").build();
 		Project p = new Project.Builder().setProjectName("project").build();
@@ -57,7 +57,7 @@ public class TestAddActivity {
 		assertTrue(PA.getActivity(p, 0).equals(a1));   
 	}
 
-	@Test
+	@Test // D
 	public void specialInputTest() {
 		try {
 			Activity a1 = new Activity.Builder().setActivityName("#").build();
@@ -65,5 +65,5 @@ public class TestAddActivity {
 			assertEquals(e.getClass(), PatternSyntaxException.class);
 		}
 	}
-
 }
+

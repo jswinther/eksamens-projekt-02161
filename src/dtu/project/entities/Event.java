@@ -14,9 +14,6 @@ public class Event {
     private Activity activity;
     private String message;
 
-    
-    
-
 
 	public Event(String startDate, String endDate, Activity activity, String message) {
         if(activity != null)
