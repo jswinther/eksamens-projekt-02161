@@ -9,6 +9,7 @@ import dtu.project.entities.Event;
 import dtu.project.entities.TimePeriod;
 import dtu.project.entities.User;
 import dtu.project.repo.UserRepository;
+import javafx.util.Pair;
 
 public class UserController {
 	private final UserRepository userRepository;
@@ -32,24 +33,10 @@ public class UserController {
     
     
     
-    public List<User> getFreeUsers(String startDate, String endDate) {
-        TimePeriod event = new TimePeriod(startDate, endDate);
-        List<User> users = getUserList();
-
-        for (Map.Entry<User, List<Event>> entry : getUserMap().entrySet()) {
-            User key = entry.getKey();
-            List<Event> value = entry.getValue();
-            for (Event period : value) {
-                if (overlaps(event, period)) {
-                    users.remove(key);
-                }
-            }
-        }
-        return users;
-    }
     
-    private boolean overlaps(TimePeriod event, Event period) {
-        return !(event.getEndDate().isBefore(period.getTimePeriod().getStartDate()) || event.getStartDate().isAfter(period.getTimePeriod().getEndDate()));
+    
+    public boolean overlaps(TimePeriod event1, TimePeriod event2) {
+        return !(event1.getEndDate().isBefore(event2.getStartDate()) || event1.getStartDate().isAfter(event2.getEndDate()));
     }
     
 
