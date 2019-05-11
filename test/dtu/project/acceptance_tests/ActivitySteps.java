@@ -66,9 +66,9 @@ public class ActivitySteps {
 	public void another_user_named_is_added_to_activity(String string) throws DuplicateUser {
 		user = PA.getUser(string);
 		Activity a2 = new Activity.Builder().build();
-		a2.getUsers().add(user);
+		PA.addUserToActivity(a2, user);
 		try {
-			a2.getUsers().add(user);
+			PA.addUserToActivity(a2, user);
 		} catch (Exception e) {
 			assertEquals(e.getClass(), DuplicateUser.class);
 		}
@@ -139,16 +139,15 @@ public class ActivitySteps {
 		}
 	}
 
-	// Test for duplicate project name
+	// Test for duplicate activity name
 	@When("user creates activity named {string} then throw exception")
 	public void userCreatesActivityNamedThenThrowException(String string) throws DuplicateActivityName {
 		Activity a1 = new Activity.Builder().setActivityName(string).build();
 		try {
-
 			PA.addActivity(PA.getProject(0), a1);
 			PA.addActivity(PA.getProject(0), a1);
 		} catch (Exception e) {
-			assertTrue(e.toString().equals("Activity name already taken"));
+			assertEquals(e.getClass(), DuplicateActivityName.class);
 		}
     }
     
@@ -206,20 +205,8 @@ public class ActivitySteps {
         System.out.println(PA.getActivity(PA.getProject(0), 0).getActivityName());
     }
 
-
-    
-    
-    
-	
-
-
-
-//	@When("a user changes activity name to {string}")
-//	public void aUserChangesActivityNameTo(String string) {
-//		Activity a1 = new Activity.Builder().setActivityName(string).build();
-//		PA.editActivity(project, string, a1);
-//	}
-	@When("an activity exists named {string}, and user changes activity name to {string}")
+    // Edit activity
+	@When("an activity exists named {string} and user changes activity name to {string}")
 	public void an_activity_exists_named_and_user_changes_activity_name_to(String string, String string2) throws DuplicateActivityName {
 		Activity a1 = new Activity.Builder().setActivityName(string).build();
 		Activity a2 = new Activity.Builder().setActivityName(string2).build();
@@ -230,11 +217,24 @@ public class ActivitySteps {
 		}
 	}
 
-	@Then("activity is named {string}")
-	public void activityIsNamed(String string) {
-		PA.getActivity(project, string);
+
+	// Duplicate activity name edit
+	@When("an activity exists that is named {string} and a user changes the name to {string}")
+	public void an_activity_exists_that_is_named_and_a_user_changes_the_name_to(String string, String string2) throws DuplicateActivityName {
+		Activity a3 = new Activity.Builder().setActivityName(string).build();
+		Activity a4 = new Activity.Builder().setActivityName(string2).build();
+		try {
+			PA.editActivity(project, a3, a4);
+		} catch (Exception e) {
+			assertEquals(e.getClass(), DuplicateActivityName.class);
+		}
 	}
 
+	@Then("send error message")
+	public void send_error_message() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
 
 
 
