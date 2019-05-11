@@ -12,8 +12,10 @@ import dtu.project.entities.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
+import dtu.project.exceptions.DuplicateUser;
 import dtu.project.repo.InMemoryRepository;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.time.format.DateTimeParseException;
@@ -136,46 +138,57 @@ public class ActivitySteps {
     // Test for om brugeren er tilføjet til aktiviteten
     @When("user is added to an activity")
     public void userIsAddedToAnActivity() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        try {
+			PA.addActivity(new Project.Builder().build(), new Activity.Builder().setUser(user).build());
+		} catch (DuplicateActivityName e) {
+			System.err.println(e);
+		}
+        try {
+			PA.addUserToActivity(PA.getActivity(PA.getProject(0), 0), PA.getUser(2));
+		} catch (DuplicateUser e) {
+			System.err.println(e);
+		}
+        assertTrue(PA.getActivity(PA.getProject(0), 0).getUsers().contains(PA.getUser(2)));
+        
     }
 
-    @Then("user exists in list")
-    public void userExistsInList() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }
-    
-    // Test for at liste af aktiviteter er tom
-    @When("no activities has been added")
-    public void noActivitiesHasBeenAdded() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }
-
-    @Then("list of activities is empty")
-    public void listOfActivitiesIsEmpty() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }
 
     // Test for edit activity
     @Given("an activity exists named {string}")
     public void anActivityExistsNamed(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    	PA.getProjectList().clear();
+    	project = new Project.Builder().setProjectName("test").setTimePeriod("2019-05-05 13:13", "2019-05-05 13:14").build();
+    	try {
+			PA.addProject(project);
+		} catch (DuplicateProjectName e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        try {
+        	
+			PA.addActivity(project, new Activity.Builder().setActivityName(string).build());
+		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
+			System.err.println(e);
+		}
+        assertTrue(PA.getActivity(PA.getProject(0), 0) != null);
     }
 
     @When("a user changes activity name to {string}")
     public void aUserChangesActivityNameTo(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    	Activity a = new Activity.Builder().setActivityName(string).build();
+    	System.out.println(a.getActivityName());
+    	System.out.println(PA.getActivity(PA.getProject(0), 0).getActivityName());
+        try {
+			PA.editActivity(PA.getProject(0), PA.getActivity(PA.getProject(0), 0), a);
+			System.out.println(PA.getActivity(PA.getProject(0), 0).getActivityName());
+		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
+			System.err.println(e);
+		}
+        System.out.println(PA.getActivity(PA.getProject(0), 0).getActivityName());
     }
 
     @Then("activity is named {string}")
     public void activityIsNamed(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
     }
 
     

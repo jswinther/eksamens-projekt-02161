@@ -1,5 +1,6 @@
 package dtu.project.controllers;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import dtu.project.entities.Activity;
@@ -13,6 +14,7 @@ import dtu.project.repo.ProjectRepository;
 public class ProjectController {
 
     private final ProjectRepository projectRepository;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public ProjectController(ProjectRepository projectRepository) {
         super();
@@ -26,12 +28,19 @@ public class ProjectController {
      * @throws dtu.project.exceptions.DuplicateProjectName
      */
     public void addProject(Project project) throws DuplicateProjectName {
-        for (Project p : getProjectList()) {
-            if (p.getProjectName().equals(project.getProjectName())) {
+    	if(isProjectListEmpty()) {
+    		getProjectList().add(project);
+    	}
+    		
+    	else {
+    		for (Project p : getProjectList()) {
+    			if (p.getProjectName().equals(project.getProjectName())) {
                 throw new DuplicateProjectName();
-            }
-        }
-        getProjectList().add(project);
+    			}
+    		}
+        	getProjectList().add(project);
+    	}
+    		
 
     }
 
@@ -66,6 +75,7 @@ public class ProjectController {
             }
         }
         currentActivity = newActivity;
+        		
     }
 
     /**

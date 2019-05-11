@@ -52,7 +52,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return message + (activity != null ? activity.getActivityName() : "") + " " + timePeriod;
+        return (message != null ? message : "") + (activity != null ? activity.getActivityName() : "") + " " + timePeriod;
     }
     
     

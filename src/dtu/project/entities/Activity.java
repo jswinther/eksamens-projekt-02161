@@ -108,11 +108,6 @@ public class Activity {
             return this;
         }
 
-        public Builder setRegisteredHours(Map<User, List<TimePeriod>> registeredHours) throws NullPointerException {
-            this.registeredHours = registeredHours;
-            return this;
-        }
-
         public Builder setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
         	TimePeriod event = new TimePeriod(startDate, endDate);
 			if(event.getEndDate().isAfter(event.getStartDate()))

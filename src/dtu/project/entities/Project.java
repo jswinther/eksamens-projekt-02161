@@ -137,4 +137,8 @@ public class Project {
     public void removeActivity(Activity activity) {
         this.activities.remove(activity);
     }
+    
+    public String toString() {
+    	return projectName + " Project Manager: " + projectManager + " Time Period: " + timePeriod;
+    }
 }
