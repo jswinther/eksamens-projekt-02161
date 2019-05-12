@@ -35,6 +35,7 @@ public class Project {
      * https://medium.com/@ajinkyabadve/builder-design-patterns-in-java-1ffb12648850
      * Using builder pattern allows for easier creation objects and simplifies
      * huge constructors.
+     * The builder takes a lot of precautions to secure all fields are filled out correctly
      */
     public static class Builder {
 
@@ -43,20 +44,16 @@ public class Project {
         private TimePeriod timePeriod;
         private User projectManager;
 
-        public Builder() {
-
-        }
-
+        //secure that project name has the right format
         public Builder setProjectName(String projectName) throws PatternSyntaxException, ArrayIndexOutOfBoundsException {
             if (projectName.matches("[a-zA-Z1-9]+[ a-zA-Z1-9]*")) {
                 this.projectName = projectName;
             } else {
-            	// mangler
                 throw new PatternSyntaxException(projectName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", projectName, 0);
             }
             return this;
         }
-
+        //Using the builder, these functions are setters.
         public Builder setProjectType(ProjectType projectType) {
             this.projectType = projectType;
             return this;
@@ -71,13 +68,13 @@ public class Project {
             this.projectManager = projectManager;
             return this;
         }
-
+        // Return the final project after the builder has built the project
         public Project build() {
             return new Project(projectName, projectType, projectManager, timePeriod);
         }
 
     }
-
+    //getters and setters
 	public String getProjectName() {
 		return projectName;
 	}
@@ -126,7 +123,7 @@ public class Project {
     public void removeActivity(Activity activity) {
         this.activities.remove(activity);
     }
-
+    // to string, prints all information in the project
 	@Override
 	public String toString() {
 		return "Project [projectName=" + projectName + ", projectType=" + projectType + ", projectManager="

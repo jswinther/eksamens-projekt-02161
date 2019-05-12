@@ -16,7 +16,7 @@ public class Event {
     private Activity activity;
     private String message;
 
-
+    // Constructor, takes preconditions that activity and message isn't null
 	public Event(String startDate, String endDate, Activity activity, String message) {
         if(activity != null)
             this.activity = activity;
@@ -24,7 +24,9 @@ public class Event {
             this.message = message;
         this.timePeriod = new TimePeriod(startDate, endDate);
     }
-
+	
+	// Getters and setters
+	
     public TimePeriod getTimePeriod() {
         return timePeriod;
     }
@@ -48,7 +50,9 @@ public class Event {
     public void setMessage(String message) {
         this.message = message;
     }
-
+    
+    // To string
+    
     @Override
     public String toString() {
         return (message != null ? message : "") + (activity != null ? activity.getActivityName() : "") + " " + timePeriod;
