@@ -137,7 +137,7 @@ public class UserPanel extends PanelTemplate {
     }//GEN-LAST:event_jTextField2KeyReleased
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        MF.updateView();
+        MF.updateAll();
 
     }//GEN-LAST:event_jList1ValueChanged
 
