@@ -1,4 +1,7 @@
-Feature: Event
+Feature: Developer edits event
+	As a developer
+	I want to edit an event
+	Because it was incorrectly registered
 
 Scenario: User wants to add Event with Activity and Message to Schedule
 	When User adds event to Schedule with Activity and Message

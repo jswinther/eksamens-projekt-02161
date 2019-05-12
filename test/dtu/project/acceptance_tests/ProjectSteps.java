@@ -285,7 +285,7 @@ public class ProjectSteps {
 
 	@Then("find users activitylist")
 	public void getUsersActivitylist() {
-		project = new Project.Builder().build();
+		project = new Project.Builder().setProjectName("Test").build();
 		try {
 			PA.addProject(project);
 			PA.addActivity(project, new Activity.Builder().setUser(PA.getUser("Shiloh Richmond")).build());
@@ -300,17 +300,18 @@ public class ProjectSteps {
 		Activity a1 = new Activity.Builder().setActivityName("Brian").build();
 		Activity a2 = new Activity.Builder().setActivityName("Brian").build();
 		Activity a3 = new Activity.Builder().setActivityName("Ikke Brian").build();
-		Project p = new Project.Builder().build();
+		Project p = new Project.Builder().setProjectName("Project").build();
 		try {
 			PA.addProject(p);
 			PA.addActivity(p, a1);
-			assertTrue(PA.getProject(0).getActivities().contains(a1));
+			assertTrue(p.getActivities().contains(a1));
 			PA.addActivity(p, a3);
-			assertTrue(PA.getProject(0).getActivities().contains(a3));
+			assertTrue(p.getActivities().contains(a3));
 			PA.addActivity(p, a2);
 		} catch (Exception e) {
-			assertTrue(!PA.getProject(0).getActivities().contains(a2));
-			assertEquals(e.getClass(), DuplicateActivityName.class);
+			e.printStackTrace();
+			assertTrue(!p.getActivities().contains(a2));
+			assertEquals(DuplicateActivityName.class, e.getClass());
 		}
 	}
 

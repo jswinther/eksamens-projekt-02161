@@ -55,5 +55,16 @@ public class RegisterHoursSteps {
 	public void theEventExistsInTheScheduleOfTheDeveloper() {
 		assertTrue(!PA.getUserSchedule(0).isEmpty());
 	}
+	
+	@When("developer registers sick from {string} to {string} with message {string}")
+	public void developerRegistersSickFromToWithMessage(String string, String string2, String string3) {
+	    PA.addHours(PA.getUser(0), string, string2, null, string3);
+	}
+
+	//Register sick, then the message says "sick"
+	@Then("the message says {string}")
+	public void theMessageSays(String string) {
+	    assertTrue(PA.getUserSchedule(0).get(0).getMessage().equals(string));
+	}
 }
 

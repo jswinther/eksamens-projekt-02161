@@ -1,4 +1,5 @@
 Feature: Project Manipulation
+
 Scenario: User wants to get a project
 		When user searches for project with name "testProject" project is found
 Scenario: User want to set a project
@@ -12,8 +13,7 @@ Scenario: user wants to set or get an activity
 		When user wants to set an activity with index 0 to project of name "test2"
 		Then activity is set to index 0 to project of name "test2"
 		
-Scenario: User wants to add user to activity
-		When user wants to add user "Shiloh Richmond" to activity
+
 
 Scenario: User wants to see if activity list is empty for project
 		When user wants to see if activitylist is empty for project with name "testProject2"

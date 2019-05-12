@@ -1,4 +1,7 @@
-Feature: User manipulation
+Feature: Developer edits user details
+	As a developer
+	I want to change my name
+	Because it was incorrectly spelled
 
 Scenario: Update user details for a given user with a name longer than four characters.
 	Given a user.

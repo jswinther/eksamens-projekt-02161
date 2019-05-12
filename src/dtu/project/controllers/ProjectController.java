@@ -34,9 +34,12 @@ public class ProjectController {
     		
     	else {
     		for (Project p : getProjectList()) {
-    			if (p.getProjectName().equals(project.getProjectName())) {
-                throw new DuplicateProjectName();
+    			if(p.getProjectName() != null) {
+    				if (p.getProjectName().equals(project.getProjectName())) {
+    	                	throw new DuplicateProjectName();
+    	    		}
     			}
+    			
     		}
         	getProjectList().add(project);
     	}
