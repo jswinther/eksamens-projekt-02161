@@ -16,14 +16,8 @@ import dtu.project.repo.InMemoryRepository;
 
 public class TestAddHours {
 	ProjectApp PA;
-	Activity A;
-	Project P;
-	User U;
 	InMemoryRepository M;
-	Activity a = new Activity.Builder().build();
-	String message = "test";
-	String start = "1993-03-03 15:30";
-	String end = "1993-08-03 15:30";
+	
 	public TestAddHours() {
 
 		try {
@@ -34,18 +28,15 @@ public class TestAddHours {
 		}
 		this.PA = new ProjectApp(M, M);
 	}
-	@Before
-	public void setup() {
-		assertTrue(a == null || message == null || start == null || end == null);
-	}
+	
 	@Test
-	public void test() {
+	public void addHoursWithValidInputs() {
 		PA.addHours(PA.getUser(0), "1993-03-03 15:30" , "1993-08-08 13:30", new Activity.Builder().build(), "test");
 		assertTrue(!PA.getUserSchedule(0).isEmpty());
 	}
 
 	@Test
-	public void test1() {
+	public void addHoursWithInvalidUser() {
 		try {
 			PA.addHours(null, "1993-03-03 15:30" , "1993-08-08 13:30", new Activity.Builder().build(), "test");
 		} catch (Exception e) {
@@ -54,7 +45,7 @@ public class TestAddHours {
 
 	}
 	@Test
-	public void test2() {
+	public void addHoursWithInvalidStartDate() {
 		try {
 			PA.addHours(PA.getUser(0), null , "1993-08-08 13:30", new Activity.Builder().build(), "test");
 		} catch (Exception e) {
@@ -63,7 +54,7 @@ public class TestAddHours {
 
 	}
 	@Test
-	public void test3() {
+	public void addHoursWithInvalidEndDate() {
 		try {
 			PA.addHours(PA.getUser(0), "1993-03-03 15:30" , null, new Activity.Builder().build(), "test");
 		} catch (Exception e) {
@@ -72,26 +63,25 @@ public class TestAddHours {
 
 	}
 	@Test
-	public void test4() {
+	public void addHoursWithoutActivity() {
 		try {
 			PA.addHours(PA.getUser(0), "1993-03-03 15:30" , "1993-08-08 13:30", null, "test");
+			assertTrue(!PA.getUserSchedule(0).isEmpty());
 		} catch (Exception e) {
-			assertTrue(PA.getUserSchedule(0).isEmpty());
+			
 		}
 
 	}
 	@Test
-	public void test5() {
+	public void addHoursWithoutMessage() {
 		try {
 			PA.addHours(PA.getUser(0), "1993-03-03 15:30" , "1993-08-08 13:30", new Activity.Builder().build(), null);
+			assertTrue(!PA.getUserSchedule(0).isEmpty());
 		} catch (Exception e) {
-			assertTrue(PA.getUserSchedule(0).isEmpty());
+			
 		}
 
 	}
-	@After
-	public void tearDown() throws Exception {
-		assertTrue(!(PA.getUserSchedule(0).isEmpty()));
-	}
+
 
 }

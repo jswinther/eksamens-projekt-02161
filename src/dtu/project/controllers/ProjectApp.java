@@ -134,9 +134,6 @@ public class ProjectApp {
      * @return
      */
     public <E> List<E> search(String searchText, List<E> searchList) {
-        if (searchText == null || searchList == null) {
-            throw new NullPointerException();
-        }
         return searchList.stream().filter(e -> e.toString().contains(searchText)).collect(Collectors.toList());
     }
 
