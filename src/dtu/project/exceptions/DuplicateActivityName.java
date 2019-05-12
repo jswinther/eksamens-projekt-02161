@@ -1,5 +1,10 @@
 package dtu.project.exceptions;
 
+/**
+ * 
+ * @author Nicholas
+ *
+ */
 public class DuplicateActivityName extends Exception{
 	/**
 	 * 
