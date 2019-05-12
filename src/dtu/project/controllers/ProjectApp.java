@@ -449,6 +449,16 @@ public class ProjectApp {
     public boolean isActivityListEmpty(Project project) {
         return PC.isActivityListEmpty(project);
     }
+
+	/**
+	 * @param project1
+	 * @param project2
+	 * @throws DuplicateProjectName
+	 * @see dtu.project.controllers.ProjectController#editProject(dtu.project.entities.Project, dtu.project.entities.Project)
+	 */
+	public void editProject(Project project1, Project project2) throws DuplicateProjectName {
+		PC.editProject(project1, project2);
+	}
     
 
 }
