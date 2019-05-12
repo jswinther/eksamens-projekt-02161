@@ -37,6 +37,7 @@ public class TestAddActivity {
 		p = new Project.Builder().build();
 		PA.addProject(p);
 		a1 = new Activity.Builder().build();
+		assertTrue(!PA.getProjectList().isEmpty());
 	}
 	@Test // A 
 	public void noInputTest() throws PatternSyntaxException{
@@ -96,6 +97,7 @@ public class TestAddActivity {
 	{
 		PA.getProjectList().clear();
 		p.getActivities().clear();
+		assertTrue(p.getActivities().isEmpty() & PA.getProjectList().isEmpty());
 	}
 }
 

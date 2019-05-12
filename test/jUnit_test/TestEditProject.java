@@ -35,6 +35,7 @@ public class TestEditProject {
 	{
 		p = new Project.Builder().setProjectName("Test").setTimePeriod("2019-10-19 10:15", "2019-12-19 10:15").build();
 		PA.addProject(p);
+		assertTrue(!PA.getProjectList().isEmpty() & PA.getProject(0).equals(p));
 	}
 
 	@Test // A
@@ -113,6 +114,7 @@ public class TestEditProject {
 	public void postCond()
 	{
 		PA.getProjectList().clear();
+		assertTrue(PA.getProjectList().isEmpty());
 	}
 
 }
