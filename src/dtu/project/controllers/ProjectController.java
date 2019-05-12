@@ -12,7 +12,7 @@ import dtu.project.exceptions.DuplicateUser;
 import dtu.project.repo.ProjectRepository;
 
 /**
- * 
+ * Controller for ProjectRepository.
  * @author Jonathan
  *
  */
@@ -27,8 +27,8 @@ public class ProjectController {
     }
 
     /**
-     * add project
-     *
+     * Adds the project to project repository,
+     * if the name is taken it throws an exception
      * @param project
      * @throws dtu.project.exceptions.DuplicateProjectName
      */
@@ -52,6 +52,12 @@ public class ProjectController {
 
     }
     
+    /**
+     * Sets the values of project1 equal to project2.
+     * @param project1
+     * @param project2
+     * @throws DuplicateProjectName
+     */
     public void editProject(Project project1, Project project2) throws DuplicateProjectName {
     	for (Project p : getProjectList()) {
 			if(p.getProjectName().equals(project2.getProjectName()))
@@ -65,8 +71,7 @@ public class ProjectController {
     
 
     /**
-     * delete project
-     *
+     * Removes project from list of projects.
      * @param project
      */
     public void removeProject(Project project) {
@@ -74,7 +79,7 @@ public class ProjectController {
     }
 
     /**
-     *
+     * Adds an activity to the project.
      * @param project
      * @param activity
      * @throws dtu.project.exceptions.DuplicateActivityName
@@ -88,6 +93,14 @@ public class ProjectController {
         project.addActivity(activity);
     }
 
+    /**
+     * Sets the values of currentActivity equal to newActivity.
+     * Registered hours are not overwritten.
+     * @param project
+     * @param currentActivity
+     * @param newActivity
+     * @throws DuplicateActivityName
+     */
     public void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
         for (Activity a : project.getActivities()) {
             if (a.getActivityName().equals(newActivity.getActivityName())) {
@@ -102,7 +115,7 @@ public class ProjectController {
     }
 
     /**
-     *
+     * Removes activity in project.
      * @param project
      * @param activity
      */
@@ -110,6 +123,12 @@ public class ProjectController {
         project.removeActivity(activity);
     }
 
+    /**
+     * Adds user to an activity, if they aren't added already.
+     * @param activity
+     * @param user
+     * @throws DuplicateUser
+     */
     public void addUserToActivity(Activity activity, User user) throws DuplicateUser {
         for (User user1 : activity.getUsers()) {
             if (user1.toString().equals(user.toString())) {

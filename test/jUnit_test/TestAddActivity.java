@@ -18,6 +18,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.PatternSyntaxException;
 
+/**
+ * Whitebox Test for the addActivity Method in ProjectApp.
+ * @author Jonathan
+ *
+ */
 public class TestAddActivity {
 
 	ProjectApp PA;

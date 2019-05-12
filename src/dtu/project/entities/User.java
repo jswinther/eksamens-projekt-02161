@@ -10,6 +10,8 @@ public class User {
     private String name;
     private String idName;
 
+    // Constructor that gives all users a unique ID, consisting of the 4 first letters in their name
+    // If the person has less than 4 characters in their name, the last characters will be filled with "x"
     public User(String name) {
         super();
         this.name = name;
@@ -26,7 +28,8 @@ public class User {
     public String getName() {
         return this.name;
     }
-
+    
+    // Only created for testing purposes
     public void setName(String name) {
     	this.name = name;
         if (name.length() > 4) {
