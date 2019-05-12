@@ -12,7 +12,7 @@ import dtu.project.repo.UserRepository;
 import javafx.util.Pair;
 
 /**
- * 
+ * Used to manipulate data in the user repository.
  * @author Jonathan
  *
  */
@@ -25,12 +25,13 @@ public class UserController {
 	}
 	
     /**
-     * 
+     * Adds an event to schedule of the specified user. If activity is specified,
+     * there is also added to registered hours of that activity.
      * @param user
-     * @param startDate
-     * @param endDate
-     * @param activity
-     * @param message
+     * @param startDate yyyy-MM-dd HH:mm
+     * @param endDate yyyy-MM-dd HH:mm
+     * @param activity can be null
+     * @param message can be null
      */
     public void addHours(User user, String startDate, String endDate, Activity activity, String message) {
         getUserMap().get(user).add(new Event(startDate, endDate, activity, message));
@@ -42,10 +43,12 @@ public class UserController {
         	
     }
     
-    
-    
-    
-    
+    /**
+     * Checks to see if two events overlap.
+     * @param event1
+     * @param event2
+     * @return
+     */
     public boolean overlaps(TimePeriod event1, TimePeriod event2) {
         return !(event1.getEndDate().isBefore(event2.getStartDate()) || event1.getStartDate().isAfter(event2.getEndDate()));
     }

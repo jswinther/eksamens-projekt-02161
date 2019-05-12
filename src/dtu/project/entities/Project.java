@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.regex.*;
 
 /**
- * 
+ * Every function pretaining to what can happen inside a project. 
+ * Contains information such as the project name, type, manager, timeperiod and a list of activities.
+ * contains build and builder function which is used to setup a project.
+ * Also the useful getters and setters.
  * @author Nicholas
  *
  */
