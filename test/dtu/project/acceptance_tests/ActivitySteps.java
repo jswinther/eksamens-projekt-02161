@@ -117,7 +117,7 @@ public class ActivitySteps {
 		try {
 			PA.setActivity(project, string, new Activity.Builder().setActivityName("#").build());			
 		} catch (Exception e) {
-			System.err.println(e);
+			assertTrue(PatternSyntaxException.class.equals(e.getClass()));
 		}
 		
 		

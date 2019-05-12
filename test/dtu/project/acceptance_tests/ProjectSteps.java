@@ -309,7 +309,6 @@ public class ProjectSteps {
 			assertTrue(p.getActivities().contains(a3));
 			PA.addActivity(p, a2);
 		} catch (Exception e) {
-			e.printStackTrace();
 			assertTrue(!p.getActivities().contains(a2));
 			assertEquals(DuplicateActivityName.class, e.getClass());
 		}
@@ -343,7 +342,7 @@ public class ProjectSteps {
 			PA.addActivity(project, new Activity.Builder().setTimePeriod("2018-02-02 13:30", "2018-04-04 13:40").setActivityName("Brian8").setUser(user).build());
 			PA.addActivity(project, new Activity.Builder().setTimePeriod("2025-02-02 13:30", "2025-04-04 13:40").setActivityName("Brian9").setUser(user).build());
 		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
-			System.err.println(e);
+			
 		}
 		boolean flag;
 		if(PA.getUserListWithAcitivites("2019-01-01 13:30", "2019-03-03 13:40").get(user).intValue() > 0)
@@ -431,33 +430,31 @@ public class ProjectSteps {
 			PA.addProject(project1);
 		} catch (DuplicateProjectName e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
     	
     	try {
     		PA.editProject(project1, new Project.Builder().setProjectName(string).build());
 		} catch (Exception e) {
-			System.err.println(e);
+			assertEquals(DuplicateProjectName.class, e.getClass());
 		}
     	
     	try {
 			PA.addProject(new Project.Builder().setProjectName("#").build());
 		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateProjectName e) {
-			// TODO Auto-generated catch block
-			System.err.println(e);
+			assertEquals(PatternSyntaxException.class, e.getClass());
 		}
     	
     	try {
     		PA.getProject(0).setProjectName("#");
 		} catch (Exception e) {
-			System.err.println(e);
+			assertEquals(PatternSyntaxException.class, e.getClass());
 		}
     	
     	try {
 			PA.editProject(project1, new Project.Builder().setProjectName("Hej").build());
 		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateProjectName e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
     	
     }

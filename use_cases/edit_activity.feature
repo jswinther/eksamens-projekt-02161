@@ -14,7 +14,6 @@ Scenario: user edits an activity
 	
 Scenario: user incorrectly edits an activity
 	When an activity exists that is named "testActivity" and a user changes the name to "testActivity"
-	Then send error message
 	
 Scenario: set estimated hours for activity
 	When user sets estimated hours 30 to an activity then the activity estimated hours should be 30
