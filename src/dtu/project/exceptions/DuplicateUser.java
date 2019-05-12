@@ -11,7 +11,7 @@ package dtu.project.exceptions;
  */
 public class DuplicateUser extends Exception {
     /**
-	 * 
+	 * Exception thrown when trying to add the same user to an activity they're already part of.
 	 */
 	private static final long serialVersionUID = 1L;
 

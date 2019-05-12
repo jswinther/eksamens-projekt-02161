@@ -11,7 +11,9 @@ import java.util.regex.PatternSyntaxException;
 /**
  * 
  * @author Sebastian
- *
+ *	Activities are part of a project. They work in the same way as projects and events,
+ *	that startDate must be before endDate. Additionally they use the same regex as projects
+ *	to make sure the user doesn't create a project with no name, or using special characters.
  */
 public class Activity {
 
