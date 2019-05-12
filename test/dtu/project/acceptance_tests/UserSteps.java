@@ -15,13 +15,12 @@ import dtu.project.entities.User;
 import dtu.project.enums.ProjectType;
 import dtu.project.repo.InMemoryRepository;
 
-public class UserSteps {
+public class UserSteps extends StepsTemplate {
 
-	ProjectApp PA;
 	User user;
 
 	public UserSteps(InMemoryRepository MP) {
-		this.PA = new ProjectApp(MP, MP);
+		super(MP);
 	}
 	
 	@Given("a user.")

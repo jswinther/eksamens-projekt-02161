@@ -14,12 +14,10 @@ import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.InMemoryRepository;
 
-public class RegisterHoursSteps {
-	
-	ProjectApp PA;
+public class RegisterHoursSteps extends StepsTemplate {
 	
 	public RegisterHoursSteps(InMemoryRepository MP) {
-		this.PA = new ProjectApp(MP, MP);
+		super(MP);
 	}
 	
 	

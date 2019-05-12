@@ -11,15 +11,14 @@ import dtu.project.entities.TimePeriod;
 import dtu.project.entities.User;
 import dtu.project.repo.InMemoryRepository;
 
-public class EventSteps {
+public class EventSteps extends StepsTemplate {
 	
-	ProjectApp PA;
     Project project;
     Activity activity;
     User user;
 
     public EventSteps(InMemoryRepository MP) {
-        this.PA = new ProjectApp(MP, MP);
+        super(MP);
         this.project = new Project.Builder().build();
         this.user = PA.getUser(0);
         this.activity = new Activity.Builder().setUser(user).build();

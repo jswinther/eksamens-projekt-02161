@@ -21,17 +21,20 @@ import static org.junit.Assert.assertTrue;
 import java.time.format.DateTimeParseException;
 import java.util.regex.PatternSyntaxException;
 
-public class ActivitySteps {
+public class ActivitySteps extends StepsTemplate {
 
-	ProjectApp PA;
+	public ActivitySteps(InMemoryRepository MP) {
+		super(MP);
+	}
+
+
 	Project project;
 	Activity activity;
 	User user;
+	
+	
 
-	public ActivitySteps(InMemoryRepository MP) {
-		this.PA = new ProjectApp(MP, MP);
-	}
-
+	
 	@Given("a project with an activity named {string} exists with time period {string} to {string}.")
 	public void aProjectWithAnActivityNamedExistsWithTimePeriodTo(String string, String string2, String string3) throws DuplicateProjectName, DuplicateActivityName {
 		project = new Project.Builder().build();
@@ -159,61 +162,6 @@ public class ActivitySteps {
 		}
     }
     
-    
-    
-    // Test for om brugeren er tilf�jet til aktiviteten
-    @When("user is added to an activity")
-    public void userIsAddedToAnActivity() {
-        try {
-        	PA.addProject(new Project.Builder().setProjectName("11").build());
-			PA.addActivity(PA.getProject("11"), new Activity.Builder().setUser(user).build());
-		} catch (DuplicateActivityName | PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateProjectName e) {
-			System.err.println(e);
-		}
-        try {
-			PA.addUserToActivity(PA.getActivity(PA.getProject(0), 0), PA.getUser(2));
-		} catch (DuplicateUser e) {
-			assertTrue(e.toString().equals("User already exists in the selected activity"));
-			System.err.println(e);
-		}
-        assertTrue(PA.getActivity(PA.getProject(0), 0).getUsers().contains(PA.getUser(2)));
-        
-    }
-
-
-    // Test for edit activity
-    @Given("an activity exists named {string}")
-    public void anActivityExistsNamed(String string) {
-    	PA.getProjectList().clear();
-    	project = new Project.Builder().setProjectName("test").setTimePeriod("2019-05-05 13:13", "2019-05-05 13:14").build();
-    	try {
-			PA.addProject(project);
-		} catch (DuplicateProjectName e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-        try {
-        	
-			PA.addActivity(project, new Activity.Builder().setActivityName(string).build());
-		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
-			System.err.println(e);
-		}
-        assertTrue(PA.getActivity(PA.getProject(0), 0) != null);
-    }
-
-    @When("a user changes activity name to {string}")
-    public void aUserChangesActivityNameTo(String string) {
-    	Activity a = new Activity.Builder().setActivityName(string).build();
-    	System.out.println(a.getActivityName());
-    	System.out.println(PA.getActivity(PA.getProject(0), 0).getActivityName());
-        try {
-			PA.editActivity(PA.getProject(0), PA.getActivity(PA.getProject(0), 0), a);
-			System.out.println(PA.getActivity(PA.getProject(0), 0).getActivityName());
-		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
-			System.err.println(e);
-		}
-        System.out.println(PA.getActivity(PA.getProject(0), 0).getActivityName());
-    }
 
     // Edit activity
 	@When("an activity exists named {string} and user changes activity name to {string}")

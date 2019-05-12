@@ -21,15 +21,14 @@ import java.util.regex.PatternSyntaxException;
 
 import org.junit.Test;
 
-public class ProjectSteps {
+public class ProjectSteps extends StepsTemplate {
 
-	ProjectApp PA;
 	Project project;
 	Activity activity;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	public ProjectSteps(InMemoryRepository MP) {
-		this.PA = new ProjectApp(MP, MP);
+		super(MP);
 	}
 
 	@When("the user adds a project with name {string} and project type INTERNAL, project manager named {string} and time period {string} to {string}.")
@@ -154,20 +153,6 @@ public class ProjectSteps {
 		PA.searchProjects(string);
 	}
 
-	@When("time period {string} to {string} then exception thrown")
-	public void timePeriodToThenExceptionThrown(String string, String string2) {
-		try {
-			PA.getProject(0).setTimePeriod(new TimePeriod(string, string2));
-		} catch (Exception e) {
-			assertTrue(true);
-		}
-	}
-
-	@Then("the user is now assigned to project as project manager.")
-	public void theUserIsNowAssignedToProjectAsProjectManager() {
-		assertEquals(PA.getUser(0), PA.getProject(0).getProjectManager());
-	}
-
 	@When("user adds a project with name {string}, project type INTERNAL.")
 	public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
 		PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
@@ -176,11 +161,6 @@ public class ProjectSteps {
 	@Then("user hours is registered {string} to {string}")
 	public void userHoursIsRegisteredTo(String string, String string2) {
 		PA.addHours(PA.getUser(0), string, string2, null, null);
-	}
-
-	@When("name is not null, and list is not null, return search")
-	public void nameIsNotNullAndListIsNotNullReturnSearch() {
-		assertTrue(PA.searchUser("Shiloh").contains(PA.getUser(0)));
 	}
 	
 	@When("user searches for project with name {string} project is found")
@@ -248,34 +228,6 @@ public class ProjectSteps {
 	@Then("activity is set to index {int} to project of name {string}")
 	public void activityIsSetToIndexToProjectOfName(Integer int1, String string) {
 	    PA.getActivity(PA.getProject(0), int1);
-	}
-//done testing get/set og activity
-
-	@When("name is null and list is not null, cast error")
-	public void nameIsNullAndListIsNotNullCastError() {
-		try {
-			PA.searchUser(null).isEmpty();
-		} catch (Exception e) {
-			assertTrue(true);
-		}	
-	}
-
-	@When("name is not null and list is null, cast error")
-	public void nameIsNotNullAndListIsNullCastError() {
-		try {
-			assertTrue(PA.search("Shiloh", null).isEmpty());
-		} catch (Exception e) {
-			assertTrue(true);
-		}
-	}
-
-	@When("name and list is null, cast error")
-	public void nameAndListIsNullCastError() {
-		try {
-			assertTrue(PA.search(null, null).isEmpty());
-		} catch (Exception e) {
-			assertTrue(true);
-		}
 	}
 
 	@Given("user exists")
@@ -457,17 +409,6 @@ public class ProjectSteps {
 
 		}
     	
-    }
-    // user add to activity
-    @When("user wants to add user {string} to activity")
-    public void userWantsToAddUserToActivity(String string) throws DuplicateProjectName, DuplicateActivityName, DuplicateUser {
-		Project p = new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build();
-		PA.addProject(p);
-		PA.setProject(0, p);
-		Activity a = new Activity.Builder().build();
-		PA.addActivity(p, a);
-	    PA.setActivity(p, 0, a);
-	    PA.addUserToActivity(a, PA.getUser(string));
     }
     
     // test of isActivityListEmpty
