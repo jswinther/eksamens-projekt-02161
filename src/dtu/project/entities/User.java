@@ -1,5 +1,10 @@
 package dtu.project.entities;
 
+/**
+ * 
+ * @author Sebastian
+ *
+ */
 public class User {
 
     private String name;

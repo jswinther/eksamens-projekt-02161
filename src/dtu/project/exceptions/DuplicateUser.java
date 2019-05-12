@@ -7,10 +7,15 @@ package dtu.project.exceptions;
 
 /**
  *
- * @author Jonathan
+ * @author Sebastian
  */
 public class DuplicateUser extends Exception {
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     public String toString() {
         return "User already exists in the selected activity";
     }

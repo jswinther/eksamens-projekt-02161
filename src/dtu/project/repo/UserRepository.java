@@ -7,6 +7,11 @@ import dtu.project.entities.Event;
 import dtu.project.entities.TimePeriod;
 import dtu.project.entities.User;
 
+/**
+ * 
+ * @author Sebastian
+ *
+ */
 public interface UserRepository {
 	Map<User, List<Event>> getUserMap();
 }

@@ -15,20 +15,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.SortedMap;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
-import javafx.util.Pair;
+
 
 /**
- * This class functions as a connector for the GUI to use all the other classes.
- *
+ * This Class is a controller, which uses methods from ProjectController and UserController
+ * In addition to this it has some generic methods which are then called by other methods.
+ * Designed with the intention of repeating the same code as little as possible.
  * @author Jonathan
+ *
  */
 public class ProjectApp {
 
@@ -40,13 +38,6 @@ public class ProjectApp {
         this.PC = new ProjectController(projectRepository);
     }
     
-    
-    
-    
-    
-    
-    
-
     /**
 	 * @param project1
 	 * @param project2
@@ -123,7 +114,7 @@ public class ProjectApp {
     }
 
     /**
-     * Jonathan Generic method which converts a list of elements of type E into
+     * Generic method which converts a list of elements of type E into
      * a stream, which collects all elements that contain the searchText in
      * their toString method. The toString methods, must be generated in the
      * given class to assure that they print out all their info.
@@ -196,8 +187,7 @@ public class ProjectApp {
     }
 
     /**
-     * Jonathan Get activities assigned to a specific user.
-     *
+     * 
      * @param user
      * @return
      */
@@ -211,8 +201,8 @@ public class ProjectApp {
         return activities;
     }
 
-    /**
-     * https://www.javacodegeeks.com/2017/09/java-8-sorting-hashmap-values-ascending-descending-order.html
+    /** 
+     * no longer based on this link -> https://www.javacodegeeks.com/2017/09/java-8-sorting-hashmap-values-ascending-descending-order.html
      * Sort Map by Values.
      * @param startDate
      * @param endDate
@@ -237,7 +227,7 @@ public class ProjectApp {
     }
     
     // function to sort hashmap by values 
-    // https://www.geeksforgeeks.org/sorting-a-hashmap-according-to-values/¨
+    // https://www.geeksforgeeks.org/sorting-a-hashmap-according-to-values/
     // sortByValue function is not written by us, it is taken from the website above
     // it is used to sort a hashmap.
     public HashMap<User, Integer> sortByValue(HashMap<User, Integer> hm) 

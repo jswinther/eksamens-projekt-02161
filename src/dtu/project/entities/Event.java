@@ -7,7 +7,7 @@ package dtu.project.entities;
 
 /**
  *
- * @author Jonathan
+ * @author Nicholas
  */
 public class Event {
     private TimePeriod timePeriod;

@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.*;
 
+/**
+ * 
+ * @author Nicholas
+ *
+ */
 public class Project {
 
     private String projectName;
@@ -24,7 +29,6 @@ public class Project {
     }
 
     /**
-     * Jonathan Inspiration is drawn from the source below.
      * https://medium.com/@ajinkyabadve/builder-design-patterns-in-java-1ffb12648850
      * Using builder pattern allows for easier creation objects and simplifies
      * huge constructors.

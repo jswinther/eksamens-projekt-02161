@@ -10,7 +10,7 @@ import java.util.regex.PatternSyntaxException;
 
 /**
  * 
- * @author Jonathan
+ * @author Sebastian
  *
  */
 public class Activity {

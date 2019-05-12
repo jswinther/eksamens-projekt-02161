@@ -11,6 +11,11 @@ import dtu.project.entities.User;
 import dtu.project.repo.UserRepository;
 import javafx.util.Pair;
 
+/**
+ * 
+ * @author Jonathan
+ *
+ */
 public class UserController {
 	private final UserRepository userRepository;
 

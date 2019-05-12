@@ -11,6 +11,11 @@ import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.exceptions.DuplicateUser;
 import dtu.project.repo.ProjectRepository;
 
+/**
+ * 
+ * @author Jonathan
+ *
+ */
 public class ProjectController {
 
     private final ProjectRepository projectRepository;

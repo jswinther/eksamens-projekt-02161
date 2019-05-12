@@ -15,6 +15,11 @@ import dtu.project.entities.Project;
 import dtu.project.entities.TimePeriod;
 import dtu.project.entities.User;
 
+/**
+ * 
+ * @author Jonathan
+ *
+ */
 public class InMemoryRepository implements UserRepository, ProjectRepository {
 
     private Map<User, List<Event>> userMap;

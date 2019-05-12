@@ -4,6 +4,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * 
+ * @author Sebastian
+ *
+ */
 public class TimePeriod {
 
     private LocalDateTime startDate = null;
@@ -11,7 +16,7 @@ public class TimePeriod {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     /**
-     *
+     * 
      * @param startDate
      * @param endDate
      */
