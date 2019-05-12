@@ -16,6 +16,12 @@ import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.InMemoryRepository;
 
+/**
+ * Whitebox Test for the addHours Method in ProjectApp and from UserController.
+ * @author Nicholas
+ *
+ */
+
 public class TestAddHours {
 	ProjectApp PA;
 	InMemoryRepository M;

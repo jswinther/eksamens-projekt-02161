@@ -273,16 +273,19 @@ public class ActivityPanel extends PanelTemplate {
             addActivityButton.setEnabled(false);
             editActivityButton.setEnabled(false);
             removeActivityButton.setEnabled(false);
+            addUserButton.setEnabled(false);
         } else if (PG.isActivityListEmpty(PG.getProject(projectListComboBox1.getSelectedIndex()))) {
             addActivityButton.setEnabled(true);
             editActivityButton.setEnabled(false);
             removeActivityButton.setEnabled(false);
+            addUserButton.setEnabled(false);
             projectListComboBox1.setModel(PG.getProjectDefaultComboBoxModel());
             activitySelectComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"empty"}));
         } else {
             addActivityButton.setEnabled(true);
             editActivityButton.setEnabled(true);
             removeActivityButton.setEnabled(true);
+            addUserButton.setEnabled(true);
             projectListComboBox1.setModel(PG.getProjectDefaultComboBoxModel());
             activitySelectComboBox1.setModel(PG.getActivitytDefaultComboBoxModel(PG.getProject(projectListComboBox1.getSelectedIndex())));
 

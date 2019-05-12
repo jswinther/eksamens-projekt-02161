@@ -102,16 +102,21 @@ public class ProjectController {
      * @throws DuplicateActivityName
      */
     public void editActivity(Project project, Activity currentActivity, Activity newActivity) throws DuplicateActivityName {
-        for (Activity a : project.getActivities()) {
-            if (a.getActivityName().equals(newActivity.getActivityName())) {
-                throw new DuplicateActivityName();
+        if(currentActivity.getActivityName().equals(newActivity.getActivityName())) {
+        	currentActivity.setUser(newActivity.getUsers());	
+        	currentActivity.setEstimatedHours(newActivity.getEstimatedHours());
+            currentActivity.setTimePeriod(newActivity.getTimePeriod());
+        } else {
+        	for (Activity a : project.getActivities()) {
+                if (a.getActivityName().equals(newActivity.getActivityName())) {
+                    throw new DuplicateActivityName();
+                }
             }
-        }
-        currentActivity.setUser(newActivity.getUsers());		
-        currentActivity.setActivityName(newActivity.getActivityName());
-        currentActivity.setEstimatedHours(newActivity.getEstimatedHours());
-        currentActivity.setTimePeriod(newActivity.getTimePeriod());
-        
+            currentActivity.setUser(newActivity.getUsers());		
+            currentActivity.setActivityName(newActivity.getActivityName());
+            currentActivity.setEstimatedHours(newActivity.getEstimatedHours());
+            currentActivity.setTimePeriod(newActivity.getTimePeriod());
+        } 
     }
 
     /**

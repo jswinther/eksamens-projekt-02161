@@ -18,6 +18,12 @@ import dtu.project.entities.User;
 import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.InMemoryRepository;
 
+/**
+ * Whitebox Test for the editProject method within the ProjectApp - and in extension the ProjectController.
+ * @author Sebastian
+ *
+ */
+
 public class TestEditProject {
 
 	ProjectApp PA;

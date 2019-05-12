@@ -29,8 +29,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.*;
 
 /**
- *
- * @author Jonat
+ * Class which handles conversion between lists and JComponenets.
+ * @author Jonathan
  */
 public class ProjectGUI {
 	
@@ -616,6 +616,7 @@ public class ProjectGUI {
                         .setEstimatedHours(Integer.valueOf(estimatedHoursTextField.getText()))
                         .setTimePeriod(activityStartDateTextField.getText(), 
                                 activityEndDateTextField.getText())
+                        .setUser(PA.getUser(activityUserComboBox.getSelectedIndex()))
                 .build()
                                 
         
