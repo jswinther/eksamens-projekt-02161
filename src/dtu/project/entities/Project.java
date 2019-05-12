@@ -79,11 +79,9 @@ public class Project {
 		if (projectName.matches("[a-zA-Z1-9]+[ a-zA-Z1-9]*")) {
             this.projectName = projectName;
         } else {
-        	// mangler
             throw new PatternSyntaxException(projectName + "Project name can neither be empty, nor only be a space. It must match regex: '[a-zA-Z1-9]+[ a-zA-Z1-9]*'", projectName, 0);
         }
 	}
-	// mangler start
 	public ProjectType getProjectType() {
 		return projectType;
 	}
@@ -103,11 +101,9 @@ public class Project {
 	public TimePeriod getTimePeriod() {
 		return timePeriod;
 	}
-	// mangler slut
 	public void setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
 		this.timePeriod = new TimePeriod(startDate, endDate);
 	}
-	// mangler
 	public void setTimePeriod(TimePeriod event) throws DateTimeParseException {
 		this.timePeriod = event;
 	}

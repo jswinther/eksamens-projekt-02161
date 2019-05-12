@@ -168,6 +168,10 @@ public class Activity {
 	public void setTimePeriod(TimePeriod timePeriod) {
 		this.timePeriod = timePeriod;
 	}
+	
+	public void setTimePeriod(String startDate, String endDate) throws DateTimeParseException {
+		this.timePeriod = new TimePeriod(startDate, endDate);
+	}
 
 	@Override
     public String toString() {
