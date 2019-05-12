@@ -6,7 +6,9 @@
 package dtu.project.entities;
 
 /**
- *
+ * Every function pretaining to what can happen inside an event.
+ * An event is just a storage unit which can hold a timeperiod, an activity and a message.
+ * Every function inside this class is a constructor and getter and setters.  
  * @author Nicholas
  */
 public class Event {
