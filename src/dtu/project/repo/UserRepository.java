@@ -10,7 +10,7 @@ import dtu.project.entities.User;
 /**
  * 
  * @author Sebastian
- *
+ * 
  */
 public interface UserRepository {
 	Map<User, List<Event>> getUserMap();

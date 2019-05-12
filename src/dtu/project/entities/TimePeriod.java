@@ -7,7 +7,10 @@ import java.time.format.DateTimeParseException;
 /**
  * 
  * @author Sebastian
- *
+ *	Class to specify the format of the time periods (yyy-mm-dd hh:mm).
+ *	Additionally it throws the DateTimeParseException if the startDate is set
+ *	at a later date/time than the endDate, or calls setter for start- and end-date
+ *	if end date is after start date.
  */
 public class TimePeriod {
 
