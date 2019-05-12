@@ -23,7 +23,8 @@ Scenario: User adds a project with a time period
 	When the user adds a project with a time period "2019-05-05 08:00" to "2019-08-05 23:59".
 	Then a project exists with a startDate "2019-05-05 08:00" 
 	And an end date "2019-08-05 23:59".
-	
+
+#Sebastian	
 Scenario: Duplicate project name
 	When user creates project named "testProject" then throw exception
 	
