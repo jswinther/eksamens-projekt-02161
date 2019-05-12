@@ -16,7 +16,7 @@ import dtu.project.entities.TimePeriod;
 import dtu.project.entities.User;
 
 /**
- * 
+ * Reads in a list of users from developers.csv and creates a map out of them.
  * @author Jonathan
  *
  */
