@@ -1,3 +1,4 @@
+#Jonathan
 Feature: Developer edits event
 	As a developer
 	I want to edit an event

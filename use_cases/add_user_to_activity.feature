@@ -1,3 +1,4 @@
+#Sebastian
 Feature: Developer adds user to assist on activity
 	As a developer
 	I want to add another user to my activity

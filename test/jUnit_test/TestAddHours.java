@@ -12,6 +12,8 @@ import dtu.project.controllers.ProjectApp;
 import dtu.project.entities.Activity;
 import dtu.project.entities.Project;
 import dtu.project.entities.User;
+import dtu.project.exceptions.DuplicateActivityName;
+import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.InMemoryRepository;
 
 /**
@@ -24,6 +26,13 @@ public class TestAddHours {
 	ProjectApp PA;
 	InMemoryRepository M;
 	
+	User u;
+	String startDate;
+	String endDate;
+	Activity a;
+	String m;
+	Project p;
+	
 	public TestAddHours() {
 
 		try {
@@ -33,6 +42,20 @@ public class TestAddHours {
 			e.printStackTrace();
 		}
 		this.PA = new ProjectApp(M, M);
+	}
+	
+	@Before
+	public void setup() throws DuplicateProjectName, DuplicateActivityName
+	{
+		p = new Project.Builder().build();
+		PA.addProject(p);
+		u = PA.getUser(0);
+		startDate = "1993-03-03 15:30";
+		endDate = "1993-08-08 13:30";
+		a = new Activity.Builder().build();
+		PA.addActivity(p, a);
+		m = "test";
+		assertTrue(!PA.getProjectList().isEmpty());
 	}
 	
 	@Test
@@ -87,6 +110,14 @@ public class TestAddHours {
 			
 		}
 
+	}
+	
+	@After
+	public void postCond()
+	{
+		PA.getProjectList().clear();
+		p.getActivities().clear();
+		assertTrue(p.getActivities().isEmpty() & PA.getProjectList().isEmpty());
 	}
 
 

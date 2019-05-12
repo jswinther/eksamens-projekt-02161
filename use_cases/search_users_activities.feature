@@ -1,3 +1,4 @@
+#Jonathan
 Feature: Developer searches through all users to see how many activities they are assigned in a given period
 	As a developer
 	I want to see how many activities are assigned to each user In a given period

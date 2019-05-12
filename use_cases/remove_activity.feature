@@ -1,3 +1,4 @@
+#Sebastian
 Feature: Developer removes activity from project
 	As a developer
 	I want to remove an activity
