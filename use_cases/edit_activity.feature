@@ -1,3 +1,4 @@
+#Sebastian
 Feature: Developer edits an activity
 	As a developer
 	I want to edit an activity

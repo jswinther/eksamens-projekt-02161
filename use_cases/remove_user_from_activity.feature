@@ -1,3 +1,4 @@
+#Sebastian
 Feature: Developer removes user from activity
 	As a developer
 	I want to remove a user from my activity
