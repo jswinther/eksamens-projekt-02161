@@ -26,7 +26,7 @@ public class TestAddActivity {
 		this.PA = new ProjectApp(M, M);
 	}
 
-	@Test // A
+	@Test // A 
 	public void noInputTest() throws PatternSyntaxException{
 		try {
 			Activity a1 = new Activity.Builder().setActivityName("").build();

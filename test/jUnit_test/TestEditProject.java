@@ -37,7 +37,7 @@ public class TestEditProject {
 		PA.addProject(p);
 	}
 
-	@Test
+	@Test // A
 	public void validEditTest()
 	{
 		Project p2 = new Project.Builder().setProjectName("Test2").setTimePeriod("2017-09-19 10:15", "2019-12-19 10:15").build();
@@ -50,7 +50,7 @@ public class TestEditProject {
 		assertTrue(PA.getProject(0).getTimePeriod().equals(p2.getTimePeriod()));
 	}
 	
-	@Test
+	@Test // B
 	public void invalidTimeEditTest() throws DateTimeParseException
 	{
 		Project p2 = new Project.Builder().setProjectName("Test2").setTimePeriod("2019-09-19 10:15", "2019-12-19 10:15").build();
@@ -62,7 +62,7 @@ public class TestEditProject {
 		}
 	}
 	
-	@Test
+	@Test // C
 	public void duplicateNameEditTest() throws DuplicateProjectName
 	{
 		Project p2 = new Project.Builder().setProjectName("Test").setTimePeriod("2019-09-19 10:15", "2019-12-19 10:15").build();
@@ -73,19 +73,19 @@ public class TestEditProject {
 		}
 	}
 	
-	@Test
+	@Test // D
 	public void invalidSpecialNameEditTest() throws PatternSyntaxException
 	{
 		Project p2 = new Project.Builder().setProjectName("Test").setTimePeriod("2019-09-19 10:15", "2019-12-19 10:15").build();
 		try {
-			p2.setProjectName("#");
+			p2.setProjectName("@");
 			PA.editProject(p, p2);
 		} catch (Exception e) {
 			assertEquals(e.getClass(), PatternSyntaxException.class);
 		}
 	}
 	
-	@Test
+	@Test // E
 	public void invalidEmptyNameEditTest() throws PatternSyntaxException
 	{
 		Project p2 = new Project.Builder().setProjectName("Test").setTimePeriod("2019-09-19 10:15", "2019-12-19 10:15").build();
@@ -97,7 +97,7 @@ public class TestEditProject {
 		}
 	}
 	
-	@Test
+	@Test // F
 	public void invalidSpaceNameEditTest() throws PatternSyntaxException
 	{
 		Project p2 = new Project.Builder().setProjectName("Test").setTimePeriod("2019-09-19 10:15", "2019-12-19 10:15").build();
