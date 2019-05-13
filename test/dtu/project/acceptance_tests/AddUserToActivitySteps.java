@@ -44,6 +44,7 @@ public class AddUserToActivitySteps extends StepsTemplate {
 	public void another_user_named_is_added_to_activity(String string) throws DuplicateUser, DuplicateProjectName, DuplicateActivityName {
 		user = PA.getUser(string);
 		activity = new Activity.Builder().build();
+		Project project = new Project.Builder().build();
 		PA.addProject(project);
 		PA.addActivity(project, activity);
 		PA.addUserToActivity(activity, user);
