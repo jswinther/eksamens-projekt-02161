@@ -118,7 +118,7 @@ public class EditActivitySteps extends StepsTemplate {
 
 	@Then("activity is not added")
 	public void activityIsNotAdded() {
-	    assertTrue(!(project.getActivities().get(0).equals(activity)));
+		assertEquals(project.getActivities().get(0), activity);
 	}
 	
 	// Test for duplicate activity name
