@@ -31,47 +31,7 @@ public class ProjectSteps extends StepsTemplate {
 		super(MP);
 	}
 
-	
 
-	// Test for get & set time period
-	@When("the user adds a project with a time period {string} to {string}.")
-	public void the_user_adds_a_project_with_a_time_period_to(String string, String string2) {
-		project = new Project.Builder().setTimePeriod(string, string2).build();
-	}
-
-	// Virker ikke
-	@Then("a project exists with a startDate {string}")
-	public void a_project_exists_with_a_startDate(String string) {
-		assertTrue(project.getTimePeriod().getStartDate().format(formatter).equals(string));
-	}
-
-	// Virker ikke
-	@Then("an end date {string}.")
-	public void an_end_date(String string) {
-		assertTrue(project.getTimePeriod().getEndDate().format(formatter).equals(string));
-	}
-
-	// Ukendt test
-	@When("the user adds a project with name {string} and project type INTERNAL.")
-	public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-		Project project = new Project.Builder()
-				.setProjectName(string)
-				.setProjectType(ProjectType.INTERNAL)
-				.build();
-		PA.addProject(project);
-	}
-
-	// Invalid time period
-	@When("time period {string} to {string}.")
-	public void timePeriodTo(String string, String string2) {
-		try {
-			PA.getProject(0).setTimePeriod(string, string2);
-		} catch (Exception e) {
-			assertTrue(true);
-		}
-
-
-	}
 
 	@When("the user changes the name to {string} .")
 	public void theUserChangesTheNameTo(String string) {

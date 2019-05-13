@@ -31,6 +31,7 @@ Scenario: Duplicate project name
 Scenario: User adds illegal project time period
 	When the user adds a project with name "TestProject" and project type INTERNAL.
 	And time period "2021-05-05 08:00" to "2019-05-05 08:00".
+	Then time is not changed
 		
 Scenario: User creates duplicate project
 	Given a project with name "TestProject1", project type INTERNAL.

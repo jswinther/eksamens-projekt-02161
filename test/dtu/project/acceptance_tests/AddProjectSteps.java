@@ -2,6 +2,9 @@ package dtu.project.acceptance_tests;
 
 import static org.junit.Assert.assertTrue;
 
+import java.time.format.DateTimeFormatter;
+import java.util.regex.PatternSyntaxException;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.entities.Project;
@@ -11,6 +14,7 @@ import dtu.project.repo.InMemoryRepository;
 public class AddProjectSteps extends StepsTemplate {
 
 	private Project project;
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	public AddProjectSteps(InMemoryRepository MP) {
 		super(MP);
@@ -27,13 +31,11 @@ public class AddProjectSteps extends StepsTemplate {
 	}
 
 	@Then("the project exists in the list of projects.")
-	public void theProjectExistsInTheListOfProjects() 
-	{
+	public void theProjectExistsInTheListOfProjects() {
 		assertTrue(PA.isProjectListEmpty());
 		
 	}
 
-	// Test for get og set project name
 	@When("the user adds a project with name {string}")
 	public void the_user_adds_a_project_with_name(String string) {
 		project = new Project.Builder().setProjectName(string).build();
@@ -44,7 +46,6 @@ public class AddProjectSteps extends StepsTemplate {
 		assertTrue(project.getProjectName().equals(string));
 	}
 
-	// Test for set og get project type
 	@When("the user adds a project with type INTERNAL")
 	public void the_user_adds_a_project_with_type_INTERNAL() {
 		project = new Project.Builder().setProjectType(ProjectType.INTERNAL).build();
@@ -55,7 +56,6 @@ public class AddProjectSteps extends StepsTemplate {
 		assertTrue(project.getProjectType().equals(ProjectType.INTERNAL));
 	}
 
-	// Test for set og get project manager
 	@When("the user adds a project with a project manager named {string}")
 	public void the_user_adds_a_project_with_a_project_manager_named(String string) {
 		project = new Project.Builder().setProjectManager(PA.getUser(string)).build();
@@ -66,4 +66,45 @@ public class AddProjectSteps extends StepsTemplate {
 		assertTrue(project.getProjectManager().equals(PA.getUser(string)));
 	}
 
+	@When("the user adds a project with a time period {string} to {string}.")
+	public void the_user_adds_a_project_with_a_time_period_to(String string, String string2) {
+		project = new Project.Builder().setTimePeriod(string, string2).build();
+	}
+
+	@Then("a project exists with a startDate {string}")
+	public void a_project_exists_with_a_startDate(String string) {
+		assertTrue(project.getTimePeriod().getStartDate().format(formatter ).equals(string));
+	}
+
+	@Then("an end date {string}.")
+	public void an_end_date(String string) {
+		assertTrue(project.getTimePeriod().getEndDate().format(formatter).equals(string));
+	}
+	
+	@When("the user adds a project with name {string} and project type INTERNAL.")
+	public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
+		Project project = new Project.Builder()
+				.setProjectName(string)
+				.setProjectType(ProjectType.INTERNAL)
+				.build();
+		PA.addProject(project);
+	}
+
+	@When("time period {string} to {string}.")
+	public void timePeriodTo(String string, String string2) {
+		try {
+			PA.getProject(0).setTimePeriod(string, string2);
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	@Then("time is not changed")
+	public void projectIsNeverAdded() {
+		assertTrue(PA.getProject(0).getTimePeriod() == null);
+	}
+	
+	
+	
+	
 }
