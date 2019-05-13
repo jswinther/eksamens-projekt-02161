@@ -230,23 +230,6 @@ public class ProjectSteps extends StepsTemplate {
 	    PA.getActivity(PA.getProject(0), int1);
 	}
 
-	@Given("user exists")
-	public void userExists() {
-		PA.searchUser("Shiloh Richmond");
-	}
-
-	@Then("find users activitylist")
-	public void getUsersActivitylist() {
-		project = new Project.Builder().setProjectName("Test").build();
-		try {
-			PA.addProject(project);
-			PA.addActivity(project, new Activity.Builder().setUser(PA.getUser("Shiloh Richmond")).build());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		PA.getActivitiesAssignedTo(PA.getUser("Shiloh Richmond"));
-	}
-
 	@Then("adds activity")
 	public void addsActivity() {
 		Activity a1 = new Activity.Builder().setActivityName("Brian").build();
@@ -434,6 +417,41 @@ public class ProjectSteps extends StepsTemplate {
     public void userWantsToSeeIfActivitylistIsEmptyForProjectWithName(String string) {
     	Project p = new Project.Builder().setProjectName(string).build();
         assertTrue(PA.isActivityListEmpty(p));
+    }
+    
+    @Given("a user with an activity assigned")
+    public void aUserWithAnActivityAssigned() {
+        try {
+			PA.addProject(new Project.Builder().build());
+			PA.addActivity(PA.getProject(0), new Activity.Builder().setActivityName("test").setUser(PA.getUser(0)).build());
+		} catch (DuplicateProjectName | DuplicateActivityName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+    }
+
+    @Then("a user searches for how many activities they are assigned and it returns {int} activity.")
+    public void aUserSearchesForHowManyActivitiesTheyAreAssignedAndItReturnsActivity(Integer int1) {
+    	assertTrue(PA.getActivitiesAssignedTo(PA.getUser(0)).size() == int1);
+    }
+
+    @Given("that a user has an activity assigned")
+    public void thatAUserHasAnActivityAssigned() {
+    	try {
+			PA.addProject(new Project.Builder().build());
+			PA.addActivity(PA.getProject(0), new Activity.Builder().setActivityName("test").setTimePeriod("2019-05-05 14:00", "2019-05-06 13:13")
+					.setUser(PA.getUser(0)).build());
+		} catch (DuplicateProjectName | DuplicateActivityName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
+    @Then("it says an activity is assigned to that user")
+    public void itSaysAnActivityIsAssignedToThatUser() {
+        assertTrue(PA.getUserListWithAcitivites("2019-05-05 13:13", "2019-05-05 14:14").get(PA.getUser(0)).intValue() == 1);
+        
     }
     
 }
