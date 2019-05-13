@@ -5,6 +5,9 @@ Feature: Developer searches through the list of users
 	So that I can find the one I need
 
 Scenario: search user
-	When searching for user, returns user
-	When searching for user, but user dont exist
-	When looking for user, and user exists
+	When searching for user "Shiloh Richmond"
+	Then user "Shiloh Richmond" is found
+	When searching for user invalid user "blabla"
+	Then no user is found by the name "blabla"
+	When looking for user "Shiloh Richmond" and user exists
+	Then User "Shiloh Richmond" is found in the userlist
