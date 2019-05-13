@@ -12,9 +12,11 @@ Scenario: set invalid estimated hours for activity
 	
 Scenario: user edits an activity
 	When an activity exists named "testActivity" and user changes activity name to "activityTest"
-	
+	Then activity is named "activityTest"
+		
 Scenario: user incorrectly edits an activity
 	When an activity exists that is named "testActivity" and a user changes the name to "testActivity"
+	Then activity name is still "testActivity"
 	
 Scenario: set estimated hours for activity
 	When user sets estimated hours 30 to an activity then the activity estimated hours should be 30

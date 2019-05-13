@@ -7,9 +7,9 @@ import cucumber.api.java.en.When;
 import dtu.project.controllers.ProjectApp;
 import dtu.project.repo.InMemoryRepository;
 
-public class searchusersteps extends StepsTemplate {
+public class SearchUserSteps extends StepsTemplate {
 	
-	public searchusersteps(InMemoryRepository MP) {
+	public SearchUserSteps(InMemoryRepository MP) {
 		super(MP);
 	}
 	

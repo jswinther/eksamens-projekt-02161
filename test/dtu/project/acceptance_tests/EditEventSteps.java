@@ -4,20 +4,19 @@ import static org.junit.Assert.assertEquals;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import dtu.project.controllers.ProjectApp;
 import dtu.project.entities.Activity;
 import dtu.project.entities.Project;
 import dtu.project.entities.TimePeriod;
 import dtu.project.entities.User;
 import dtu.project.repo.InMemoryRepository;
 
-public class EventSteps extends StepsTemplate {
+public class EditEventSteps extends StepsTemplate {
 	
     Project project;
     Activity activity;
     User user;
 
-    public EventSteps(InMemoryRepository MP) {
+    public EditEventSteps(InMemoryRepository MP) {
         super(MP);
         this.project = new Project.Builder().build();
         this.user = PA.getUser(0);
@@ -72,4 +71,5 @@ public class EventSteps extends StepsTemplate {
 	    String expectedString = " " + t;
 	    assertEquals(expectedString, PA.getUserSchedule(0).get(0).toString());
 	}
+
 }

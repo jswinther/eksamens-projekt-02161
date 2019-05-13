@@ -31,6 +31,8 @@ public class ActivitySteps extends StepsTemplate {
 	Project project;
 	Activity activity;
 	User user;
+	private Activity a1;
+	private Activity a2;
 	
 	
 
@@ -51,37 +53,9 @@ public class ActivitySteps extends StepsTemplate {
 		}
 
 	}
+	
+	
 
-	// User is added to activity and another user
-	@When("user named {string} is added to activity")
-	public void userNamedIsAddedToActivity(String string) throws DuplicateUser {
-		user = PA.getUser(string);
-		PA.addUserToActivity(activity, user);
-		PA.addUserToActivity(activity, PA.getUser(21));
-
-	}
-
-	@Then("user named {string} exists in list")
-	public void userNamedExistsInList(String string) {
-		assertTrue(activity.getUsers().contains(user));
-	}
-	// Duplicate user
-	@When("another user named {string} is added to activity")
-	public void another_user_named_is_added_to_activity(String string) throws DuplicateUser {
-		user = PA.getUser(string);
-		Activity a2 = new Activity.Builder().build();
-		PA.addUserToActivity(a2, user);
-		try {
-			PA.addUserToActivity(a2, user);
-		} catch (Exception e) {
-			assertEquals(e.toString(), "User already exists in the selected activity");
-		}
-	}
-
-	@Then("throw exception")
-	public void throw_exception() throws DuplicateUser{
-		
-	}
 
 
 	// User is removed from activity
@@ -163,47 +137,6 @@ public class ActivitySteps extends StepsTemplate {
 		}
     }
     
-
-    // Edit activity
-	@When("an activity exists named {string} and user changes activity name to {string}")
-	public void an_activity_exists_named_and_user_changes_activity_name_to(String string, String string2) throws DuplicateActivityName {
-		Activity a1 = new Activity.Builder().setActivityName(string).build();
-		Activity a2 = new Activity.Builder().setActivityName(string2).build();
-		try {
-			PA.editActivity(project, a1, a2);
-		} catch (Exception e) {
-			assertEquals(e.getClass(), DuplicateActivityName.class);
-		}
-	}
-
-
-	// Duplicate activity name edit
-	@When("an activity exists that is named {string} and a user changes the name to {string}")
-	public void an_activity_exists_that_is_named_and_a_user_changes_the_name_to(String string, String string2) throws DuplicateActivityName {
-		Activity a3 = new Activity.Builder().setActivityName(string).build();
-		Activity a4 = new Activity.Builder().setActivityName("Something Else").build();
-		project = new Project.Builder().setProjectName("123").build();
-		try {
-			PA.addProject(project);
-			PA.addActivity(project, a3);
-			PA.addActivity(project, a4);
-		} catch (DuplicateProjectName e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		try {
-			PA.editActivity(project, PA.getActivity(project, 0), a4);
-		} catch (Exception e) {
-			assertEquals(e.toString(), "Activity name already taken");
-		}
-		
-		try {
-			PA.editActivity(project, PA.getActivity(project, 0), a3);
-		} catch (Exception e) {
-			assertEquals(e.toString(), "Activity name already taken");
-		}
-	}
 
 
 

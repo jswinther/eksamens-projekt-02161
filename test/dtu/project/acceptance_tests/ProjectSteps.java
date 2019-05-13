@@ -31,54 +31,7 @@ public class ProjectSteps extends StepsTemplate {
 		super(MP);
 	}
 
-	@When("the user adds a project with name {string} and project type INTERNAL, project manager named {string} and time period {string} to {string}.")
-	public void theUserAddsAProjectWithNameAndProjectTypeINTERNALProjectManagerNamedAndTimePeriodTo(String string, String string2, String string3, String string4) {
-		project = new Project.Builder()
-				.setProjectName(string)
-				.setProjectType(ProjectType.INTERNAL)
-				.setProjectManager(PA.getUser(string2))
-				.setTimePeriod(string3, string4).build();
-	}
-
-	@Then("the project exists in the list of projects.")
-	public void theProjectExistsInTheListOfProjects() 
-	{
-		assertTrue(PA.isProjectListEmpty());
-		
-	}
-
-	// Test for get og set project name
-	@When("the user adds a project with name {string}")
-	public void the_user_adds_a_project_with_name(String string) {
-		project = new Project.Builder().setProjectName(string).build();
-	}
-
-	@Then("a project named {string} exists")
-	public void a_project_named_exists(String string) {
-		assertTrue(project.getProjectName().equals(string));
-	}
-
-	// Test for set og get project type
-	@When("the user adds a project with type INTERNAL")
-	public void the_user_adds_a_project_with_type_INTERNAL() {
-		project = new Project.Builder().setProjectType(ProjectType.INTERNAL).build();
-	}
-
-	@Then("a project of that type exists")
-	public void a_project_of_that_type_exists() {
-		assertTrue(project.getProjectType().equals(ProjectType.INTERNAL));
-	}
-
-	// Test for set og get project manager
-	@When("the user adds a project with a project manager named {string}")
-	public void the_user_adds_a_project_with_a_project_manager_named(String string) {
-		project = new Project.Builder().setProjectManager(PA.getUser(string)).build();
-	}
-
-	@Then("a project with a project manager named {string} exists")
-	public void a_project_with_a_project_manager_named_exists(String string) {
-		assertTrue(project.getProjectManager().equals(PA.getUser(string)));
-	}
+	
 
 	// Test for get & set time period
 	@When("the user adds a project with a time period {string} to {string}.")
@@ -250,11 +203,18 @@ public class ProjectSteps extends StepsTemplate {
 		}
 	}
 
-	@Then("remove activity")
-	public void removeActivity() {
-		Activity a = new Activity.Builder().build();
-		Project p = new Project.Builder().build();
-		PA.removeActivity(p, a);
+	@When("user removes activity named {string}")
+	public void userRemovesActivityNamed(String string) {
+		project = new Project.Builder().build();
+		activity = new Activity.Builder().setActivityName(string).build();
+		project.addActivity(activity);
+		assertTrue(project.getActivities().get(0).equals(activity));
+		project.getActivities().remove(0);
+	}
+
+	@Then("activity named {string} no longer exists on list")
+	public void activityNamedNoLongerExistsOnList(String string) {
+		assertTrue(!(project.getActivities().contains(activity)));
 	}
 
 	@When("searching for user, returns user")
