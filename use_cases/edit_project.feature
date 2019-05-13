@@ -26,3 +26,4 @@ Scenario: user wants to set or get an activity
 
 Scenario: User wants to see if activity list is empty for project
 		When user wants to see if activitylist is empty for project with name "testProject2"
+		Then the list is empty for project with name "testProject2"

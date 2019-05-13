@@ -174,6 +174,7 @@ public class ProjectSteps extends StepsTemplate {
 		PA.getProject(string);
 		assertTrue(true);
 	}
+	
 	//test get/set project
 	@When("user set project with index {int} and project")
 	public void userSetProjectWithIndexAndProject(Integer int1) throws DuplicateProjectName {
@@ -422,6 +423,12 @@ public class ProjectSteps extends StepsTemplate {
     public void userWantsToSeeIfActivitylistIsEmptyForProjectWithName(String string) {
     	Project p = new Project.Builder().setProjectName(string).build();
         assertTrue(PA.isActivityListEmpty(p));
+    }
+    
+    @Then("the list is empty for project with name {string}")
+    public void theListIsEmptyForProjectWithName(String string) {
+    	Project p = new Project.Builder().setProjectName(string).build();
+    	assertTrue(PA.isActivityListEmpty(p));
     }
     
     @Given("a user with an activity assigned")
