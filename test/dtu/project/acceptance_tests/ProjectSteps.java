@@ -152,6 +152,11 @@ public class ProjectSteps extends StepsTemplate {
 	public void aUserWantToFindAProjectWithTheName(String string) {
 		PA.searchProjects(string);
 	}
+	
+	@Then("the user finds project with the name {string}")
+	public void theUserFindsProjectWithTheName(String string) {
+		assertTrue(PA.searchProjects(string) != null);
+	}
 
 	@When("user adds a project with name {string}, project type INTERNAL.")
 	public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
