@@ -33,43 +33,10 @@ public class ProjectSteps extends StepsTemplate {
 
 
 
-	@When("the user changes the name to {string} .")
-	public void theUserChangesTheNameTo(String string) {
-		PA.getProject(0).setProjectName(string);
-	}
-
-	@Given("a project with name {string}, project type INTERNAL.")
-	public void aProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-		PA.addProject(new Project.Builder()
-				.setProjectName(string)
-				.setProjectType(ProjectType.INTERNAL)
-				.build());
-	}
-
-	@Then("the name of the project is test.")
-	public void theNameOfTheProjectIsTest() {
-		assertTrue(PA.searchProjects("TestProject").isEmpty());
-	}
-
-	@When("the user removes the project.")
-	public void theUserRemovesTheProject() {
-		PA.removeProject(PA.getProject(0));
-	}
-
-	@Then("the project doesn't exist in the list projects.")
-	public void theProjectDoesnTExistInTheListProjects() {
-		assertTrue(PA.isProjectListEmpty());
-	}
-
-	@Given("a user want to find a project with the name {string}")
-	public void aUserWantToFindAProjectWithTheName(String string) {
-		PA.searchProjects(string);
-	}
 	
-	@Then("the user finds project with the name {string}")
-	public void theUserFindsProjectWithTheName(String string) {
-		assertTrue(PA.searchProjects(string) != null);
-	}
+	
+
+	
 
 	@When("user adds a project with name {string}, project type INTERNAL.")
 	public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
