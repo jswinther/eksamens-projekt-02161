@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.entities.Activity;
 import dtu.project.entities.Project;
+import dtu.project.enums.ProjectType;
 import dtu.project.exceptions.DuplicateActivityName;
 import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.InMemoryRepository;
