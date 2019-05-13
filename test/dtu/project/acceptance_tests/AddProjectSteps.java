@@ -2,6 +2,8 @@ package dtu.project.acceptance_tests;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.regex.PatternSyntaxException;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.entities.Project;
@@ -31,6 +33,14 @@ public class AddProjectSteps extends StepsTemplate {
 	{
 		assertTrue(PA.isProjectListEmpty());
 		
+	}
+	@When("the user adds a project with name {string} and project type INTERNAL.")
+	public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
+		Project project = new Project.Builder()
+				.setProjectName(string)
+				.setProjectType(ProjectType.INTERNAL)
+				.build();
+		PA.addProject(project);
 	}
 
 	// Test for get og set project name

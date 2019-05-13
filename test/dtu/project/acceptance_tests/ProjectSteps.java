@@ -52,14 +52,7 @@ public class ProjectSteps extends StepsTemplate {
 	}
 
 	// Ukendt test
-	@When("the user adds a project with name {string} and project type INTERNAL.")
-	public void theUserAddsAProjectWithNameAndProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
-		Project project = new Project.Builder()
-				.setProjectName(string)
-				.setProjectType(ProjectType.INTERNAL)
-				.build();
-		PA.addProject(project);
-	}
+
 
 	// Invalid time period
 	@When("time period {string} to {string}.")
