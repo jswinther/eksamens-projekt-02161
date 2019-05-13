@@ -8,7 +8,8 @@ Background:
    	Given a project with an activity named "testActivity" exists with time period "2019-05-05 08:00" to "2019-08-05 23:59".
 
 Scenario: set invalid estimated hours for activity
-	When user sets estimated hours to "a" then throw exception
+	When user sets estimated hours to "a" 
+	Then activity is not added
 	
 Scenario: user edits an activity
 	When an activity exists named "testActivity" and user changes activity name to "activityTest"
@@ -19,4 +20,5 @@ Scenario: user incorrectly edits an activity
 	Then activity name is still "testActivity"
 	
 Scenario: set estimated hours for activity
-	When user sets estimated hours 30 to an activity then the activity estimated hours should be 30
+	When user sets estimated hours 30 to an activity
+	Then the activity estimated hours should be 30

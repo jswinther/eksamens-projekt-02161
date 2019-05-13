@@ -144,24 +144,7 @@ public class ProjectSteps extends StepsTemplate {
 	    PA.getActivity(PA.getProject(0), int1);
 	}
 
-	@Then("adds activity")
-	public void addsActivity() {
-		Activity a1 = new Activity.Builder().setActivityName("Brian").build();
-		Activity a2 = new Activity.Builder().setActivityName("Brian").build();
-		Activity a3 = new Activity.Builder().setActivityName("Ikke Brian").build();
-		Project p = new Project.Builder().setProjectName("Project").build();
-		try {
-			PA.addProject(p);
-			PA.addActivity(p, a1);
-			assertTrue(p.getActivities().contains(a1));
-			PA.addActivity(p, a3);
-			assertTrue(p.getActivities().contains(a3));
-			PA.addActivity(p, a2);
-		} catch (Exception e) {
-			assertTrue(!p.getActivities().contains(a2));
-			assertEquals(DuplicateActivityName.class, e.getClass());
-		}
-	}
+
 
 	@When("user removes activity named {string}")
 	public void userRemovesActivityNamed(String string) {

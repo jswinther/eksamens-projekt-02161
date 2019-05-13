@@ -13,5 +13,4 @@ Scenario: User is added to an activity
 	
 Scenario: duplicate user is added to activity
 	When another user named "Shiloh Richmond" is added to activity
-	Then throw exception
-	
+	Then activity still only contains one user

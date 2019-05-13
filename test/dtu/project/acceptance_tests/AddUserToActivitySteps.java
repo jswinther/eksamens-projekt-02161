@@ -6,7 +6,10 @@ import static org.junit.Assert.assertTrue;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.entities.Activity;
+import dtu.project.entities.Project;
 import dtu.project.entities.User;
+import dtu.project.exceptions.DuplicateActivityName;
+import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.exceptions.DuplicateUser;
 import dtu.project.repo.InMemoryRepository;
 
@@ -14,10 +17,11 @@ public class AddUserToActivitySteps extends StepsTemplate {
 
 	private User user;
 	private Activity activity;
-
+	private Project project;
 	public AddUserToActivitySteps(InMemoryRepository MP) {
 		super(MP);
 		activity = new Activity.Builder().build();
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -37,19 +41,21 @@ public class AddUserToActivitySteps extends StepsTemplate {
 	}
 	// Duplicate user
 	@When("another user named {string} is added to activity")
-	public void another_user_named_is_added_to_activity(String string) throws DuplicateUser {
+	public void another_user_named_is_added_to_activity(String string) throws DuplicateUser, DuplicateProjectName, DuplicateActivityName {
 		user = PA.getUser(string);
-		Activity a2 = new Activity.Builder().build();
-		PA.addUserToActivity(a2, user);
+		activity = new Activity.Builder().build();
+		PA.addProject(project);
+		PA.addActivity(project, activity);
+		PA.addUserToActivity(activity, user);
 		try {
-			PA.addUserToActivity(a2, user);
+			PA.addUserToActivity(activity, user);
 		} catch (Exception e) {
 			assertEquals(e.toString(), "User already exists in the selected activity");
 		}
 	}
 
-	@Then("throw exception")
+	@Then("activity still only contains one user")
 	public void throw_exception() throws DuplicateUser{
-		
+		assertTrue(activity.getUsers().size() == 1);
 	}
 }
