@@ -41,13 +41,7 @@ public class AddActivitySteps extends StepsTemplate {
 
 	@Then("activity is not added to project")
 	public void activityIsNotAddedToProject() {
-		project = new Project.Builder().setProjectName("testProject123").build();
-		try {
-			PA.addProject(new Project.Builder().build());
-		} catch (DuplicateProjectName e) {
-			e.printStackTrace();
-		}	
-		assertTrue(PA.getProject(1).getActivities().isEmpty());
+		assertTrue(PA.getProject(0).getActivities().isEmpty());
 	}
 	
 	// Test for invalid activity time period
