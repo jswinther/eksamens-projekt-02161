@@ -157,11 +157,6 @@ public class ProjectSteps extends StepsTemplate {
 	public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
 		PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
 	}    
-
-	@Then("user hours is registered {string} to {string}")
-	public void userHoursIsRegisteredTo(String string, String string2) {
-		PA.addHours(PA.getUser(0), string, string2, null, null);
-	}
 	
 	@When("user searches for project with name {string} project is found")
 	public void userSearchesForProjectWithNameProjectIsFound(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, DuplicateProjectName {
@@ -254,37 +249,6 @@ public class ProjectSteps extends StepsTemplate {
 		Activity a = new Activity.Builder().build();
 		Project p = new Project.Builder().build();
 		PA.removeActivity(p, a);
-	}
-
-	@When("user is free, keep them on the list")
-	public void userIsFreeKeepThemOnTheList() {
-		project = new Project.Builder().setProjectName("a1o").setProjectType(ProjectType.INTERNAL).build();
-		try {
-			PA.addProject(project);
-		} catch (DuplicateProjectName e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		User user = PA.getUser(0);
-		try {
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian1").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian2").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian3").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian4").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-02-02 13:40").setActivityName("Brian5").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-01-01 13:30", "2019-02-02 13:40").setActivityName("Brian6").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2019-02-02 13:30", "2019-04-04 13:40").setActivityName("Brian7").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2018-02-02 13:30", "2018-04-04 13:40").setActivityName("Brian8").setUser(user).build());
-			PA.addActivity(project, new Activity.Builder().setTimePeriod("2025-02-02 13:30", "2025-04-04 13:40").setActivityName("Brian9").setUser(user).build());
-		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateActivityName e) {
-			
-		}
-		boolean flag;
-		if(PA.getUserListWithAcitivites("2019-01-01 13:30", "2019-03-03 13:40").get(user).intValue() > 0)
-			flag = true;
-		else 
-			flag = false;
-		assertTrue(flag);
 	}
 
 	@When("searching for user, returns user")
