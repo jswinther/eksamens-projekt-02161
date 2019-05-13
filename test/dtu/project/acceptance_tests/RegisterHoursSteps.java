@@ -16,6 +16,9 @@ import dtu.project.repo.InMemoryRepository;
 
 public class RegisterHoursSteps extends StepsTemplate {
 	
+	private Project project;
+	private Activity activity;
+
 	public RegisterHoursSteps(InMemoryRepository MP) {
 		super(MP);
 	}
@@ -63,6 +66,38 @@ public class RegisterHoursSteps extends StepsTemplate {
 	@Then("the message says {string}")
 	public void theMessageSays(String string) {
 	    assertTrue(PA.getUserSchedule(0).get(0).getMessage().equals(string));
+	}
+	
+	@Given("a project that has at least one activity which has at least one user")
+	public void aProjectThatHasAtLeastOneActivityWhichHasAtLeastOneUser() {
+		project = new Project.Builder()
+				.setProjectName("Screen Recorder Software")
+				.build();
+		try {
+			PA.addProject(project);
+		} catch (DuplicateProjectName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertTrue(PA.getProjectList().contains(project));
+		activity = new Activity.Builder().setActivityName("Design").setUser(PA.getUser("Shiloh Richmond")).build();
+		try {
+			PA.addActivity(project, activity);
+		} catch (DuplicateActivityName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertTrue(project.getActivities().contains(activity));
+	}
+
+	@When("user registers hours")
+	public void userRegistersHours() {
+		PA.addHours(PA.getUser(0), "2019-05-05 13:13", "2019-06-06 13:13", PA.getActivitiesAssignedTo(PA.getUser(0)).get(0), "troll");
+	}
+
+	@Then("an event is added to user schedule")
+	public void anEventIsAddedToUserSchedule() {
+		assertTrue(!PA.getUserSchedule("Shiloh Richmond").isEmpty());
 	}
 }
 

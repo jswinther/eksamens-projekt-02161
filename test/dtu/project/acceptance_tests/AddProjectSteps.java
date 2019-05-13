@@ -1,5 +1,6 @@
 package dtu.project.acceptance_tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.time.format.DateTimeFormatter;
@@ -9,6 +10,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dtu.project.entities.Project;
 import dtu.project.enums.ProjectType;
+import dtu.project.exceptions.DuplicateProjectName;
 import dtu.project.repo.InMemoryRepository;
 
 public class AddProjectSteps extends StepsTemplate {
@@ -104,7 +106,54 @@ public class AddProjectSteps extends StepsTemplate {
 		assertTrue(PA.getProject(0).getTimePeriod() == null);
 	}
 	
+	@When("user adds a project with name {string}, project type INTERNAL.")
+	public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
+		PA.addProject(new Project.Builder().setProjectName(string).setProjectType(ProjectType.INTERNAL).build());
+	}    
 	
-	
+	// Test for duplicate project name and invalid names
+    @When("user creates project named {string} then throw exception")
+    public void userCreatesActivityNamedThenThrowException(String string) {
+    	project = new Project.Builder().setProjectName(string).build();
+    	Project project1 = new Project.Builder().setProjectName(string).build();
+    	try {
+    		PA.addProject(project);
+    		PA.addProject(project1);
+		} catch (Exception e) {
+			assertTrue(e.toString().equals("Project name already taken"));
+		}
+    	project1 = new Project.Builder().setProjectName("Andet navn").build();
+    	try {
+			PA.addProject(project1);
+		} catch (DuplicateProjectName e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	
+    	try {
+    		PA.editProject(project1, new Project.Builder().setProjectName(string).build());
+		} catch (Exception e) {
+			assertEquals(DuplicateProjectName.class, e.getClass());
+		}
+    	
+    	try {
+			PA.addProject(new Project.Builder().setProjectName("#").build());
+		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateProjectName e) {
+			assertEquals(PatternSyntaxException.class, e.getClass());
+		}
+    	
+    	try {
+    		PA.getProject(0).setProjectName("#");
+		} catch (Exception e) {
+			assertEquals(PatternSyntaxException.class, e.getClass());
+		}
+    	
+    	try {
+			PA.editProject(project1, new Project.Builder().setProjectName("Hej").build());
+		} catch (PatternSyntaxException | ArrayIndexOutOfBoundsException | DuplicateProjectName e) {
+
+		}
+    	
+    }
 	
 }
