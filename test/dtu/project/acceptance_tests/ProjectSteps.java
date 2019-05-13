@@ -152,6 +152,11 @@ public class ProjectSteps extends StepsTemplate {
 	public void aUserWantToFindAProjectWithTheName(String string) {
 		PA.searchProjects(string);
 	}
+	
+	@Then("the user finds project with the name {string}")
+	public void theUserFindsProjectWithTheName(String string) {
+		assertTrue(PA.searchProjects(string) != null);
+	}
 
 	@When("user adds a project with name {string}, project type INTERNAL.")
 	public void userAddsAProjectWithNameProjectTypeINTERNAL(String string) throws PatternSyntaxException, ArrayIndexOutOfBoundsException, Exception {
@@ -256,14 +261,27 @@ public class ProjectSteps extends StepsTemplate {
 		assertTrue(PA.searchUser("Shiloh").contains(PA.getUser(0)));
 	}
 
-	@When("searching for user, but user dont exist")
-	public void searchingForUserButUserDontExist() {
-		assertTrue(PA.getUser("###") == null);
+	@When("searching for user invalid user {string}")
+	public void searchingForUserInvalidUser(String string) {
+		try {
+			PA.getUser(string);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	@When("looking for user, and user exists")
-	public void lookingForUserAndUserExists() {
-		//     	assertTrue(PA.getUser("Shiloh Richmond") == PA.getUser(0));
+	@Then("no user is found by the name {string}")
+	public void noUserIsFoundByTheName(String string) {
+		assertTrue(PA.getUser(string) == null);
+	}
+	
+	@When("looking for user {string} and user exists")
+	public void lookingForUserAndUserExists(String string) {
+		PA.getUser("Shiloh Richmond");
+	}
+	
+	@Then("User {string} is found in the userlist")
+	public void userIsFoundInTheUserlist(String string) {
 		assertTrue(PA.getUser("Shiloh Richmond") != null);
 	}
 

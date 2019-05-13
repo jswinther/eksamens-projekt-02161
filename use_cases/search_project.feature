@@ -6,3 +6,4 @@ Feature: Developer wants to search for a project
 
 Scenario: search for a project
 	Given a user want to find a project with the name "projectname"
+	Then the user finds project with the name "projectname"
